@@ -1,0 +1,60 @@
+/* Configuración de colores globales de la imagen */
+body {
+    background-color: #fff6ed; /* Fondo beige claro */
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Sección superior */
+.hero-section {
+    background-color: #cccccc; /* Gris del encabezado */
+    min-height: 300px;
+    border-bottom: 3px solid #62b1f6; /* Línea azul divisoria */
+}
+
+/* Estilos comunes para los bloques  */
+.gray-box {
+    background-color: #d9d9d9;
+    width: 100%;
+    border-radius: 4px;
+}
+
+/* Tamaños de las cajas del lado izquierdo */
+.box-square {
+    height: 140px;
+}
+
+.box-tall {
+    height: 160px;
+}
+
+.box-wide {
+    height: 150px;
+}
+
+/* Contenido e hilos del lado derecho */
+.content-title {
+    color: #111111;
+    font-size: 2rem;
+}
+
+.content-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Barras grises horizontales */
+.gray-bar {
+    background-color: #e0e0e0;
+    height: 25px;
+    width: 100%;
+    border-radius: 2px;
+}
+
+/* Bloque inferior derecho */
+.box-large-right {
+    height: 180px;
+}
