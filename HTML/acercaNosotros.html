@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div id="navbar-general"></div>
+
+    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img src="../IMG/Banner_Huellitas Hotel 1.png" class="d-block w-100" alt="Bienvenida">
+                <div class="container">
+                    <div class="carousel-caption text-start">
+                        <h1>Bienvenidos a Huellitas Hotel</h1>
+                        <p>Cuidamos a quienes más amas cuando tú no puedes.
+                            Un espacio seguro, confiable y lleno de cariño para que
+                            cada mascota se sienta como en casa.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="../IMG/Banner_Huellitas Hotel 2.png" class="d-block w-100" alt="Experiencia">
+                <div class="container">
+                    <div class="carousel-caption text-end">
+                        <h1>Más que un servicio,<br>una experiencia de bienestar</h1>
+                        <p>Brindamos atención personalizada, bienestar y mucho cariño,
+                            porque sabemos que cada mascota es única y merece un cuidado
+                            excepcional.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="../IMG/Banner_ Huellitas Hotel 3.png" class="d-block w-100" alt="Tranquilidad">
+                <div class="container">
+                    <div class="carousel-caption text-start">
+                        <h1>Tu tranquilidad<br>comienza aquí</h1>
+                        <p>Mientras tú trabajas o disfrutas de tu tiempo,
+                            nosotros cuidamos de tu compañero con la atención,
+                            seguridad y amor que merece.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </button> 
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide-to="next"> 
+            <span class="carousel-control-next-icon" aria-hidden="true"></span> 
+            <span class="visually-hidden">Next</span> 
+        </button>
+    </div>
+
+    <!--ACORDION-->
+    <div class="container">
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    
+    <!-- ÍTEM 1 -->
+    <div class="accordion-item my-2">
+      <h2 class="accordion-header">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseOne"
+          aria-expanded="false"
+          aria-controls="flush-collapseOne"
+        >
+          <i class="fa-solid fa-paw me-2"></i>
+          ¿Quiénes somos?
+        </button>
+      </h2>
+      <div
+        id="flush-collapseOne"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionFlushExample"
+      >
+        <div class="card mx-5 my-1" style="max-height: 180px">
+          <div class="row g-0">
+            <div class="col-md-4" px-1>
+              <img style="max-height: 180px" src="https://img.magnific.com/foto-gratis/vista-frontal-hermoso-perro-espacio-copiar_23-2148786560.jpg?semt=ais_hybrid&w=740&q=80" >
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <div class="accordion-body px-1 mx-2 my-2.5">
+                  En <code>Huellitas Hotel</code> entendemos que tu mascota es parte
+                  de la familia. Nacemos para darte total tranquilidad cuando viajas
+                  o estás ocupado, ofreciendo una plataforma de reservas confiable y
+                  transparente. En un solo lugar, puedes agendar servicios de
+                  <code>hospedaje, paseo, aseo, spa y alimentación</code> con total
+                  claridad en precios y disponibilidad.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÍTEM 2 -->
+    <div class="accordion-item my-2">
+      <h2 class="accordion-header">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseTwo"
+          aria-expanded="false"
+          aria-controls="flush-collapseTwo"
+        >
+          <i class="fa-solid fa-paw me-2"></i>
+          Nuestra misión
+        </button>
+      </h2>
+      <div
+        id="flush-collapseTwo"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionFlushExample"
+      >
+        <div class="card mx-5 my-1" style="max-height: 180px">
+          <div class="row g-0">
+            <div class="col-md-4" px-1>
+              <img style="max-height: 780px" src="https://img.magnific.com/foto-gratis/vista-frontal-hermoso-perro-espacio-copiar_23-2148786560.jpg?semt=ais_hybrid&w=740&q=80" >
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <div class="accordion-body px-1 mx-2">
+                  Brindar a las mascotas <code>cuidado, alojamiento y bienestar de calidad</code> mientras sus dueños viajan o se encuentran ocupados, a través de un
+                  servicio confiable, cómodo y fácil de reservar.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÍTEM 3 -->
+    <div class="accordion-item my-2">
+      <h2 class="accordion-header">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseThree"
+          aria-expanded="false"
+          aria-controls="flush-collapseThree"
+        >
+          <i class="fa-solid fa-paw me-2"></i>
+          Nuestra visión
+        </button>
+      </h2>
+      <div
+        id="flush-collapseThree"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionFlushExample"
+      >
+        <div class="card mx-5 my-1" style="max-height: 180px">
+          <div class="row g-0">
+            <div class="col-md-4" px-1>
+              <img style="max-height: 180px" src="https://img.magnific.com/foto-gratis/vista-frontal-hermoso-perro-espacio-copiar_23-2148786560.jpg?semt=ais_hybrid&w=740&q=80" >
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <div class="accordion-body px-1 mx-2 my-2.5">
+                  Ser la plataforma de referencia en cuidado y hospedaje de
+                  mascotas, reconocida por la <code>confianza, la calidad del servicio y el compromiso con el bienestar animal</code>, expandiendo nuestra red de servicios a nivel nacional en los próximos años.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>      
+      </div>
+    </div> 
+
+    <!-- ÍTEM 4 -->
+    <div class="accordion-item my-2">
+      <h2 class="accordion-header">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseFour"
+          aria-expanded="false"
+          aria-controls="flush-collapseFour"
+        >
+          <i class="fa-solid fa-paw me-2"></i>
+          Nuestros valores
+        </button>
+      </h2>
+      <div
+        id="flush-collapseFour"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionFlushExample"
+      >
+        <div class="card mx-5 my-1" style="max-height: 180px">
+          <div class="row g-0">
+            <div class="col-md-4" px-1>
+              <img style="max-height: 180px" src="https://img.magnific.com/foto-gratis/vista-frontal-hermoso-perro-espacio-copiar_23-2148786560.jpg?semt=ais_hybrid&w=740&q=80" >
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <div class="accordion-body px-1 mx-2 my-2.5">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Amor y respeto por los animales</li>
+                    <li class="list-group-item">Responsabilidad</li>
+                    <li class="list-group-item">Cofianza y transparencia</li>
+                    <li class="list-group-item">Compromiso con el bienestar animal</li>
+                    <li class="list-group-item">Atención personalizada</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    <!-- Aqui poner la siguiente parte -->
+       <div class="container__cards">
+
+        <h1 class="text-center mb-5">Nuestro Equipo</h1>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+
+            <!-- Samuel -->
+            <div class="col d-flex justify-content-center">
+                <div class="card">
+                    <div class="cover">
+                        <img src="../IMG/samu1.png" alt="Samuel Velez Guzman">
+                        <div class="img__back"></div>
+                    </div>
+
+                    <div class="description">
+                        <h5>Samuel Velez Guzman</h5>
+                        <p>Desarrollador Full Stack Me apasiona transformar ideas en soluciones digitales. Como desarrollador Full Stack, disfruto construir aplicaciones funcionales y fáciles de usar.
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Juan -->
+            <div class="col d-flex justify-content-center">
+                <div class="card">
+                    <div class="cover">
+                        <img src="../IMG/Juan1.png" alt="Juan Sebastian Cardona">
+                        <div class="img__back"></div>
+                    </div>
+
+                    <div class="description">
+                        <h5>Juan Sebastian Cardona</h5>
+                        <p>Desarrollador de software Full Stack apasionado por crear soluciones con tecnología y aprender constantemente.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monica -->
+            <div class="col d-flex justify-content-center">
+                <div class="card">
+                    <div class="cover">
+                        <img src="../IMG/Moni1.png" alt="Monica Jazmin Diaz">
+                        <div class="img__back"></div>
+                    </div>
+
+                    <div class="description">
+                        <h5>Monica Jazmin Diaz</h5>
+                        <p>Desarrolladora Junior Full-Stack en formación, con título en Ingeniería Industrial y experiencia en proyectos de investigación e innovación.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nataly -->
+            <div class="col d-flex justify-content-center">
+                <div class="card">
+                    <div class="cover">
+                        <img src="../IMG/Nata1.png" alt="Nataly Barahona Muñoz">
+                        <div class="img__back"></div>
+                    </div>
+
+                    <div class="description">
+                        <h5>Nataly Barahona Muñoz</h5>
+                        <p>Desarrolladora Full Stack con pasión por la tecnología y la innovación. Me encanta aprender, crear y mejorar en cada proyecto. Convencida de que todo error tiene solución... excepto cuando falta el punto y coma.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mishelle -->
+            <div class="col d-flex justify-content-center">
+                <div class="card">
+                    <div class="cover">
+                        <img src="../IMG/mishell1.png" alt="Mishelle Bohorquez">
+                        <div class="img__back"></div>
+                    </div>
+
+                    <div class="description">
+                        <h5>Mishelle Bohorquez</h5>
+                        <p>Desarrolladora Full Stack apasionada por la tecnología, la innovación y la creación de soluciones digitales que generan impacto.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  
+
+
+    <script>
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-general').innerHTML = data;
+            });
+    </script>
+</body>
+
+</html>
