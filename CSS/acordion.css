@@ -1,0 +1,48 @@
+:root {
+  --color-verde: #6DBD6B;
+  --color-amarillo: #F4C95D;
+  --color-coral: #FF9E7A;
+  --color-marron: #754c2e;
+  --color-crema: #FFF7ED;
+}
+
+body{
+    background: var(--color-crema);
+}
+
+.accordion-item,
+.accordion-collapse{
+    background: var(--color-crema);
+}
+
+.acordeon-card{
+    overflow: hidden;
+}
+
+.accordion-img{
+    width:100%;
+    height:auto;
+}
+
+.accordion-button{
+    background: var(--color-crema);
+    color: var(--color-marron);
+    font-weight:600;
+}
+
+.accordion-button:not(.collapsed){
+    background: var( --color-coral);
+    color:white;
+}
+
+.accordion-button:focus{
+    box-shadow:none;
+}
+
+@media (max-width:768px){
+
+    .accordion-img{
+        height:200px;
+    }
+
+}
