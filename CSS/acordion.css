@@ -1,48 +1,114 @@
 :root {
-  --color-verde: #6DBD6B;
-  --color-amarillo: #F4C95D;
-  --color-coral: #FF9E7A;
-  --color-marron: #754c2e;
-  --color-crema: #FFF7ED;
+    --color-verde: #6DBD6B;
+    --color-amarillo: #F4C95D;
+    --color-coral: #FF9E7A;
+    --color-marron: #754c2e;
+    --color-crema: #FFF7ED;
 }
 
 body{
     background: var(--color-crema);
 }
 
-.accordion-item,
-.accordion-collapse{
+/* ===========================
+  para el contenerdor del acordion
+=========================== */
+
+#nosotros .accordion-item,
+#nosotros .accordion-collapse{
     background: var(--color-crema);
+    border: none;
 }
 
-.acordeon-card{
-    overflow: hidden;
-}
+/* ===========================
+   Para los botones
+=========================== */
 
-.accordion-img{
-    width:100%;
-    height:auto;
-}
-
-.accordion-button{
-    background: var(--color-crema);
+#nosotros .accordion-button{
+    background-color: var(--color-crema);
     color: var(--color-marron);
-    font-weight:600;
+    font-weight: 600;
+    border: none;
+    box-shadow: none;
 }
 
-.accordion-button:not(.collapsed){
-    background: var( --color-coral);
-    color:white;
+#nosotros .accordion-button:not(.collapsed){
+    background-color: var(--color-coral);
+    color: white;
+    box-shadow: none;
 }
 
-.accordion-button:focus{
-    box-shadow:none;
+#nosotros .accordion-button:focus{
+    box-shadow: none;
+    border: none;
 }
+
+
+#nosotros .accordion-button::after{
+    box-shadow: none;
+}
+
+/* ===========================
+   para las tarjetas del acordion
+=========================== */
+
+#nosotros .acordeon-card{
+    width: 100%;
+    margin: 0;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: none;
+    height: auto;
+}
+
+#nosotros .acordeon-card:hover{
+    transform: none;
+}
+
+/* para espacio interno del contenido */
+
+#nosotros .accordion-collapse{
+    padding: 0 1rem;
+}
+
+/* ===========================
+   para img
+=========================== */
+
+#nosotros .accordion-img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===========================
+   para texto tarjetas
+=========================== */
+
+#nosotros .card-body{
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+}
+
+/* ===========================
+   Media query
+=========================== */
 
 @media (max-width:768px){
 
-    .accordion-img{
-        height:200px;
+    #nosotros .accordion-img{
+        height: 200px;
+        object-fit: cover;
+    }
+
+    #nosotros .card-body{
+        padding: 1.5rem;
+    }
+
+    #nosotros .accordion-collapse{
+        padding: 0;
     }
 
 }
