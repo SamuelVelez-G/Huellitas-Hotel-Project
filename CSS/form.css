@@ -5,12 +5,17 @@
   font-style: normal;
 }
 
+body{
+    background-color: #FFF7ED;
+}
+
 .formulariocontact{
     padding-left: 4vw;  
     display: flex;
     flex-direction:  column;
     gap: 15px;
     border-left: solid #6DBD6B 2px;
+    border-image: linear-gradient(to bottom, #FFF7ED, #6DBD6B, #FFF7ED) 1;
     background-color: #FFF7ED;
 }
 
@@ -47,7 +52,7 @@
     border: 1px solid  #6DBD6B ;
 }
 
-#btn-submit-form:hover{
+#btnContactar:hover{
     background-color:#6DBD6B;
     border: 1px solid  #FF9E7A;
 }
