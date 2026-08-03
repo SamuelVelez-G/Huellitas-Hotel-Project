@@ -54,39 +54,57 @@
                     <div class="col-12">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5314.319301645736!2d-75.61463290809591!3d6.254997966900448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4429a4cf15bce1%3A0xb51f35d4530f9f5c!2sCentro%20del%20Valle%20del%20Software!5e0!3m2!1ses!2sco!4v1785787125432!5m2!1ses!2sco"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            width="470" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     </div>
                 </div>
             </section>
 
-            <!-- Textos y barras de datos -->
-            <section class="col-12 col-md-6 offset-md-1">
-                <h2 class="content-title">Lorem ipsum</h2>
-                <p class="content-text text-muted mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit. Nunc varius purus vestibulum, sagisg elit. Nunc varius purus vestibulum, sag
-                </p>
+            <!-- Seccion form -->
+            <section class="col-12 col-md-6 offset-md-1 formulariocontact">
+                <div class="form-text contenedorTexto">
+                    <h2 class="content-title h2Form">Formulario de contacto</h2>
+                    <p class="content-text text-muted mb-4 pForm">
+                        En nuestro hotel, cada mascota es parte de la familia. Si tienes dudas sobre nuestras habitaciones, actividades recreativas o cuidados especiales, déjanos un mensaje y uno de nuestros asesore se comunicará contigopara brindarte toda la información que necesitas.
+                    </p>
+                </div>
 
-                <!-- Bloques repetitivos de texto + barra -->
-                <div class="bar-group mb-3">
-                    <span class="bar-label text-muted d-block small mb-1">Lorem</span>
-                    <div class="gray-bar"></div>
-                </div>
-                <div class="bar-group mb-3">
-                    <span class="bar-label text-muted d-block small mb-1">Lorem</span>
-                    <div class="gray-bar"></div>
-                </div>
-                <div class="bar-group mb-3">
-                    <span class="bar-label text-muted d-block small mb-1">Lorem</span>
-                    <div class="gray-bar"></div>
-                </div>
-                <div class="bar-group mb-4">
-                    <span class="bar-label text-muted d-block small mb-1">Lorem</span>
-                    <div class="gray-bar"></div>
-                </div>
-                <span class="bar-label text-muted d-block small mb-1">Lorem</span>
-                <div class="gray-box box-large-right"></div>
+                <!-- Formulario -->
+                <form class="row g-3 contenedorForm">
+                    <div class="col-md-6 divNombreForm">
+                        <label for="inputNombre" class="form-label-nombre">Nombre</label>
+                        <input type="text" class="form-control" id="inputNombreForm">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputApellido" class="form-label-apellido">Apellido</label>
+                        <input type="text" class="form-control" id="inputApellidoForm">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputEmail" class="form-label-email">Correo electrónico</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="ejemplo@ejemplo.com">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputTelefonoWS" class="form-label-telefonoWS">Numero de WhatsApp</label>
+                        <input type="number" class="form-control" id="inputTelefonoWSForm" placeholder="3012558204">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputelefono" class="form-label">Telefono</label>
+                        <input type="number" class="form-control" id="inputTelefono">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputCategoria" class="form-label">Servicio de interes</label>
+                        <select id="inputCategoria" class="form-select">
+                        <option selected>Seleccione una categoria...</option>
+                        <option>Información general</option>
+                        <option>Servicios</option>
+                        <option>Precios</option>
+                        <option>PQRs</option>
+                        </select>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary btn-submit-form" id="btn-submit-form">Enviar</button>
+                    </div>
+                </form>
             </section>
 
             <div id="footer-general"></div>
