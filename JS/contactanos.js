@@ -1,19 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const btnContactar = document.getElementById("btnContactar");
+    const formularioContactanos = document.getElementById("formularioContactanos");
 
-    if (btnContactar) { 
-    btnContactar.addEventListener ('click',  () => {
-
-        Swal.fire({
-            title: "Entendido!",
-            text: "su mensaje se ha enviado exitosamente",
-            icon: "success"
-        })
-    })
-    }else{
-        Swal.fire({
-            title: "subida fallida",
-            text:"intentelo de nuevo"
-        })
-    }
-})
+    formularioContactanos.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        try {
+            const respuesta = await fetch(formularioContactanos.action, {
+                method: "POST",
+                body: new FormData(formularioContactanos),
+                headers: { "Accept": "application/json" }
+            });
+            if (respuesta.ok) {
+                Swal.fire("¡Enviado!", "Su mensaje se ha enviado exitosamente", "success");
+                formularioContactanos.reset();
+            } else {
+                Swal.fire("Error", "No se pudo enviar el formulario", "error");
+            }
+        } catch {
+            Swal.fire("Error", "No se pudo conectar con el servidor", "error");
+        }
+    });
+});

@@ -1,0 +1,16 @@
+.formulariocontact{
+    display: flex;
+    flex-direction:  column;
+    gap: 15px;
+}
+
+.btn-submit-form{
+    background-color: #754c2e;
+    border: 1px solid #FF9E7A ;
+}
+
+#btn-submit-form:hover{
+    background-color:#FF9E7A;
+    color: #754c2e ;
+    border: 1px solid  #754c2e ;
+}
