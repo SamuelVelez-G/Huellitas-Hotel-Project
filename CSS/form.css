@@ -1,4 +1,9 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+.poppins-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
 
 .formulariocontact{
     padding-left: 4vw;  
@@ -17,7 +22,7 @@
 
 .h2Form{
     color:#754c2e ;
-    font-family: Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .pForm{
@@ -25,7 +30,7 @@
 }
 
 .contenedorForm{
-    margin-top: 5vh;
+    margin-top: 4vh;
 }
 
 .divInputEmail, .divInputTel, .divInputTelwsp, .divInputCategoria{
@@ -49,6 +54,8 @@
 
 .form-label-nombre, .form-label-apellido, .form-label-email, .form-label-telefonoWS, .form-label-Tel, .form-label-categoria{
     margin-bottom: 2vh;
+    font-family: "Poppins", sans-serif;
+    font-size: smaller;
 
 }
 
