@@ -6,29 +6,52 @@
     flex-direction:  column;
     gap: 15px;
     border-left: solid #6DBD6B 2px;
+    background-color: #FFF7ED;
 }
 
 .contenedorTexto{
     display: flex;
     flex-direction: column;
-    gap: 3vh
+    gap: 3vh;
 }
 
 .h2Form{
     color:#754c2e ;
+    font-family: Poppins', sans-serif;
+}
 
+.pForm{
+    color: black;
 }
+
 .contenedorForm{
-    border: solid brown 2px;
+    margin-top: 5vh;
 }
+
+.divInputEmail, .divInputTel, .divInputTelwsp, .divInputCategoria{
+    margin-top: 6vh;
+}
+
+.divInputbtn{
+    margin-top: 8vh;
+}
+
 
 .btn-submit-form{
-    background-color: #754c2e;
-    border: 1px solid #FF9E7A ;
+    background-color: #FF9E7A;
+    border: 1px solid  #6DBD6B ;
 }
 
 #btn-submit-form:hover{
-    background-color:#FF9E7A;
-    color: #754c2e ;
-    border: 1px solid  #754c2e ;
+    background-color:#6DBD6B;
+    border: 1px solid  #FF9E7A;
+}
+
+.form-label-nombre, .form-label-apellido, .form-label-email, .form-label-telefonoWS, .form-label-Tel, .form-label-categoria{
+    margin-bottom: 2vh;
+
+}
+
+#inputNombreForm, #inputApellidoForm, #inputEmail, #inputTelefonoWSForm, #inputTelefono, #inputCategoria{
+    border: solid 2px #FF9E7A;
 }
