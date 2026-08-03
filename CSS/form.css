@@ -1,7 +1,25 @@
+
+
 .formulariocontact{
+    padding-left: 4vw;  
     display: flex;
     flex-direction:  column;
     gap: 15px;
+    border-left: solid #6DBD6B 2px;
+}
+
+.contenedorTexto{
+    display: flex;
+    flex-direction: column;
+    gap: 3vh
+}
+
+.h2Form{
+    color:#754c2e ;
+
+}
+.contenedorForm{
+    border: solid brown 2px;
 }
 
 .btn-submit-form{
