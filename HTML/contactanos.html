@@ -88,32 +88,31 @@
                         nuestros asesore se comunicará contigopara brindarte toda la información que necesitas.
                     </p>
                 </div>
-
                 <!-- Formulario -->
-                <form class="row g-3 contenedorForm">
+                <form id="formularioContactanos" action="https://formspree.io/f/xlgqqqdj" method="POST" class="row g-3 contenedorForm" >
                     <div class="col-md-6 divNombreForm">
                         <label for="inputNombre" class="form-label-nombre">Nombre</label>
-                        <input type="text" class="form-control" id="inputNombreForm">
+                        <input name="Nombre" type="text" class="form-control" id="inputNombreForm" placeholder="Samuel">
                     </div>
                     <div class="col-md-6">
                         <label for="inputApellido" class="form-label-apellido">Apellido</label>
-                        <input type="text" class="form-control" id="inputApellidoForm">
+                        <input name="Apellido" type="text" class="form-control" id="inputApellidoForm" placeholder="Perez">
                     </div>
                     <div class="col-12">
                         <label for="inputEmail" class="form-label-email">Correo electrónico</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="ejemplo@ejemplo.com">
+                        <input name="Correo" type="email" class="form-control" id="inputEmail" placeholder="ejemplo@ejemplo.com">
                     </div>
                     <div class="col-12">
                         <label for="inputTelefonoWS" class="form-label-telefonoWS">Numero de WhatsApp</label>
-                        <input type="number" class="form-control" id="inputTelefonoWSForm" placeholder="3012558204">
+                        <input name="WhatsApp" type="number" class="form-control" id="inputTelefonoWSForm" placeholder="3012558204">
                     </div>
                     <div class="col-md-6">
                         <label for="inputelefono" class="form-label">Telefono</label>
-                        <input type="number" class="form-control" id="inputTelefono">
+                        <input name="Telefono" type="number" class="form-control" id="inputTelefono" placeholder="4280492">
                     </div>
                     <div class="col-md-6">
                         <label for="inputCategoria" class="form-label">Servicio de interes</label>
-                        <select id="inputCategoria" class="form-select">
+                        <select name="Servicio"id="inputCategoria" class="form-select">
                             <option selected>Seleccione una categoria...</option>
                             <option>Información general</option>
                             <option>Servicios</option>
@@ -122,8 +121,7 @@
                         </select>
                     </div>
                     <div class="col-12 d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary btn-submit-form"
-                            id="btn-submit-form">Enviar</button>
+                        <button type="submit" id="btnContactar" class="btn btn-primary btn-submit-form">Enviar</button>
                     </div>
                 </form>
             </section>
@@ -132,10 +130,13 @@
         </div>
     </main>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script src="../JS/navbar.js"></script>
+    <script src="../JS/contactanos.js"></script>
+    <script src="../JS/footer.js"></script>
 </body>
 
 </html>
