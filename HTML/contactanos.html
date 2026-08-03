@@ -9,29 +9,64 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="../CSS/navbar.css">
     <link rel="stylesheet" href="../CSS/contactanos.css">
-    <link rel="stylesheet" href="../CSS/form.css">
-    
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
 </head>
 
 <body>
     <div id="navbar-general"></div>
+
+    <div class="container-fluid p-0 position-relative">
+        <img src="../IMG/Banner_Contactenos.png" class="img-fluid w-100" alt="Banner de Contacto">
+
+        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center ps-4 ps-md-5">
+            <div class="text-start col-11 col-md-7 col-lg-6 col-xl-5 text-hero-custom">
+                <h1 class="fw-bold mb-2 mb-md-3 title-color">Contáctanos</h1>
+                <div class="hero-divider mb-2 mb-md-3"></div>
+                <p class="fw-semibold mb-1 mb-md-2 subtitle-color fs-5">Estamos aquí para ayudarte.</p>
+                <p class="subtitle-color lh-sm mb-0">
+                    ¿Tienes preguntas, sugerencias o necesitas más información?
+                </p>
+                <p class="subtitle-color lh-sm mb-0">
+                    Escríbenos, estaremos felices de atenderte.
+                </p>
+                
+            </div>
+        </div>
+    </div>
 
     <main class="container-fluid content-section py-5 px-4 px-md-5">
         <div class="row g-4 justify-content-center">
 
             <section class="col-12 col-md-5">
                 <div class="row g-3">
-                    <div class="col-6">
-                        <div class="gray-box box-square"></div>
-                    </div>
-                    <div class="col-6">
-                        <div class="gray-box box-square"></div>
-                    </div>
-                    <div class="col-6">
-                        <div class="gray-box box-tall"></div>
-                    </div>
-                    <div class="col-6">
-                        <div class="gray-box box-square"></div>
+                    <div class="row g-3">
+                        <!-- WhatsApp -->
+                        <div class="col-6">
+                            <a href="https://wa.me/573001234567" target="_blank" class="social-card whatsapp">
+                                <i class="icon ion-logo-whatsapp"></i>
+                            </a>
+                        </div>
+                        <!-- Instagram -->
+                        <div class="col-6">
+                            <a href="https://www.instagram.com/huellitas.hotel2026" target="_blank"
+                                class="social-card instagram">
+                                <i class="icon ion-logo-instagram"></i>
+                            </a>
+                            
+                        </div>
+                        <!-- Teléfono -->
+                        <div class="col-6">
+                            <a href="tel:+573001234567" class="social-card telefono">
+                                <i class="icon ion-md-call"></i>
+                            </a>
+                        </div>
+                        <!-- Correo -->
+                        <div class="col-6">
+                            <a href="mailto:huellitas.hotel2026@gmail.com" class="social-card correo">
+                                <i class="icon ion-md-mail"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="col-12">
                         <iframe
