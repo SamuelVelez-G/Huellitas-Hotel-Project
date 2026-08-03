@@ -363,3 +363,31 @@ main {
     margin-bottom: 0;
     line-height: 1.45;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Quicksand:wght@500;700&display=swap');
+
+.text-hero-custom {
+  font-family: 'Fredoka', 'Quicksand', sans-serif;
+}
+
+.title-color {
+  color: #6d4223;
+  font-size: clamp(1.8rem, 5vw, 4.5rem);
+}
+
+.subtitle-color.fs-5 {
+  color: #333333;
+  font-size: clamp(1rem, 2.2vw, 2rem); 
+}
+
+p.subtitle-color {
+  color: #333333;
+  font-size: clamp(0.9rem, 1.5vw, 1.4rem);
+}
+
+.hero-divider {
+  width: clamp(50px, 8vw, 120px);
+  height: clamp(3px, 0.5vw, 6px);
+  background-color: #88b082;
+  border-radius: 2px;
+}
