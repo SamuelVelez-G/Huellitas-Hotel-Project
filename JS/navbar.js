@@ -33,5 +33,4 @@ const nav = `
 `;
 
 document.getElementById("navbar-general").innerHTML = nav;
-
 document.body.classList.add("cargado");
