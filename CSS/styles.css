@@ -148,7 +148,7 @@ body {
   background-color: var(--color-marron);
   color: var(--color-crema);
   font-family: 'Poppins', sans-serif;
-  padding: 3rem 1.5rem 0;
+  padding: 2rem 1.5rem 0;
 }
 
 .footer-top {
@@ -321,7 +321,7 @@ main {
 
 #myCarousel .carousel-caption h1,
 .carousel-caption h1 {
-  color: #89B790 !important;
+  color: #6d4223 !important;
   font-size: clamp(1.8rem, 3.2vw, 3.2rem);
   font-weight: 800;
   margin-bottom: 1.2rem;
@@ -356,7 +356,7 @@ main {
 .carousel-caption.text-end {
   right: 4%;
   left: auto;
-  text-align: left;
+  text-align: right;
 }
 
 .carousel-caption h1 {
@@ -368,11 +368,11 @@ main {
 }
 
 .carousel-caption p {
-    color: #aca9a9;
-    font-size: clamp(1rem, 1.5vw, 1.4rem);
-    font-weight: 500;
-    margin-bottom: 0;
-    line-height: 1.45;
+  color: #aca9a9;
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  font-weight: 500;
+  margin-bottom: 0;
+  line-height: 1.45;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Quicksand:wght@500;700&display=swap');
@@ -388,7 +388,7 @@ main {
 
 .subtitle-color.fs-5 {
   color: #333333;
-  font-size: clamp(1rem, 2.2vw, 2rem); 
+  font-size: clamp(1rem, 2.2vw, 2rem);
 }
 
 p.subtitle-color {
@@ -406,4 +406,63 @@ p.subtitle-color {
   font-weight: 500;
   margin-bottom: 0;
   line-height: 1.45;
+}
+
+@media (max-width: 768px) {
+
+  .container-fluid.position-relative .hero-divider,
+  .container-fluid.position-relative p {
+    display: none !important;
+  }
+
+  .container-fluid.position-relative h1 {
+    font-size: 1.7rem;
+    margin: 0;
+    text-align: left;
+    width: auto;
+  }
+
+  .container-fluid.position-relative .position-absolute {
+    justify-content: flex-start;
+    padding-left: 1.5rem !important;
+  }
+
+}
+
+@media (max-width:768px) {
+
+  /* Banner Contactanos */
+  .container-fluid.position-relative .hero-divider,
+  .container-fluid.position-relative p {
+    display: none !important;
+  }
+
+  .container-fluid.position-relative h1 {
+    font-size: 1.7rem;
+    margin: 0;
+    text-align: left;
+    width: auto;
+  }
+
+  .container-fluid.position-relative .position-absolute {
+    justify-content: flex-start;
+    padding-left: 1.5rem !important;
+  }
+
+  /* Carrusel */
+  #myCarousel .carousel-caption {
+    width: 35%;
+  }
+
+  #myCarousel .carousel-caption h1 {
+    font-size: 1.3rem !important;
+    line-height: 1.15;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  #myCarousel .carousel-caption p {
+    display: none !important;
+  }
+
 }
