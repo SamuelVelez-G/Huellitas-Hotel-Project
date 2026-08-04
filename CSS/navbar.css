@@ -1,3 +1,11 @@
 .navbar {
-    background-color: #89B88E !important;
-  }
+  background-color: #89B88E !important;
+}
+
+body {
+  opacity: 0;
+}
+
+body.cargado {
+  opacity: 1;
+}

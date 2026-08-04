@@ -11,16 +11,16 @@ const nav = `
         <div class="collapse navbar-collapse mx-auto justify-content-center" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house-door"></i> Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./acercaNosotros.html">Sobre nosotros</a>
+                    <a class="nav-link" href="./acercaNosotros.html"><i class="bi bi-people"></i> Sobre nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./contactanos.html">contactanos</a>
+                    <a class="nav-link" href="./contactanos.html"><i class="bi bi-telephone"></i> Contactanos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./">Reservas</a>
+                    <a class="nav-link" href="./"><i class="bi bi-calendar"></i> Reservas</a>
                 </li>
 
             </ul>
@@ -33,3 +33,4 @@ const nav = `
 `;
 
 document.getElementById("navbar-general").innerHTML = nav;
+document.body.classList.add("cargado");
