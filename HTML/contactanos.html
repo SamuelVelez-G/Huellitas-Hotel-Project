@@ -92,30 +92,30 @@
                 <form id="formularioContactanos" action="https://formspree.io/f/xlgqqqdj" method="POST"
                     class="row g-3 contenedorForm">
                     <div class="col-md-6 divNombreForm">
-                        <label for="inputNombre" class="form-label-nombre">Nombre</label>
+                        <label for="inputNombre" class="form-label-nombre"><span class="asterisco">*</span>Nombre</label>
                         <input name="Nombre" type="text" class="form-control" id="inputNombreForm" placeholder="Samuel">
                     </div>
                     <div class="col-md-6 divApellidoForm">
-                        <label for="inputApellido" class="form-label-apellido">Apellido</label>
+                        <label for="inputApellido" class="form-label-apellido"><span class="asterisco">*</span>Apellido</label>
                         <input name="Apellido" type="text" class="form-control" id="inputApellidoForm" placeholder="Perez">
                         
                     </div>
                     <div class="col-12 divInputEmail">
-                        <label for="inputEmail" class="form-label-email">Correo electrónico</label>
+                        <label for="inputEmail" class="form-label-email"><span class="asterisco">*</span>Correo electrónico</label>
                         <input name="Correo" type="email" class="form-control" id="inputEmail" placeholder="ejemplo@ejemplo.com">
                     </div>
                     <div class="col-12 divInputTelwsp">
-                        <label for="inputTelefonoWS" class="form-label-telefonoWS">Numero de WhatsApp</label>
+                        <label for="inputTelefonoWS" class="form-label-telefonoWS"><span class="asterisco">*</span>Numero de WhatsApp</label>
                         <input name="WhatsApp" type="tel" class="form-control" id="inputTelefonoWSForm" placeholder="3012558204">
                     </div>
                     <div class="col-md-6 divInputTel">
-                        <label for="inputelefono" class="form-label-Tel">Telefono</label>
+                        <label for="inputelefono" class="form-label-Tel"><span class="asterisco">*</span>Telefono</label>
                         <input name="Telefono" type="tel" class="form-control" id="inputTelefono" placeholder="0314500506">
                     </div>
                     <div class="col-md-6 divInputCategoria">
-                        <label for="inputCategoria" class="form-label-categoria">Servicio de interes</label>
+                        <label for="inputCategoria" class="form-label-categoria"><span class="asterisco">*</span>Servicio de interes</label>
                         <select name="Servicio"id="inputCategoria" class="form-select">
-                            <option selected disabled value="">Seleccione una categoria...</option>
+                            <option selected disabled value="" class="optionDisabled">Seleccione una categoria...</option>
                             <option>Información general</option>
                             <option>Servicios</option>
                             <option>Precios</option>

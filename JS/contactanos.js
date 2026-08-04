@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (respuesta.ok) {
                 Swal.fire("¡Enviado!", "Su mensaje se ha enviado exitosamente", "success");
                 formularioContactanos.reset();
+                limpiarClases();
             } else {
                 Swal.fire("Error", "No se pudo enviar el formulario", "error");
             }
@@ -23,15 +24,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-//Funcion validar datos formulario
+//Validar datos formulario
 //Input
 const nombreInput = document.querySelector('#inputNombreForm');
 const apellidoInput = document.querySelector('#inputApellidoForm');
 const correo = document.querySelector('#inputEmail');
 const telwps = (document.querySelector('#inputTelefonoWSForm'));
 const tel = (document.querySelector('#inputTelefono'));
-const mensajeInput = document.querySelector('#inputMensaje')
+const mensajeInput = document.querySelector('#inputMensaje')    
 const categoriaInput = document.querySelector('#inputCategoria')
+
 
 
 //Contenedores
@@ -41,7 +43,7 @@ const divEmail = document.querySelector('.divInputEmail');
 const divWPS = document.querySelector('.divInputTelwsp');
 const divTel = document.querySelector('.divInputTel');
 const divMensaje = document.querySelector('.divInputMensaje');
-const divCategoria = document.querySelector('.divInputCategoria')
+
 
 //Regex
 const regex = {
@@ -51,7 +53,8 @@ const regex = {
     mensaje : /^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ¿?¡!.,:;()\s-]{5,}$/
 }
 
-//Funcion
+//Funciones
+//Validar campo
 function validarCampo(input, regex, divPadre, mensaje){
     let parrafo = divPadre.querySelector('.parrafoError');
     let valor = input.value.trim();
@@ -83,12 +86,56 @@ function validarCampo(input, regex, divPadre, mensaje){
             parrafo.remove(); 
         }        
     }
+    habilitarBoton();
+}
 
-    habilitarBoton()
+//Funcion validar campo categoria
+function validarCategoria(){
+    if(categoriaInput.value !== ""){
+        categoriaInput.classList.add('inputCorrecto');
+    } else {
+        categoriaInput.classList.remove('inputCorrecto') 
+    }
+
+    habilitarBoton();
+}
+
+//Funcion validar que todos los campos estan diligenciados antes de enviar el form
+const inputConsolidado = [nombreInput, apellidoInput, correo,telwps, tel, mensajeInput,categoriaInput];
+
+//Deshabilitar boton enviar
+const btnEnviar = document.querySelector('.btn-submit-form');
+btnEnviar.disabled = true;
+
+//Funcion habilitar boton enviar
+function habilitarBoton(){
+    const camposCorrectos = inputConsolidado.every(input =>
+        input.classList.contains('inputCorrecto')
+    );
+    
+    if(camposCorrectos){
+        btnEnviar.disabled = false;
+    }else{
+        btnEnviar.disabled = true;
+    }
+}
+
+//Funcion limpiar clases
+function limpiarClases(){
+    inputConsolidado.forEach(element => {
+        element.classList.remove('inputIncorrecto');
+        element.classList.remove('inputCorrecto');    
+    });
+
+    document.querySelectorAll('.parrafoError').forEach(parrafo => {
+        parrafo.remove();
+    });
+
+    btnEnviar.disabled = true;
 }
 
 
-//Aplicacion de la  funcion
+//Aplicacion de las  funciones
 nombreInput.addEventListener('keyup', function(){
     validarCampo(nombreInput, regex.nombreApellidos, divNombre, '❌Por favor ingresa solo letras' );
     } 
@@ -119,28 +166,12 @@ mensajeInput.addEventListener('input', function(){
     } 
 )
 
-//Falta poner categoriaInput y agregarla al array
+categoriaInput.addEventListener('change', function(){
+    validarCategoria();
+})
 
 
-//Funcion validar que todos los campos estan diligenciados antes de enviar el form
-const inputConsolidado = [nombreInput, apellidoInput, correo,telwps, tel, mensajeInput];
 
-//Deshabilitar boton enviar
-const btnEnviar = document.querySelector('.btn-submit-form');
-btnEnviar.disabled = true;
-
-//Funcion validar
-function habilitarBoton(){
-    const camposCorrectos = inputConsolidado.every(input =>
-        input.classList.contains('inputCorrecto')
-    );
-    
-    if(camposCorrectos){
-        btnEnviar.disabled = false;
-    }else{
-        btnEnviar.disabled = true;
-    }
-}
 
 
 

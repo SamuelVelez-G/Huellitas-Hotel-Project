@@ -101,5 +101,11 @@ body{
     font-size: small;    
 }
 
+.asterisco{
+    color:red;
+}
 
 
+.optionDisabled{    
+    color:#0000005d;
+}
