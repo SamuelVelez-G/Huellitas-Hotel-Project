@@ -52,13 +52,19 @@ body{
 
 
 .btn-submit-form{
-    background-color: #FF9E7A;
-    border: 1px solid  #6DBD6B ;
+   background-color:#6DBD6B;
+    border: 1px solid  #FF9E7A;
 }
 
 #btnContactar:hover{
-    background-color:#6DBD6B;
-    border: 1px solid  #FF9E7A;
+    background-color:#FF9E7A;
+    border: 1px solid #6DBD6B ;    
+}
+
+.btn-submit-form:disabled {
+    background-color:#FF9E7A;;
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .form-label-nombre, .form-label-apellido, .form-label-email, .form-label-telefonoWS, .form-label-Tel, .form-label-categoria{
@@ -68,11 +74,11 @@ body{
 
 }
 
-.form-control{
+.form-control, .form-select{
     border: solid 2px #FF9E7A;
 }
 
-.form-control:focus{
+.form-control:focus, .form-select:focus{
     border-color: #FF9E7A;
     box-shadow: 0 0 0 .25rem #ff9d7a70
 }
@@ -94,4 +100,6 @@ body{
     margin-top: 2vh;
     font-size: small;    
 }
+
+
 
