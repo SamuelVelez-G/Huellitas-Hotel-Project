@@ -1,114 +1,230 @@
-:root {
-    --color-verde: #6DBD6B;
-    --color-amarillo: #F4C95D;
-    --color-coral: #FF9E7A;
-    --color-marron: #754c2e;
-    --color-crema: #FFF7ED;
+    :root {
+        --color-verde: #6DBD6B;
+        --color-amarillo: #F4C95D;
+        --color-coral: #FF9E7A;
+        --color-marron: #754c2e;
+        --color-crema: #FFF7ED;
+    }
+
+    body {
+        background: var(--color-crema);
+    }
+
+    /* ===========================
+    para el contenerdor del acordion
+    =========================== */
+
+    #nosotros .accordion-item,
+    #nosotros .accordion-collapse {
+        background: var(--color-crema);
+        border: none;
+    }
+
+    /* ===========================
+    Para los botones
+    =========================== */
+
+    #nosotros .accordion-button {
+        background-color: var(--color-crema);
+        color: var(--color-marron) !important;
+        font-weight: 600;
+        border: none;
+        box-shadow: none;
+    }
+
+    #nosotros .accordion-button:not(.collapsed) {
+        background-color: var(--color-coral);
+        color: var(--color-marron) !important;
+    }
+
+    #nosotros .accordion-button:focus {
+        box-shadow: none;
+
+    }
+
+
+    #nosotros .accordion-button::after {
+        box-shadow: none;
+    }
+
+    /* ===========================
+    para las tarjetas del acordion
+    =========================== */
+
+    #nosotros .acordeon-card {
+        width: 100%;
+        margin: 0;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: none;
+        height: auto;
+    }
+
+    #nosotros .acordeon-card:hover {
+        transform: none;
+    }
+
+    /* para espacio interno del contenido */
+
+    #nosotros .accordion-collapse {
+        padding: 0 1rem;
+    }
+
+
+    /* ===========================
+    para texto tarjetas
+    =========================== */
+    #nosotros .accordion-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: .5rem;
+    }
+
+    #nosotros .card-body {
+        width: 100%;
+        height: 100%;
+        padding: 2rem;
+    }
+    #nosotros .container{
+    max-width: 1500px;
 }
 
-body{
-    background: var(--color-crema);
-}
-
-/* ===========================
-  para el contenerdor del acordion
+    /* ===========================
+   CARRUSEL
 =========================== */
-
-#nosotros .accordion-item,
-#nosotros .accordion-collapse{
-    background: var(--color-crema);
-    border: none;
-}
-
-/* ===========================
-   Para los botones
-=========================== */
-
-#nosotros .accordion-button{
-    background-color: var(--color-crema);
-    color: var(--color-marron);
-    font-weight: 600;
-    border: none;
-    box-shadow: none;
-}
-
-#nosotros .accordion-button:not(.collapsed){
-    background-color: var(--color-coral);
-    color: white;
-    box-shadow: none;
-}
-
-#nosotros .accordion-button:focus{
-    box-shadow: none;
-    border: none;
-}
-
-
-#nosotros .accordion-button::after{
-    box-shadow: none;
-}
-
-/* ===========================
-   para las tarjetas del acordion
-=========================== */
-
-#nosotros .acordeon-card{
-    width: 100%;
-    margin: 0;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: none;
-    height: auto;
-}
-
-#nosotros .acordeon-card:hover{
-    transform: none;
-}
-
-/* para espacio interno del contenido */
-
-#nosotros .accordion-collapse{
-    padding: 0 1rem;
-}
-
-/* ===========================
-   para img
-=========================== */
-
-#nosotros .accordion-img{
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* ===========================
-   para texto tarjetas
-=========================== */
-
-#nosotros .card-body{
-    width: 100%;
-    height: 100%;
-    padding: 2rem;
-}
-
-/* ===========================
-   Media query
-=========================== */
-
-@media (max-width:768px){
-
-    #nosotros .accordion-img{
-        height: 200px;
+    .carousel-item img {
+        width: 100%;
+        height: 75vh;
         object-fit: cover;
     }
 
-    #nosotros .card-body{
-        padding: 1.5rem;
+    .carousel-caption {
+        bottom: 15%;
     }
 
-    #nosotros .accordion-collapse{
-        padding: 0;
+    .carousel-caption h1 {
+        font-size: clamp(1.4rem, 4vw, 3rem);
+        color: var(--color-marron) !important;
     }
 
+    .carousel-caption p {
+        font-size: clamp(.9rem, 2vw, 1.2rem);
+    }
+
+
+    .container__cards {
+        max-width: 1200px;
+        margin: auto;
+        padding: 60px 20px;
+    }
+
+    .container__cards .card {
+        width: 100%;
+        max-width: 320px;
+        margin: auto;
+        border: none;
+        border-radius: 18px;
+        overflow: hidden;
+    }
+
+    .cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .container__cards {
+        max-width: 1200px;
+        margin: auto;
+        padding: 60px 20px;
+    }
+
+
+    #nosotros {
+        margin-top: 60px;
+    }
+
+    #nosotros .accordion-item {
+        border-bottom: 2px solid var(--color-verde);
+    }
+
+    #nosotros .accordion-item:last-child {
+        border-bottom: none;
+    }
+
+    #nosotros .accordion-item {
+        margin-bottom: 15px;
+    }
+
+    #nosotros .accordion-button{
+    font-size: 1.35rem;
+    font-weight: 700;
 }
+
+#nosotros .card-body{
+     font-size: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+   .titulo-equipo{
+    color: var(--color-marron);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    letter-spacing: 1px;
+}
+    /* ===========================
+   RESPONSIVE TABLET
+=========================== */
+
+    @media (max-width:768px) {
+
+        .carousel-item img {
+            height: 45vh;
+        }
+
+        .carousel-caption {
+            bottom: 5%;
+            text-align: center !important;
+        }
+
+        .carousel-caption h1 {
+            font-size: 1.5rem;
+        }
+
+        .carousel-caption p {
+            display: none;
+        }
+
+        #nosotros .accordion-img {
+            height: 220px;
+        }
+
+        #nosotros .card-body {
+            padding: 1.5rem;
+        }
+
+        #nosotros .accordion-collapse {
+            padding: 0;
+        }
+
+    }
+
+    /* ===========================
+   RESPONSIVE CELULAR
+=========================== */
+
+    @media (max-width:576px) {
+
+        #nosotros .container,
+        .container__cards {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+    }
