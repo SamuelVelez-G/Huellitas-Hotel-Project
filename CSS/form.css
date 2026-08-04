@@ -37,9 +37,14 @@ body{
     margin-top: 1vh;
 }
 
-.divInputEmail, .divInputTel, .divInputTelwsp, .divInputCategoria, .divInputMensaje{
+.divInputEmail, .divInputTel, .divInputTelwsp, .divInputCategoria {
+    margin-top: 1.5vh;
+}
+
+.form-floating.divInputMensaje{
     margin-top: 4vh;
 }
+
 
 .divInputbtn{
     margin-top: 6vh;
@@ -63,14 +68,30 @@ body{
 
 }
 
-#inputNombreForm, #inputApellidoForm, #inputEmail, #inputTelefonoWSForm, #inputTelefono, #inputCategoria, #inputMensaje{
+.form-control{
     border: solid 2px #FF9E7A;
 }
 
-.inputCorrecto{
-    border: solid 2px  #6DBD6B;
+.form-control:focus{
+    border-color: #FF9E7A;
+    box-shadow: 0 0 0 .25rem #ff9d7a70
 }
 
-.inputIncorrecto{
-    border: solid 2px  #ea0909;
+.form-control.inputCorrecto:focus{
+    border-color:  #6DBD6B;
+    border-width: 2px;
+    box-shadow: 0 0 0 .25rem  #6cbd6b85
+    
 }
+
+.form-control.inputIncorrecto:focus{
+    border-color:  #ea0909;
+    border-width: 2px;
+    box-shadow: 0 0 0 .25rem  #ea090970
+}
+
+.parrafoError{
+    margin-top: 2vh;
+    font-size: small;    
+}
+

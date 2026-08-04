@@ -25,40 +25,92 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Funcion validar datos formulario
 //Input
-const formulario = document.querySelector('#formularioContactanos');
 const nombreInput = document.querySelector('#inputNombreForm');
 const apellidoInput = document.querySelector('#inputApellidoForm');
 const correo = document.querySelector('#inputEmail');
 const telwps = (document.querySelector('#inputTelefonoWSForm'));
 const tel = (document.querySelector('#inputTelefono'));
-const categoria = document.querySelector('#inputCategoria');
+
 //Contenedores
-const divNombreInput = document.querySelector('.divNombreForm');
+const divNombre = document.querySelector('.divNombreForm');
+const divApellido = document.querySelector('.divApellidoForm');
+const divEmail = document.querySelector('.divInputEmail');
+const divWPS = document.querySelector('.divInputTelwsp');
+const divTel = document.querySelector('.divInputTel');
+const divMensaje = document.querySelector('.divInputMensaje');
 
-
-const expresionesRegex = {
+//Regex
+const regex = {
     nombreApellidos : /^[a-zñáéíóú ]+$/i,
     correoE : /^[a-z0-9_.+-]+@[a-z0-9-]+\.[a-z0-9-.]+$/i,
     telefonos : /^\d{10}$/ 
 }
 
-function validarCampos(input){
-   
-    switch (input){
-        case input:
-            if(expresionesRegex.nombreApellidos.test(input.value)){
-                input.classList.remove('inputIncorrecto') 
-                input.classList.add('inputCorrecto') 
-                                  
+//Funcion
+function validarCampo(input, regex, divPadre, mensaje){
+    let parrafo = divPadre.querySelector('.parrafoError');
+
+    if(input.value.trim()){
+        if(regex.test(input.value.trim())){
+            input.classList.remove('inputIncorrecto'); 
+            input.classList.add('inputCorrecto');
+            if(parrafo !== null){
+                parrafo.remove();            
+            }
+            
+        } else {
+            input.classList.remove('inputCorrecto') 
+            input.classList.add('inputIncorrecto'); 
+            if(parrafo === null){
+                let nuevoParrafo = document.createElement('p');
+                nuevoParrafo.classList.add('parrafoError');             
+                nuevoParrafo.textContent= mensaje;
+                divPadre.appendChild(nuevoParrafo)
             } else {
-                input.classList.remove('inputCorrecto') 
-                input.classList.add('inputIncorrecto');                
-                let mensaje = document.createElement('p');
-                mensaje.textContent= '❌Por favor ingresa solo letras'
-                divNombreInput.appendChild(mensaje)
-            }              
+                parrafo.textContent= mensaje;
+            }                 
+        }
+    }else {
+        input.classList.remove('inputIncorrecto');
+        input.classList.remove('inputCorrecto');
+        if(parrafo){
+            parrafo.remove(); 
+        }        
     }
 }
+
+
+//Aplicacion de la  funcion
+nombreInput.addEventListener('keyup', function(){
+    validarCampo(nombreInput, regex.nombreApellidos, divNombre, '❌Por favor ingresa solo letras' );
+    } 
+)
+
+apellidoInput.addEventListener('keyup', function(){
+    validarCampo(apellidoInput, regex.nombreApellidos, divApellido, '❌Por favor ingresa solo letras' );
+    } 
+)
+
+correo.addEventListener('blur', function(){
+    validarCampo(correo, regex.correoE, divEmail, '❌Por favor ingresa un correo valido' );
+    } 
+)
+
+telwps.addEventListener('keyup', function(){
+    validarCampo(telwps, regex.telefonos, divWPS, '❌Por favor ingresa solo numeros' );
+    } 
+)
+
+tel.addEventListener('keyup', function(){
+    validarCampo(tel, regex.telefonos, divTel, '❌Por favor ingresa solo numeros' );
+    } 
+)
+
+tel.addEventListener('keyup', function(){
+    validarCampo(tel, regex.telefonos, divTel, '❌Por favor ingresa solo numeros' );
+    } 
+)
+
 
 
 
