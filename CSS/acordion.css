@@ -1,114 +1,188 @@
-:root {
-    --color-verde: #6DBD6B;
-    --color-amarillo: #F4C95D;
-    --color-coral: #FF9E7A;
-    --color-marron: #754c2e;
-    --color-crema: #FFF7ED;
-}
-
-body{
-    background: var(--color-crema);
-}
-
-/* ===========================
-  para el contenerdor del acordion
-=========================== */
-
-#nosotros .accordion-item,
-#nosotros .accordion-collapse{
-    background: var(--color-crema);
-    border: none;
-}
-
-/* ===========================
-   Para los botones
-=========================== */
-
-#nosotros .accordion-button{
-    background-color: var(--color-crema);
-    color: var(--color-marron);
-    font-weight: 600;
-    border: none;
-    box-shadow: none;
-}
-
-#nosotros .accordion-button:not(.collapsed){
-    background-color: var(--color-coral);
-    color: white;
-    box-shadow: none;
-}
-
-#nosotros .accordion-button:focus{
-    box-shadow: none;
-    border: none;
-}
-
-
-#nosotros .accordion-button::after{
-    box-shadow: none;
-}
-
-/* ===========================
-   para las tarjetas del acordion
-=========================== */
-
-#nosotros .acordeon-card{
-    width: 100%;
-    margin: 0;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: none;
-    height: auto;
-}
-
-#nosotros .acordeon-card:hover{
-    transform: none;
-}
-
-/* para espacio interno del contenido */
-
-#nosotros .accordion-collapse{
-    padding: 0 1rem;
-}
-
-/* ===========================
-   para img
-=========================== */
-
-#nosotros .accordion-img{
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* ===========================
-   para texto tarjetas
-=========================== */
-
-#nosotros .card-body{
-    width: 100%;
-    height: 100%;
-    padding: 2rem;
-}
-
-/* ===========================
-   Media query
-=========================== */
-
-@media (max-width:768px){
-
-    #nosotros .accordion-img{
-        height: 200px;
-        object-fit: cover;
+    :root {
+        --color-verde: #6DBD6B;
+        --color-amarillo: #F4C95D;
+        --color-coral: #FF9E7A;
+        --color-marron: #754c2e;
+        --color-crema: #FFF7ED;
     }
 
-    #nosotros .card-body{
-        padding: 1.5rem;
+    body{
+        background: var(--color-crema);
     }
+
+    /* ===========================
+    para el contenerdor del acordion
+    =========================== */
+
+    #nosotros .accordion-item,
+    #nosotros .accordion-collapse{
+        background: var(--color-crema);
+        border: none;
+    }
+
+    /* ===========================
+    Para los botones
+    =========================== */
+
+    #nosotros .accordion-button{
+        background-color: var(--color-crema);
+        color: var(--color-marron)!important;
+        font-weight: 600;
+        border: none;
+        box-shadow: none;
+    }
+
+    #nosotros .accordion-button:not(.collapsed){
+        background-color: var(--color-coral);
+        color: var(--color-marron)!important;
+    }
+
+    #nosotros .accordion-button:focus{
+        box-shadow: none;
+    
+    }
+
+
+    #nosotros .accordion-button::after{
+        box-shadow: none;
+    }
+
+    /* ===========================
+    para las tarjetas del acordion
+    =========================== */
+
+    #nosotros .acordeon-card{
+        width: 100%;
+        margin: 0;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: none;
+        height: auto;
+    }
+
+    #nosotros .acordeon-card:hover{
+        transform: none;
+    }
+
+    /* para espacio interno del contenido */
 
     #nosotros .accordion-collapse{
-        padding: 0;
+        padding: 0 1rem;
     }
 
+
+    /* ===========================
+    para texto tarjetas
+    =========================== */
+
+    #nosotros .card-body{
+        width: 100%;
+        height: 100%;
+        padding: 2rem;
+    }
+
+    /* ===========================
+    Media query
+    =========================== */
+
+    @media (max-width:768px){
+
+#nosotros .accordion-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    border-radius:.5rem;
+}
+
+        #nosotros .card-body{
+            padding: 1.5rem;
+        }
+
+        #nosotros .accordion-collapse{
+            padding: 0;
+        }
+
+    }
+   /* ===========================
+   CARRUSEL
+=========================== */
+ .carousel-item img{
+    width:100%;
+    height:75vh;
+    object-fit:cover;
+}
+.carousel-caption{
+    bottom: 15%;
+}
+.carousel-caption h1{
+    font-size: clamp(1.4rem,4vw,3rem);
+    color: var(--color-marron) !important;
+}
+.carousel-caption p{
+    font-size: clamp(.9rem,2vw,1.2rem);
+}
+
+
+.card{
+    width:100%;
+    max-width:320px;
+    margin:auto;
+}
+
+
+
+.container__cards{
+    max-width:1200px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+.container__cards .card{
+    width:100%;
+    max-width:320px;
+    margin:auto;
+    border:none;
+    border-radius:18px;
+    overflow:hidden;
+}
+
+.cover img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.container__cards{
+    max-width:1200px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+.container__cards .card{
+    width:100%;
+    max-width:320px;
+    margin:auto;
+    border:none;
+    border-radius:18px;
+    overflow:hidden;
+}
+
+.cover img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+#nosotros{
+    margin-top: 60px;
+}
+#nosotros .accordion-item{
+    border-bottom: 2px solid var(--color-verde);    
+}
+
+#nosotros .accordion-item:last-child{
+    border-bottom: none;
+}
+#nosotros .accordion-item{
+    margin-bottom: 15px;
 }
