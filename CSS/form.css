@@ -13,7 +13,6 @@ body{
     padding-left: 4vw;  
     display: flex;
     flex-direction:  column;
-    gap: 15px;
     border-left: solid #6DBD6B 2px;
     border-image: linear-gradient(to bottom, #FFF7ED, #6DBD6B, #FFF7ED) 1;
     background-color: #FFF7ED;
@@ -22,7 +21,7 @@ body{
 .contenedorTexto{
     display: flex;
     flex-direction: column;
-    gap: 3vh;
+    gap: 2vh;
 }
 
 .h2Form{
@@ -35,26 +34,37 @@ body{
 }
 
 .contenedorForm{
+    margin-top: 1vh;
+}
+
+.divInputEmail, .divInputTel, .divInputTelwsp, .divInputCategoria {
+    margin-top: 1.5vh;
+}
+
+.form-floating.divInputMensaje{
     margin-top: 4vh;
 }
 
-.divInputEmail, .divInputTel, .divInputTelwsp, .divInputCategoria{
-    margin-top: 6vh;
-}
 
 .divInputbtn{
-    margin-top: 8vh;
+    margin-top: 6vh;
 }
 
 
 .btn-submit-form{
-    background-color: #FF9E7A;
-    border: 1px solid  #6DBD6B ;
+   background-color:#6DBD6B;
+    border: 1px solid  #FF9E7A;
 }
 
 #btnContactar:hover{
-    background-color:#6DBD6B;
-    border: 1px solid  #FF9E7A;
+    background-color:#FF9E7A;
+    border: 1px solid #6DBD6B ;    
+}
+
+.btn-submit-form:disabled {
+    background-color:#FF9E7A;;
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .form-label-nombre, .form-label-apellido, .form-label-email, .form-label-telefonoWS, .form-label-Tel, .form-label-categoria{
@@ -64,6 +74,38 @@ body{
 
 }
 
-#inputNombreForm, #inputApellidoForm, #inputEmail, #inputTelefonoWSForm, #inputTelefono, #inputCategoria{
+.form-control, .form-select{
     border: solid 2px #FF9E7A;
+}
+
+.form-control:focus, .form-select:focus{
+    border-color: #FF9E7A;
+    box-shadow: 0 0 0 .25rem #ff9d7a70
+}
+
+.form-control.inputCorrecto:focus{
+    border-color:  #6DBD6B;
+    border-width: 2px;
+    box-shadow: 0 0 0 .25rem  #6cbd6b85
+    
+}
+
+.form-control.inputIncorrecto:focus{
+    border-color:  #ea0909;
+    border-width: 2px;
+    box-shadow: 0 0 0 .25rem  #ea090970
+}
+
+.parrafoError{
+    margin-top: 2vh;
+    font-size: small;    
+}
+
+.asterisco{
+    color:red;
+}
+
+
+.optionDisabled{    
+    color:#0000005d;
 }
