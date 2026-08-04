@@ -429,63 +429,40 @@ p.subtitle-color {
 
 }
 
-@media (max-width: 768px) {
+@media (max-width:768px) {
 
-  /* ====== Banner de Contactanos ====== */
-  .position-relative .hero-divider,
-  .position-relative .subtitle-color {
+  /* Banner Contactanos */
+  .container-fluid.position-relative .hero-divider,
+  .container-fluid.position-relative p {
     display: none !important;
   }
 
-  .position-relative .title-color {
-    display: block;
-    text-align: center;
-    width: 100%;
+  .container-fluid.position-relative h1 {
+    font-size: 1.7rem;
     margin: 0;
+    text-align: left;
+    width: auto;
   }
 
-  /* ====== Banner del Carrusel ====== */
+  .container-fluid.position-relative .position-absolute {
+    justify-content: flex-start;
+    padding-left: 1.5rem !important;
+  }
+
+  /* Carrusel */
+  #myCarousel .carousel-caption {
+    width: 35%;
+  }
+
+  #myCarousel .carousel-caption h1 {
+    font-size: 1.3rem !important;
+    line-height: 1.15;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
   #myCarousel .carousel-caption p {
     display: none !important;
   }
 
-  #myCarousel .carousel-caption h1 {
-    width: 100%;
-    text-align: center;
-    margin: 0;
-    font-size: clamp(1.8rem, 7vw, 2.6rem);
-  }
-
-  .carousel-caption {
-    top: 50%;
-    transform: translateY(-50%);
-    width: 36%;
-  }
-
-  .carousel-caption.text-start {
-    left: 4%;
-    right: auto;
-  }
-
-  .carousel-caption.text-end {
-    right: 4%;
-    left: auto;
-  }
-
-  @media (max-width:768px) {
-
-    #myCarousel .carousel-caption {
-      width: 35%;
-    }
-
-    #myCarousel .carousel-caption h1 {
-      font-size: 1.3rem !important;
-      line-height: 1.15;
-      margin-bottom: 0;
-    }
-
-    #myCarousel .carousel-caption p {
-      display: none !important;
-    }
-
-  }
+}
