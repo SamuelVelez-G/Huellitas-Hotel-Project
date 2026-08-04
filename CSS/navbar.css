@@ -2,10 +2,34 @@
   background-color: #89B88E !important;
 }
 
+
 body {
   opacity: 0;
+   padding-top: 60px;
 }
 
 body.cargado {
   opacity: 1;
 }
+
+.userIcon{
+    width: 2rem;
+    height: 2rem;
+}
+
+.active{
+    font-weight: bold;
+    border-bottom: 3px solid #FFF7ED;
+}
+
+@media (max-width: 991.98px){
+  .navbar-nav .nav-link{
+        display: inline-block;
+    }
+
+    .navbar-nav{
+        text-align: center;
+    }
+
+}
+
