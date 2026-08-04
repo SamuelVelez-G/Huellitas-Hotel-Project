@@ -20,3 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+
+//Funcion validar datos formulario
+document.getElementById('')
