@@ -1,11 +1,12 @@
-#perroBanner{
+#perroBanner {
     width: 25rem;
     height: 25rem;
     border-radius: 50%;
     object-fit: cover;
 }
-#btnServicios{
+
+#btnServicios {
     align-items: center;
     justify-content: center !important;
-    
+
 }
