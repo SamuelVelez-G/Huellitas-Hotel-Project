@@ -69,7 +69,7 @@ const footer = `<footer class="site-footer">
                 <ul>
                     <li>Calle 92c #67-32, Medellín</li>
                     <li>+57 316 935 3629</li>
-                    <li>huellitashotel@gmail.com.com</li>
+                    <li>huellitashotel@gmail.com</li>
                     <li>Lun a Sáb, 8:00 a.m. – 6:00 p.m.</li>
                 </ul>
             </div>
@@ -85,5 +85,5 @@ const footer = `<footer class="site-footer">
         </button>
     </footer>`;
 
-    document.getElementById("footer-general").innerHTML = footer;
+    document.getElementById("footer").innerHTML = footer;
     
