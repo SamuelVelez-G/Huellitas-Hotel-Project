@@ -83,10 +83,10 @@
             <section class="col-12 col-md-6 offset-md-1 formulariocontact">
                 <div class="form-text contenedorTexto">
                     <h2 class="content-title h2Form">Déjanos un mensaje...</h2>
-                    <p class="content-text text-muted mb-4 pForm">
+                    <p class="content-text text-muted  pForm">
                         En nuestro hotel, cada mascota es parte de la familia. Si tienes dudas sobre nuestras
                         habitaciones, actividades recreativas o cuidados especiales, déjanos un mensaje y uno de
-                        nuestros asesore se comunicará contigopara brindarte toda la información que necesitas.
+                        nuestros asesores se comunicará contigo para brindarte toda la información que necesitas.
                     </p>
                 </div>
                 <!-- Formulario -->
@@ -98,6 +98,7 @@
                     <div class="col-md-6">
                         <label for="inputApellido" class="form-label-apellido">Apellido</label>
                         <input name="Apellido" type="text" class="form-control" id="inputApellidoForm" placeholder="Perez">
+                        
                     </div>
                     <div class="col-12 divInputEmail">
                         <label for="inputEmail" class="form-label-email">Correo electrónico</label>
@@ -109,17 +110,21 @@
                     </div>
                     <div class="col-md-6 divInputTel">
                         <label for="inputelefono" class="form-label-Tel">Telefono</label>
-                        <input name="Telefono" type="tel" class="form-control" id="inputTelefono" placeholder="4280492" placeholder="0314500506">
+                        <input name="Telefono" type="tel" class="form-control" id="inputTelefono" placeholder="0314500506">
                     </div>
                     <div class="col-md-6 divInputCategoria">
                         <label for="inputCategoria" class="form-label-categoria">Servicio de interes</label>
                         <select name="Servicio"id="inputCategoria" class="form-select">
-                            <option selected>Seleccione una categoria...</option>
+                            <option selected disabled>Seleccione una categoria...</option>
                             <option>Información general</option>
                             <option>Servicios</option>
                             <option>Precios</option>
                             <option>PQRs</option>
                         </select>
+                    </div>
+                    <div class="form-floating divInputMensaje">
+                        <textarea class="form-control inputMensaje" placeholder="Deja tu comentario aqui" id="inputMensaje" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Comentarios</label>
                     </div>
                     <div class="col-12 d-flex justify-content-center divInputbtn">
                         <button type="submit" id="btnContactar" class="btn btn-primary btn-submit-form">Enviar</button>

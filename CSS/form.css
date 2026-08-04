@@ -13,7 +13,6 @@ body{
     padding-left: 4vw;  
     display: flex;
     flex-direction:  column;
-    gap: 15px;
     border-left: solid #6DBD6B 2px;
     border-image: linear-gradient(to bottom, #FFF7ED, #6DBD6B, #FFF7ED) 1;
     background-color: #FFF7ED;
@@ -22,7 +21,7 @@ body{
 .contenedorTexto{
     display: flex;
     flex-direction: column;
-    gap: 3vh;
+    gap: 2vh;
 }
 
 .h2Form{
@@ -35,15 +34,15 @@ body{
 }
 
 .contenedorForm{
+    margin-top: 1vh;
+}
+
+.divInputEmail, .divInputTel, .divInputTelwsp, .divInputCategoria, .divInputMensaje{
     margin-top: 4vh;
 }
 
-.divInputEmail, .divInputTel, .divInputTelwsp, .divInputCategoria{
-    margin-top: 6vh;
-}
-
 .divInputbtn{
-    margin-top: 8vh;
+    margin-top: 6vh;
 }
 
 
@@ -64,6 +63,14 @@ body{
 
 }
 
-#inputNombreForm, #inputApellidoForm, #inputEmail, #inputTelefonoWSForm, #inputTelefono, #inputCategoria{
+#inputNombreForm, #inputApellidoForm, #inputEmail, #inputTelefonoWSForm, #inputTelefono, #inputCategoria, #inputMensaje{
     border: solid 2px #FF9E7A;
+}
+
+.inputCorrecto{
+    border: solid 2px  #6DBD6B;
+}
+
+.inputIncorrecto{
+    border: solid 2px  #ea0909;
 }
