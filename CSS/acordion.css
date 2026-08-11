@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    
     :root {
         --color-verde: #6DBD6B;
         --color-amarillo: #F4C95D;
         --color-coral: #FF9E7A;
         --color-marron: #754c2e;
         --color-crema: #FFF7ED;
+        --color-coral-claro: #febf99;
     }
 
     body {
@@ -33,7 +36,7 @@
     }
 
     #nosotros .accordion-button:not(.collapsed) {
-        background-color: var(--color-coral);
+        background-color: var(--color-coral-claro);
         color: var(--color-marron) !important;
     }
 
@@ -54,11 +57,20 @@
     #nosotros .acordeon-card {
         width: 100%;
         margin: 0;
-        background: white;
-        border-radius: 12px;
         overflow: hidden;
         transition: none;
         height: auto;
+    }
+
+    #nosotros .card-rigth{
+       background: #ffffff;
+        background: linear-gradient(83deg, rgba(255, 255, 255, 1) 17%, rgba(254, 248, 241, 1) 36%);
+        
+    }
+
+    #nosotros .card-left{
+        background: #FEF8F1;
+        background: linear-gradient(83deg,rgba(254, 248, 241, 1) 64%, rgba(255, 255, 255, 1) 83%);;
     }
 
     #nosotros .acordeon-card:hover {
@@ -75,12 +87,26 @@
     /* ===========================
     para texto tarjetas
     =========================== */
+    .code-acordion, .parrafo-acordion{
+        font-family: "Poppins", sans-serif;
+        font-size: 400;
+        font-size: 1rem;
+    }
+    
     #nosotros .accordion-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
         border-radius: .5rem;
+    }
+
+    #nosotros .img-rigth{
+        object-position: right;
+    }
+
+    #nosotros .img-left{
+        object-position: left;
     }
 
     #nosotros .card-body {
