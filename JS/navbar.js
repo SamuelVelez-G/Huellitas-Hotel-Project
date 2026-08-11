@@ -11,16 +11,16 @@ const nav = `
         <div class="collapse navbar-collapse mx-auto justify-content-center" id="navbarNavDropdown">
             <ul class="navbar-nav gap-3">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="./index.html"><i class="bi bi-house-door"></i> Inicio</a>
+                    <a class="nav-link" aria-current="page" href="/HTML/inicio.html"><i class="bi bi-house-door"></i> Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./acercaNosotros.html"><i class="bi bi-people"></i> Sobre nosotros</a>
+                    <a class="nav-link" href="/HTML/acercaNosotros.html"><i class="bi bi-people"></i> Sobre nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./contactanos.html"><i class="bi bi-telephone"></i> Contactanos</a>
+                    <a class="nav-link" href="/HTML/contactanos.html"><i class="bi bi-telephone"></i> Contactanos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-calendar"></i> Reservas</a>
+                    <a class="nav-link" href="/HTML/reservas.html"><i class="bi bi-calendar"></i> Reservas</a>
                 </li>
 
             </ul>
