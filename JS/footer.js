@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-  
+
   var yearEl = document.getElementById('footer-year');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
- 
-  
+
+
   var backToTopBtn = document.getElementById('back-to-top');
   if (backToTopBtn) {
     window.addEventListener('scroll', function () {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         backToTopBtn.classList.remove('visible');
       }
     });
- 
+
     backToTopBtn.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
@@ -56,11 +56,10 @@ const footer = `<footer class="site-footer">
             <nav class="footer-links" aria-label="Enlaces del sitio">
                 <h4>Navegación</h4>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="servicios.html">Servicios</a></li>
-                    <li><a href="reservas.html">Reservas</a></li>
-                    <li><a href="nosotros.html">Acerca de nosotros</a></li>
-                    <li><a href="contacto.html">Contáctenos</a></li>
+                    <li><a href="/HTML/inicio.html">Inicio</a></li>
+                    <li><a href="/HTML/acercaNosotros.html">Sobre nosotros</a></li>
+                    <li><a href="/HTML/contactanos.html">Contáctanos</a></li>
+                    <li><a href="/HTML/reservas.html">Reservas</a></li>
                 </ul>
             </nav>
 
@@ -86,4 +85,3 @@ const footer = `<footer class="site-footer">
     </footer>`;
 
     document.getElementById("footer").innerHTML = footer;
-    
