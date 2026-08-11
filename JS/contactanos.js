@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 formularioContactanos.reset();
                 limpiarClases();
             } else {
-                Swal.fire("Error", "No se pudo enviar el formulario", "error");
+                Swal.fire("Error", "Introduzca todos los datos para enviar el formulario", "error");
             }
         } catch {
             Swal.fire("Error", "No se pudo conectar con el servidor", "error");
@@ -50,7 +50,7 @@ const regex = {
     nombreApellidos : /^[a-zñáéíóú ]+$/i,
     correoE : /^[a-z0-9_.+-]+@[a-z0-9-]+\.[a-z0-9-.]+$/i,
     telefonos : /^\d{10}$/,
-    mensaje : /^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ¿?¡!.,:;()\s-]{5,}$/
+    mensaje : /^[a-zA-Z0-9ñÑáéíóúÁ4ÉÍÓÚüÜ¿?¡!.,:;()\s-]{5,}$/
 }
 
 //Funciones
@@ -90,35 +90,35 @@ function validarCampo(input, regex, divPadre, mensaje){
 }
 
 //Funcion validar campo categoria
-function validarCategoria(){
-    if(categoriaInput.value !== ""){
-        categoriaInput.classList.add('inputCorrecto');
-    } else {
-        categoriaInput.classList.remove('inputCorrecto') 
-    }
+// function validarCategoria(){
+//     if(categoriaInput.value !== ""){
+//         categoriaInput.classList.add('inputCorrecto');
+//     } else {
+//         categoriaInput.classList.remove('inputCorrecto') 
+//     }
 
-    habilitarBoton();
-}
+//     habilitarBoton();
+// }
 
 //Funcion validar que todos los campos estan diligenciados antes de enviar el form
 const inputConsolidado = [nombreInput, apellidoInput, correo,telwps, tel, mensajeInput,categoriaInput];
 
 //Deshabilitar boton enviar
-const btnEnviar = document.querySelector('.btn-submit-form');
-btnEnviar.disabled = true;
+// const btnEnviar = document.querySelector('.btn-submit-form');
+// btnEnviar.disabled = true;
 
 //Funcion habilitar boton enviar
-function habilitarBoton(){
-    const camposCorrectos = inputConsolidado.every(input =>
-        input.classList.contains('inputCorrecto')
-    );
+// function habilitarBoton(){
+//     const camposCorrectos = inputConsolidado.every(input =>
+//         input.classList.contains('inputCorrecto')
+//     );
     
-    if(camposCorrectos){
-        btnEnviar.disabled = false;
-    }else{
-        btnEnviar.disabled = true;
-    }
-}
+//     if(camposCorrectos){
+//         btnEnviar.disabled = false;
+//     }else{
+//         btnEnviar.disabled = true;
+//     }
+// }
 
 //Funcion limpiar clases
 function limpiarClases(){
@@ -131,7 +131,7 @@ function limpiarClases(){
         parrafo.remove();
     });
 
-    btnEnviar.disabled = true;
+    // btnEnviar.disabled = true;
 }
 
 
