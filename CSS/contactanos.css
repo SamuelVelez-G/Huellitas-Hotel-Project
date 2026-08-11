@@ -233,3 +233,12 @@ main{
 .optionDisabled{    
     color:#0000005d;
 }
+
+:root {
+    --bs-secondary-color: #DEDEDE;
+}
+
+textarea::placeholder{
+    color: #DEDEDE !important;
+    opacity: 1 !important;
+}

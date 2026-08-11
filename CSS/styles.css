@@ -1,13 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 body {
   background: #F1FAFF;
 }
+
+/*Tipos letra*/
+.carousel-title{
+  font-family: "Poppins", sans-serif;
+  font-size: 700;
+}
+
 
 
 .container__cards {
@@ -20,59 +30,112 @@ body {
   width: 100%;
 }
 
+/* =========================================
+   TARJETAS EQUIPO
+   ========================================= */
 
 .card {
-  width: 300px;
-  margin: auto;
-  border: none;
-  background: transparent;
-  transition: all .3s ease;
+    width: 240px;
+    height: auto;
+    margin: auto;
+    border: none;
+    background: transparent;
+    transition: all .3s ease;
 }
 
 .card:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 
+/* IMAGEN + FONDO */
+
 .card .cover {
-  width: 100%;
-  height: 300px;
-  position: relative;
-  overflow: hidden;
+    width: 100%;
+    height: 210px;
+    position: relative;
+    overflow: hidden;
 }
 
 .card .cover img {
-  width: 250px;
-  display: block;
-  margin: auto;
+    width: 180px;
+    height: auto;
+    display: block;
+    margin: auto;
 
-  position: relative;
-  top: 40px;
-  z-index: 2;
-  filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, .4));
-  transition: all .4s ease;
+    position: relative;
+    top: 30px;
+    z-index: 2;
+
+    filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, .4));
+    transition: all .4s ease;
 }
 
 .card:hover .cover img {
-  top: 0;
-  filter: none;
+    top: -10px;
+    filter: none;
 }
 
 
+/* FONDO */
+
 .card .img__back {
-  width: 100%;
-  height: 200px;
-  position: absolute;
-  bottom: -80px;
-  left: 0;
-  border-radius: 20px;
-  background-size: cover;
-  background-position: center;
-  transition: all .3s ease;
+    width: 100%;
+    height: 140px;
+
+    position: absolute;
+    bottom: -55px;
+    left: 0;
+
+    border-radius: 20px;
+
+    background-size: cover;
+    background-position: center;
+
+    transition: all .3s ease;
 }
 
 .card:hover .img__back {
-  bottom: -40px;
+    bottom: -30px;
+}
+
+
+/* DESCRIPCIÓN */
+
+.card .description {
+    background: #fff;
+    margin-top: -10px;
+    padding: 15px;
+
+    border-radius: 0 0 20px 20px;
+
+    transition: all .3s ease;
+
+    min-height: 130px;
+}
+
+.card:hover .description {
+    padding: 15px;
+    min-height: 130px;
+}
+
+.card .description h5 {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.card .description p {
+    margin-bottom: 0;
+    color: #555;
+}
+
+
+/* COLUMNAS */
+
+.col {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 
@@ -90,50 +153,6 @@ body {
 
 .col:nth-child(4) .img__back {
   background-image: url("../IMG/Nata.png");
-}
-
-.col:nth-child(5) .img__back {
-  background-image: url("../IMG/mishell.png");
-}
-
-
-.card .description {
-  background: #fff;
-  margin-top: -10px;
-  padding: 20px;
-  border-radius: 0 0 20px 20px;
-  transition: all .3s ease;
-}
-
-.card:hover .description {
-  padding: 30px;
-}
-
-.card .description h5 {
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.card .description p {
-  margin-bottom: 0;
-  color: #555;
-}
-
-.col {
-  display: flex;
-  justify-content: center;
-}
-
-.card {
-  height: 100%;
-}
-
-.description {
-  min-height: 170px;
-}
-
-.card:hover .cover img {
-  top: -10px;
 }
 
 
@@ -302,4 +321,17 @@ p.subtitle-color {
     display: none !important;
   }
 
+}
+
+@media (max-width: 768px) {
+
+    /* En celular, ocultar el texto inicialmente */
+    .card .description {
+        display: none;
+    }
+
+    /* Al tocar la tarjeta, mostrar el texto */
+    .card.show-description .description {
+        display: block;
+    }
 }
