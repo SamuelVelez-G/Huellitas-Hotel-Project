@@ -1,13 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 body {
   background: #F1FAFF;
 }
+
+/*Tipos letra*/
+.carousel-title{
+  font-family: "Poppins", sans-serif;
+  font-size: 700;
+}
+
 
 
 .container__cards {
