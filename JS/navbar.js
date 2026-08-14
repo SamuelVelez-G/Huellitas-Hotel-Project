@@ -11,7 +11,7 @@ const nav = `
         <div class="collapse navbar-collapse mx-auto justify-content-center" id="navbarNavDropdown">
             <ul class="navbar-nav gap-3">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="../index.html"></i> Inicio</a>
+                    <a class="nav-link" aria-current="page" href="../index.html"> Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/HTML/acercaNosotros.html">Sobre nosotros</a>
@@ -20,7 +20,7 @@ const nav = `
                     <a class="nav-link" href="/HTML/contactanos.html">Contactanos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./admin.html">Reservas/Admin</a>
+                    <a class="nav-link" href="../admin.html">Reservas/Admin</a>
                 </li>
 
             </ul>
