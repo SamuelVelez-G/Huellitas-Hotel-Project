@@ -56,10 +56,10 @@ const footer = `<footer class="site-footer">
             <nav class="footer-links" aria-label="Enlaces del sitio">
                 <h4>Navegación</h4>
                 <ul>
-                    <li><a href="/HTML/inicio.html">Inicio</a></li>
+                    <li><a href="../index.html">Inicio</a></li>
                     <li><a href="/HTML/acercaNosotros.html">Sobre nosotros</a></li>
                     <li><a href="/HTML/contactanos.html">Contáctanos</a></li>
-                    <li><a href="/HTML/reservas.html">Reservas</a></li>
+                    <li><a href="../admin.html">Reservas</a></li>
                 </ul>
             </nav>
 

@@ -242,3 +242,9 @@ textarea::placeholder{
     color: #DEDEDE !important;
     opacity: 1 !important;
 }
+
+.titulo-hero{
+    font-family: "Poppins", sans-serif;
+    font-weight: 600 !important;
+    font-size: clamp(1.8rem, 5vw, 4.5rem) !important;
+}
