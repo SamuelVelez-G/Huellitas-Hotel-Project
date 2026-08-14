@@ -14,10 +14,10 @@ const nav = `
                     <a class="nav-link" aria-current="page" href="../index.html"> Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/HTML/acercaNosotros.html">Sobre nosotros</a>
+                    <a class="nav-link" href="./HTML/acercaNosotros.html">Sobre nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/HTML/contactanos.html">Contactanos</a>
+                    <a class="nav-link" href="./HTML/contactanos.html">Contactanos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../admin.html">Reservas/Admin</a>
