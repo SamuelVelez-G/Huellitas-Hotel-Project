@@ -19,7 +19,7 @@
 }
 
 body{
-    background-color: #fff6ed !important;
+    background-color: #fff6ed;
 }
 
 /* HERO */
@@ -28,7 +28,7 @@ body{
     display: flex;
     flex-direction: column;
     background-color: var(--color-crema);
-     font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
 
     /* Imagen fondo */
     background-image:url(../IMG/imagenes-inicio/img-hero-nude.png);
@@ -40,14 +40,17 @@ body{
 
     /* Texto hero */
 .div-hero-texto{
-
-    margin: 40px 70px;    
+    margin: 40px 70px; 
+    width: 50%;
+    max-width: 600px;
+    padding: 20px 0;   
 }
 
 .hero-parrafo-verde{
-    font-weight: 700;
-    font-size: 18px;
+    font-weight: 600;
+    font-size: 20px;
     color: var(--color-verde);
+    margin-bottom: 8px;
 }
 
 #logo-hero-title{
@@ -59,8 +62,8 @@ body{
 #hero-titulo{
     font-family: "Poppins", sans-serif;
     font-weight: 800;
-    font-size: 75px;
-    line-height: 0.9;  
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1;  
     color: var(--color-marron);  
 }
 
@@ -74,19 +77,53 @@ body{
 
 .hero-divider{
     width: 7rem;
-    border-bottom: solid 8px var(--color-verde);
+    border-bottom: solid 5px var(--color-verde);
     border-radius: 8px;    
 }
 
 #hero-h5-second{
     font-weight: 600;
-    font-size: 20px;
+    font-size: 24px;
+    line-height: 1.4;
+    margin-bottom: 12px;
 }
 
 .hero-parraf0-negro{
-    font-size: 15px ;
-
+    max-width: 420px;
+    font-size: 17px ;
+    line-height: 1.6;
+    color: #4A4A4A;
 }
+
+    /* Botones */
+
+.hero-btn{
+    background-color: var(--color-verde);
+    border-radius: 12px;
+    color: var(--color-crema);
+}
+
+.hero-btn:hover, .hero-btn2:hover{
+    transform: scale(1.05);
+    background-color: var(--color-coral);
+    border-radius: 12px;
+    color: var(--color-marron);
+}
+
+.hero-btn2{
+    background-color: rgba(255, 255, 255, 0);
+    border: solid 1px var(--color-verde);
+    border-radius: 12px;
+    color: var(--color-verde);
+}
+
+
+
+
+
+
+
+
 
 
 
