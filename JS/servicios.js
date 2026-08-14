@@ -1,7 +1,3 @@
-function crearCardServicios() {
-    
-}
-
 const cards = document.querySelectorAll(".card-servicios");
 
 cards.forEach(card => {
