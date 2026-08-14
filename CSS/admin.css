@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+    
+:root {
+    --color-verde: #6DBD6B;
+    --color-amarillo: #F4C95D;
+    --color-coral: #FF9E7A;
+    --color-marron: #754c2e;
+    --color-crema: #FFF7ED;
+}
+
+body {
+    background: var(--color-crema);
+    margin: 0;
+    padding: 0; 
+}
+
+/* formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 100%;
+}
+
+input,
+textarea,
+select {
+    padding: 10px;
+    border: 1px solid #dcd2c6;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--color-marron);
+    box-shadow: 0 0 0 0.2rem rgba(117, 76, 46, 0.25);
+
+}
+
+/* Botón */
+#formularioAdmin button,
+#admin .btn-primary {
+    background-color: var(--color-marron) !important;
+    color: var(--color-crema) !important;
+    font-weight: 600;
+    border: none;
+    box-shadow: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: Poppins Semi-Bold;
+}
+
+#formularioAdmin button:hover,
+#admin .btn-primary:hover {
+    background-color: #5c3b24 !important;
+}
+
+/* Títulos */
+h1, h2 {
+    color: var(--color-marron)!important;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: Poppins Bold;
+}
+
+h1 {
+    margin-bottom: 1rem;
+}
+
+h2 {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+/* RESPONSIVE CELULAR */
+
+@media (max-width: 576px) {
+    #admin .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+/* RESPONSIVE TABLET */
+
+@media (max-width: 768px) {
+    .container {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+}

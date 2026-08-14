@@ -154,7 +154,9 @@ body {
 .col:nth-child(4) .img__back {
   background-image: url("../IMG/Nata.png");
 }
-
+.col:nth-child(5) .img__back {
+  background-image: url("../IMG/mishell.png");
+}
 
 
 
