@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background: #ffffff;
+  padding-top: 77px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#cardReservaFin {
+  background-color: #f5c254a8;
+  border: none;
+  border-radius: 18px;
+
+  width: 80%;
+  margin: 60px auto;
+}
+
+#cardReservaFin h2 {
+  color: #2D1603 !important;
+}
+
+#botonReserva {
+  background-color: #89B88E;
+  color: #000000;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2rem !important;
+  padding: 12px 28px;
+  font-size: 0.9rem;
+}
+
+#cardReservaInicio {
+  background-color: #FEF2DB;
+  border: none;
+}
+
+#cardReservaFin h2 {
+  font-size: 2rem;
+}
+
+#cardReservaInicio h1 {
+  color: #2D1603 !important;
+}
