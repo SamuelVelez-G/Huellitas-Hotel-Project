@@ -20,7 +20,7 @@ const nav = `
                     <a class="nav-link" href="/HTML/contactanos.html"><i class="bi bi-telephone"></i> Contactanos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/HTML/servicios.html"><i class="bi bi-calendar"></i> servicios/Admin</a>
+                    <a class="nav-link" href="/HTML/servicios.html"><i class="bi bi-calendar"></i> servicios </a>
                 </li>
 
             </ul>
