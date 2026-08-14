@@ -1,41 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;@600;700&display=swap');
+
+ :root {
+        --color-verde: #6DBD6B;
+        --color-amarillo: #F4C95D;
+        --color-coral: #FF9E7A;
+        --color-marron: #754c2e;
+        --color-crema: #FFF7ED;
+        --color-coral-claro: #febf99;
+    }
+
+
+
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-.container-hero{
-    min-height: 80vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    /* Imagen fondo */
-    background-image:url(../IMG/imagenes-inicio/imge-hero-node.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center 75%;
-
-}
-
-
-
-
-
-
-#perroBanner {
-    width: 25rem;
-    height: 25rem;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-#btnServicios {
-    align-items: center;
-    justify-content: center !important;
-
-}
-
 body{
     background-color: #fff6ed !important;
 }
+
+/* HERO */
+.container-hero{
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-crema);
+     font-family: "Poppins", sans-serif;
+
+    /* Imagen fondo */
+    background-image:url(../IMG/imagenes-inicio/img-hero-nude.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow-x: hidden;
+}
+
+    /* Texto hero */
+.div-hero-texto{
+
+    margin: 40px 70px;    
+}
+
+.hero-parrafo-verde{
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-verde);
+}
+
+#logo-hero-title{
+    font-size: 48px;
+    color: var(--color-coral-claro);
+    rotate: 20deg;
+}
+
+#hero-titulo{
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-size: 75px;
+    line-height: 0.9;  
+    color: var(--color-marron);  
+}
+
+.hero-span-green{
+    color: var(--color-verde);
+}
+
+.hero-span-brown, #logo-hero{
+    color: var(--color-marron);
+}
+
+.hero-divider{
+    width: 7rem;
+    border-bottom: solid 8px var(--color-verde);
+    border-radius: 8px;    
+}
+
+#hero-h5-second{
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.hero-parraf0-negro{
+    font-size: 15px ;
+
+}
+
+
+
+
+
+
