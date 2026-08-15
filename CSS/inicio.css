@@ -20,6 +20,9 @@
 
 body{
     background-color: #fff6ed;
+    overflow-x: hidden !important;
+    width: 100%;
+    
 }
 
 /* HERO */
@@ -35,15 +38,18 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    overflow-x: hidden;
+}
+
+.row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
 }
 
     /* Texto hero */
 .div-hero-texto{
-    margin: 40px 70px; 
-    width: 50%;
-    max-width: 600px;
-    padding: 20px 0;   
+    margin: 40px 0; 
+    max-width: 100%;
+    padding: 20px 20px;   
 }
 
 .hero-parrafo-verde{
@@ -117,6 +123,21 @@ body{
     color: var(--color-verde);
 }
 
+
+/*Media querys*/
+@media (max-width: 768px) {
+    
+    .container-hero {
+        min-height: auto;
+        background-size: auto 100%;
+        background-position: right center;
+    }
+
+    .div-hero-texto {
+        margin: 30px 0;
+        padding: 20px;
+    }
+}
 
 
 
