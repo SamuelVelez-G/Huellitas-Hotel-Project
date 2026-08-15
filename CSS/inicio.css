@@ -8,6 +8,7 @@
         --color-marron: #754c2e;
         --color-crema: #FFF7ED;
         --color-coral-claro: #febf99;
+        --color-oscuro: #4A4A4A;
     }
 
 
@@ -98,7 +99,7 @@ body{
     max-width: 420px;
     font-size: 17px ;
     line-height: 1.6;
-    color: #4A4A4A;
+    color:var(--color-oscuro);
 }
 
     /* Botones */
@@ -122,6 +123,105 @@ body{
     border-radius: 12px;
     color: var(--color-verde);
 }
+
+/* Seccion indicadores */
+
+.indicator-row-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.indicator-col-div1{
+    min-height: 9vh;
+    width: 100%;
+    text-align: center;
+}
+
+.indicator-title{
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    line-height: 1;  
+    color: var(--color-oscuro);  
+
+}
+
+.indicator-col-div2{
+    background-color: #977f7027;
+    min-height: 19vh;
+    width: 100%;
+    border-radius: 15px;
+    padding: 10px 15px 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.indicator-div-img-1{
+    font-family:"Nunito", sans-serif;    
+}
+
+.indicator-div-icono{
+    display: inline-block;
+    border-radius: 150px;
+    border: solid 5px var(--color-crema);
+    padding: 15px 10px;
+    margin-bottom: 10px;
+
+
+}
+
+.indicator-logo{
+    font-size: 7vh;
+  
+}
+
+.indicator-h5{
+    margin: 0;
+    font-size: 3vh;
+    font-weight: 900;
+
+}
+
+.indicator-parrafo{
+    margin: 0;
+    color: var(--color-oscuro);
+}
+
+.div-icono-1, .div-icono-5{
+      background-color: #f4c95d4c;
+}
+
+.div-icono-2{
+      background-color: #ff9d7a4c;
+}
+
+.div-icono-3{
+      background-color: #6cbd6b4c;
+}
+
+.div-icono-4{
+      background-color: #754c2e4c;
+}
+
+.icono-1, .icono-5{
+      color: #e1a816;
+}
+
+.icono-2{
+    color: #f57f54;
+}
+
+.icono-3{
+    color: #0dbb0a;
+}
+
+.icono-4{
+    color: var(--color-marron);
+}
+
 
 
 /*Media querys*/
