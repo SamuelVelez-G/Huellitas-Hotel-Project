@@ -110,7 +110,7 @@ body{
     color: var(--color-crema);
 }
 
-.hero-btn:hover, .hero-btn2:hover{
+.hero-btn:hover, .hero-btn2:hover, .servicios-btn:hover{
     transform: scale(1.05);
     background-color: var(--color-marron);
     border-radius: 12px;
@@ -124,7 +124,7 @@ body{
     color: var(--color-verde);
 }
 
-/* Seccion indicadores */
+/* SECCION INDICADORES */
 
 .indicator-row-div{
     display: flex;
@@ -222,11 +222,73 @@ body{
     color: var(--color-marron);
 }
 
+/* SERVICIOS */
+
+    /* cards */
+
+.servicio-div-card-texto{
+    position: relative;
+    overflow: visible;
+}
+
+#servicios-card-icono-1, #servicios-card-icono-4{
+    font-size: 80px;
+    color: var(--color-amarillo);
+    position: absolute;
+
+}
+
+#servicios-card-icono-2, #servicios-card-icono-3{
+    font-size: 60px;
+    color: var(--color-amarillo);
+    position: absolute;
+
+}
+
+#servicios-card-icono-1{
+    rotate: 20deg;
+    bottom: -10px;
+    left: -35px;
+    z-index: 0;
+}
+
+#servicios-card-icono-2{
+    rotate: 30deg;
+    top: -40px;
+    left: -35px;
+    z-index: 0;
+}
+
+#servicios-card-icono-3{
+    rotate: -30deg;
+    top: -40px;
+    right: -35px;
+    z-index: 0;
+}
+
+#servicios-card-icono-4{
+    rotate: -20deg;
+    bottom: -10px;
+    right: -35px;
+    z-index: 0;
+}
+
+/* boton */
+.servicios-btn{
+    background-color: var(--color-verde);
+    border-radius: 12px;
+    color: var(--color-crema);
+}
 
 
-/*Media querys*/
-@media (max-width: 854px) {
 
+
+/*RESPONSIVE*/
+
+    /*Hero*/
+@media (max-width: 768px) {
+
+    /* Hero */
     .container-hero {
         background-image: url("../IMG/imagenes-inicio/img-hero-nude.png");
         background-size: cover;
@@ -251,6 +313,22 @@ body{
     .hero-btn{
         margin-top: 450px;
     }
+
+    /* Servicios */
+    #servicios-card-icono-1,#servicios-card-icono-2, #servicios-card-icono-3,#servicios-card-icono-4 {
+        font-size: 50px;
+    }
+
+    #servicios-card-icono-1{
+        left: 35px;
+    }
+
+    #servicios-card-icono-3{
+        top: 200px;
+        right: -35px;
+    }
+
+   
 
    
 }
