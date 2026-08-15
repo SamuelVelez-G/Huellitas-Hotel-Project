@@ -49,7 +49,7 @@ body{
 .div-hero-texto{
     margin: 40px 0; 
     max-width: 100%;
-    padding: 20px 20px;   
+    padding: 20px 40px;   
 }
 
 .hero-parrafo-verde{
@@ -111,9 +111,9 @@ body{
 
 .hero-btn:hover, .hero-btn2:hover{
     transform: scale(1.05);
-    background-color: var(--color-coral);
+    background-color: var(--color-marron);
     border-radius: 12px;
-    color: var(--color-marron);
+    color: var(--color-crema);
 }
 
 .hero-btn2{
@@ -125,18 +125,34 @@ body{
 
 
 /*Media querys*/
-@media (max-width: 768px) {
-    
+@media (max-width: 854px) {
+
     .container-hero {
-        min-height: auto;
-        background-size: auto 100%;
-        background-position: right center;
+        background-image: url("../IMG/imagenes-inicio/img-hero-nude.png");
+        background-size: cover;
+        background-position: right;
     }
 
     .div-hero-texto {
         margin: 30px 0;
         padding: 20px;
     }
+
+    .hero-parrafo-verde,
+    .hero-parraf0-negro,
+    #hero-h5-second,  .hero-btn2 {
+        display: none;
+    }    
+
+    .hero-btn-div{
+        display: flex;
+        justify-content: center;
+    }
+    .hero-btn{
+        margin-top: 450px;
+    }
+
+   
 }
 
 
