@@ -27,6 +27,19 @@ body{
     
 }
 
+/*ESTILO TEXTO TODA LA PAGINA */
+.section-title{
+     font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    line-height: 1;  
+    color: var(--color-oscuro); 
+}
+
+#instalaciones-title{
+    color: #e2e0e0;
+}
+
 /* HERO */
 .container-hero{
     min-height: 80vh;
@@ -140,18 +153,6 @@ body{
     min-height: 9vh;
     width: 100%;
     text-align: center;
-}
-
-.section-title{
-     font-family: "Nunito", sans-serif;
-    font-weight: 600;
-    font-size: clamp(2rem, 3vw, 3.5rem);
-    line-height: 1;  
-    color: var(--color-oscuro); 
-}
-
-#instalaciones-title{
-    color: #e2e0e0;
 }
 
 .indicator-col-div2{
