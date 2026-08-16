@@ -23,6 +23,7 @@ body{
     background-color: #fff6ed;
     overflow-x: hidden !important;
     width: 100%;
+    font-family: "Nunito", sans-serif;
     
 }
 
@@ -48,9 +49,12 @@ body{
 
     /* Texto hero */
 .div-hero-texto{
+    display: flex;
+    flex-direction: column;
+  
     margin: 40px 0; 
     max-width: 100%;
-    padding: 20px 40px;   
+    padding: 5% 2%;   
 }
 
 .hero-parrafo-verde{
@@ -102,7 +106,7 @@ body{
     color:var(--color-oscuro);
 }
 
-    /* Botones */
+    /* Botones */   
 
 .hero-btn{
     background-color: var(--color-verde);
@@ -224,22 +228,47 @@ body{
 
 /* SERVICIOS */
 
-    /* cards */
-
-.servicio-div-card-texto{
-    position: relative;
-    overflow: visible;
+    /* cards */ 
+.servicio-div-card{
+     border: dotted 2px var(--color-coral-claro);
 }
 
+.servicio-div-card-texto{ 
+    /* para las huellas */
+    position: relative;
+    overflow: visible;
+
+    /* para texto */
+    display: flex;
+    flex-direction:column;
+    height: 220px;
+}
+
+    /* texto */
+.servicio-texto-titulo {
+    font-size: 19px;
+    font-weight: bold;
+    height: 50px;
+}
+
+.servicio-texto-parrafo{
+    font-size: 13px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 3px;
+}
+
+
+    /* huellas */
 #servicios-card-icono-1, #servicios-card-icono-4{
-    font-size: 80px;
+    font-size: 60px;
     color: var(--color-amarillo);
     position: absolute;
 
 }
 
 #servicios-card-icono-2, #servicios-card-icono-3{
-    font-size: 60px;
+    font-size: 40px;
     color: var(--color-amarillo);
     position: absolute;
 
@@ -254,15 +283,15 @@ body{
 
 #servicios-card-icono-2{
     rotate: 30deg;
-    top: -40px;
-    left: -35px;
+    top: -20px;
+    left: -15px;
     z-index: 0;
 }
 
 #servicios-card-icono-3{
     rotate: -30deg;
-    top: -40px;
-    right: -35px;
+    top: -20px;
+    right: -15px;
     z-index: 0;
 }
 
@@ -273,7 +302,7 @@ body{
     z-index: 0;
 }
 
-/* boton */
+    /* boton */
 .servicios-btn{
     background-color: var(--color-verde);
     border-radius: 12px;
@@ -281,6 +310,31 @@ body{
 }
 
 
+    /* Tarjetas- hover */
+
+.servicio-div-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 12px;
+
+    /* Animación suave */
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+    /* Efecto cuando se pasa el mouse */
+
+.servicio-div-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 12px 25px var(--color-coral-claro);
+
+    cursor: pointer;
+}
 
 
 /*RESPONSIVE*/
@@ -290,11 +344,11 @@ body{
 
     /* Hero */
     .container-hero {
-        background-image: url("../IMG/imagenes-inicio/img-hero-nude.png");
+        min-height: 45vh;
         background-size: cover;
-        background-position: right;
+        background-position: 89% 100%;
     }
-
+    
     .div-hero-texto {
         margin: 30px 0;
         padding: 20px;
@@ -309,9 +363,7 @@ body{
     .hero-btn-div{
         display: flex;
         justify-content: center;
-    }
-    .hero-btn{
-        margin-top: 450px;
+        margin-top: 650px;
     }
 
     /* Servicios */
@@ -320,11 +372,11 @@ body{
     }
 
     #servicios-card-icono-1{
-        left: 35px;
+        left: -5px;
     }
 
     #servicios-card-icono-3{
-        top: 200px;
+        top: 150px;
         right: -35px;
     }
 
@@ -334,10 +386,10 @@ body{
 }
 
 /* CONTENEDOR GENERAL */
-
+/*
 .container-servicios {
     background-color: #f8f5f1;
-}
+}*/
 
 
 /* TARJETA PRINCIPAL */
@@ -372,13 +424,13 @@ body{
 
 
 /* TEXTO DE LA TARJETA PRINCIPAL */
-
+/*
 .contenido-principal {
     position: absolute;
     bottom: 20px;
     left: 24px;
     right: 24px;
-}
+}*/
 
 .contenido-principal h3 {
     font-size: 20px;
@@ -473,23 +525,6 @@ body{
 }
 
 
-/* PARTE DEL TEXTO */
-
-.servicio-texto {
-    width: 50%;
-    padding: 30px 24px;
-}
-
-.servicio-texto h3 {
-    font-size: 19px;
-    font-weight: bold;
-}
-
-.servicio-texto p {
-    font-size: 13px;
-    line-height: 1.6;
-    color: #555;
-}
 
 
 /* LISTA */
@@ -536,53 +571,7 @@ body{
 }
 
 
-/* BOTÓN */
 
-.btnServicios {
-    color: #0066a6;
-    border: none;
-    text-decoration: none;
-}
-
-.btnServicios:hover {
-    color: #004d7a;
-}
-
-/* =========================================
-   TARJETAS DE SERVICIOS - EFECTO HOVER
-========================================= */
-
-.tarjeta-servicio {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    border-radius: 12px;
-
-    /* Animación suave */
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-
-/* Efecto cuando se pasa el mouse */
-
-.tarjeta-servicio:hover {
-    transform: translateY(-6px);
-
-    box-shadow:
-        0 12px 25px rgba(0, 0, 0, 0.15);
-
-    cursor: pointer;
-}
-
-
-/* Evita que el enlace cambie los colores */
-
-.tarjeta-servicio:hover h3,
-.tarjeta-servicio:hover p {
-    color: inherit;
-}
 
 
 /* Mantener el precio de la tarjeta principal */
