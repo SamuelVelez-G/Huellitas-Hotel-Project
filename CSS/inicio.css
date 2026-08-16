@@ -142,13 +142,16 @@ body{
     text-align: center;
 }
 
-.indicator-title{
-    font-family: "Poppins", sans-serif;
+.section-title{
+     font-family: "Nunito", sans-serif;
     font-weight: 600;
     font-size: clamp(2rem, 3vw, 3.5rem);
     line-height: 1;  
-    color: var(--color-oscuro);  
+    color: var(--color-oscuro); 
+}
 
+#instalaciones-title{
+    color: #e2e0e0;
 }
 
 .indicator-col-div2{
@@ -170,7 +173,7 @@ body{
 .indicator-div-icono{
     display: inline-block;
     border-radius: 150px;
-    border: solid 5px var(--color-crema);
+    border: solid 2px var(--color-crema);
     padding: 15px 10px;
     margin-bottom: 10px;
 
@@ -241,7 +244,7 @@ body{
     /* para texto */
     display: flex;
     flex-direction:column;
-    height: 220px;
+    height: auto;
 }
 
     /* texto */
@@ -254,22 +257,23 @@ body{
 .servicio-texto-parrafo{
     font-size: 13px;
     line-height: 1.6;
-    color: #555;
+    color: var(--color-oscuro);
     margin-bottom: 3px;
+    
 }
 
 
     /* huellas */
 #servicios-card-icono-1, #servicios-card-icono-4{
     font-size: 60px;
-    color: var(--color-amarillo);
+    color: var(--color-marron);
     position: absolute;
 
 }
 
 #servicios-card-icono-2, #servicios-card-icono-3{
     font-size: 40px;
-    color: var(--color-amarillo);
+    color: var(--color-marron);
     position: absolute;
 
 }
@@ -330,10 +334,87 @@ body{
 .servicio-div-card:hover {
     transform: translateY(-6px);
 
-    box-shadow:
-        0 12px 25px var(--color-coral-claro);
+    box-shadow:0 12px 25px var(--color-marron);
 
     cursor: pointer;
+}
+
+/* INSTALACIONES */
+
+.section-instalaciones{
+    background-color:#754c2e9f;
+}
+
+.instalaciones-div-item{
+    border: none;
+}
+
+.instalaciones-div-texto{
+    background:hsla(25, 44%, 32%, 0.292);
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 0;
+}
+.instalaciones-parrafo{
+    background: #754c2e58;
+    color: var(--color-crema);
+    margin: 5px;
+    font-weight: 100;
+    line-height: 1.5;
+}
+
+/* OPINIONES CLIENTES */
+.opiniones-div-card{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5% 10%;
+    gap: 15px;  
+}
+
+
+.opiniones-card{
+    position: relative; 
+    min-height: 350px;
+    border: 2px var(--color-amarillo) solid !important;
+    
+}
+
+.opiniones-texto-titulo{
+    font-size: 19px;
+    font-weight:lighter;  
+    margin-top: 70px; 
+    text-align: center;
+}
+
+.opiniones-card-parrafo{
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-oscuro);
+    margin-bottom: 3px;
+    font-weight: 200;
+}
+
+.opiniones-card-img{
+    /*forma*/
+    width: 120px !important;
+    height: 120px !important;
+    border-radius: 50% !important;
+    object-fit: cover;
+    object-position: center;
+
+    /*posicion*/
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%) !important;
+
+    /*Diseno*/
+    border: 3px var(--color-amarillo) solid;
+}
+
+.opiniones-card-footer{
+    text-align: center;
+    background-color: #f4c95d42;
 }
 
 
@@ -380,231 +461,19 @@ body{
         right: -35px;
     }
 
-   
+    /* Opiniones */
+    .opiniones-div-card{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 15% 10%;
+        gap: 70px;  
+    }
+
+    .card-medio{
+        display: none;
+    }
 
    
-}
 
-/* CONTENEDOR GENERAL */
-/*
-.container-servicios {
-    background-color: #f8f5f1;
-}*/
-
-
-/* TARJETA PRINCIPAL */
-
-.servicio-principal {
-    position: relative;
-    height: 285px;
-    border-radius: 12px;
-    overflow: hidden;
-    color: white;
-}
-
-.servicio-principal img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-
-/* DEGRADADO SOBRE LA IMAGEN */
-
-.servicio-principal .overlay {
-    position: absolute;
-    inset: 0;
-
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.75),
-        rgba(0, 0, 0, 0.05)
-    );
-}
-
-
-/* TEXTO DE LA TARJETA PRINCIPAL */
-/*
-.contenido-principal {
-    position: absolute;
-    bottom: 20px;
-    left: 24px;
-    right: 24px;
-}*/
-
-.contenido-principal h3 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.contenido-principal p {
-    max-width: 600px;
-    margin: 0;
-    font-size: 14px;
-}
-
-.contenido-principal h4 {
-    color: #ffb52e;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-
-/* ETIQUETAS */
-
-.etiquetas {
-    margin-top: 15px;
-}
-
-.etiquetas span {
-    display: inline-block;
-
-    background-color: rgba(255, 255, 255, 0.2);
-
-    padding: 5px 12px;
-    margin-right: 8px;
-
-    border-radius: 20px;
-
-    font-size: 11px;
-}
-
-
-/* TARJETA PEQUEÑA */
-
-.servicio-secundario {
-    height: 285px;
-
-    background-color: white;
-
-    border-radius: 12px;
-    overflow: hidden;
-
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-
-.servicio-secundario img {
-    width: 100%;
-    height: 145px;
-
-    object-fit: cover;
-}
-
-.servicio-secundario h3 {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.servicio-secundario p {
-    font-size: 13px;
-    line-height: 1.5;
-    color: #555;
-}
-
-.servicio-secundario a {
-    color: #0066a6;
-    text-decoration: none;
-    font-size: 13px;
-}
-
-
-/* TARJETA INFERIOR */
-
-.servicio-inferior {
-    display: flex;
-
-    min-height: 215px;
-
-    background-color: white;
-
-    border-radius: 12px;
-    overflow: hidden;
-
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-
-
-
-
-/* LISTA */
-
-.lista-servicio {
-    margin-top: 20px;
-}
-
-.lista-servicio p {
-    margin-bottom: 8px;
-}
-
-.lista-servicio span {
-    display: inline-flex;
-
-    justify-content: center;
-    align-items: center;
-
-    width: 15px;
-    height: 15px;
-
-    margin-right: 8px;
-
-    border-radius: 50%;
-
-    background-color: #0878b9;
-    color: white;
-
-    font-size: 10px;
-}
-
-
-/* IMAGEN INFERIOR */
-
-.servicio-imagen {
-    width: 50%;
-}
-
-.servicio-imagen img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-}
-
-
-
-
-
-/* Mantener el precio de la tarjeta principal */
-
-.tarjeta-servicio:hover .contenido-principal h4 {
-    color: #ffb52e;
-}
-
-
-/* Enlace "Conocer más" */
-
-.conocer-mas {
-    color: #0066a6;
-    text-decoration: none;
-    font-size: 13px;
-}
-
-
-/* Efecto adicional para las imágenes */
-
-.tarjeta-servicio img {
-    transition: transform 0.4s ease;
-}
-
-.tarjeta-servicio:hover img {
-    transform: scale(1.03);
-}
-
-
-/* Evita que el zoom de la imagen se salga de la tarjeta */
-
-.servicio-principal,
-.servicio-secundario,
-.servicio-inferior {
-    overflow: hidden;
+   
 }
