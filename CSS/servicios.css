@@ -29,6 +29,31 @@ h1 {
     border: none;
 }
 
+/* Habitaciones----------------------------------------------- */
+.servicio-hab-texto, .servicio-hab-filtro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-icon{
+    color: black;
+    font-size: larger;
+}
+
+.servicio-hab-collap-dog{
+    background-color: #173C2C;
+}
+
+.servicio-hab-collap-cat{
+    background-color: #10c275;
+}
+
+.servicio-hab-collap-bird{
+    background-color: #F5C254;
+}
+
 
 /* =========================
    TARJETAS DE SERVICIOS

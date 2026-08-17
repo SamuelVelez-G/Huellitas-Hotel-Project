@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" />
     <link rel="stylesheet" href="/CSS/navbar.css" />
     <link rel="stylesheet" href="/CSS/servicios.css">
     <link rel="stylesheet" href="/CSS/footer.css">
@@ -25,6 +26,46 @@
             </div>
         </div>
     </div>
+    <!--Servicios desde HTML-->
+    <section class="section-servicio-hab">
+        <div class="servicio-hab-texto">
+            <h2>Habitaciones</h2>
+            <p>Selecciona tu tipo de mascota para ver las opciones de alohamiento disponibles</p>
+        </div>        
+        <!-- Filtro por mascota-->
+        <div class="container-fluid">
+            <div class="servicio-hab-filtro">
+                <p class="d-inline-flex gap-1">
+                    <button class="btn btn-outline-secondary btn-icon mx-3" type="button" data-bs-toggle="collapse" data-bs-target="#dog-room" aria-expanded="false" aria-controls="dog-room">
+                       <i class="fa-solid fa-dog btn-icon"></i> 
+                    </button>
+                    <button class="btn btn-outline-secondary btn-icon mx-3" type="button" data-bs-toggle="collapse" data-bs-target="#cat-room" aria-expanded="false" aria-controls="cat-room">
+                        <i class="fa-solid fa-cat btn-icon"></i>
+                    </button>
+                    <button class="btn btn-outline-secondary btn-icon mx-3" type="button" data-bs-toggle="collapse" data-bs-target="#bird-room" aria-expanded="false" aria-controls="#bird-room">
+                        <i class="fa-solid fa-dove"></i>
+                    </button>
+                </p>              
+            </div>
+        </div>
+        <div class="container-fluid contenedor-hab" id="hospedaje">
+            <div class="collapse" id="dog-room" data-bs-parent="#hospedaje">
+                <div class="card card-body servicio-hab-collap-dog">
+                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+            </div>
+            <div class="collapse" id="cat-room" data-bs-parent="#hospedaje">
+                <div class="card card-body servicio-hab-collap-cat">
+                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+            </div>
+            <div class="collapse" id="bird-room" data-bs-parent="#hospedaje">
+                <div class="card card-body servicio-hab-collap-bird">
+                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+            </div>
+        </div>        
+    </section>
 
     <!-- Aqui van las tarjertas -->
         <div class="card card-servicios">
