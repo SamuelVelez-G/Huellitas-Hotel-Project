@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;@600;700&display=swap');
+
+ :root {
+        --color-verde: #6DBD6B;
+        --color-amarillo: #F4C95D;
+        --color-coral: #FF9E7A;
+        --color-marron: #754c2e;
+        --color-crema: #FFF7ED;
+        --color-coral-claro: #febf99;
+        --color-oscuro: #4A4A4A;
+    }
+
 * {
     margin: 0;
     padding: 0;
@@ -42,22 +55,48 @@ h1 {
     color: black;
     font-size: larger;
 }
+/*Contenedores cards*/
 
-.servicio-hab-collap-dog{
-    background-color: #173C2C;
-}
-
-.servicio-hab-collap-cat{
-    background-color: #10c275;
-}
-
-.servicio-hab-collap-bird{
-    background-color: #F5C254;
-}
-/*Contenedor perro*/
-.servicio-hab-collap-dog{
+.servicio-hab-collap-dog, .servicio-hab-collap-cat, .servicio-hab-collap-bird{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    min-height: 420px;  
+    border: none;  
+}
+
+/* tarjetas*/
+#card-room{
+    display: flex;
+    flex-direction: column;
+    min-height: 350px;
+    border: solid 3px var(--color-marron);
+    border-radius: 15px;
+     overflow-x: hidden;
+}
+
+/* delantera*/
+#card-room-img{
+    height: 90%;
+}
+
+#card-div-texto{
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+}
+#card-room-parrafo{    
+    text-align: center;
+}
+
+/*trasera*/
+
+
+.hab-sub{
+    color: var(--color-verde);
+    font-weight: 700;
 }
 
 
