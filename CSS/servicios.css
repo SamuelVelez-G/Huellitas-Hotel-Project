@@ -57,12 +57,13 @@ h1 {
 }
 /*Contenedores cards*/
 
-.servicio-hab-collap-dog, .servicio-hab-collap-cat, .servicio-hab-collap-bird{
+.servicio-hab-collap-dog, .servicio-hab-collap-cat, .servicio-hab-collap-bird, .servicio-hab-collap-little{
     display: flex;
     flex-direction: row;
     justify-content: center;
     min-height: 420px;  
     border: none;  
+    background: var(--color-crema);
 }
 
 /* tarjetas*/
