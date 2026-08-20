@@ -1,16 +1,480 @@
-#perroBanner {
-    width: 25rem;
-    height: 25rem;
-    border-radius: 50%;
-    object-fit: cover;
-}
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;@600;700&display=swap');
 
-#btnServicios {
-    align-items: center;
-    justify-content: center !important;
+ :root {
+        --color-verde: #6DBD6B;
+        --color-amarillo: #F4C95D;
+        --color-coral: #FF9E7A;
+        --color-marron: #754c2e;
+        --color-crema: #FFF7ED;
+        --color-coral-claro: #febf99;
+        --color-oscuro: #4A4A4A;
+    }
 
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body{
-    background-color: #fff6ed !important;
+    background-color: #fff6ed;
+    overflow-x: hidden !important;
+    width: 100%;
+    font-family: "Nunito", sans-serif;
+    
+}
+
+/*ESTILO TEXTO TODA LA PAGINA */
+.section-title{
+     font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    line-height: 1;  
+    color: var(--color-oscuro); 
+}
+
+#instalaciones-title{
+    color: #e2e0e0;
+}
+
+/* HERO */
+.container-hero{
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-crema);
+    font-family: "Poppins", sans-serif;
+
+    /* Imagen fondo */
+    background-image:url(../IMG/imagenes-inicio/img-hero-nude.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+    /* Texto hero */
+.div-hero-texto{
+    display: flex;
+    flex-direction: column;
+  
+    margin: 40px 0; 
+    max-width: 100%;
+    padding: 5% 2%;   
+}
+
+.hero-parrafo-verde{
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--color-verde);
+    margin-bottom: 8px;
+}
+
+#logo-hero-title{
+    font-size: 48px;
+    color: var(--color-coral-claro);
+    rotate: 20deg;
+}
+
+#hero-titulo{
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1;  
+    color: var(--color-marron);  
+}
+
+.hero-span-green{
+    color: var(--color-verde);
+}
+
+.hero-span-brown, #logo-hero{
+    color: var(--color-marron);
+}
+
+.hero-divider{
+    width: 7rem;
+    border-bottom: solid 5px var(--color-verde);
+    border-radius: 8px;    
+}
+
+#hero-h5-second{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.hero-parraf0-negro{
+    max-width: 420px;
+    font-size: 17px ;
+    line-height: 1.6;
+    color:var(--color-oscuro);
+}
+
+    /* Botones */   
+
+.hero-btn{
+    background-color: var(--color-verde);
+    border-radius: 12px;
+    color: var(--color-crema);
+}
+
+.hero-btn:hover, .hero-btn2:hover, .servicios-btn:hover{
+    transform: scale(1.05);
+    background-color: var(--color-marron);
+    border-radius: 12px;
+    color: var(--color-crema);
+}
+
+.hero-btn2{
+    background-color: rgba(255, 255, 255, 0);
+    border: solid 1px var(--color-verde);
+    border-radius: 12px;
+    color: var(--color-verde);
+}
+
+/* SECCION INDICADORES */
+
+.indicator-row-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.indicator-col-div1{
+    min-height: 9vh;
+    width: 100%;
+    text-align: center;
+}
+
+.indicator-col-div2{
+    background-color: #977f7027;
+    min-height: 19vh;
+    width: 100%;
+    border-radius: 15px;
+    padding: 10px 15px 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.indicator-div-img-1{
+    font-family:"Nunito", sans-serif;    
+}
+
+.indicator-div-icono{
+    display: inline-block;
+    border-radius: 150px;
+    border: solid 2px var(--color-crema);
+    padding: 15px 10px;
+    margin-bottom: 10px;
+
+
+}
+
+.indicator-logo{
+    font-size: 7vh;
+  
+}
+
+.indicator-h5{
+    margin: 0;
+    font-size: 3vh;
+    font-weight: 900;
+
+}
+
+.indicator-parrafo{
+    margin: 0;
+    color: var(--color-oscuro);
+}
+
+.div-icono-1, .div-icono-5{
+      background-color: #f4c95d4c;
+}
+
+.div-icono-2{
+      background-color: #ff9d7a4c;
+}
+
+.div-icono-3{
+      background-color: #6cbd6b4c;
+}
+
+.div-icono-4{
+      background-color: #754c2e4c;
+}
+
+.icono-1, .icono-5{
+      color: #e1a816;
+}
+
+.icono-2{
+    color: #f57f54;
+}
+
+.icono-3{
+    color: #0dbb0a;
+}
+
+.icono-4{
+    color: var(--color-marron);
+}
+
+/* SERVICIOS */
+
+    /* cards */ 
+.servicio-div-card{
+     border: dotted 2px var(--color-coral-claro);
+}
+
+.servicio-div-card-texto{ 
+    /* para las huellas */
+    position: relative;
+    overflow: visible;
+
+    /* para texto */
+    display: flex;
+    flex-direction:column;
+    height: auto;
+}
+
+    /* texto */
+.servicio-texto-titulo {
+    font-size: 19px;
+    font-weight: bold;
+    height: 50px;
+}
+
+.servicio-texto-parrafo{
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--color-oscuro);
+    margin-bottom: 3px;
+    
+}
+
+
+    /* huellas */
+#servicios-card-icono-1, #servicios-card-icono-4{
+    font-size: 60px;
+    color: var(--color-marron);
+    position: absolute;
+
+}
+
+#servicios-card-icono-2, #servicios-card-icono-3{
+    font-size: 40px;
+    color: var(--color-marron);
+    position: absolute;
+
+}
+
+#servicios-card-icono-1{
+    rotate: 20deg;
+    bottom: -10px;
+    left: -35px;
+    z-index: 0;
+}
+
+#servicios-card-icono-2{
+    rotate: 30deg;
+    top: -20px;
+    left: -15px;
+    z-index: 0;
+}
+
+#servicios-card-icono-3{
+    rotate: -30deg;
+    top: -20px;
+    right: -15px;
+    z-index: 0;
+}
+
+#servicios-card-icono-4{
+    rotate: -20deg;
+    bottom: -10px;
+    right: -35px;
+    z-index: 0;
+}
+
+    /* boton */
+.servicios-btn{
+    background-color: var(--color-verde);
+    border-radius: 12px;
+    color: var(--color-crema);
+}
+
+
+    /* Tarjetas- hover */
+
+.servicio-div-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 12px;
+
+    /* Animación suave */
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+    /* Efecto cuando se pasa el mouse */
+
+.servicio-div-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:0 12px 25px var(--color-marron);
+
+    cursor: pointer;
+}
+
+/* INSTALACIONES */
+
+.section-instalaciones{
+    background-color:#754c2e9f;
+}
+
+.instalaciones-div-item{
+    border: none;
+}
+
+.instalaciones-div-texto{
+    background:hsla(25, 44%, 32%, 0.292);
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 0;
+}
+.instalaciones-parrafo{
+    background: #754c2e58;
+    color: var(--color-crema);
+    margin: 5px;
+    font-weight: 100;
+    line-height: 1.5;
+}
+
+/* OPINIONES CLIENTES */
+.opiniones-div-card{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5% 10%;
+    gap: 15px;  
+}
+
+
+.opiniones-card{
+    position: relative; 
+    min-height: 350px;
+    border: 2px var(--color-amarillo) solid !important;
+    
+}
+
+.opiniones-texto-titulo{
+    font-size: 19px;
+    font-weight:lighter;  
+    margin-top: 70px; 
+    text-align: center;
+}
+
+.opiniones-card-parrafo{
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-oscuro);
+    margin-bottom: 3px;
+    font-weight: 200;
+}
+
+.opiniones-card-img{
+    /*forma*/
+    width: 120px !important;
+    height: 120px !important;
+    border-radius: 50% !important;
+    object-fit: cover;
+    object-position: center;
+
+    /*posicion*/
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%) !important;
+
+    /*Diseno*/
+    border: 3px var(--color-amarillo) solid;
+}
+
+.opiniones-card-footer{
+    text-align: center;
+    background-color: #f4c95d42;
+}
+
+
+/*RESPONSIVE*/
+
+    /*Hero*/
+@media (max-width: 768px) {
+
+    /* Hero */
+    .container-hero {
+        min-height: 45vh;
+        background-size: cover;
+        background-position: 89% 100%;
+    }
+    
+    .div-hero-texto {
+        margin: 30px 0;
+        padding: 20px;
+    }
+
+    .hero-parrafo-verde,
+    .hero-parraf0-negro,
+    #hero-h5-second,  .hero-btn2 {
+        display: none;
+    }    
+
+    .hero-btn-div{
+        display: flex;
+        justify-content: center;
+        margin-top: 650px;
+    }
+
+    /* Servicios */
+    #servicios-card-icono-1,#servicios-card-icono-2, #servicios-card-icono-3,#servicios-card-icono-4 {
+        font-size: 50px;
+    }
+
+    #servicios-card-icono-1{
+        left: -5px;
+    }
+
+    #servicios-card-icono-3{
+        top: 150px;
+        right: -35px;
+    }
+
+    /* Opiniones */
+    .opiniones-div-card{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 15% 10%;
+        gap: 70px;  
+    }
+
+    .card-medio{
+        display: none;
+    }
+
+   
+
+   
 }

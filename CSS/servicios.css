@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;@600;700&display=swap');
+
+ :root {
+        --color-verde: #6DBD6B;
+        --color-amarillo: #F4C95D;
+        --color-coral: #FF9E7A;
+        --color-marron: #754c2e;
+        --color-crema: #FFF7ED;
+        --color-coral-claro: #febf99;
+        --color-oscuro: #4A4A4A;
+    }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+}
+
+body {
+    background: #ffffff;
+    padding-top: 77px;
+}
+
+/* =========================
+   TÍTULOS
+   ========================= */
+
+h1 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+/* =========================
+   TARJETA INICIAL
+   ========================= */
+
+#cardReservaInicio {
+    background-color: #FEF2DB;
+    border: none;
+}
+
+/* Habitaciones----------------------------------------------- */
+/*Filtro*/
+.servicio-hab-texto, .servicio-hab-filtro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-icon{
+    color: black;
+    font-size: larger;
+}
+/*Contenedores cards*/
+
+.servicio-hab-collap-dog, .servicio-hab-collap-cat, .servicio-hab-collap-bird, .servicio-hab-collap-little{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    min-height: 420px;  
+    border: none;  
+    background: var(--color-crema);
+}
+
+/* tarjetas*/
+#card-room{
+    display: flex;
+    flex-direction: column;
+    min-height: 350px;
+    border: solid 3px var(--color-marron);
+    border-radius: 15px;
+     overflow-x: hidden;
+}
+
+/* delantera*/
+#card-room-img{
+    height: 90%;
+}
+
+#card-div-texto{
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+}
+#card-room-parrafo{    
+    text-align: center;
+}
+
+/*trasera*/
+
+
+.hab-sub{
+    color: var(--color-verde);
+    font-weight: 700;
+}
+
+
+/* =========================
+   TARJETAS DE SERVICIOS
+   ========================= */
+
+.card-servicios {
+    margin: 30px 20px 20px 20px;
+
+    width: 18rem;
+    height: 18rem;
+
+    cursor: pointer;
+
+    position: relative;
+
+    border: none;
+    background: transparent;
+
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+}
+
+
+/* =========================
+   CARA DELANTERA Y TRASERA
+   ========================= */
+
+.card-delantera,
+.card-trasera {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+
+    background-color: #FEF2DB;
+
+    backface-visibility: hidden;
+}
+
+
+/* =========================
+   PARTE DELANTERA
+   ========================= */
+
+.card-delantera {
+    z-index: 2;
+}
+
+.card-delantera img {
+    width: 100%;
+    height: 12rem;
+
+    object-fit: cover;
+}
+
+.card-delantera .card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+.card-delantera .card-text {
+    color: #2D1603;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
+/* =========================
+   PARTE TRASERA
+   ========================= */
+
+.card-trasera {
+    transform: rotateY(180deg);
+
+    padding: 20px;
+
+    overflow-y: auto;
+}
+
+.card-trasera .card-title {
+    color: #2D1603;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+.card-trasera .card-text {
+    color: #365746;
+    font-size: 0.85rem;
+
+    line-height: 1.4;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================
+   PRECIO
+   ========================= */
+
+.precio-card {
+    display: block;
+
+    color: #2D1603;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+
+    text-decoration: none;
+}
+
+
+/* =========================
+   BOTÓN RESERVAR
+   ========================= */
+
+.card-link {
+    display: inline-block;
+
+    background-color: #89B88E;
+
+    color: #173C2C;
+
+    padding: 8px 18px;
+
+    border-radius: 20px;
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+}
+
+.card-link:hover {
+    background-color: #6FA875;
+    color: #ffffff;
+}
+
+
+/* =========================
+   GIRO DE LA TARJETA
+   ========================= */
+
+.card-servicios.girada {
+    transform: rotateY(180deg);
+}
+
+
+/* =========================
+   TARJETA FINAL
+   ========================= */
+
+#cardReservaFin {
+    background-color: #89B88E;
+
+    border: none;
+    border-radius: 18px;
+
+    width: 80%;
+
+    margin: 60px auto;
+}
+
+#cardReservaFin h2 {
+    color: #173C2C;
+
+    font-size: 2rem;
+}
+
+#cardReservaFin p {
+    color: #365746;
+
+    font-size: 1rem;
+}
+
+
+/* =========================
+   BOTÓN RESERVA AHORA
+   ========================= */
+
+#botonReserva {
+    background-color: #F5C254;
+
+    color: #173C2C;
+
+    border: none;
+
+    border-radius: 30px;
+
+    padding: 12px 28px;
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 768px) {
+
+    .card-servicios {
+        width: 18rem;
+        height: 18rem;
+
+        margin: 30px auto;
+    }
+
+    #cardReservaFin {
+        width: 90%;
+    }
+
+    #cardReservaFin h2 {
+        font-size: 1.7rem;
+    }
+}

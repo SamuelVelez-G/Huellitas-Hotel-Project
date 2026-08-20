@@ -8,30 +8,44 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" />
     <link rel="stylesheet" href="../CSS/navbar.css">
     <link rel="stylesheet" href="../CSS/inicio.css">
-    <link rel="stylesheet" href="../CSS/styles.css">
     <link rel="stylesheet" href="../CSS/footer.css">
     <title> Inicio </title>
 </head>
 
 <body>
     <div id="navbar-general"></div>
-    <section class="container-hero py-5 my-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h1>Huellitas Hotel</h1>
-                    <p class="void-text" class="text-muted">
-                        El lugar donde cuidamos a tu mascota <br>
-                        como si estuviera en su propio hogar
+    <section class="container-hero">
+        <div class="container-hero-div">
+            <div class="row align-items-center g-0">
+                <div class="col-md-6 div-hero-texto">
+                    <p class="hero-parrafo-verde">
+                        <i class="fa-solid fa-paw me-2" id="logo-hero"></i>
+                        Bienvenidos a
                     </p>
-                    <div class="d-block w-50 bg-secondary text-white p-4">
-                    </div>
-                </div>
-                <div class="col-md-6 text-center">
-                    <div class="imagen-circular">
-                        <img id="perroBanner" src="https://www.anipedia.net/imagenes/que-comen-los-perros.jpg">
+                    <h1 id="hero-titulo">
+                        <span class="hero-span-brown">Huellitas</span><br>
+                        <span class="hero-span-green">Hotel</span>
+                        <i class="fa-solid fa-paw me-2" id="logo-hero-title"></i>
+                    </h1>
+                    <div class="hero-divider my-3 pt-1"></div>
+                    <h5 id="hero-h5-second">
+                        <span class="hero-span-brown">Tu mascota, </span>
+                        <span class="hero-span-green">nuestra prioridad</span>
+                    </h5>
+                    <p class="hero-parraf0-negro">
+                        Un lugar seguro, confiable y lleno de cariño donde tu mascota se siente como en casa.
+                    </p>
+                    <div class="d-grid d-md-block hero-btn-div">
+                        <a href="/HTML/contactanos.html" class="btn hero-btn m-1" role="button">
+                            <i class="fa-solid fa-paw me-2" id="hero-btn-logo"></i>
+                            Reservar ahora
+                        </a>
+                         <a href="./servicios.html" class="btn hero-btn2 m-1" role="button">
+                            Conocer servicios >
+                        </a>
                     </div>
                 </div>
             </div>
@@ -39,85 +53,119 @@
     </section>
     <section class="section-introduccion py-5">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h2>Mas que un hotel</h2>
-                    <p>
-                        en huellitas nos preocupamos por la seguridad y el cuidado de tu mascota <br>
-                        deja a tu mascota en el cuidado de los mejores profesionales
-                    </p>
+            <div class="row align-items-center indicator-row-div">
+                <div class="col-md-6 indicator-col-div1">
+                    <h2 class="section-title mb-5">¿Por qué elegirnos?</h2>                    
                 </div>
-
-                <div class="col-md-6 text-center">
-                    <div class="imagen-cuadrada"></div>
+                <div class="col-md-6 text-center indicator-col-div2">
+                    <div class="indicator-div-img-1">
+                        <div class="indicator-div-icono div-icono-1">
+                            <i class="fa-solid fa-hands-holding-child indicator-logo icono-1"></i>
+                        </div>
+                        <h5 class="indicator-h5">100%</h5>
+                        <p class="small indicator-parrafo">Atención personalizada</p>
+                        <p></p>
+                    </div>
+                    <div class="indicator-div-img-1">
+                        <div class="indicator-div-icono div-icono-2">
+                            <i class="fa-solid fa-hand-holding-heart indicator-logo icono-2"></i>
+                        </div>
+                        <h5 class="indicator-h5">+ 200</h5>
+                        <p class="small indicator-parrafo">Mascotas cuidadas</p>
+                        <p></p>
+                    </div>
+                    <div class="indicator-div-img-1">
+                        <div class="indicator-div-icono div-icono-3">
+                            <i class="fa-solid fa-ranking-star indicator-logo icono-3"></i>
+                        </div>
+                        <h5 class="indicator-h5">95%</h5>
+                        <p class="small indicator-parrafo">Clientes satisfechos</p>
+                        <p></p>
+                    </div>
+                    <div class="indicator-div-img-1">
+                        <div class="indicator-div-icono div-icono-4">
+                            <i class="fa-solid fa-shield-dog indicator-logo icono-4"></i>
+                        </div>
+                        <h5 class="indicator-h5">24/7</h5>
+                        <p class="small indicator-parrafo">Ambiente seguro</p>
+                        <p></p>
+                    </div>
+                    <div class="indicator-div-img-1">
+                        <div class="indicator-div-icono div-icono-5">
+                            <i class="fa-solid fa-user-nurse indicator-logo icono-5"></i>
+                        </div>
+                        <h5 class="indicator-h5">100%</h5>
+                        <p class="small indicator-parrafo">Personal capacitado</p>
+                        <p></p>
+                    </div>
                 </div>
-
             </div>
         </div>
-
     </section>
 
 
     <!-- servicios -->
-    <section class="container-servicios py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">
+    <section class="container-servicios mb-5">
+        <div class="container mb-4">
+            <h2 class="text-center mb-5 section-title">
                 Nuestros servicios
             </h2>
             <div class="row g-4">
-                <div class="col-6 col-md-3">
-                    <div class="card tarjeta h-100">
-                        <div class="card-body text-center">
-                            <h5>Hospedaje</h5>
-                            <p>Un espacio cómodo, seguro y tranquilo donde tu mascota recibirá atención, alimentación y
+                <div class="col-6 col-md-3 servicio-col-card">
+                    <div class="card tarjeta h-100 servicio-div-card">
+                        <i class="fa-solid fa-paw me-2 card-icon" id="servicios-card-icono-1"></i>
+                        <div class="card-body text-center servicio-div-card-texto">
+                            <h5 class="servicio-texto-titulo">Hospedaje</h5>
+                            <p class="servicio-texto-parrafo">Un espacio cómodo, seguro y tranquilo donde tu mascota recibirá atención, alimentación y
                                 cuidados personalizados durante toda su estadía.</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-6 col-md-3">
-                    <div class="card tarjeta h-100">
-                        <div class="card-body text-center">
-                            <h5>Recreacion y juegos</h5>
-                            <p>Actividades, juegos y momentos de diversión diseñados para mantener a tu mascota activa,
+                <div class="col-6 col-md-3">                    
+                    <div class="card tarjeta h-100 servicio-div-card">
+                        <i class="fa-solid fa-paw me-2 card-icon" id="servicios-card-icono-2"></i>
+                        <div class="card-body text-center servicio-div-card-texto">
+                            <h5 class="servicio-texto-titulo">Recreacion y juegos</h5>
+                            <p class="servicio-texto-parrafo">Actividades, juegos y momentos de diversión diseñados para mantener a tu mascota activa,
                                 entretenida y feliz durante su estadía.</p>
                         </div>
-                    </div>
+                    </div>              
                 </div>
-
                 <div class="col-6 col-md-3">
-                    <div class="card tarjeta h-100">
-                        <div class="card-body text-center">
-                            <h5>peluqueria</h5>
-                            <p>Cuidamos la apariencia y bienestar de tu mascota con baños, cepillado, corte de pelo y
-                                uñas, utilizando productos adecuados para su cuidado.</p>
+                    <div class="card tarjeta h-100 servicio-div-card">
+                        <i class="fa-solid fa-paw me-2 card-icon" id="servicios-card-icono-3"></i>
+                        <div class="card-body text-center servicio-div-card-texto">
+                            <h5 class="servicio-texto-titulo">Socializacion de mascotas</h5>
+                            <p class="servicio-texto-parrafo">
+                                Espacios seguros donde tu mascota  puede compartir y jugar con otros animales, desarrollando sus habilidades sociales mientras disfruta de una experiencia divertida.</p>
                         </div>
-                    </div>
+                    </div>                  
                 </div>
-
                 <div class="col-6 col-md-3">
-                    <div class="card tarjeta h-100">
-                        <div class="card-body text-center">
-                            <h5>Socializacion de mascotas</h5>
-                            <p>Espacios seguros donde tu mascota puede compartir y jugar con otros animales,
-                                desarrollando sus habilidades sociales mientras disfruta de una experiencia divertida.
+                    <div class="card tarjeta h-100 servicio-div-card">
+                        <i class="fa-solid fa-paw me-2 card-icon" id="servicios-card-icono-4"></i>
+                        <div class="card-body text-center servicio-div-card-texto">
+                            <h5 class="servicio-texto-titulo">Peluqueria</h5>
+                            <p class="servicio-texto-parrafo">
+                                Cuidamos la apariencia y bienestar de tu mascota con baños, cepillado, corte de pelo y uñas, utilizando productos adecuados para su cuidado.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="text-center">
-            <button href="#" class=" btnServicios col-6 col-md-3 card-body text-center">
-                click para ir a servicios
-            </button>
+            <div class="text-center mt-5">
+                <a href="/HTML/servicios.html" class="btn hero-btn m-1" role="button">
+                    Conocer nuestros servicios
+                </a>
+            </div>
         </div>
     </section>
 
 
-    <section class="banner py-5">
+    <section class="banner py-3 section-instalaciones">
+        <h2 class="text-center my-4 section-title" id="instalaciones-title"> Nuestras instalaciones </h2>
         <div id="carouselExampleIndicators" class="carousel slide w-75 mx-auto">
-            <div class="carousel-indicators">
+            <div class="carousel-indicators m-5">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
@@ -126,17 +174,26 @@
                     aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://clubdelcanino.com/assets/guarderia-gallery/patio-natural-hotel-canino-envigado-1200.webp"
-                        class="d-block w-75 mx-auto" alt="">
+                <div class="carousel-item active instalaciones-div-item">
+                    <img src="../IMG/imagenes-inicio/img-instalaciones-campoAbierto.png"
+                        class="d-block w-75 mx-auto" alt="perros jugando a campo abierto">
+                    <div class="carousel-caption d-none d-md-block instalaciones-div-texto">
+                        <p class="instalaciones-parrafo mb-3">Contamos con espacios al aire libre para compartir, jugar y desarrollar las habilidades sociales de tu mascota.</p>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="https://clubdelcanino.com/assets/guarderia-gallery/zona-cubierta-hotel-canino-medellin-1200.webp"
-                        class="d-block w-75 mx-auto" alt="">
+                <div class="carousel-item instalaciones-div-item">
+                    <img src="../IMG/imagenes-inicio/img-instalaciones-room.png"
+                        class="d-block w-75 mx-auto " alt="Perros es habitaciones">
+                    <div class="carousel-caption d-none d-md-block instalaciones-div-texto">
+                        <p class="instalaciones-parrafo mb-3">Nuestros espacios son cómodos y tranquilos especiales para que tu mascota reciba atención, alimentación y cuidados.</p>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="https://clubdelcanino.com/assets/guarderia-gallery/patio-perros-pequenos-juegos-guarderia-canina-1200.webp"
-                        class="d-block w-75 mx-auto" alt="">
+                <div class="carousel-item instalaciones-div-item">
+                    <img src="../IMG/imagenes-inicio/img-instalaciones-zonaJuego.png"
+                        class="d-block w-75 mx-auto" alt="Perros jugando en areas de juego">
+                    <div class="carousel-caption d-none d-md-block instalaciones-div-texto">
+                        <p class="instalaciones-parrafo mb-3">El área de juegos esta pensada para mantener a tu mascota activa, entretenida y feliz.</p>
+                    </div>    
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -155,89 +212,94 @@
     </section>
 
     <!-- SECCIÓN FINAL -->
-    <section class="py-5">
-        <div class="container">
+    <section class="section-opiniones pt-5">
+        
+        <div class="container-fluid">
             <div class="row justify-content-center g-4">
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <div class="bloque-final">
-                        <h4>Opiniones de nuestros clientes</h4>
-
-                        <div id="carouselExample" class="carousel slide">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="card mb-3" style="max-width: 540px;">
-                                        <div class="row g-0">
-                                            <div class="col-md-4">
-                                                <img src="../IMG/imagenes-home/lunaGato.png" class="img-fluid rounded-start" alt="...">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Luna</h5>
-                                                    <p class="card-text">Luna disfruta de cada momento en nuestro
-                                                        espacio para mascotas. Le encanta relajarse en su cómoda cama,
-                                                        explorar los rincones y disfrutar de un ambiente tranquilo,
-                                                        seguro y lleno de cariño 🐾💤</p>
-                                                    <p class="card-text"><small class="text-body-secondary">Subida hace cinco días</small></p>
-                                                </div>
-                                            </div>
+                        <h2 class="text-center pb-5 section-title">¿Que dicen nuestros clientes?</h2>
+                    </div>    
+                    <div id="carouselExample" class="carousel slide carousel-dark">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="card-group opiniones-div-card mt-1">
+                                    <div class="card opiniones-card">
+                                        <img src="../IMG/imagenes-home/lunaGato.png" class="mx-auto opiniones-card-img" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title opiniones-texto-titulo">Luna</h5>
+                                            <p class="card-text opiniones-card-parrafo"> Dejamos a Luna por primera vez y estábamos muy nerviosos, pero desde el primer momento nos hicieron sentir tranquilos. Recibimos noticias de ella durante su estadía y regresó feliz y tranquila. Sin duda volveremos.</p>
+                                        </div>
+                                        <div class="card-footer opiniones-card-footer">
+                                            <small class="text-body-secondary">-Laura M</small>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card mb-3" style="max-width: 540px;">
-                                        <div class="row g-0">
-                                            <div class="col-md-4">
-                                                <img src="../IMG/imagenes-home/tobyLabrador.png"
-                                                    class="img-fluid rounded-start" alt="...">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="card-body">
-                                                    <h5 class="card-title"> Toby </h5>
-                                                    <p class="card-text">Toby disfruta cada momento de su baño. Le
-                                                        encanta jugar con el agua, relajarse mientras lo consentimos y
-                                                        salir limpio, fresco y con muchas ganas de seguir jugando 🛁🐾
-                                                    </p>
-                                                    <p class="card-text"><small class="text-body-secondary">Subida hace
-                                                            tres meses</small></p>
-                                                </div>
-                                            </div>
+                                    <div class="card opiniones-card card-medio">
+                                        <img src="../IMG/imagenes-home/kiraDalmata.png" class=" mx-auto opiniones-card-img" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title opiniones-texto-titulo">Kira</h5>
+                                            <p class="card-text opiniones-card-parrafo"> Me encantó la atención que tuvieron con Kira. Se nota que realmente disfrutan cuidar a los animales. Me gustó mucho saber que tenía espacios para jugar y descansar. Excelente experiencia!</p>
+                                        </div>
+                                        <div class="card-footer opiniones-card-footer">
+                                            <small class="text-body-secondary">Andrés R.</small>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card mb-3" style="max-width: 540px;">
-                                        <div class="row g-0">
-                                            <div class="col-md-4">
-                                                <img src="../IMG/imagenes-home/kiraDalmata.png"
-                                                    class="img-fluid rounded-start" alt="...">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="card-body">
-                                                    <h5 class="card-title"> Kira </h5>
-                                                    <p class="card-text">Kira disfruta mucho compartir con otras
-                                                        mascotas. Le encanta jugar, correr y hacer nuevos amigos,
-                                                        convirtiendo cada encuentro en una oportunidad para divertirse y
-                                                        disfrutar de la compañía 🐾❤️</p>
-                                                    <p class="card-text"><small class="text-body-secondary">Subida hace
-                                                            dos meses</small></p>
-                                                </div>
-                                            </div>
+                                    <div class="card opiniones-card">
+                                        <img src="../IMG/imagenes-home/tobyLabrador.png" class=" mx-auto opiniones-card-img" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title opiniones-texto-titulo">Napo</h5>
+                                            <p class="card-text opiniones-card-parrafo"> Las instalaciones son muy bonitas, limpias y organizadas. Mi mascota pudo jugar, socializar y descansar en un ambiente seguro. Es justo el tipo de lugar que buscaba para dejarlo cuando tengo que viajar.</p>
+                                        </div>
+                                        <div class="card-footer opiniones-card-footer">
+                                            <small class="text-body-secondary ">Dina F.</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                                data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                                data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
+                            <div class="carousel-item">
+                                <div class="card-group opiniones-div-card mt-4">
+                                    <div class="card opiniones-card">
+                                        <img src="../IMG/imagenes-home/Pingui.jpeg" class="mx-auto opiniones-card-img" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title opiniones-texto-titulo">Misha</h5>
+                                            <p class="card-text opiniones-card-parrafo"> Me encantó saber que además de hospedaje, están pendientes de la alimentación y las necesidades particulares de cada mascota. Dejé a Misha con mucha tranquilidad y cuando regresé estaba feliz y muy bien cuidada.</p>
+                                        </div>
+                                        <div class="card-footer opiniones-card-footer">
+                                            <small class="text-body-secondary">Monica D.</small>
+                                        </div>
+                                    </div>
+                                    <div class="card opiniones-card card-medio">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeGeTlpdFhuQ4LV9_sIb8VrN5WsxKD-At61BAyPSYQnA&s=10" class=" mx-auto opiniones-card-img" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title opiniones-texto-titulo">Rocky</h5>
+                                            <p class="card-text opiniones-card-parrafo">Desde que llegamos nos atendieron con mucha amabilidad. El equipo fue muy atento y se nota el cariño con el que tratan a cada mascota. Sin duda encontré un lugar de confianza para dejar a Rocky cuando lo necesito.</p>
+                                        </div>
+                                        <div class="card-footer opiniones-card-footer">
+                                            <small class="text-body-secondary">Juan B.</small>
+                                        </div>
+                                    </div>
+                                    <div class="card opiniones-card">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgXi8cDpkMFdBufctHQdx0CmsDWKuyBOpNMtLab6ln6w&s=10" class=" mx-auto opiniones-card-img" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title opiniones-texto-titulo">Gangan y Gangon</h5>
+                                            <p class="card-text opiniones-card-parrafo"> Tuve un viaje y no tenia quien cuidara mis pecesitos. Afortunadamente encontre este hotel, durante el tiempo que estuve fuera me mantuvieron informada de mis mascotas... super recomendado</p>
+                                        </div>
+                                        <div class="card-footer opiniones-card-footer">
+                                            <small class="text-body-secondary ">Claudia M.</small>
+                                        </div>
+                                    </div>
+                                </div>                              
+                            </div>
                         </div>
-                    </div>
+                        <button class="carousel-control-prev " type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon opiniones-btn" aria-hidden="true"></span>
+                            <span class="visually-hidden opiniones-btn-span">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon opiniones-btn" aria-hidden="true"></span>
+                            <span class="visually-hidden opiniones-btn-span">Next</span>
+                        </button>
+                    </div>                         
                 </div>
             </div>
         </div>

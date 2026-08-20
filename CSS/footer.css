@@ -110,3 +110,59 @@
   font-size: 0.8rem;
   color: rgba(255, 247, 237, 0.6);
 }
+
+/* Funcion recuperada boton*/
+.back-to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-coral);
+  color: var(--color-marron);
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
+  z-index: 50;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background-color: var(--color-amarillo);
+}
+
+
+
+
+@media (max-width: 48rem) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 2rem;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 30rem) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .site-footer {
+    padding: 2.5rem 1.25rem 0;
+  }
+}
