@@ -33,8 +33,8 @@ const nav = `
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/HTML/admin.html">
-                        Reservas/Admin
+                    <a class="nav-link" href="/HTML/reservas.html">
+                        Reservas
                     </a>
                 </li>
 

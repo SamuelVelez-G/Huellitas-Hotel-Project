@@ -1,0 +1,65 @@
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #f9f5e9;
+  color: #2d1603;
+  padding-top: 130px;
+}
+
+h1, h2, h3, h4, h5, h6, 
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.text-sage-deep { 
+  color: #5f7d65; 
+}
+
+.text-chocolate { 
+  color: #4a3222; 
+}
+
+.bg-surface-bright { 
+  background-color: #fff8f5; 
+}
+
+/* Estilos de botones */
+.btn-primary-custom {
+  background-color: #40674a;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-primary-custom:hover {
+  background-color: #294e34;
+  color: #ffffff;
+}
+
+.btn-secondary-custom {
+  background-color: #fdca65;
+  color: #755400;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-secondary-custom:hover {
+  background-color: #f1bf5c;
+  color: #5d4200;
+}
+
+.border-dashed-custom {
+  border: 2px dashed #86af8e;
+  background-color: transparent;
+  color: #40674a;
+  transition: all 0.2s ease-in-out;
+}
+
+.border-dashed-custom:hover {
+  background-color: rgba(64, 103, 74, 0.05);
+  border-color: #40674a;
+}
+
+.sticky-summary {
+  position: sticky;
+  top: 110px;
+}
