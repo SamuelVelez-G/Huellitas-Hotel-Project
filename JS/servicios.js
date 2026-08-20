@@ -1,3 +1,4 @@
+// Giro de tarjetas estáticas definidas en el HTML
 const cards = document.querySelectorAll(".card-servicios");
 
 cards.forEach(card => {
@@ -6,17 +7,23 @@ cards.forEach(card => {
     });
 });
 
+// Contenedor para servicios renderizados dinámicamente desde el localStorage
 const contenedorServicios = document.getElementById("contenedorServicios");
 
 function mostrarServicios() {
     const servicios = JSON.parse(localStorage.getItem("servicios")) || [];
     contenedorServicios.innerHTML = "";
-    servicios.forEach((servicio) => {
 
+    servicios.forEach((servicio) => {
         const card = document.createElement("div");
         card.className = "card card-servicios card-little-1";
+        
+        // Listener para permitir la rotación de las tarjetas cargadas dinámicamente
+        card.addEventListener("click", () => {
+            card.classList.toggle("girada");
+        });
+
         card.innerHTML = `
-            
             <div class="card-delantera" id="card-room">
                 <img 
                     src="../IMG/imagenes-servicios/habitaciones/little-luxury.png" 
@@ -25,7 +32,6 @@ function mostrarServicios() {
                     alt="..."
                 >
                 <div class="card-body-texto" id="card-div-texto">
-
                     <p class="card-text card-room-title" id="card-room-parrafo">
                         ${servicio.servicio}
                     </p>
@@ -36,29 +42,22 @@ function mostrarServicios() {
                     <h5 class="card-title">
                         ${servicio.servicio}
                     </h5>
-                    <p class="card-text">
-                        ${servicio.descripcion}
-                    </p>
-                    <a class="precio-card">
-                        $${Number(servicio.precio).toLocaleString("es-CO")}
-                    </a>
-                    <a 
-                        href="../HTML/reservas.html" 
-                        class="card-link"
-                    >
-                        reservar
-                    </a>
+                    <p class="card-text">${servicio.descripcion || ''}</p>
+                    <a class="precio-card">${servicio.precio ? '$' + servicio.precio : 'valor del servicio'}</a>
+                    <a href="../HTML/reservas.html" class="card-link">reservar</a>
                 </div>
             </div>
         `;
-
         contenedorServicios.appendChild(card);
-        // Giro de la card
-        card.addEventListener("click", function () {
-            card.classList.toggle("girada");
-        });
-
     });
 }
 
 mostrarServicios();
+
+// Redirección del botón final "Reserva ahora"
+const botonReservaFin = document.getElementById("botonReserva");
+if (botonReservaFin) {
+    botonReservaFin.addEventListener("click", (e) => {
+        window.location.href = "../HTML/reservas.html";
+    });
+}

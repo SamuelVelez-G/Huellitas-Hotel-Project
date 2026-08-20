@@ -31,6 +31,12 @@ const nav = `
                         Contactanos
                     </a>
                 </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/HTML/servicios.html">
+                     Servicios
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="/HTML/reservas.html">
@@ -38,11 +44,6 @@ const nav = `
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/HTML/servicios.html">
-                     Servicios
-                    </a>
-                </li>
 
             </ul>
         </div>
