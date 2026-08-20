@@ -23,6 +23,23 @@ body {
     padding-top: 77px;
 }
 
+/* Hero */
+.servicios-hero{
+    display: flex;
+    flex-direction: row;
+    min-height: 80vh;
+    background-color: var(--color-crema);
+    background-image: url(../IMG/imagenes-servicios/hero_horizonta.png) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: "Poppins", sans-serif;
+}
+
+
+
+
+
 /* =========================
    TÍTULOS
    ========================= */
