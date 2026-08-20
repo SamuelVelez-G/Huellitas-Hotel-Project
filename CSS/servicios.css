@@ -67,6 +67,14 @@ body {
 
 /* Contenido Servicios*/
 
+.servicio-hab-title{
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    line-height: 1;  
+    color: var(--color-oscuro);  
+    text-align: center;   
+}
 
 
 /* =========================
