@@ -90,7 +90,8 @@ h1 {
     min-height: 350px;
     border: solid 3px var(--color-marron);
     border-radius: 15px;
-     overflow-x: hidden;
+    overflow-x: hidden;
+     
 }
 
 /* delantera*/
@@ -123,21 +124,17 @@ h1 {
    ========================= */
 
 .card-servicios {
-    margin: 30px 20px 20px 20px;
-
+    margin: 30px 20px 20px 20px ;
     width: 18rem;
     height: 18rem;
-
     cursor: pointer;
-
     position: relative;
-
     border: none;
     background: transparent;
-
     transition: transform 0.6s;
     transform-style: preserve-3d;
     transform-origin: center center;
+    margin-bottom: 50px;
 }
 
 
