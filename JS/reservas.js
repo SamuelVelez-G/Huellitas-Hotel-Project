@@ -4,11 +4,62 @@ const maxPets = 5;
 const STORAGE_KEY = 'huellitas_reserva_temp';
 
 const SERVICES = {
-  hospedaje: { name: 'Hospedaje (Día/Noche)', price: 60000 },
+  hospedaje: { name: 'Hospedaje (Día/Noche)'/*, price: 60000*/ },
   recreacion: { name: 'Recreación y Juegos', price: 30000 },
-  socializacion: { name: 'Socialización de Mascotas', price: 35000 },
-  peluqueria: { name: 'Peluquería y Estética', price: 45000 }
+  socializacion: { name: 'Socialización de Mascotas', price: 35000},
+  peluqueria: { name: 'Peluquería y Estética', price: 45000}
 };
+
+const HOSPEDAJE = {
+  perro: {
+    luxury: {
+      name: "Habitación Luxury", description: "Privacidad y comodidad para una estadía especial.",price: 100000,
+    },
+    confort: {
+      name: "Habitación Confort",description: "Todo lo necesario para sentirse como en casa",price: 80000,
+    },
+    familiar: {
+      name: "Suite Familiar", description: "Para dos o más mascotas de una misma familia.",price: 170000,
+    }    
+  },
+
+  gato: {
+    luxury: {
+      name: "Gatuna Luxury", description: "Privacidad + zonas elevadas + exploración",price: 100000,
+    },
+    confort: {
+      name: "Gatuna Confort",description: "Tranquilidad y descanso",price: 80000,
+    },
+    familiar: {
+      name: "Gatuna Familiar", description: "Espacio compartido para gatos de la misma familia.",price: 170000,
+    }    
+  }, 
+
+  aves: {
+    luxury: {
+      name: "Aviario Luxury", description: "Espacio individual y privado.",price: 100000,
+    },
+    confort: {
+      name: "Aviario Confort",description: "Tranquilidad y descanso",price: 80000,
+    },
+    familiar: {
+      name: "Aviario Familiar", description: "Espacio compartido para aves de la misma familia.",price: 170000,
+    }    
+  }, 
+
+  pequenos: {
+    luxury: {
+      name: "Pequeños Huéspedes Luxury", description: "Privado y más equipado",price: 100000,
+    },
+    confort: {
+      name: "Pequeños Huéspedes Confort",description: "Cómodo y funcional",price: 80000,
+    },
+    familiar: {
+      name: "Pequeños Huéspedes Explorador", description: "Compañeros de la misma familia",price: 170000,
+    }    
+  },
+
+}
 
 const currencyFormatter = new Intl.NumberFormat('es-CO', {
   style: 'currency',
@@ -23,11 +74,12 @@ const defaultPetState = [
     animalType: 'perro', 
     breed: '', 
     service: 'hospedaje', 
+    room: 'confort',
     checkIn: '',
     checkOut: '',
     days: 1,
     extraServices: {}, 
-    subtotal: 60000 
+    subtotal: 80000 
   }
 ];
 
@@ -66,13 +118,20 @@ function calculateDays(checkIn, checkOut) {
 }
 
 function calculateSubtotal(pet) {
-  let basePrice = SERVICES[pet.service] ? SERVICES[pet.service].price : 0;
+  let basePrice = 0;
   
   if (pet.service === 'hospedaje') {
+    //precio
+    const animalRoom = HOSPEDAJE[pet.animalType];
+    const roomSelected = animalRoom ? animalRoom[pet.room] : null;
+    const roomPrice = roomSelected ? roomSelected.price : 0;
+    //dias
     pet.days = calculateDays(pet.checkIn, pet.checkOut);
-    basePrice *= pet.days;
+    basePrice = roomPrice * pet.days; 
+
   } else {
     pet.days = 1;
+    basePrice = SERVICES[pet.service] ? SERVICES[pet.service].price || 0 : 0;
   }
 
   let extrasTotal = 0;
@@ -185,11 +244,11 @@ function renderForms() {
             </div>
             <div class="col-md-4">
               <label class="form-label fw-semibold text-muted small">Tipo de Animal *</label>
-              <select class="form-select" required onchange="petsData[${index}].animalType = this.value; saveToLocalStorage(); renderSummary();">
+              <select class="form-select" required onchange="updateTipoAnimal(${index}, this.value)">
                 <option value="perro" ${pet.animalType === 'perro' ? 'selected' : ''}>Perro</option>
                 <option value="gato" ${pet.animalType === 'gato' ? 'selected' : ''}>Gato</option>
                 <option value="aves" ${pet.animalType === 'aves' ? 'selected' : ''}>Aves</option>
-                <option value="conejos" ${pet.animalType === 'conejos' ? 'selected' : ''}>Conejos</option>
+                <option value="pequenos" ${pet.animalType === 'pequenos' ? 'selected' : ''}>Pequeños huespedes</option>
               </select>
             </div>
             <div class="col-md-4">
@@ -204,8 +263,8 @@ function renderForms() {
             <select class="form-select" required onchange="updateMainService(${index}, this.value)">
               ${Object.keys(SERVICES).map(key => `
                 <option value="${key}" ${pet.service === key ? 'selected' : ''}>
-                  ${SERVICES[key].name} (${currencyFormatter.format(SERVICES[key].price)})
-                </option>
+                ${SERVICES[key].name} ${key === 'hospedaje' ? '' : `(${currencyFormatter.format(SERVICES[key].price)})`}
+                </option>                      
               `).join('')}
             </select>
           </div>
@@ -274,8 +333,16 @@ function renderServiceDateInputs(serviceType, index) {
   const pet = petsData[index];
   if (serviceType === 'hospedaje') {
     return `
-      <h6 class="fw-bold text-sage-deep mb-3">Fechas de Estancia (Check-in / Check-out)</h6>
+      <h6 class="fw-bold text-sage-deep mb-3">Fechas de Estancia y Tipo de Hospedaje</h6>
       <div class="row g-3">
+        
+        <div class="col-md-12 my-2"> 
+          <small class="text-muted">Tipo de habitacion:</small>
+          <select class="form-select" required onchange="actualizarHospedaje(${index}, this.value)"> 
+             <option value="">Elige una opción</option>
+            ${renderSelectHospedaje(pet)}
+          </select>
+        </div>   
         <div class="col-md-6">
           <label class="form-label small text-muted">Fecha Check-in *</label>
           <input type="date" class="form-control" value="${pet.checkIn || ''}" required onchange="updateHospedajeDates(${index}, 'checkIn', this.value)">
@@ -404,3 +471,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+
+//Funciones para actualizar y renderizar tipo de habitacion por animal
+
+  //Actualizar opciones de hospedaje (Asigna hab, recalcula subtotal, guarda Local)
+  function actualizarHospedaje(index, roomKey){ 
+    petsData[index].room = roomKey;
+    petsData[index].subtotal = calculateSubtotal(petsData[index]);
+    saveToLocalStorage();
+    document.getElementById(`subtotal-${index}`).innerText = currencyFormatter.format(petsData[index].subtotal);
+    renderSummary();
+  }
+
+  //Renderizar select con opciones habitaciones
+  function renderSelectHospedaje(pet){
+    const habitacionesDisponibles = HOSPEDAJE[pet.animalType] || {};
+    return Object.keys(habitacionesDisponibles).map(roomKey => {
+      const room = habitacionesDisponibles[roomKey];
+      const habSeleccionada = pet.room === roomKey ? 'selected' : "";
+      return `
+        <option value="${roomKey}" ${habSeleccionada}>
+          ${room.name} - ${currencyFormatter.format(room.price)}/noche (${room.description})
+        </option>
+      `;
+    }).join('');
+  }
+
+  // Actualizar select(tipo mascota) con cambio de animal 
+  function updateTipoAnimal(index, newAnimalType) {
+    petsData[index].animalType = newAnimalType;
+    const habitacionesDisponibles = Object.keys(HOSPEDAJE[newAnimalType] || {});
+    petsData[index].room = habitacionesDisponibles[0] || 'luxury';
+    petsData[index].subtotal = calculateSubtotal(petsData[index]);
+    saveToLocalStorage();
+    renderForms();
+  }
+
+
