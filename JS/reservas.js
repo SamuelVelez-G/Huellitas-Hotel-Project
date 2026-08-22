@@ -275,12 +275,17 @@ function renderForms() {
 
           <div class="mb-3">
             <label class="form-label fw-semibold text-muted small text-uppercase">Servicios Adicionales (Opcional)</label>
-            <div class="row g-3">
+            <div class="row g-3 justify-content-center">
               ${Object.keys(SERVICES).map(key => {
                 const isMainService = pet.service === key;
-                const currentQty = pet.extraServices[key] || 0;
+                
 
-                return `
+                if(key === 'hospedaje' || isMainService){
+                  return ""
+                } else {
+                  const currentQty = pet.extraServices[key] || 0;
+
+                  return `
                   <div class="col-md-6">
                     <div class="card p-3 h-100 border ${isMainService ? 'bg-light opacity-75' : ''}">
                       <div class="d-flex justify-content-between align-items-start mb-2">
@@ -305,7 +310,7 @@ function renderForms() {
                       </div>
                     </div>
                   </div>
-                `;
+                `;}                
               }).join('')}
             </div>
           </div>
