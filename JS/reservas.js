@@ -13,49 +13,49 @@ const SERVICES = {
 const HOSPEDAJE = {
   perro: {
     luxury: {
-      name: "Habitación Luxury", description: "Privacidad y comodidad para una estadía especial.",price: 100000,
+      name: "Habitación Luxury", description: "Privada premium",price: 100000,
     },
     confort: {
-      name: "Habitación Confort",description: "Todo lo necesario para sentirse como en casa",price: 80000,
+      name: "Habitación Confort",description: "Semi privada",price: 80000,
     },
     familiar: {
-      name: "Suite Familiar", description: "Para dos o más mascotas de una misma familia.",price: 170000,
+      name: "Suite Familiar", description: "Familiar",price: 170000,
     }    
   },
 
   gato: {
     luxury: {
-      name: "Gatuna Luxury", description: "Privacidad + zonas elevadas + exploración",price: 100000,
+      name: "Gatuna Luxury", description: "Privada premium",price: 100000,
     },
     confort: {
-      name: "Gatuna Confort",description: "Tranquilidad y descanso",price: 80000,
+      name: "Gatuna Confort",description: "Semi privada",price: 80000,
     },
     familiar: {
-      name: "Gatuna Familiar", description: "Espacio compartido para gatos de la misma familia.",price: 170000,
+      name: "Gatuna Familiar", description: "Familiar",price: 170000,
     }    
   }, 
 
   aves: {
     luxury: {
-      name: "Aviario Luxury", description: "Espacio individual y privado.",price: 100000,
+      name: "Aviario Luxury", description: "Privada premium",price: 100000,
     },
     confort: {
-      name: "Aviario Confort",description: "Tranquilidad y descanso",price: 80000,
+      name: "Aviario Confort",description: "Semi privada",price: 80000,
     },
     familiar: {
-      name: "Aviario Familiar", description: "Espacio compartido para aves de la misma familia.",price: 170000,
+      name: "Aviario Familiar", description: "Familiar",price: 170000,
     }    
   }, 
 
   pequenos: {
     luxury: {
-      name: "Pequeños Huéspedes Luxury", description: "Privado y más equipado",price: 100000,
+      name: "Pequeños Huéspedes Luxury", description: "Privada premium",price: 100000,
     },
     confort: {
-      name: "Pequeños Huéspedes Confort",description: "Cómodo y funcional",price: 80000,
+      name: "Pequeños Huéspedes Confort",description: "Semi privada",price: 80000,
     },
     familiar: {
-      name: "Pequeños Huéspedes Explorador", description: "Compañeros de la misma familia",price: 170000,
+      name: "Pequeños Huéspedes Explorador", description: "Familiar",price: 170000,
     }    
   },
 
