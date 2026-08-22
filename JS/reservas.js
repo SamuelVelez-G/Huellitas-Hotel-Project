@@ -74,12 +74,12 @@ const defaultPetState = [
     animalType: 'perro', 
     breed: '', 
     service: 'hospedaje', 
-    room: 'confort',
+    room: '',
     checkIn: '',
     checkOut: '',
     days: 1,
     extraServices: {}, 
-    subtotal: 80000 
+    subtotal: 0 
   }
 ];
 
@@ -123,7 +123,7 @@ function calculateSubtotal(pet) {
   if (pet.service === 'hospedaje') {
     //precio
     const animalRoom = HOSPEDAJE[pet.animalType];
-    const roomSelected = animalRoom ? animalRoom[pet.room] : null;
+    const roomSelected = (animalRoom && pet.room) ? animalRoom[pet.room] : null;
     const roomPrice = roomSelected ? roomSelected.price : 0;
     //dias
     pet.days = calculateDays(pet.checkIn, pet.checkOut);
@@ -339,7 +339,7 @@ function renderServiceDateInputs(serviceType, index) {
         <div class="col-md-12 my-2"> 
           <small class="text-muted">Tipo de habitacion:</small>
           <select class="form-select" required onchange="actualizarHospedaje(${index}, this.value)"> 
-             <option value="">Elige una opción</option>
+             <option value="" ${!pet.room ? 'selected' : ''} disabled >Elige una opción</option>
             ${renderSelectHospedaje(pet)}
           </select>
         </div>   
@@ -501,8 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Actualizar select(tipo mascota) con cambio de animal 
   function updateTipoAnimal(index, newAnimalType) {
     petsData[index].animalType = newAnimalType;
-    const habitacionesDisponibles = Object.keys(HOSPEDAJE[newAnimalType] || {});
-    petsData[index].room = habitacionesDisponibles[0] || 'luxury';
+    petsData[index].room = "";
     petsData[index].subtotal = calculateSubtotal(petsData[index]);
     saveToLocalStorage();
     renderForms();
