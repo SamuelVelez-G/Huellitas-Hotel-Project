@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huellitas Hotel - Reservas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300..1000;1,300..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/CSS/navbar.css">
+  <link rel="stylesheet" href="/CSS/reservas.css" />
+  <link rel="stylesheet" href="/CSS/footer.css">
+</head>
+
+<body class="pt-5">
+
+  <div id="navbar-general"></div>
+
+  <main class="container my-4" style="max-width: 1200px;">
+    
+    <!-- Encabezado -->
+    <header class="pt-5 mt-3 mb-4">
+      <h1 class="display-5 text-sage-deep mb-2">Detalle de Reserva</h1>
+      <p class="text-muted">Completa los detalles para asegurar el mejor cuidado para tu mascota. Nos aseguraremos de que todo esté perfecto a su llegada.</p>
+    </header>
+
+    <!-- Formulario Principal -->
+    <form id="booking-form" class="needs-validation" novalidate>
+      <div class="row g-4">
+
+        <!-- Columna Izquierda: Formulario Dinámico de Mascotas -->
+        <div class="col-lg-8">
+
+          <!-- Contador General de Mascotas -->
+          <section class="card bg-surface-bright border-0 shadow-sm mb-4 p-3">
+            <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-3">
+              <div>
+                <h2 class="h5 text-chocolate m-0 d-flex align-items-center">
+                  <span class="material-symbols-outlined text-sage-deep me-2">pets</span>
+                  ¿Cuántas mascotas nos visitan?
+                </h2>
+                <small class="text-muted">Puedes añadir hasta 5 mascotas en una sola reserva.</small>
+              </div>
+
+              <div class="d-flex align-items-center bg-light rounded-pill p-1 border">
+                <button type="button" class="btn btn-sm btn-light rounded-circle p-1 d-flex" onclick="updatePetCount(-1)" aria-label="Disminuir mascotas">
+                  <span class="material-symbols-outlined">remove</span>
+                </button>
+                <span id="pet-count-display" class="px-3 fw-bold fs-5 text-sage-deep">1</span>
+                <button type="button" class="btn btn-sm btn-light rounded-circle p-1 d-flex" onclick="updatePetCount(1)" aria-label="Aumentar mascotas">
+                  <span class="material-symbols-outlined">add</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Listado de Formularios por Mascota -->
+          <div id="pets-container"></div>
+
+          <!-- Botón para Agregar Más Mascotas -->
+          <button id="btn-add-pet" type="button" onclick="updatePetCount(1)" class="btn border-dashed-custom w-100 py-3 rounded-3 d-flex align-items-center justify-content-center fw-semibold">
+            <span class="material-symbols-outlined me-2">add_circle</span>
+            Añadir otra mascota a esta reserva
+          </button>
+
+        </div>
+
+        <!-- Columna Derecha: Resumen de Precios -->
+        <div class="col-lg-4">
+          <div class="card bg-surface-bright border-0 shadow-sm p-3 sticky-summary">
+            <div class="card-body">
+              <h3 class="h5 text-sage-deep pb-3 border-bottom d-flex align-items-center">
+                <span class="material-symbols-outlined me-2">receipt_long</span>
+                Resumen de Reserva
+              </h3>
+
+              <!-- Detalle dinámico del costo -->
+              <div id="summary-list" class="my-3"></div>
+
+              <!-- Total General -->
+              <div class="pt-3 border-top">
+                <div class="d-flex justify-content-between align-items-baseline mb-3">
+                  <span class="h5 text-chocolate m-0">Total</span>
+                  <span id="total-price" class="h3 text-sage-deep m-0">$0</span>
+                </div>
+
+                <button type="submit" class="btn btn-secondary-custom w-100 py-3 d-flex justify-content-center align-items-center rounded-3">
+                  Confirmar Reserva
+                  <span class="material-symbols-outlined ms-2">check_circle</span>
+                </button>
+
+                <p class="text-center small text-muted mt-3 mb-0">
+                  No se realizará ningún cargo hasta la confirmación final en recepción.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </main>
+
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/JS/reservas.js"></script>
+  <script src="/JS/navbar.js"></script>
+  <script src="/JS/footer.js"></script>
+
+</body>
+
+</html>

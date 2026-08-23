@@ -59,3 +59,9 @@ formulario.addEventListener("submit", function (event) {
         alertaContenedor.innerHTML = "";
     }, 3000);
 });
+
+function limpiarServicios() {
+    localStorage.removeItem("servicios");
+
+    alert("Servicios eliminados correctamente");
+}

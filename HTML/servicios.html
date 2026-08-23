@@ -19,9 +19,10 @@
     <div class="card" id="cardReservaInicio">
         <div class=" text-center servicios-hero">
             <div class="hero-text">
-                <h1 class="display-5 fw-bold text-body-emphasis">Nuestros servicios</h1>
-                <div class="col-lg-6 mx-auto">
-                    <p class="lead mb-4">Ofrecemos cuidado personalizado para cada huésped. Desde suites de lujo hasta spa y
+                <h1 class="display-5 fw-bold servicios-hero-title">Nuestros servicios</h1>
+                <div class="hero-divider my-3 pt-1"></div>
+                <div class="col-lg-6">
+                    <p class="servicios-hero-parrafo">Ofrecemos cuidado personalizado para cada huésped. Desde suites de lujo hasta spa y
                     entrenamiento, diseñamos experiencias a la medida para garantizar la
                     felicidad y bienestar de tu mejor amigo.</p>
                 </div>
@@ -29,10 +30,10 @@
         </div>
     </div>
     <!--Servicios desde HTML-->
-    <section class="section-servicio-hab">
-        <div class="servicio-hab-texto">
+    <section class="container-fluid section-servicio-hab">
+        <div class="col-md-12 servicio-hab-texto">
             <h2 class="servicio-hab-title my-4">Hospedaje</h2>
-            <p>Selecciona tu tipo de mascota para ver las habitaciones disponibles</p>
+            <p class="text-center">Selecciona tu tipo de mascota para ver las habitaciones disponibles</p>
         </div>
         <!-- Filtro por mascota-->
         <div class="container-fluid">
@@ -340,8 +341,10 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
-    <!-- codigo para insertar cards degil locale storage -->
+    
+    <!-- codigo para insertar cards del local storage -->
     <section>
         <div class="container">
             <div class="row" id="contenedorServicios"></div>
@@ -354,12 +357,12 @@
             <div class="col-lg-6 mx-auto">
                 <p class="lead mb-4">Reserva hoy mismo y asegura un espacio en nuestras exclusivas instalaciones.
                     Nuestro equipo está listo para recibir a tu mejor amigo.</p>
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center"> <button type="button"
-                        class="btn btn-primary btn-lg px-4 gap-3" id="botonReserva">Reserva ahora</button></div>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a href="../HTML/reservas.html" class="btn btn-primary btn-lg px-4 gap-3" id="botonReserva">Reserva ahora</a>
+                </div>
             </div>
         </div>
     </div>
-
 
     <div id="footer"></div>
 
