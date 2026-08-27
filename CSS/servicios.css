@@ -121,6 +121,13 @@ body {
     background: var(--color-crema);
 }
 
+ #contenedorServicios:empty{
+    display: none;
+    min-height: 0;
+    padding: 0;
+ }
+
+
 /* tarjetas*/
 #card-room{
     display: flex;
@@ -332,16 +339,17 @@ body {
 
 #botonReserva {
     background-color: #F5C254;
-
     color: #173C2C;
-
     border: none;
-
     border-radius: 30px;
-
     padding: 12px 28px;
-
     font-size: 0.9rem;
+    font-weight: 600;
+}
+
+#botonReserva:hover{
+     background-color: var(--color-crema);
+     text-shadow: 5px 5px 15px var(--color-amarillo);
 }
 
 

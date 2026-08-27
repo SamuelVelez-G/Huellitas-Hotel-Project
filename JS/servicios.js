@@ -26,7 +26,7 @@ function mostrarServicios() {
         card.innerHTML = `
             <div class="card-delantera" id="card-room">
                 <img 
-                    src="../IMG/imagenes-servicios/habitaciones/little-luxury.png" 
+                    src="../IMG/imagenes-servicios/limpieza_inicio.png" 
                     class="card-room-img"
                     id="card-room-img"
                     alt="..."
