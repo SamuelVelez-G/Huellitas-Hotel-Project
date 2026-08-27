@@ -44,7 +44,7 @@ function mostrarServicios() {
                     </h5>
                     <p class="card-text">${servicio.descripcion || ''}</p>
                     <div class="card-footer-info">
-                        <a class="precio-card">${servicio.precio ? '$' + servicio.precio : 'valor del servicio'}</a>
+                        <a class="precio-card">${servicio.precio ? '$' + servicio.precio + ' | Sesión' : 'valor del servicio'}</a>
                         <a href="../HTML/reservas.html" class="card-link">reservar</a>
                     </div>    
                 </div>
