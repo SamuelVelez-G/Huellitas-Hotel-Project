@@ -88,9 +88,17 @@ body {
     align-items: center;
 }
 
+.btn-outline-secondary:hover{
+    background-color: var(--color-amarillo);
+}
+
 .btn-icon{
     color: black;
     font-size: larger;
+}
+
+.btn-icon:hover{
+    color: black;
 }
 /*Contenedores cards*/
 .card-servicios {
