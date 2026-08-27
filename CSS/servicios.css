@@ -109,7 +109,7 @@ body {
     margin-bottom: 15px 10px;
 }
 
-.servicio-hab-collap-dog, .servicio-hab-collap-cat, .servicio-hab-collap-bird, .servicio-hab-collap-little{
+.servicio-hab-collap-dog, .servicio-hab-collap-cat, .servicio-hab-collap-bird, .servicio-hab-collap-little, #contenedorServicios{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -299,7 +299,7 @@ body {
 
 
 /* =========================
-   TARJETA FINAL
+   Aviso final de pagina
    ========================= */
 
 #cardReservaFin {
@@ -363,15 +363,21 @@ body {
         display: none;
     }
 
-
-
     /*Card*/
     .card-servicios {
-        width: 18rem;
-        height: 18rem;
-
-        margin: 30px auto;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 18rem;
+        height: 23rem;
+        margin: 20px auto;
     }
+
+    .servicio-hab-collap-dog, .servicio-hab-collap-cat, .servicio-hab-collap-bird, .servicio-hab-collap-little, #contenedorServicios{
+    height: auto;
+    min-height: auto;
+    padding-bottom: 20px;    
+    }
+
 
     #cardReservaFin {
         width: 90%;
