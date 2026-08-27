@@ -38,13 +38,15 @@ function mostrarServicios() {
                 </div>
             </div>
             <div class="card-trasera" id="card-room">
-                <div>
+                <div class="card-body-trasero">
                     <h5 class="card-title">
                         ${servicio.servicio}
                     </h5>
                     <p class="card-text">${servicio.descripcion || ''}</p>
-                    <a class="precio-card">${servicio.precio ? '$' + servicio.precio : 'valor del servicio'}</a>
-                    <a href="../HTML/reservas.html" class="card-link">reservar</a>
+                    <div class="card-footer-info">
+                        <a class="precio-card">${servicio.precio ? '$' + servicio.precio : 'valor del servicio'}</a>
+                        <a href="../HTML/reservas.html" class="card-link">reservar</a>
+                    </div>    
                 </div>
             </div>
         `;
