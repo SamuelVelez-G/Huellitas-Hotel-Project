@@ -4,315 +4,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Iconos -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" />
+    <!-- Tus CSS -->
     <link rel="stylesheet" href="../CSS/navbar.css">
     <link rel="stylesheet" href="../CSS/inicio.css">
     <link rel="stylesheet" href="../CSS/footer.css">
-    <title>Huelllitas Hotel | Inicio</title>
+    <title>Huellitas Hotel | Inicio</title>
     <link rel="icon" type="image/png" href="/IMG/icon/icon.png">
 </head>
 
 <body>
+    <!-- Navbar INTACTO -->
     <div id="navbar-general"></div>
-    <section class="container-hero">
-        <div class="container-hero-div">
-            <div class="row align-items-center g-0">
-                <div class="col-md-6 div-hero-texto">
-                    <p class="hero-parrafo-verde">
-                        <i class="fa-solid fa-paw me-2" id="logo-hero"></i>
-                        Bienvenidos a
-                    </p>
-                    <h1 id="hero-titulo">
-                        <span class="hero-span-brown">Huellitas</span><br>
-                        <span class="hero-span-green">Hotel</span>
-                        <i class="fa-solid fa-paw me-2" id="logo-hero-title"></i>
+
+    <!-- HERO SECTION (Estilo Stich adaptado a Bootstrap) -->
+    <section class="container-hero position-relative d-flex align-items-center">
+        <div class="container z-1 py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-7 div-hero-texto">
+                    <span class="badge rounded-pill mb-3 py-2 px-3 hero-badge shadow-sm">
+                        <i class="fa-solid fa-star text-warning"></i> El cuidado premium que merecen
+                    </span>
+                    <h1 id="hero-titulo" class="display-3 fw-bold mb-3">
+                        Tu mascota, <br><span class="hero-span-green">nuestra prioridad</span>
                     </h1>
-                    <div class="hero-divider my-3 pt-1"></div>
-                    <h5 id="hero-h5-second">
-                        <span class="hero-span-brown">Tu mascota, </span>
-                        <span class="hero-span-green">nuestra prioridad</span>
-                    </h5>
-                    <p class="hero-parraf0-negro">
-                        Un lugar seguro, confiable y lleno de cariño donde tu mascota se siente como en casa.
+                    <p class="hero-parraf0-negro fs-5 mb-4 text-muted d-none d-md-block">
+                        Un espacio diseñado para el bienestar, la diversión y el descanso de tu mejor amigo. Calidad,
+                        cariño y atención profesional en cada momento.
                     </p>
-                    <div class="d-grid d-md-block hero-btn-div">
-                        <a href="/HTML/contactanos.html" class="btn hero-btn m-1" role="button">
-                            <i class="fa-solid fa-paw me-2" id="hero-btn-logo"></i>
-                            Reservar ahora
+                    <div class="d-flex flex-column flex-md-row gap-3 hero-btn-div text-start">
+                        <a href="/HTML/reservas.html"
+                            class="btn hero-btn btn-lg d-flex align-items-center justify-content-center gap-2 shadow-sm"
+                            role="button">
+                            Reservar ahora <i class="fa-solid fa-arrow-right"></i>
                         </a>
-                         <a href="./servicios.html" class="btn hero-btn2 m-1" role="button">
-                            Conocer servicios >
+                        <a href="./servicios.html"
+                            class="btn hero-btn2 btn-lg d-flex align-items-center justify-content-center gap-2 shadow-sm"
+                            role="button">
+                            <i class="fa-regular fa-circle-play"></i> Conocer servicios
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="section-introduccion py-5">
+
+    <!-- INDICADORES (¿Por qué elegirnos?) -->
+    <section class="section-introduccion py-5 bg-white">
         <div class="container">
-            <div class="row align-items-center indicator-row-div">
-                <div class="col-md-6 indicator-col-div1">
-                    <h2 class="section-title mb-5">¿Por qué elegirnos?</h2>                    
-                </div>
-                <div class="col-md-6 text-center indicator-col-div2">
-                    <div class="indicator-div-img-1">
-                        <div class="indicator-div-icono div-icono-1">
+            <div class="row g-4 justify-content-center text-center">
+                <!-- Tarjeta 1 -->
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="p-4 rounded-4 shadow-sm border border-light h-100 indicator-card">
+                        <div class="indicator-div-icono div-icono-1 mx-auto mb-3">
                             <i class="fa-solid fa-hands-holding-child indicator-logo icono-1"></i>
                         </div>
-                        <h5 class="indicator-h5">100%</h5>
-                        <p class="small indicator-parrafo">Atención personalizada</p>
-                        <p></p>
+                        <h3 class="fw-bold mb-1 indicator-h5">100%</h3>
+                        <p class="text-muted small mb-0 indicator-parrafo">Atención <br> Dedicada</p>
                     </div>
-                    <div class="indicator-div-img-1">
-                        <div class="indicator-div-icono div-icono-2">
+                </div>
+                <!-- Tarjeta 2 -->
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="p-4 rounded-4 shadow-sm border border-light h-100 indicator-card">
+                        <div class="indicator-div-icono div-icono-2 mx-auto mb-3">
                             <i class="fa-solid fa-hand-holding-heart indicator-logo icono-2"></i>
                         </div>
-                        <h5 class="indicator-h5">+ 200</h5>
-                        <p class="small indicator-parrafo">Mascotas cuidadas</p>
-                        <p></p>
+                        <h3 class="fw-bold mb-1 indicator-h5">+200</h3>
+                        <p class="text-muted small mb-0 indicator-parrafo">Mascotas <br> Felices</p>
                     </div>
-                    <div class="indicator-div-img-1">
-                        <div class="indicator-div-icono div-icono-3">
+                </div>
+                <!-- Tarjeta 3 -->
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="p-4 rounded-4 shadow-sm border border-light h-100 indicator-card">
+                        <div class="indicator-div-icono div-icono-3 mx-auto mb-3">
                             <i class="fa-solid fa-ranking-star indicator-logo icono-3"></i>
                         </div>
-                        <h5 class="indicator-h5">95%</h5>
-                        <p class="small indicator-parrafo">Clientes satisfechos</p>
-                        <p></p>
+                        <h3 class="fw-bold mb-1 indicator-h5">95%</h3>
+                        <p class="text-muted small mb-0 indicator-parrafo">Clientes <br> Satisfechos</p>
                     </div>
-                    <div class="indicator-div-img-1">
-                        <div class="indicator-div-icono div-icono-4">
+                </div>
+                <!-- Tarjeta 4 -->
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="p-4 rounded-4 shadow-sm border border-light h-100 indicator-card">
+                        <div class="indicator-div-icono div-icono-4 mx-auto mb-3">
                             <i class="fa-solid fa-shield-dog indicator-logo icono-4"></i>
                         </div>
-                        <h5 class="indicator-h5">24/7</h5>
-                        <p class="small indicator-parrafo">Ambiente seguro</p>
-                        <p></p>
+                        <h3 class="fw-bold mb-1 indicator-h5">24/7</h3>
+                        <p class="text-muted small mb-0 indicator-parrafo">Ambiente <br> Seguro</p>
                     </div>
-                    <div class="indicator-div-img-1">
-                        <div class="indicator-div-icono div-icono-5">
+                </div>
+                <!-- Tarjeta 5 -->
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="p-4 rounded-4 shadow-sm border border-light h-100 indicator-card">
+                        <div class="indicator-div-icono div-icono-5 mx-auto mb-3">
                             <i class="fa-solid fa-user-nurse indicator-logo icono-5"></i>
                         </div>
-                        <h5 class="indicator-h5">100%</h5>
-                        <p class="small indicator-parrafo">Personal capacitado</p>
-                        <p></p>
+                        <h3 class="fw-bold mb-1 indicator-h5">100%</h3>
+                        <p class="text-muted small mb-0 indicator-parrafo">Personal <br> Capacitado</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- servicios -->
-    <section class="container-servicios mb-5">
+    <!-- SERVICIOS -->
+    <section class="container-servicios py-5 bg-crema-claro">
         <div class="container mb-4">
-            <h2 class="text-center mb-5 section-title">
-                Nuestros servicios
-            </h2>
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Nuestros Servicios Premium</h2>
+                <p class="text-muted mx-auto fs-5" style="max-width: 600px;">Todo lo que necesitas para que tu mascota
+                    se sienta como en casa, con el cuidado y la diversión que merecen.</p>
+            </div>
+
             <div class="row g-4">
-                <div class="col-6 col-md-3 servicio-col-card">
-                    <div class="card tarjeta h-100 servicio-div-card">
-                        <i class="fa-solid fa-paw me-2 card-icon" id="servicios-card-icono-1"></i>
-                        <div class="card-body text-center servicio-div-card-texto">
-                            <h5 class="servicio-texto-titulo">Hospedaje</h5>
-                            <p class="servicio-texto-parrafo">Un espacio cómodo, seguro y tranquilo donde tu mascota recibirá atención, alimentación y
-                                cuidados personalizados durante toda su estadía.</p>
-                        </div>
+                <!-- Servicio 1 -->
+                <div class="col-6 col-md-6 col-lg-3">
+                    <div
+                        class="card h-100 border-0 rounded-4 shadow-sm p-4 text-center servicio-div-card position-relative overflow-hidden">
+                        <img src="/IMG/imagenes-inicio/iconoHospedaje.png" alt="Ícono de hospedaje"
+                            class="img-fluid mx-auto mb-4 d-block" style="max-width: 150px;">
+                        <h5 class="fw-bold mb-3 text-marron">Hospedaje</h5>
+                        <p class="text-muted mb-4 small">Suites privadas y climatizadas para un descanso profundo y
+                            seguro, con monitoreo constante.</p>
+                        <a href="./servicios.html"
+                            class="mt-auto fw-bold text-decoration-none d-inline-flex align-items-center gap-1 text-verde link-hover">
+                            Ver detalles <i class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="col-6 col-md-3">                    
-                    <div class="card tarjeta h-100 servicio-div-card">
-                        <i class="fa-solid fa-paw me-2 card-icon" id="servicios-card-icono-2"></i>
-                        <div class="card-body text-center servicio-div-card-texto">
-                            <h5 class="servicio-texto-titulo">Recreacion y juegos</h5>
-                            <p class="servicio-texto-parrafo">Actividades, juegos y momentos de diversión diseñados para mantener a tu mascota activa,
-                                entretenida y feliz durante su estadía.</p>
-                        </div>
-                    </div>              
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="card tarjeta h-100 servicio-div-card">
-                        <i class="fa-solid fa-paw me-2 card-icon" id="servicios-card-icono-3"></i>
-                        <div class="card-body text-center servicio-div-card-texto">
-                            <h5 class="servicio-texto-titulo">Socializacion de mascotas</h5>
-                            <p class="servicio-texto-parrafo">
-                                Espacios seguros donde tu mascota  puede compartir y jugar con otros animales, desarrollando sus habilidades sociales mientras disfruta de una experiencia divertida.</p>
-                        </div>
-                    </div>                  
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="card tarjeta h-100 servicio-div-card">
-                        <i class="fa-solid fa-paw me-2 card-icon" id="servicios-card-icono-4"></i>
-                        <div class="card-body text-center servicio-div-card-texto">
-                            <h5 class="servicio-texto-titulo">Peluqueria</h5>
-                            <p class="servicio-texto-parrafo">
-                                Cuidamos la apariencia y bienestar de tu mascota con baños, cepillado, corte de pelo y uñas, utilizando productos adecuados para su cuidado.
-                            </p>
-                        </div>
+                <!-- Servicio 2 -->
+                <div class="col-6 col-md-6 col-lg-3">
+                    <div
+                        class="card h-100 border-0 rounded-4 shadow-sm p-4 text-center servicio-div-card position-relative overflow-hidden">
+                        <img src="/IMG/imagenes-inicio/IconosRecreacion.png" alt="Ícono de recreacion"
+                            class="img-fluid mx-auto mb-4 d-block" style="max-width: 150px;">
+                        <h5 class="fw-bold mb-3 text-marron">Recreación</h5>
+                        <p class="text-muted mb-4 small">Amplios parques exteriores y zonas de juego supervisadas para
+                            liberar energía saludablemente.</p>
+                        <a href="./servicios.html"
+                            class="mt-auto fw-bold text-decoration-none d-inline-flex align-items-center gap-1 text-coral link-hover">
+                            Ver detalles <i class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
-            </div>
-            <div class="text-center mt-5">
-                <a href="/HTML/servicios.html" class="btn hero-btn m-1" role="button">
-                    Conocer nuestros servicios
-                </a>
+                <!-- Servicio 3 -->
+                <div class="col-6 col-md-6 col-lg-3">
+                    <div
+                        class="card h-100 border-0 rounded-4 shadow-sm p-4 text-center servicio-div-card position-relative overflow-hidden">
+                        <img src="/IMG/imagenes-inicio/IconosSocializacion.png" alt="Ícono de socializacion"
+                            class="img-fluid mx-auto mb-4 d-block" style="max-width: 150px;">
+                        <h5 class="fw-bold mb-3 text-marron">Socialización</h5>
+                        <p class="text-muted mb-4 small">Grupos de juego clasificados por tamaño y temperamento para
+                            fomentar habilidades sociales.</p>
+                        <a href="./servicios.html"
+                            class="mt-auto fw-bold text-decoration-none d-inline-flex align-items-center gap-1 text-amarillo link-hover">
+                            Ver detalles <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Servicio 4 -->
+                <div class="col-6 col-md-6 col-lg-3">
+                    <div
+                        class="card h-100 border-0 rounded-4 shadow-sm p-4 text-center servicio-div-card position-relative overflow-hidden">
+                        <img src="/IMG/imagenes-inicio/IconosPeluqueria.png" alt="Ícono de peluqeria"
+                            class="img-fluid mx-auto mb-4 d-block" style="max-width: 150px;">
+                        <h5 class="fw-bold mb-3 text-marron">Peluquería</h5>
+                        <p class="text-muted mb-4 small">Baños relajantes y cortes profesionales para mantener a tu
+                            mascota fresca y radiante.</p>
+                        <a href="./servicios.html"
+                            class="mt-auto fw-bold text-decoration-none d-inline-flex align-items-center gap-1 text-verde link-hover">
+                            Ver detalles <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-
-    <section class="banner py-3 section-instalaciones">
-        <h2 class="text-center my-4 section-title" id="instalaciones-title"> Nuestras instalaciones </h2>
-        <div id="carouselExampleIndicators" class="carousel slide w-75 mx-auto">
-            <div class="carousel-indicators m-5">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active instalaciones-div-item">
-                    <img src="../IMG/imagenes-inicio/img-instalaciones-campoAbierto.png"
-                        class="d-block w-75 mx-auto" alt="perros jugando a campo abierto">
-                    <div class="carousel-caption d-none d-md-block instalaciones-div-texto">
-                        <p class="instalaciones-parrafo mb-3">Contamos con espacios al aire libre para compartir, jugar y desarrollar las habilidades sociales de tu mascota.</p>
+    <!-- INSTALACIONES (Modernizado estilo Stich pero con tus fotos) -->
+    <section class="py-5 section-instalaciones">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <h2 class="section-title mb-4" id="instalaciones-title">Instalaciones de Primer Nivel</h2>
+                    <p class="fs-5 text-light mb-4 opacity-75">Cada rincón de Huellitas Hotel ha sido pensado en la
+                        comodidad y seguridad de los huéspedes. Desde áreas de juego al aire libre hasta suites de
+                        descanso premium.</p>
+                    <ul class="list-unstyled text-white fs-6">
+                        <li class="mb-3 d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-verde fs-5"></i> Zonas de juego separadas por tamaño
+                        </li>
+                        <li class="mb-3 d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-verde fs-5"></i> Climatización en todas las áreas
+                            interiores
+                        </li>
+                        <li class="mb-3 d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-verde fs-5"></i> Espacios de descanso personalizados
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="position-relative rounded-4 overflow-hidden shadow instalaciones-img-card"
+                                style="height: 250px;">
+                                <img src="../IMG/imagenes-inicio/img-instalaciones-campoAbierto.png"
+                                    class="w-100 h-100 object-fit-cover" alt="Campo Abierto">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-gradient-dark text-white">
+                                    <h5 class="mb-0 fw-bold">Parque Exterior</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="position-relative rounded-4 overflow-hidden shadow instalaciones-img-card"
+                                style="height: 250px;">
+                                <img src="../IMG/imagenes-inicio/img-instalaciones-room.png"
+                                    class="w-100 h-100 object-fit-cover" alt="Habitaciones">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-gradient-dark text-white">
+                                    <h5 class="mb-0 fw-bold">Suites de Lujo</h5>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="carousel-item instalaciones-div-item">
-                    <img src="../IMG/imagenes-inicio/img-instalaciones-room.png"
-                        class="d-block w-75 mx-auto " alt="Perros es habitaciones">
-                    <div class="carousel-caption d-none d-md-block instalaciones-div-texto">
-                        <p class="instalaciones-parrafo mb-3">Nuestros espacios son cómodos y tranquilos especiales para que tu mascota reciba atención, alimentación y cuidados.</p>
-                    </div>
-                </div>
-                <div class="carousel-item instalaciones-div-item">
-                    <img src="../IMG/imagenes-inicio/img-instalaciones-zonaJuego.png"
-                        class="d-block w-75 mx-auto" alt="Perros jugando en areas de juego">
-                    <div class="carousel-caption d-none d-md-block instalaciones-div-texto">
-                        <p class="instalaciones-parrafo mb-3">El área de juegos esta pensada para mantener a tu mascota activa, entretenida y feliz.</p>
-                    </div>    
-                </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Siguiente</span>
-            </button>
-
         </div>
     </section>
 
-    <!-- SECCIÓN FINAL -->
-    <section class="section-opiniones pt-5">
-        
-        <div class="container-fluid">
-            <div class="row justify-content-center g-4">
-                <div class="col-md-12">
-                    <div class="bloque-final">
-                        <h2 class="text-center pb-5 section-title">¿Que dicen nuestros clientes?</h2>
-                    </div>    
-                    <div id="carouselExample" class="carousel slide carousel-dark">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="card-group opiniones-div-card mt-1">
-                                    <div class="card opiniones-card">
-                                        <img src="../IMG/imagenes-home/lunaGato.png" class="mx-auto opiniones-card-img" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title opiniones-texto-titulo">Luna</h5>
-                                            <p class="card-text opiniones-card-parrafo"> Dejamos a Luna por primera vez y estábamos muy nerviosos, pero desde el primer momento nos hicieron sentir tranquilos. Recibimos noticias de ella durante su estadía y regresó feliz y tranquila. Sin duda volveremos.</p>
+    <!-- OPINIONES -->
+    <section class="section-opiniones py-5 bg-white">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Huéspedes Felices</h2>
+                <p class="text-muted fs-5">Lo que dicen las familias de nuestros visitantes.</p>
+            </div>
+
+            <div id="carouselExample" class="carousel slide carousel-dark px-md-5">
+                <div class="carousel-inner pb-4">
+                    <div class="carousel-item active">
+                        <div class="row g-5 pt-5 justify-content-center">
+                            <!-- Testimonio 1 -->
+                            <div class="col-12 col-md-4">
+                                <div
+                                    class="card h-100 border border-warning rounded-4 text-center p-4 shadow-sm opiniones-card mt-3">
+                                    <img src="../IMG/imagenes-home/lunaGato.png" class="opiniones-card-img bg-white"
+                                        alt="Luna">
+                                    <div class="card-body pt-5">
+                                        <div class="text-warning mb-3">
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                                class="fa-solid fa-star"></i>
                                         </div>
-                                        <div class="card-footer opiniones-card-footer">
-                                            <small class="text-body-secondary">-Laura M</small>
-                                        </div>
+                                        <p class="card-text text-muted fst-italic">"Desde el primer momento nos hicieron
+                                            sentir tranquilos. Recibimos noticias de ella y regresó feliz. Sin duda
+                                            volveremos."</p>
                                     </div>
-                                    <div class="card opiniones-card card-medio">
-                                        <img src="../IMG/imagenes-home/kiraDalmata.png" class=" mx-auto opiniones-card-img" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title opiniones-texto-titulo">Kira</h5>
-                                            <p class="card-text opiniones-card-parrafo"> Me encantó la atención que tuvieron con Kira. Se nota que realmente disfrutan cuidar a los animales. Me gustó mucho saber que tenía espacios para jugar y descansar. Excelente experiencia!</p>
-                                        </div>
-                                        <div class="card-footer opiniones-card-footer">
-                                            <small class="text-body-secondary">Andrés R.</small>
-                                        </div>
-                                    </div>
-                                    <div class="card opiniones-card">
-                                        <img src="../IMG/imagenes-home/tobyLabrador.png" class=" mx-auto opiniones-card-img" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title opiniones-texto-titulo">Napo</h5>
-                                            <p class="card-text opiniones-card-parrafo"> Las instalaciones son muy bonitas, limpias y organizadas. Mi mascota pudo jugar, socializar y descansar en un ambiente seguro. Es justo el tipo de lugar que buscaba para dejarlo cuando tengo que viajar.</p>
-                                        </div>
-                                        <div class="card-footer opiniones-card-footer">
-                                            <small class="text-body-secondary ">Dina F.</small>
-                                        </div>
+                                    <div class="mt-auto">
+                                        <h5 class="fw-bold text-marron mb-0">Familia de Luna</h5>
+                                        <small class="text-warning fw-bold">Gatita</small>
                                     </div>
                                 </div>
                             </div>
-                            <div class="carousel-item">
-                                <div class="card-group opiniones-div-card mt-4">
-                                    <div class="card opiniones-card">
-                                        <img src="../IMG/imagenes-home/Pingui.jpeg" class="mx-auto opiniones-card-img" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title opiniones-texto-titulo">Misha</h5>
-                                            <p class="card-text opiniones-card-parrafo"> Me encantó saber que además de hospedaje, están pendientes de la alimentación y las necesidades particulares de cada mascota. Dejé a Misha con mucha tranquilidad y cuando regresé estaba feliz y muy bien cuidada.</p>
+                            <!-- Testimonio 2 -->
+                            <div class="col-12 col-md-4 d-none d-md-block">
+                                <div
+                                    class="card h-100 border border-warning rounded-4 text-center p-4 shadow-sm opiniones-card mt-3">
+                                    <img src="../IMG/imagenes-home/kiraDalmata.png" class="opiniones-card-img bg-white"
+                                        alt="Kira">
+                                    <div class="card-body pt-5">
+                                        <div class="text-warning mb-3">
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                                class="fa-solid fa-star"></i>
                                         </div>
-                                        <div class="card-footer opiniones-card-footer">
-                                            <small class="text-body-secondary">Monica D.</small>
-                                        </div>
+                                        <p class="card-text text-muted fst-italic">"Se nota que realmente disfrutan
+                                            cuidar a los animales. Excelente experiencia, Kira amó los espacios
+                                            abiertos."</p>
                                     </div>
-                                    <div class="card opiniones-card card-medio">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeGeTlpdFhuQ4LV9_sIb8VrN5WsxKD-At61BAyPSYQnA&s=10" class=" mx-auto opiniones-card-img" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title opiniones-texto-titulo">Rocky</h5>
-                                            <p class="card-text opiniones-card-parrafo">Desde que llegamos nos atendieron con mucha amabilidad. El equipo fue muy atento y se nota el cariño con el que tratan a cada mascota. Sin duda encontré un lugar de confianza para dejar a Rocky cuando lo necesito.</p>
-                                        </div>
-                                        <div class="card-footer opiniones-card-footer">
-                                            <small class="text-body-secondary">Juan B.</small>
-                                        </div>
+                                    <div class="mt-auto">
+                                        <h5 class="fw-bold text-marron mb-0">Familia de Kira</h5>
+                                        <small class="text-warning fw-bold">Dálmata</small>
                                     </div>
-                                    <div class="card opiniones-card">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgXi8cDpkMFdBufctHQdx0CmsDWKuyBOpNMtLab6ln6w&s=10" class=" mx-auto opiniones-card-img" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title opiniones-texto-titulo">Gangan y Gangon</h5>
-                                            <p class="card-text opiniones-card-parrafo"> Tuve un viaje y no tenia quien cuidara mis pecesitos. Afortunadamente encontre este hotel, durante el tiempo que estuve fuera me mantuvieron informada de mis mascotas... super recomendado</p>
+                                </div>
+                            </div>
+                            <!-- Testimonio 3 -->
+                            <div class="col-12 col-md-4 d-none d-md-block">
+                                <div
+                                    class="card h-100 border border-warning rounded-4 text-center p-4 shadow-sm opiniones-card mt-3">
+                                    <img src="../IMG/imagenes-home/tobyLabrador.png" class="opiniones-card-img bg-white"
+                                        alt="Napo">
+                                    <div class="card-body pt-5">
+                                        <div class="text-warning mb-3">
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                                class="fa-solid fa-star"></i>
                                         </div>
-                                        <div class="card-footer opiniones-card-footer">
-                                            <small class="text-body-secondary ">Claudia M.</small>
-                                        </div>
+                                        <p class="card-text text-muted fst-italic">"Las instalaciones son bonitas y
+                                            limpias. Mi mascota pudo jugar, socializar y descansar en un ambiente súper
+                                            seguro."</p>
                                     </div>
-                                </div>                              
+                                    <div class="mt-auto">
+                                        <h5 class="fw-bold text-marron mb-0">Familia de Napo</h5>
+                                        <small class="text-warning fw-bold">Labrador</small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <button class="carousel-control-prev " type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon opiniones-btn" aria-hidden="true"></span>
-                            <span class="visually-hidden opiniones-btn-span">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                            <span class="carousel-control-next-icon opiniones-btn" aria-hidden="true"></span>
-                            <span class="visually-hidden opiniones-btn-span">Next</span>
-                        </button>
-                    </div>                         
+                    </div>
+                    <!-- (Puedes agregar más .carousel-item aquí siguiendo la misma estructura de .row y .col) -->
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="prev" style="width: 5%;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="next" style="width: 5%;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
     </section>
-    <div id="footer"></div>
 
-    <!-- JS propio -->
-    <script src="script.js"></script>
+    <!-- Footer INTACTO -->
+    <div id="footer"></div>
     <div id="footer-general"></div>
+
+    <!-- JS Bootstrap y Propios -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    <script src="script.js"></script>
     <script src="../JS/home.js"></script>
     <script src="../JS/navbar.js"></script>
     <script src="../JS/footer.js"></script>
