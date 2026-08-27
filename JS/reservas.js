@@ -586,18 +586,19 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
+      const session = JSON.parse(localStorage.getItem(SESSION_KEY));
+      if (!session) {
+        window.location.href = './login.html?redirect=reservas.html';
+        return;
+      }
+
       if (!form.checkValidity()) {
         e.stopPropagation();
       } else {
-        const session = JSON.parse(localStorage.getItem(SESSION_KEY));
-        if (!session) {
-          window.location.href = './login.html?redirect=reservas.html';
-          return;
-        }
-
         const reservations = JSON.parse(localStorage.getItem(RESERVATIONS_KEY)) || [];
         reservations.push({
           usuario: session.email,
+          telefono: session.telefono || '',
           mascotas: petsData.map((pet) => ({ ...pet })),
           total: petsData.reduce((total, pet) => total + pet.subtotal, 0),
           fechaCreacion: new Date().toISOString()
