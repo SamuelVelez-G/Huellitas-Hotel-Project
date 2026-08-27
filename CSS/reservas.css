@@ -1,14 +1,99 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@600;700&display=swap');
 
-body { margin: 0; min-height: 100vh; background: #FFF7ED; color: #24352b; font-family: 'Nunito', sans-serif; }
-.reservation-page { width: min(100% - 2rem, 960px); margin: 4rem auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-.reservation-intro { padding: 2rem 0; }
-.eyebrow { color: #5a8b61; font-weight: 700; }
-h1 { color: #173C2C; font: 700 clamp(2rem, 5vw, 3.5rem) 'Poppins', sans-serif; line-height: 1.1; }
-.reservation-intro p:last-child { font-size: 1.1rem; }
-.reservation-form { padding: 2rem; border: 2px solid rgba(137, 184, 142, .4); border-radius: 16px; background: #fff; box-shadow: 0 15px 35px rgba(23, 60, 44, .1); }
-label { display: block; margin: 1rem 0 .35rem; color: #173C2C; font-weight: 700; }
-input, select { width: 100%; padding: .8rem 1rem; border: 1px solid #bfd7c1; border-radius: 8px; font: inherit; }
-button { width: 100%; margin-top: 1.5rem; padding: .85rem; border: 0; border-radius: 8px; background: #F5C254; color: #173C2C; font-weight: 800; cursor: pointer; }
-#reservation-message { min-height: 1.5rem; margin-bottom: 0; text-align: center; font-weight: 700; }
-@media (max-width: 700px) { .reservation-page { grid-template-columns: 1fr; gap: 1rem; margin-top: 2rem; } }
+/* Base */
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #f9f5e9;
+  color: #2d1603;
+  padding-top: 130px;
+  /* Nuevas reglas */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  flex: 1;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.text-sage-deep {
+  color: #5f7d65;
+}
+
+.text-chocolate {
+  color: #4a3222;
+}
+
+.bg-surface-bright {
+  background-color: #fff8f5;
+}
+
+/* Buttons */
+.btn-primary-custom {
+  background-color: #40674a;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-primary-custom:hover {
+  background-color: #294e34;
+  color: #ffffff;
+}
+
+.btn-secondary-custom {
+  background-color: #fdca65;
+  color: #755400;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-secondary-custom:hover {
+  background-color: #f1bf5c;
+  color: #5d4200;
+}
+
+.border-dashed-custom {
+  border: 2px dashed #86af8e;
+  background-color: transparent;
+  color: #40674a;
+  transition: all 0.2s ease-in-out;
+}
+
+.border-dashed-custom:hover {
+  background-color: rgba(64, 103, 74, 0.05);
+  border-color: #40674a;
+}
+
+.sticky-summary {
+  position: sticky;
+  top: 110px;
+}
+
+#reservation-message {
+  min-height: 1.25rem;
+  color: #40674a;
+  font-weight: 600;
+}
+
+@media (max-width: 991px) {
+  .sticky-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    padding-top: 90px;
+  }
+
+  main.container {
+    margin-top: 0 !important;
+  }
+}

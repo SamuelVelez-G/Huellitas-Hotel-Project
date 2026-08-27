@@ -1,10 +1,11 @@
-:root {
-  --color-carbon: #1C1B18;
-  --color-dorado: #C9A24B;
-  --color-marfil: #F5F1E8;
-  --color-burdeos: #6B1E2B;
-  --color-verde: #3B4A3A;
-}
+    :root {
+        --color-verde: #6DBD6B;
+        --color-amarillo: #F4C95D;
+        --color-coral: #FF9E7A;
+        --color-marron: #754c2e;
+        --color-crema: #FFF7ED;
+        --color-coral-claro: #febf99;
+    }
 
 
 body {

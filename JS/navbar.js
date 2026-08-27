@@ -31,18 +31,19 @@ const nav = `
                         Contactanos
                     </a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/HTML/admin.html">
-                        Reservas/Admin
-                    </a>
-                </li>
-
+                
                 <li class="nav-item">
                     <a class="nav-link" href="/HTML/servicios.html">
                      Servicios
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/HTML/reservas.html">
+                        Reservas
+                    </a>
+                </li>
+
 
             </ul>
         </div>

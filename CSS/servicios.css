@@ -36,17 +36,44 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+.hero-text{
+    padding: 60px  60px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: justify;
+}
 
+.servicios-hero-title{
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.8rem, 4vw, 4.5rem);
+    line-height: 1;  
+    color: var(--color-marron);  
+}
 
+.servicios-hero-parrafo{
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--color-oscuro);
+    margin-bottom: 8px;
+}
 
+.hero-divider{
+    width: 7rem;
+    border-bottom: solid 5px var(--color-verde);
+    border-radius: 8px;    
+}
 
-/* =========================
-   TÍTULOS
-   ========================= */
+/* Contenido Servicios*/
 
-h1 {
-    text-align: center;
-    margin-top: 30px;
+.servicio-hab-title{
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    line-height: 1;  
+    color: var(--color-oscuro);  
+    text-align: center;   
 }
 
 
@@ -322,6 +349,21 @@ h1 {
 
 @media (max-width: 768px) {
 
+
+    /*Hero*/
+    .servicios-hero{
+        min-height: 45vh;
+        background-size: cover;
+        background-position: 89% 100%;
+    }
+
+    .servicios-hero-parrafo{
+        display: none;
+    }
+
+
+
+    /*Card*/
     .card-servicios {
         width: 18rem;
         height: 18rem;
