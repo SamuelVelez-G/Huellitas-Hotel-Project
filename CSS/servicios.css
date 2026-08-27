@@ -220,27 +220,36 @@ body {
 
 .card-trasera {
     transform: rotateY(180deg);
-
     padding: 20px;
+    box-sizing: border-box;
+}
 
-    overflow-y: auto;
+.card-body-trasero {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .card-trasera .card-title {
     color: #2D1603;
     font-size: 1.3rem;
     font-weight: bold;
-
     margin-bottom: 10px;
+    flex-shrink: 0;
 }
 
 .card-trasera .card-text {
     color: #365746;
     font-size: 0.85rem;
-
     line-height: 1.4;
-
     margin-bottom: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.card-footer-info {
+    margin-top: auto; 
+    flex-shrink: 0;   
 }
 
 
