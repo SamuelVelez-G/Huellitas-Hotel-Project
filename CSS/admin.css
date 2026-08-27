@@ -41,7 +41,7 @@ select:focus {
 }
 
 /* Botón */
-#formularioAdmin button,
+#formularioAdmin button, .btn, 
 #admin .btn-primary {
     background-color: var(--color-marron) !important;
     color: var(--color-crema) !important;
