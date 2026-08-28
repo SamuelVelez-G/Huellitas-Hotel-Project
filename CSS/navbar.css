@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');    
+
+    :root {
+        --color-verde: #6DBD6B;
+        --color-amarillo: #F4C95D;
+        --color-coral: #FF9E7A;
+        --color-marron: #754c2e;
+        --color-crema: #FFF7ED;
+        --color-coral-claro: #febf99;
+    }
+
 .navbar {
     background-color: #89B88E !important;
 }
@@ -37,7 +49,6 @@ body.cargado {
     .navbar-toggler {
         position: absolute;
         left: 50%;
-        transform: translateX(-50%);
         top: 50%;
         transform: translate(-50%, -50%);
         z-index: 1031;
@@ -72,3 +83,75 @@ body.cargado {
         display: inline-block;
     }
 }
+
+    /* MODO OSCURO */
+/* Navbar y Menú Desplegable */
+body.dark-mode .navbar,
+body.dark-mode .navbar-collapse {
+    background-color: #2b3a2d !important; 
+}
+
+body.dark-mode .navbar .nav-link {
+    color: var(--color-crema) !important;
+}
+
+body.dark-mode .navbar .nav-link:hover {
+    color: var(--color-amarillo) !important; 
+
+body.dark-mode .navbar .nav-link.active {
+    border-bottom-color: var(--color-amarillo); 
+    color: var(--color-amarillo) !important;
+}
+
+body.dark-mode .userIcon {
+    color: var(--color-crema);
+}
+
+/* Estilos de la Página Global */
+body.dark-mode {
+    background-color: #1e2820;
+    color: #FFF7ED;
+}
+
+body.dark-mode .card {
+    background-color: #2b3a2d !important;
+    color: #FFF7ED !important;
+    border-color: #4d624f;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .card-title {
+    color: var(--color-amarillo) !important;
+}
+
+body.dark-mode .card-text,
+body.dark-mode .card-body {
+    color: #FFF7ED !important;
+}
+
+body.dark-mode .card a {
+    color: var(--color-amarillo);
+    text-decoration: none;
+}
+
+body.dark-mode .card a:hover {
+    text-decoration: underline;
+}
+
+body.dark-mode .card img {
+    opacity: 0.85; 
+    transition: opacity 0.3s ease;
+}
+
+body.dark-mode .card:hover img {
+    opacity: 1;
+}
+.navbar, 
+.navbar-expand-lg .navbar-collapse {
+    background-color: #89B88E !important;
+}
+
+body.dark-mode .navbar,
+body.dark-mode .navbar-expand-lg .navbar-collapse {
+    background-color: #2b3a2d !important; 
+}}
