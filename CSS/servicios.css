@@ -23,29 +23,32 @@ body {
     padding-top: 77px;
 }
 
+/*Font titulos*/
+.servicios-hero,
+.servicios-hero-title {
+    font-family: "Poppins", sans-serif;
+}
+
+
+
 /* Hero */
 .servicios-hero{
     display: flex;
     flex-direction: row;
     min-height: 80vh;
     background-color: var(--color-crema);
-    background-image: url(../IMG/imagenes-servicios/hero_horizonta.png) ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    font-family: "Poppins", sans-serif;
+    background: url(../IMG/imagenes-servicios/hero_horizonta.png) no-repeat center /cover ;
 }
 
 .hero-text{
-    padding: 60px  60px;
+    padding: 60px ;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     text-align: justify;
 }
 
 .servicios-hero-title{
-    font-family: "Poppins", sans-serif;
     font-weight: 800;
     font-size: clamp(2.8rem, 4vw, 4.5rem);
     line-height: 1;  
@@ -68,7 +71,6 @@ body {
 /* Contenido Servicios*/
 
 .servicio-hab-title{
-    font-family: "Nunito", sans-serif;
     font-weight: 600;
     font-size: clamp(2rem, 3vw, 3.5rem);
     line-height: 1;  
@@ -76,15 +78,6 @@ body {
     text-align: center;   
 }
 
-
-/* =========================
-   TARJETA INICIAL
-   ========================= */
-
-#cardReservaInicio {
-    background-color: #FEF2DB;
-    border: none;
-}
 
 /* Habitaciones----------------------------------------------- */
 /*Filtro*/
@@ -95,20 +88,53 @@ body {
     align-items: center;
 }
 
+.btn-outline-secondary:hover{
+    background-color: var(--color-amarillo);
+}
+
 .btn-icon{
     color: black;
     font-size: larger;
 }
-/*Contenedores cards*/
 
-.servicio-hab-collap-dog, .servicio-hab-collap-cat, .servicio-hab-collap-bird, .servicio-hab-collap-little{
+.btn-icon:hover{
+    color: black;
+}
+/*Contenedores cards*/
+.card-servicios {
+    margin: 30px 20px 20px 20px ;
+    width: 100%;
+    max-width: 17rem;
+    height: 23rem;
+    flex: 1 1 16rem;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: transparent;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+    margin-bottom: 15px 10px;
+}
+
+.servicio-hab-collap-dog, .servicio-hab-collap-cat, .servicio-hab-collap-bird, .servicio-hab-collap-little, #contenedorServicios{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
     min-height: 420px;  
     border: none;  
     background: var(--color-crema);
 }
+
+ #contenedorServicios:empty{
+    display: none;
+    min-height: 0;
+    padding: 0;
+ }
+
 
 /* tarjetas*/
 #card-room{
@@ -146,24 +172,6 @@ body {
 }
 
 
-/* =========================
-   TARJETAS DE SERVICIOS
-   ========================= */
-
-.card-servicios {
-    margin: 30px 20px 20px 20px ;
-    width: 18rem;
-    height: 18rem;
-    cursor: pointer;
-    position: relative;
-    border: none;
-    background: transparent;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    transform-origin: center center;
-    margin-bottom: 50px;
-}
-
 
 /* =========================
    CARA DELANTERA Y TRASERA
@@ -172,17 +180,12 @@ body {
 .card-delantera,
 .card-trasera {
     position: absolute;
-
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
-
     margin: 0;
-
-    background-color: #FEF2DB;
-
+    background-color: rgba(255, 255, 255, 0.76);
     backface-visibility: hidden;
 }
 
@@ -220,27 +223,36 @@ body {
 
 .card-trasera {
     transform: rotateY(180deg);
-
     padding: 20px;
+    box-sizing: border-box;
+}
 
-    overflow-y: auto;
+.card-body-trasero {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .card-trasera .card-title {
     color: #2D1603;
     font-size: 1.3rem;
     font-weight: bold;
-
     margin-bottom: 10px;
+    flex-shrink: 0;
 }
 
 .card-trasera .card-text {
     color: #365746;
     font-size: 0.85rem;
-
     line-height: 1.4;
-
     margin-bottom: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.card-footer-info {
+    margin-top: auto; 
+    flex-shrink: 0;   
 }
 
 
@@ -297,7 +309,7 @@ body {
 
 
 /* =========================
-   TARJETA FINAL
+   Aviso final de pagina
    ========================= */
 
 #cardReservaFin {
@@ -330,16 +342,17 @@ body {
 
 #botonReserva {
     background-color: #F5C254;
-
     color: #173C2C;
-
     border: none;
-
     border-radius: 30px;
-
     padding: 12px 28px;
-
     font-size: 0.9rem;
+    font-weight: 600;
+}
+
+#botonReserva:hover{
+     background-color: var(--color-crema);
+     text-shadow: 5px 5px 15px var(--color-amarillo);
 }
 
 
@@ -361,15 +374,21 @@ body {
         display: none;
     }
 
-
-
     /*Card*/
     .card-servicios {
-        width: 18rem;
-        height: 18rem;
-
-        margin: 30px auto;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 18rem;
+        height: 23rem;
+        margin: 20px auto;
     }
+
+    .servicio-hab-collap-dog, .servicio-hab-collap-cat, .servicio-hab-collap-bird, .servicio-hab-collap-little, #contenedorServicios{
+    height: auto;
+    min-height: auto;
+    padding-bottom: 20px;    
+    }
+
 
     #cardReservaFin {
         width: 90%;

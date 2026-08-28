@@ -13,6 +13,7 @@ body {
     background: var(--color-crema);
     margin: 0;
     padding: 0; 
+    font-family: "Nunito", sans-serif;
 }
 
 /* formulario */
@@ -21,6 +22,7 @@ form {
     flex-direction: column;
     gap: 15px;
     max-width: 100%;
+    margin-left: 75px;
 }
 
 input,
@@ -37,12 +39,68 @@ textarea:focus,
 select:focus {
     border-color: var(--color-marron);
     box-shadow: 0 0 0 0.2rem rgba(117, 76, 46, 0.25);
+}
 
+/* Huellas */
+.div-img{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+    min-height: 400px; 
+}
+
+.img-formulario {
+    width: 80px;            
+    height: auto;
+    opacity: 0.8;  
+    position: absolute;        
+    transition: transform 0.3s ease;
+}  
+
+#img-1 {
+    bottom: 0%;
+    left: 60%;
+    transform: rotate(25deg);
+}
+
+#img-2 {
+    top: 50%;
+    right: 25%;
+    transform: rotate(20deg);    
+}
+
+#img-3 {
+    top: 45%;
+    left: 85%;
+    transform: rotate(20deg);    
+}
+
+#img-4 {
+    bottom: 10%;
+    right: 20%;
+    transform: rotate(35deg);
+}
+
+#img-5 {
+    top: 20%;
+    right: 20%;
+    transform: rotate(35deg);
 }
 
 /* Botón */
-#formularioAdmin button,
+.div-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+#formularioAdmin button, .btn, 
 #admin .btn-primary {
+    width: 180px;
     background-color: var(--color-marron) !important;
     color: var(--color-crema) !important;
     font-weight: 600;
@@ -52,20 +110,19 @@ select:focus {
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-family: Poppins Semi-Bold;
 }
 
-#formularioAdmin button:hover,
-#admin .btn-primary:hover {
-    background-color: #5c3b24 !important;
+.btn-admin:hover, #formularioAdmin button:hover,
+#admin .btn-primary:hover{
+    background-color: #5c3b24c5 !important;
 }
 
 /* Títulos */
 h1, h2 {
     color: var(--color-marron)!important;
-    font-weight: 700;
     text-align: center;
     letter-spacing: 1px;
+    font-family: "Poppins", sans-serif;;
 }
 
 h1 {

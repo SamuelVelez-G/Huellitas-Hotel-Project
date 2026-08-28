@@ -26,7 +26,7 @@ function mostrarServicios() {
         card.innerHTML = `
             <div class="card-delantera" id="card-room">
                 <img 
-                    src="../IMG/imagenes-servicios/habitaciones/little-luxury.png" 
+                    src="../IMG/imagenes-servicios/limpieza_inicio.png" 
                     class="card-room-img"
                     id="card-room-img"
                     alt="..."
@@ -38,13 +38,15 @@ function mostrarServicios() {
                 </div>
             </div>
             <div class="card-trasera" id="card-room">
-                <div>
+                <div class="card-body-trasero">
                     <h5 class="card-title">
                         ${servicio.servicio}
                     </h5>
                     <p class="card-text">${servicio.descripcion || ''}</p>
-                    <a class="precio-card">${servicio.precio ? '$' + servicio.precio : 'valor del servicio'}</a>
-                    <a href="../HTML/reservas.html" class="card-link">reservar</a>
+                    <div class="card-footer-info">
+                        <a class="precio-card">${servicio.precio ? '$' + servicio.precio + ' | Sesión' : 'valor del servicio'}</a>
+                        <a href="../HTML/reservas.html" class="card-link">reservar</a>
+                    </div>    
                 </div>
             </div>
         `;
