@@ -8,6 +8,10 @@ const nameInput = document.getElementById('name');
 const nameLabel = document.getElementById('name-label');
 const phoneInput = document.getElementById('phone');
 const phoneLabel = document.getElementById('phone-label');
+
+const confirmPasswordInput = document.getElementById('confirm-password');
+const confirmPasswordLabel = document.getElementById('confirm-password-label');
+
 const submitButton = document.getElementById('submit-button');
 const description = document.getElementById('auth-description');
 const message = document.getElementById('form-message');
@@ -28,12 +32,19 @@ function cambiarModo(registro) {
     registerTab.classList.toggle('active', registro);
     loginTab.setAttribute('aria-selected', String(!registro));
     registerTab.setAttribute('aria-selected', String(registro));
+    
     nameInput.classList.toggle('hidden', !registro);
     nameLabel.classList.toggle('hidden', !registro);
     nameInput.required = registro;
+    
     phoneInput.classList.toggle('hidden', !registro);
     phoneLabel.classList.toggle('hidden', !registro);
     phoneInput.required = registro;
+
+    confirmPasswordInput.classList.toggle('hidden', !registro);
+    confirmPasswordLabel.classList.toggle('hidden', !registro);
+    confirmPasswordInput.required = registro;
+
     submitButton.textContent = registro ? 'Crear cuenta' : 'Iniciar sesion';
     description.textContent = registro ? 'Crea tu cuenta para reservar con facilidad.' : 'Ingresa para continuar con tu reserva.';
     mostrarMensaje('', '');
@@ -60,6 +71,13 @@ authForm.addEventListener('submit', function (evento) {
     const usuarios = obtenerUsuarios();
 
     if (isRegistering) {
+        // Validar que las contraseñas coincidan
+        const confirmPassword = confirmPasswordInput.value;
+        if (password !== confirmPassword) {
+            mostrarMensaje('Las contraseñas no coinciden.', 'error');
+            return;
+        }
+
         if (usuarios.some(usuario => usuario.email === email)) {
             mostrarMensaje('Ese correo ya esta registrado.', 'error');
             return;
