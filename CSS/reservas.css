@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;@600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');    
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@600;700&display=swap');
 
+/* Base */
 body {
   font-family: 'Nunito', sans-serif;
-  background-color: #f9f5e9;
+  background: #f9f5e9;
   color: #2d1603;
   padding-top: 130px;
-  
   /* Nuevas reglas */
   display: flex;
   flex-direction: column;
@@ -18,24 +18,25 @@ main {
   flex: 1;
 }
 
-h1, h2, h3, h4, h5, h6, 
+h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
 }
 
-.text-sage-deep { 
-  color: #5f7d65; 
+.text-sage-deep {
+  color: #5f7d65;
 }
 
-.text-chocolate { 
-  color: #4a3222; 
+.text-chocolate {
+  color: #4a3222;
 }
 
-.bg-surface-bright { 
-  background-color: #fff8f5; 
+.bg-surface-bright {
+  background-color: #fff8f5;
 }
 
+/* Buttons */
 .btn-primary-custom {
   background-color: #40674a;
   color: #ffffff;
@@ -74,4 +75,26 @@ h1, h2, h3, h4, h5, h6,
 .sticky-summary {
   position: sticky;
   top: 110px;
+}
+
+#reservation-message {
+  min-height: 1.25rem;
+  color: #40674a;
+  font-weight: 600;
+}
+
+@media (max-width: 991px) {
+  .sticky-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    padding-top: 90px;
+  }
+
+  main.container {
+    margin-top: 0 !important;
+  }
 }

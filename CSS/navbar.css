@@ -28,6 +28,20 @@ body.cargado {
     height: 2rem;
 }
 
+.login-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #173C2C;
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.login-link:hover {
+    color: #FFF7ED;
+}
+
 .active {
     font-weight: bold;
     border-bottom: 3px solid #FFF7ED;
@@ -54,7 +68,7 @@ body.cargado {
         z-index: 1031;
     }
 
-    .navbar .userIcon {
+    .navbar .login-link {
         margin-left: auto !important;
         margin-right: 1rem !important;
     }

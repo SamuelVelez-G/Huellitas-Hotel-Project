@@ -1,6 +1,8 @@
+const SESSION_KEY = 'huellitasSesion';
+const RESERVATIONS_KEY = 'huellitasReservas';
 let currentPetCount = 1;
 const maxPets = 5;
-const maxService = 4;
+const maxServiceQty = 4;
 
 const STORAGE_KEY = "huellitas_reserva_temp";
 
@@ -343,7 +345,7 @@ function renderForms() {
           </div>
         </div>
         <div class="card-body p-4">
-          
+
           <div class="row g-3 mb-3">
             <div class="col-md-4">
               <label class="form-label fw-semibold text-muted small">Nombre de la mascota *</label>
@@ -374,7 +376,7 @@ function renderForms() {
                   (key) => `
                 <option value="${key}" ${pet.service === key ? "selected" : ""}>
                 ${SERVICES[key].name} ${key === "hospedaje" ? "" : `(${currencyFormatter.format(SERVICES[key].price)})`}
-                </option>                      
+                </option>
               `,
                 )
                 .join("")}
@@ -407,11 +409,11 @@ function renderForms() {
                         </div>
                         ${isMainService ? `<span class="badge bg-secondary">Servicio Principal</span>` : ""}
                       </div>
-                      
+
                       <div class="mt-auto pt-2 d-flex align-items-center justify-content-between">
                         <small class="text-muted">Cantidad:</small>
-                        <select class="form-select form-select-sm w-auto" 
-                          ${isMainService ? "disabled" : ""} 
+                        <select class="form-select form-select-sm w-auto"
+                          ${isMainService ? "disabled" : ""}
                           onchange="updateExtraQuantity(${index}, '${key}', this.value)">
                           <option value="0" ${currentQty === 0 ? "selected" : ""}>0 (Ninguno)</option>
                           <option value="1" ${currentQty === 1 ? "selected" : ""}>1 vez</option>
@@ -454,14 +456,14 @@ function renderServiceDateInputs(serviceType, index) {
     return `
       <h6 class="fw-bold text-sage-deep mb-3">Fechas de Estancia y Tipo de Hospedaje</h6>
       <div class="row g-3">
-        
-        <div class="col-md-12 my-2"> 
+
+        <div class="col-md-12 my-2">
           <small class="text-muted">Tipo de habitacion:</small>
-          <select class="form-select" required onchange="actualizarHospedaje(${index}, this.value)"> 
+          <select class="form-select" required onchange="actualizarHospedaje(${index}, this.value)">
              <option value="" ${!pet.room ? "selected" : ""} disabled >Elige una opción</option>
             ${renderSelectHospedaje(pet)}
           </select>
-        </div>   
+        </div>
         <div class="col-md-6">
           <label class="form-label small text-muted">Fecha Check-in *</label>
           <input type="date" class="form-control" value="${pet.checkIn || ""}" required onchange="updateHospedajeDates(${index}, 'checkIn', this.value)">
@@ -584,11 +586,32 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
+      const session = JSON.parse(localStorage.getItem(SESSION_KEY));
+      if (!session) {
+        window.location.href = './login.html?redirect=reservas.html';
+        return;
+      }
+
       if (!form.checkValidity()) {
         e.stopPropagation();
       } else {
-        saveToLocalStorage();
-        alert("¡Reserva confirmada y guardada exitosamente!");
+        const reservations = JSON.parse(localStorage.getItem(RESERVATIONS_KEY)) || [];
+        reservations.push({
+          usuario: session.email,
+          telefono: session.telefono || '',
+          mascotas: petsData.map((pet) => ({ ...pet })),
+          total: petsData.reduce((total, pet) => total + pet.subtotal, 0),
+          fechaCreacion: new Date().toISOString()
+        });
+        localStorage.setItem(RESERVATIONS_KEY, JSON.stringify(reservations));
+        clearLocalStorage();
+        const reservationMessage = document.getElementById('reservation-message');
+        reservationMessage.textContent = `Reserva confirmada para ${session.nombre || session.email}.`;
+        form.reset();
+        form.classList.remove('was-validated');
+        petsData = defaultPetState.map((pet) => ({ ...pet, extraServices: {} }));
+        currentPetCount = 1;
+        renderForms();
       }
 
       form.classList.add("was-validated");
