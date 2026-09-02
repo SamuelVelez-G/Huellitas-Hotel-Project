@@ -1,0 +1,188 @@
+#perrito-contenedor {
+  --centro-perrito: 66px;
+  position: fixed;
+  right: 20px;
+  bottom: 18px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 132px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.burbuja-texto {
+  position: relative;
+  align-self: flex-end;
+  width: max-content;
+  max-width: min(220px, calc(100vw - 32px));
+  margin-bottom: 10px;
+  padding: 10px 14px;
+  border: 2px solid #8e52e0;
+  border-radius: 16px;
+  background-color: #ffffff;
+  color: #4a2e80;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  transform-origin: bottom center;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.burbuja-texto::after {
+  content: "";
+  position: absolute;
+  left: calc(100% - var(--centro-perrito));
+  bottom: -8px;
+  width: 14px;
+  height: 14px;
+  border-right: 2px solid #8e52e0;
+  border-bottom: 2px solid #8e52e0;
+  background: #ffffff;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.burbuja-texto.burbuja-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+#perrito-img {
+  display: block;
+  width: 112px;
+  height: 112px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  cursor: pointer;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.25));
+  transition: transform 0.2s ease;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#perrito-img:hover {
+  transform: scale(1.08);
+}
+
+/* El GIF normal tiene un lienzo panorámico y necesita esta ampliación. */
+#perrito-img[data-estado="normal"],
+#perrito-img[data-estado="caminando"] {
+  transform: scale(1.7);
+}
+
+#perrito-img[data-estado="normal"]:hover,
+#perrito-img[data-estado="normal"]:focus-visible {
+  transform: scale(1.82);
+}
+
+/* Una imagen única se muestra sin ajustes propios de los GIF originales. */
+#perrito-img[data-imagen-unica="true"] {
+  transform: none;
+}
+
+#perrito-img[data-imagen-unica="true"]:hover,
+#perrito-img[data-imagen-unica="true"]:focus-visible {
+  transform: scale(1.08);
+}
+
+#perrito-img:focus-visible {
+  outline: 3px solid rgba(142, 82, 224, 0.65);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+@keyframes perritoRespirando {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(3px) scale(0.985);
+  }
+}
+
+#perrito-img[data-estado="durmiendo"] {
+  animation: perritoRespirando 2.6s ease-in-out infinite;
+}
+
+@keyframes caminataLateral {
+  0% {
+    transform: translateX(0) scale(1.7) scaleX(1);
+  }
+  45% {
+    transform: translateX(-120px) scale(1.7) scaleX(1);
+  }
+  50% {
+    transform: translateX(-120px) scale(1.7) scaleX(-1);
+  }
+  95% {
+    transform: translateX(0) scale(1.7) scaleX(-1);
+  }
+  100% {
+    transform: translateX(0) scale(1.7) scaleX(1);
+  }
+}
+
+#perrito-img.perrito-caminando {
+  animation: caminataLateral 6s linear both;
+}
+
+@keyframes caminataImagenUnica {
+  0% {
+    transform: translateX(0) scaleX(1);
+  }
+  45% {
+    transform: translateX(-120px) scaleX(1);
+  }
+  50% {
+    transform: translateX(-120px) scaleX(-1);
+  }
+  95% {
+    transform: translateX(0) scaleX(-1);
+  }
+  100% {
+    transform: translateX(0) scaleX(1);
+  }
+}
+
+#perrito-img[data-imagen-unica="true"].perrito-caminando {
+  animation-name: caminataImagenUnica;
+}
+
+@media (max-width: 576px) {
+  #perrito-contenedor {
+    --centro-perrito: 50px;
+    right: 10px;
+    bottom: 10px;
+    width: 100px;
+  }
+
+  #perrito-img {
+    width: 88px;
+    height: 88px;
+  }
+
+  .burbuja-texto {
+    width: min(180px, calc(100vw - 24px));
+    max-width: min(190px, calc(100vw - 24px));
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #perrito-img,
+  .burbuja-texto {
+    transition: none;
+  }
+
+  #perrito-img.perrito-caminando,
+  #perrito-img[data-estado="durmiendo"] {
+    animation: none;
+  }
+}

@@ -1,88 +1,191 @@
-.navbar {
-    background-color: #89B88E !important;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap");
+
+:root {
+  --color-verde: #6dbd6b;
+  --color-amarillo: #f4c95d;
+  --color-coral: #ff9e7a;
+  --color-marron: #754c2e;
+  --color-crema: #fff7ed;
 }
 
 body {
-    opacity: 0;
-    padding-top: 60px;
+  opacity: 0;
+  padding-top: 64px;
 }
 
 body.cargado {
-    opacity: 1;
+  opacity: 1;
 }
 
-.userIcon {
-    width: 2rem;
-    height: 2rem;
+.navbar {
+  min-height: 64px;
+  background-color: #89b88e !important;
+  border-bottom: 1px solid rgba(23, 60, 44, 0.1);
+  box-shadow: 0 3px 14px rgba(23, 60, 44, 0.08);
+  font-family: "Nunito", sans-serif;
+}
+
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.navbar-brand img {
+  display: block;
+}
+
+.navbar .nav-link {
+  position: relative;
+  padding: 0.55rem 0.35rem;
+  color: #173c2c;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  right: 0.35rem;
+  bottom: 0.2rem;
+  left: 0.35rem;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #fff7ed;
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  min-width: 190px;
+}
+
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  padding: 0;
+  border: 1px solid rgba(23, 60, 44, 0.35);
+  border-radius: 50%;
+  background-color: rgba(255, 247, 237, 0.2);
+  color: #173c2c;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  background-color: rgba(255, 247, 237, 0.55);
+  transform: translateY(-1px);
+  outline: 3px solid rgba(244, 201, 93, 0.4);
+  outline-offset: 2px;
 }
 
 .login-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    color: #173C2C;
-    text-decoration: none;
-    font-weight: 600;
-    white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #173c2c;
+  text-decoration: none;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: color 0.2s ease;
 }
 
 .login-link:hover {
-    color: #FFF7ED;
+  color: #fff7ed;
 }
 
-.active {
-    font-weight: bold;
-    border-bottom: 3px solid #FFF7ED;
+.userIcon {
+  width: 1.55rem;
+  height: 1.55rem;
 }
 
 @media (max-width: 991.98px) {
+  .navbar .container-fluid {
+    position: relative;
+    flex-wrap: nowrap;
+  }
 
-    .navbar .container-fluid {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+  .navbar-toggler {
+    order: 3;
+    margin-left: 0.35rem;
+  }
 
-    .navbar-brand {
-        margin-right: 0;
-    }
+  .nav-actions {
+    order: 2;
+    min-width: auto;
+    margin-left: auto;
+  }
 
-    .navbar-toggler {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        top: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1031;
-    }
+  .navbar-collapse {
+    position: absolute;
+    top: calc(100% + 1px);
+    right: 0;
+    left: 0;
+    order: 4;
+    width: 100%;
+    padding: 1rem 0 1.25rem;
+    background-color: #89b88e !important;
+    box-shadow: 0 12px 20px rgba(23, 60, 44, 0.16);
+  }
 
-    .navbar .login-link {
-        margin-left: auto !important;
-        margin-right: 1rem !important;
-    }
+  .navbar-nav {
+    align-items: center;
+    gap: 0.35rem;
+  }
+}
 
-    .navbar-collapse {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
+@media (max-width: 680px) {
+  .login-text {
+    display: none;
+  }
 
-        background-color: #89B88E !important;
+  .nav-actions {
+    gap: 0.5rem;
+  }
 
-        padding: 1.5rem 0;
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
 
-        z-index: 1030;
-    }
+  .userIcon {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+}
 
-    .navbar-nav {
-        width: 100%;
-        text-align: center;
-        align-items: center;
-        gap: 0.8rem;
-    }
+@media (max-width: 480px) {
+  .login-link {
+    display: none;
+  }
+}
 
-    .navbar-nav .nav-link {
-        display: inline-block;
-    }
+@media (prefers-reduced-motion: reduce) {
+  .navbar .nav-link,
+  .navbar .nav-link::after,
+  .theme-toggle,
+  .login-link {
+    transition: none;
+  }
 }

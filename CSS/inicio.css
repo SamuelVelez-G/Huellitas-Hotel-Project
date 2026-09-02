@@ -183,16 +183,196 @@ body {
     }
     .hero-btn-div {
         justify-content: center;
+        margin-top: 650px;
+    }
+
+    /* Servicios */
+    #servicios-card-icono-1,#servicios-card-icono-2, #servicios-card-icono-3,#servicios-card-icono-4 {
+        font-size: 50px;
+    }
+
+    #servicios-card-icono-1{
+        left: -5px;
+    }
+
+    #servicios-card-icono-3{
+        top: 150px;
+        right: -35px;
+    }
+
+    /* Opiniones */
+    .opiniones-div-card{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 15% 10%;
+        gap: 70px;  
+    }
+
+    .card-medio{
+        display: none;
+    }
+}
+/* MODO OSCURO  */
+body.dark-mode {
+    background-color: #1e2820;
+    color: #FFF7ED;
+}
+
+body.dark-mode .section-title {
+    color: #FFF7ED;
+}
+
+body.dark-mode .hero-parraf0-negro,
+body.dark-mode .servicio-texto-parrafo,
+body.dark-mode .opiniones-card-parrafo,
+body.dark-mode .indicator-parrafo {
+    color: #E2E8F0;
+}
+
+/* Hero en Modo Oscuro */
+body.dark-mode .container-hero {
+    background-color: #2b3a2d;
+    background-blend-mode: overlay;
+}
+
+body.dark-mode #hero-titulo {
+    color: var(--color-amarillo);
+}
+
+body.dark-mode .hero-span-brown, 
+body.dark-mode #logo-hero {
+    color: var(--color-crema);
+}
+
+/* Tarjetas y Contenedores en Modo Oscuro */
+body.dark-mode .card,
+body.dark-mode .opiniones-card {
+    background-color: #2b3a2d !important;
+    color: #FFF7ED !important;
+    border-color: #4d624f !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .card-title,
+body.dark-mode .opiniones-texto-titulo,
+body.dark-mode .servicio-texto-titulo {
+    color: var(--color-amarillo) !important;
+}
+
+body.dark-mode .card-text,
+body.dark-mode .card-body {
+    color: #FFF7ED !important;
+}
+
+body.dark-mode .indicator-col-div2 {
+    background-color: #2b3a2d88;
+    border: 1px solid #4d624f;
+}
+
+body.dark-mode .opiniones-card-footer {
+    background-color: #354738;
+}
+
+/* Huellas y detalles decorativos en Modo Oscuro */
+body.dark-mode #servicios-card-icono-1, 
+body.dark-mode #servicios-card-icono-2, 
+body.dark-mode #servicios-card-icono-3, 
+body.dark-mode #servicios-card-icono-4 {
+    color: var(--color-amarillo);
+    opacity: 0.25;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .container-hero {
+        min-height: 45vh;
+        background-size: cover;
+        background-position: 89% 100%;
+    }
+    
+    .div-hero-texto {
+        margin: 30px 0;
+        padding: 20px;
+    }
+
+    .hero-parrafo-verde,
+    .hero-parraf0-negro,
+    #hero-h5-second,  
+    .hero-btn2 {
+        display: none;
+    }    
+
+    .hero-btn-div {
+        display: flex;
+        justify-content: center;
+        margin-top: 650px;
+    }
+
+    #servicios-card-icono-1,
+    #servicios-card-icono-2, 
+    #servicios-card-icono-3,
+    #servicios-card-icono-4 {
+        font-size: 50px;
+    }
+
+    #servicios-card-icono-1 {
+        left: -5px;
+    }
+
+    #servicios-card-icono-3 {
+        top: 150px;
+        right: -35px;
+    }
+
+    .opiniones-div-card {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 15% 10%;
+        gap: 70px;  
+    }
+
+    .card-medio {
+        display: none;
     }
 }
 
+/* Ajuste final del hero para evitar desbordamientos en pantallas pequeñas. */
 @media (max-width: 768px) {
     .container-hero {
-        min-height: 60vh;
-        background-position: 80% center;
-        text-align: left; /* Antes estaba en center */
+        min-height: calc(100svh - 64px);
+        padding-top: 1.75rem;
+        align-items: flex-start !important;
+        background-image: url(../IMG/imagenes-inicio/img-hero-responsive.png);
+        background-position: 70% center;
     }
+
+    .div-hero-texto {
+        width: 100%;
+        margin: 0 !important;
+        padding: 1.25rem 1rem !important;
+        text-align: center !important;
+    }
+
+    #hero-titulo {
+        max-width: 100%;
+        font-size: clamp(1.95rem, 9vw, 2.45rem) !important;
+        line-height: 1.08;
+        overflow-wrap: anywhere;
+    }
+
+    .hero-badge {
+        max-width: 100%;
+        white-space: normal;
+    }
+
     .hero-btn-div {
-        align-items: flex-start; /* Antes estaba justify-content: center */
+        align-items: center;
+        justify-content: center;
+        margin-top: 1.25rem !important;
+    }
+
+    .hero-btn,
+    .hero-btn2 {
+        width: min(100%, 250px);
     }
 }
