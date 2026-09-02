@@ -1,0 +1,45 @@
+INSERT INTO mascotas (id_especie, nombre, cantidad, id_usuario) VALUES (99, 'Rex', 1, 1);
+14:52:47
+INSERT INTO detalle_reservas (id_mascota, id_servicio, tipo_servicio, cantidad_mascotas, precio_unitario, subtotal, id_reserva) VALUES (99, 1, 'Principal', 1, 45000.00, 45000.00, 1);
+14:52:36
+SELECT r.id_reserva, r.total AS total_registrado, SUM(dr.subtotal) AS total_calculado, (r.total - SUM(dr.subtotal)) AS diferencia FROM reservas r JOIN detalle_reservas dr ON r.id_reserva = dr.id_reserva GROUP BY r.id_reserva, r.total;
+14:52:00
+SELECT r.id_reserva, u.nombre_usuario AS cliente, m.nombre AS nombre_mascota, e.nombre, s.nombre_servicio, dr.tipo_servicio, dr.cantidad_mascotas, dr.precio_unitario, dr.subtotal, r.fecha_inicio, r.fecha_fin FROM reservas r JOIN usuarios u ON r.id_usuario = u.id_usuario JOIN detalle_reservas dr ON r.id_reserva = dr.id_reserva JOIN mascotas m ON dr.id_mascota = m.id_mascota JOIN especie e ON m.id_especie = e.id_especie JOIN servicios s ON dr.id_servicio = s.id_servicio WHERE r.id_reserva = 1;
+14:51:20
+SELECT e.nombre, s.nombre_servicio, s.descripcion, s.precio, CASE WHEN s.disponible IS TRUE THEN 'Disponible' ELSE 'Agotado' END AS estado FROM servicios s JOIN especie e ON s.id_especie = e.id_especie ORDER BY e.nombre, s.nombre_servicio;
+14:49:26
+SELECT e.nombre, s.nombre_servicio, s.descripcion, s.precio, CASE WHEN s.disponible IS TRUE THEN 'Disponible' ELSE 'Agotado' END AS estado FROM servicios s JOIN especie e ON s.id_especie = e.id_especie ORDER BY e.nombre_especie, s.nombre_servicio;
+14:49:18
+SELECT e.nombre_especie, s.nombre_servicio, s.descripcion, s.precio, CASE WHEN s.disponible IS TRUE THEN 'Disponible' ELSE 'Agotado' END AS estado FROM servicios s JOIN especie e ON s.id_especie = e.id_especie ORDER BY e.nombre_especie, s.nombre_servicio;
+14:49:10
+Disponible
+14:48:29
+INSERT INTO mascotas (id_especie, nombre, cantidad, id_usuario) VALUES (3, 'Paco', 1, 3);
+14:47:20
+SELECT * FROM public.usuarios ORDER BY id_usuario ASC
+14:47:03
+INSERT INTO usuarios (nombre_usuario, telefono, email, contrasena, fecha_registro, rol) VALUES ('Laura Gómez', '+573105554433', 'laura@email.com', 'clave_encriptada_789', NOW(), 'cliente');
+14:46:59
+SELECT * FROM public.usuarios ORDER BY id_usuario ASC
+14:46:29
+INSERT INTO usuarios (nombre_usuario, telefono, email, contrasena, fecha_registro, rol) VALUES ('Admin General', '+573119876543', 'admin@hotelmascotas.com', 'admin_hash_456', NOW(), 'admin');
+14:46:15
+SELECT * FROM public.detalle_reservas ORDER BY id_detalle ASC
+14:45:09
+SELECT dr.id_reserva, u.nombre_usuario AS cliente, COUNT(dr.id_detalle) AS cantidad_de_servicios, STRING_AGG(s.nombre_servicio, ', ') AS servicios_contratados, r.total AS total_reserva FROM detalle_reservas dr JOIN reservas r ON dr.id_reserva = r.id_reserva JOIN usuarios u ON r.id_usuario = u.id_usuario JOIN servicios s ON dr.id_servicio = s.id_servicio GROUP BY dr.id_reserva, u.nombre_usuario, r.total HAVING COUNT(dr.id_detalle) > 1;
+14:44:49
+SELECT r.id_reserva, u.nombre_usuario, m.nombre AS mascota, s.nombre_servicio, dr.tipo_servicio, dr.subtotal, r.total AS total_general FROM reservas r JOIN usuarios u ON r.id_usuario = u.id_usuario JOIN detalle_reservas dr ON r.id_reserva = dr.id_reserva JOIN mascotas m ON dr.id_mascota = m.id_mascota JOIN servicios s ON dr.id_servicio = s.id_servicio WHERE r.id_reserva = 1;
+14:44:13
+SELECT * FROM public.especie ORDER BY id_especie ASC
+14:43:33
+SELECT u.nombre_usuario, m.nombre AS nombre_mascota, e.nombre FROM usuarios u JOIN mascotas m ON u.id_usuario = m.id_usuario JOIN especie e ON m.id_especie = e.id_especie;
+14:43:12
+SELECT * FROM public.especie ORDER BY id_especie ASC
+14:42:59
+SELECT * FROM public.mascotas ORDER BY id_mascota ASC
+14:42:22
+INSERT INTO mascotas (id_especie, nombre, cantidad, id_usuario) 
+VALUES (99, 'Rex', 1, 1);
+Total rows: 1 of 1
+Query complete 00:00:01.320
+Ln 2, Col 26
