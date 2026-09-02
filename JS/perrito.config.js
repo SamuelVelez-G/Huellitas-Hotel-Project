@@ -1,11 +1,4 @@
-/*
- * CONFIGURACIÓN DEL AVATAR
- *
- * Para usar un solo perro en toda la página:
- * 1. Copia tu GIF, PNG, JPG o WebP dentro de la carpeta IMG.
- * 2. Escribe aquí su nombre. Ejemplo: imagenUnica: "mi-perrito.gif"
- * 3. Deja "" para volver a usar todos los movimientos originales.
- */
+/* CONFIGURACIÓN DEL AVATAR*/
 window.HUELLITAS_AVATAR_CONFIG = {
     imagenUnica: "",
 
@@ -14,8 +7,8 @@ window.HUELLITAS_AVATAR_CONFIG = {
         normal: "perrito-normal.gif",
         hablando: "perrito-hablando.gif",
         comiendo: "perrito-comiendo.gif",
-        celebrando: "perrito-celebrando.gif.gif",
-        durmiendo: "perrito-durmiendo-corregido.png",
+        celebrando: "perrito-celebrando.gif",
+        durmiendo: "perrito-durmiendo.gif",
         saludando: "perrito-saludando.gif"
     },
 
@@ -30,9 +23,9 @@ window.HUELLITAS_AVATAR_CONFIG = {
     ],
 
     tiempos: {
-        mensaje: 3800,
+        mensaje: 4200,
         saludo: 4200,
-        dormir: 15000,
+        dormir: 4200,
         accionAutomatica: 30000
     },
 

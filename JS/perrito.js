@@ -11,8 +11,8 @@
             normal: "perrito-normal.gif",
             hablando: "perrito-hablando.gif",
             comiendo: "perrito-comiendo.gif",
-            celebrando: "perrito-celebrando.gif.gif",
-            durmiendo: "perrito-durmiendo-corregido.png",
+            celebrando: "perrito-celebrando.gif",
+            durmiendo: "perrito-durmiendo.gif",
             saludando: "perrito-saludando.gif"
         },
         frases: [
