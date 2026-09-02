@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 .poppins-medium {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
@@ -242,3 +244,90 @@ textarea::placeholder{
     color: #DEDEDE !important;
     opacity: 1 !important;
 }
+/* =========================================
+   MODO OSCURO (DARK MODE)
+   ========================================= */
+body.dark-mode {
+    background-color: #1e2820;
+    color: var(--color-crema);
+}
+ 
+body.dark-mode main {
+    background-color: #1e2820;
+}
+ 
+/* Sección superior */
+body.dark-mode .hero-section {
+    background-color: #2b3a2d;
+    border-bottom: 3px solid var(--color-verde);
+}
+ 
+/* Bloques grises */
+body.dark-mode .gray-box {
+    background-color: #2b3a2d;
+}
+ 
+body.dark-mode .content-title {
+    color: var(--color-amarillo);
+}
+ 
+body.dark-mode .content-text,
+body.dark-mode .pForm {
+    color: var(--color-crema);
+}
+ 
+body.dark-mode .gray-bar {
+    background-color: #354738;
+}
+ 
+/* Tarjetas de redes sociales */
+body.dark-mode .social-card {
+    background: #2b3a2d;
+    color: var(--color-crema);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+ 
+/* Formulario en Modo Oscuro */
+body.dark-mode .formulariocontact {
+    background-color: #2b3a2d;
+    border-left: solid var(--color-verde) 2px;
+    border-image: linear-gradient(to bottom, #2b3a2d, var(--color-verde), #2b3a2d) 1;
+}
+ 
+body.dark-mode .h2Form {
+    color: var(--color-amarillo);
+}
+ 
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background-color: #1e2820;
+    color: var(--color-crema);
+    border: solid 2px var(--color-coral);
+}
+ 
+body.dark-mode .form-control:focus,
+body.dark-mode .form-select:focus {
+    background-color: #1e2820;
+    color: var(--color-crema);
+    border-color: var(--color-coral);
+    box-shadow: 0 0 0 .25rem #ff9d7a70;
+}
+ 
+body.dark-mode .form-label-nombre,
+body.dark-mode .form-label-apellido,
+body.dark-mode .form-label-email,
+body.dark-mode .form-label-telefonoWS,
+body.dark-mode .form-label-Tel,
+body.dark-mode .form-label-categoria {
+    color: var(--color-crema);
+}
+ 
+body.dark-mode .optionDisabled {
+    color: #ffffff70;
+    background-color: #1e2820;
+}
+ 
+body.dark-mode textarea::placeholder {
+    color: #ffffff60 !important;
+}
+ 

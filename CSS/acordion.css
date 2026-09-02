@@ -1,258 +1,356 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;@600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-    
-    :root {
-        --color-verde: #6DBD6B;
-        --color-amarillo: #F4C95D;
-        --color-coral: #FF9E7A;
-        --color-marron: #754c2e;
-        --color-crema: #FFF7ED;
-        --color-coral-claro: #febf99;
-    }
 
-    body {
-        background: var(--color-crema);
-    }
+:root {
+    --color-verde: #6DBD6B;
+    --color-amarillo: #F4C95D;
+    --color-coral: #FF9E7A;
+    --color-marron: #754c2e;
+    --color-crema: #FFF7ED;
+    --color-coral-claro: #febf99;
+    --color-texto-oscuro: #2D1E15; 
+}
 
-    /* ===========================
+body {
+    background: var(--color-crema);
+}
+
+/* ===========================
     para el contenerdor del acordion
     =========================== */
 
-    #nosotros .accordion-item,
-    #nosotros .accordion-collapse {
-        background: var(--color-crema);
-        border: none;
-    }
+#nosotros .accordion-item,
+#nosotros .accordion-collapse {
+    background: var(--color-crema);
+    border: none;
+}
 
-    /* ===========================
+/* ===========================
     Para los botones
     =========================== */
 
-    #nosotros .accordion-button {
-        background-color: var(--color-crema);
-        color: var(--color-marron) !important;
-        border: none;
-        box-shadow: none;
-    }
+#nosotros .accordion-button {
+    background-color: var(--color-crema);
+    color: var(--color-marron) !important;
+    border: none;
+    box-shadow: none;
+}
 
-    #nosotros .accordion-button:not(.collapsed) {
-        background-color: var(--color-coral-claro);
-        color: var(--color-marron) !important;
-    }
+#nosotros .accordion-button:not(.collapsed) {
+    background-color: var(--color-coral-claro);
+    color: var(--color-marron) !important;
+}
 
-    #nosotros .accordion-button:focus {
-        box-shadow: none;
-    }
+#nosotros .accordion-button:focus {
+    box-shadow: none;
+}
 
 
-    #nosotros .accordion-button::after {
-        box-shadow: none;
-    }
+#nosotros .accordion-button::after {
+    box-shadow: none;
+}
 
-    .button-title{
-        font-family: "Nunito", sans-serif;
-        font-weight: 600;
-        font-size: 1.35rem;
-    
-    }
+.button-title {
+    font-family: Nunito, sans-serif;
+    font-size: 1.35rem;
 
-    /* ===========================
+    font-weight: 600;
+}
+
+/* ===========================
     para las tarjetas del acordion
     =========================== */
 
-    #nosotros .acordeon-card {
-        width: 100%;
-        margin: 0;
-        overflow: hidden;
-        transition: none;
-        height: auto;
-    }
+#nosotros .acordeon-card {
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    transition: none;
+    height: auto;
+}
 
-    #nosotros .card-rigth{
-       background: #ffffff;
-        background: linear-gradient(83deg, rgba(255, 255, 255, 1) 17%, rgba(254, 248, 241, 1) 36%);
-        
-    }
+#nosotros .card-rigth {
+    background: #ffffff;
+    background: linear-gradient(83deg, rgba(255, 255, 255, 1) 17%, rgba(254, 248, 241, 1) 36%);
 
-    #nosotros .card-left{
-        background: #FEF8F1;
-        background: linear-gradient(83deg,rgba(254, 248, 241, 1) 64%, rgba(255, 255, 255, 1) 83%);;
-    }
+}
 
-    #nosotros .acordeon-card:hover {
-        transform: none;
-    }
+#nosotros .card-left {
+    background: #FEF8F1;
+    background: linear-gradient(83deg, rgba(254, 248, 241, 1) 64%, rgba(255, 255, 255, 1) 83%);
+    ;
+}
 
-    /* para espacio interno del contenido */
+#nosotros .acordeon-card:hover {
+    transform: none;
+}
 
-    #nosotros .accordion-collapse {
-        padding: 0 1rem;
-    }
+/* para espacio interno del contenido */
+
+#nosotros .accordion-collapse {
+    padding: 0 1rem;
+}
 
 
-    /* ===========================
+/* ===========================
     para texto tarjetas
     =========================== */
-    .code-acordion, .parrafo-acordion{
-        font-family: "Nunito", sans-serif;;
-        font-weight: 400;
-        font-size: 1.15rem;
-    }
-    
-    #nosotros .accordion-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        border-radius: .5rem;
-    }
+.code-acordion,
+.parrafo-acordion {
+    font-family: "Nunito", sans-serif;
+    ;
+    font-weight: 400;
+    font-size: 1.15rem;
+}
 
-    #nosotros .img-rigth{
-        object-position: right;
-    }
+#nosotros .accordion-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: .5rem;
+}
 
-    #nosotros .img-left{
-        object-position: left;
-    }
+#nosotros .img-rigth {
+    object-position: right;
+}
 
-    #nosotros .card-body {
-        width: 100%;
-        height: 100%;
-        padding: 2rem;
-    }
-    #nosotros .container{
+#nosotros .img-left {
+    object-position: left;
+}
+
+#nosotros .card-body {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+}
+
+#nosotros .container {
     max-width: 1500px;
 }
 
-    /* ===========================
+/* ===========================
    CARRUSEL
 =========================== */
-    .carousel-item img {
-        width: 100%;
-        height: 75vh;
-        object-fit: cover;
-    }
+.carousel-item img {
+    width: 100%;
+    height: 75vh;
+    object-fit: cover;
+}
 
-    .carousel-caption {
-        bottom: 15%;
-    }
+.carousel-caption {
+    bottom: 15%;
+}
 
-    .carousel-caption h1 {
-        font-size: clamp(1.4rem, 4vw, 3rem);
-        color: var(--color-marron) !important;
-    }
+.carousel-caption h1 {
+    font-size: clamp(1.4rem, 4vw, 3rem);
+    color: var(--color-marron) !important;
+}
 
-    .carousel-caption p {
-        font-size: clamp(.9rem, 2vw, 1.2rem);
-    }
-
-
-    .container__cards {
-        max-width: 1200px;
-        margin: auto;
-        padding: 60px 20px;
-    }
-
-    .container__cards .card {
-        width: 100%;
-        max-width: 320px;
-        margin: auto;
-        border: none;
-        border-radius: 18px;
-        overflow: hidden;
-    }
-
-    .cover img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .container__cards {
-        max-width: 1200px;
-        margin: auto;
-        padding: 60px 20px;
-    }
+.carousel-caption p {
+    font-size: clamp(.9rem, 2vw, 1.2rem);
+}
 
 
-    #nosotros {
-        margin-top: 60px;
-    }
+.container__cards {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 20px;
+}
 
-    #nosotros .accordion-item {
-        border-bottom: 2px solid var(--color-verde);
-    }
+.container__cards .card {
+    width: 100%;
+    max-width: 320px;
+    margin: auto;
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+}
 
-    #nosotros .accordion-item:last-child {
-        border-bottom: none;
-    }
+.cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-    #nosotros .accordion-item {
-        margin-bottom: 15px;
-    }
+.container__cards {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 20px;
+}
 
 
-#nosotros .card-body{
-     font-size: 1.3rem;
+#nosotros {
+    margin-top: 60px;
+}
+
+#nosotros .accordion-item {
+    border-bottom: 2px solid var(--color-verde);
+}
+
+#nosotros .accordion-item:last-child {
+    border-bottom: none;
+}
+
+#nosotros .accordion-item {
+    margin-bottom: 15px;
+}
+
+
+#nosotros .card-body {
+    font-size: 1.3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%;
 }
-   .titulo-equipo{
+
+.titulo-equipo {
     color: var(--color-marron);
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
     letter-spacing: 1px;
 }
-    /* ===========================
+
+/* ===========================
    RESPONSIVE TABLET
 =========================== */
 
-    @media (max-width:768px) {
+@media (max-width:768px) {
 
-        .carousel-item img {
-            height: 45vh;
-        }
-
-        .carousel-caption {
-            bottom: 5%;
-            text-align: center !important;
-        }
-
-        .carousel-caption h1 {
-            font-size: 1.5rem;
-        }
-
-        .carousel-caption p {
-            display: none;
-        }
-
-        #nosotros .accordion-img {
-            height: 220px;
-        }
-
-        #nosotros .card-body {
-            padding: 1.5rem;
-        }
-
-        #nosotros .accordion-collapse {
-            padding: 0;
-        }
-
+    .carousel-item img {
+        height: 45vh;
     }
 
-    /* ===========================
+    .carousel-caption {
+        bottom: 5%;
+        text-align: center !important;
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.5rem;
+    }
+
+    .carousel-caption p {
+        display: none;
+    }
+
+    #nosotros .accordion-img {
+        height: 220px;
+    }
+
+    #nosotros .card-body {
+        padding: 1.5rem;
+    }
+
+    #nosotros .accordion-collapse {
+        padding: 0;
+    }
+
+}
+
+/* ===========================
    RESPONSIVE CELULAR
 =========================== */
 
-    @media (max-width:576px) {
+@media (max-width:576px) {
 
-        #nosotros .container,
-        .container__cards {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
+    #nosotros .container,
+    .container__cards {
+        padding-left: 20px;
+        padding-right: 20px;
     }
+
+}
+/* MODO OSCURO */
+
+
+body.dark-mode {
+    background: #1e2820;
+    color: var(--color-crema);
+}
+
+body.dark-mode #nosotros .accordion-item,
+body.dark-mode #nosotros .accordion-collapse {
+    background: #1e2820;
+}
+
+body.dark-mode #nosotros .accordion-item {
+    border-bottom: 2px solid #4d624f; 
+}
+
+body.dark-mode #nosotros .accordion-item:last-child {
+    border-bottom: none;
+}
+
+body.dark-mode #nosotros .accordion-button {
+    background-color: #1e2820;
+    color: var(--color-crema) !important;
+}
+
+body.dark-mode #nosotros .accordion-button:not(.collapsed) {
+    background-color: #2b3a2d; 
+    color: var(--color-amarillo) !important; 
+}
+
+body.dark-mode #nosotros .accordion-button::after {
+    filter: invert(1) brightness(2);
+}
+
+body.dark-mode #nosotros .card-rigth {
+    background: #2b3a2d;
+    background: linear-gradient(83deg, rgba(43, 58, 45, 1) 17%, rgba(30, 40, 32, 1) 36%);
+}
+
+body.dark-mode #nosotros .card-left {
+    background: #2b3a2d;
+    background: linear-gradient(83deg, rgba(30, 40, 32, 1) 64%, rgba(43, 58, 45, 1) 83%);
+}
+
+
+body.dark-mode .titulo-equipo {
+    color: var(--color-amarillo);
+}
+
+body.dark-mode .carousel-caption h1 {
+    color: var(--color-amarillo) !important;
+}
+
+body.dark-mode .carousel-caption p {
+    color: var(--color-crema);
+}
+
+body.dark-mode #nosotros .accordion-img,
+body.dark-mode .carousel-item img {
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+
+body.dark-mode .carousel-item img {
+    filter: brightness(0.9) contrast(1.1); 
+}
+
+body.dark-mode .container__cards {
+    background-color:  #1e2820; 
+}
+body.dark-mode .container__cards .card,
+body.dark-mode .card {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+body.dark-mode .card-title {
+    color: var(--color-amarillo) !important;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+body.dark-mode .card-text {
+    color: var(--color-crema) !important;
+}
+body.dark-mode h5 {
+    color: #000000 !important;
+}
+
