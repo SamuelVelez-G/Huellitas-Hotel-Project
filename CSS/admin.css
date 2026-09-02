@@ -1,160 +1,180 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-    
 :root {
     --color-verde: #6DBD6B;
     --color-amarillo: #F4C95D;
     --color-coral: #FF9E7A;
-    --color-marron: #754c2e;
+    --color-marron: #754C2E;
     --color-crema: #FFF7ED;
 }
 
 body {
-    background: var(--color-crema);
-    margin: 0;
-    padding: 0; 
+    background-color: var(--color-crema);
     font-family: "Nunito", sans-serif;
 }
 
-/* formulario */
-form {
+h1,
+h2,
+.text-marron {
+    color: var(--color-marron);
+    font-family: "Poppins", sans-serif;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--color-marron);
+    box-shadow: 0 0 0 0.25rem rgba(117, 76, 46, 0.25);
+}
+
+.btn-admin {
+    background-color: var(--color-marron);
+    border-color: var(--color-marron);
+    color: var(--color-crema);
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-admin:hover,
+.btn-admin:focus {
+    background-color: #5c3b24;
+    border-color: #5c3b24;
+    color: #fff;
+}
+
+.custom-tabs .nav-link {
+    color: var(--color-marron);
+    font-weight: 600;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-tabs .nav-link:hover {
+    background-color: rgba(117, 76, 46, 0.1);
+    color: var(--color-marron);
+}
+
+.custom-tabs .nav-link.active {
+    background-color: var(--color-marron);
+    color: var(--color-crema);
+}
+
+/* Contenedor del icono pequeño (fondo de color pastel) */
+.icon-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px; /* Cuadro con bordes redondeados */
+    margin-right: 12px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1; /* Para que quede por encima de la marca de agua */
+}
+
+/* Clases de colores para los fondos de los iconos (versiones suaves de tus colores) */
+.bg-verde-claro { background-color: #e5f5e5; color: var(--color-marron); }
+.bg-coral-claro { background-color: #ffebe3; color: var(--color-marron); }
+.bg-amarillo-claro { background-color: #fdf5df; color: var(--color-marron); }
+
+/* Estilo para el icono gigante de fondo (Marca de agua) */
+.watermark-icon {
+    position: absolute;
+    top: -15%;
+    right: -10%;
+    width: 140px;
+    height: 140px;
+    opacity: 0.05; /* Muy transparente */
+    color: var(--color-marron);
+    z-index: 0;
+    pointer-events: none; /* Evita que interfiera con clics */
+}
+
+/* Ajuste de diseño de la tarjeta para alinear el icono y el texto como en la imagen */
+.card-header-custom {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.card-title-custom {
+    font-size: 1rem;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.calendario-timeline {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    max-width: 100%;
-    margin-left: 75px;
+    min-width: 800px; /* Para que sea scrolleable en móviles */
 }
 
-input,
-textarea,
-select {
-    padding: 10px;
-    border: 1px solid #dcd2c6;
-    border-radius: 6px;
-    background-color: #ffffff;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-    border-color: var(--color-marron);
-    box-shadow: 0 0 0 0.2rem rgba(117, 76, 46, 0.25);
-}
-
-/* Huellas */
-.div-img{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+/* 7 columnas: 1 para habitaciones (más ancha) y 6 para los días */
+.timeline-row {
+    display: grid;
+    grid-template-columns: 220px repeat(6, 1fr);
+    border-bottom: 1px solid #eee;
+    min-height: 80px;
     align-items: center;
-    gap:30px;
-    min-height: 400px; 
 }
 
-.img-formulario {
-    width: 80px;            
-    height: auto;
-    opacity: 0.8;  
-    position: absolute;        
-    transition: transform 0.3s ease;
-}  
-
-#img-1 {
-    bottom: 0%;
-    left: 60%;
-    transform: rotate(25deg);
+.timeline-header {
+    border-bottom: 2px solid #e0e0e0;
 }
 
-#img-2 {
-    top: 50%;
-    right: 25%;
-    transform: rotate(20deg);    
+.timeline-cell {
+    padding: 15px;
 }
 
-#img-3 {
-    top: 45%;
-    left: 85%;
-    transform: rotate(20deg);    
+/* Líneas divisorias de los días de fondo */
+.timeline-bg {
+    position: absolute;
+    top: 0;
+    left: 220px; /* Después de la columna de habitaciones */
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    z-index: 0;
+}
+.timeline-bg > div {
+    border-right: 1px dashed #f0f0f0;
 }
 
-#img-4 {
-    bottom: 10%;
-    right: 20%;
-    transform: rotate(35deg);
-}
-
-#img-5 {
-    top: 20%;
-    right: 20%;
-    transform: rotate(35deg);
-}
-
-/* Botón */
-.div-btn{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-#formularioAdmin button, .btn, 
-#admin .btn-primary {
-    width: 180px;
-    background-color: var(--color-marron) !important;
-    color: var(--color-crema) !important;
-    font-weight: 600;
-    border: none;
-    box-shadow: none;
+/* Tarjetas de Reservas */
+.reserva-block {
+    position: relative;
+    z-index: 1;
+    margin: 10px;
     padding: 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
 }
 
-.btn-admin:hover, #formularioAdmin button:hover,
-#admin .btn-primary:hover{
-    background-color: #5c3b24c5 !important;
+.reserva-block img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
-/* Títulos */
-h1, h2 {
-    color: var(--color-marron)!important;
-    text-align: center;
-    letter-spacing: 1px;
-    font-family: "Poppins", sans-serif;;
+/* Estados de las tarjetas */
+.reserva-success {
+    background-color: #E8F5E9;
+    border-color: #C8E6C9;
 }
-
-h1 {
-    margin-bottom: 1rem;
+.reserva-warning {
+    background-color: #FFF8E1;
+    border-color: #FFECB3;
 }
-
-h2 {
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
-}
-
-/* RESPONSIVE CELULAR */
-
-@media (max-width: 576px) {
-    #admin .container {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
-/* RESPONSIVE TABLET */
-
-@media (max-width: 768px) {
-    .container {
-        padding-left: 25px;
-        padding-right: 25px;
-    }
-
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    h2 {
-        font-size: 1.3rem;
-    }
+.reserva-danger {
+    background-color: #FFEBEE;
+    border-color: #FFCDD2;
 }

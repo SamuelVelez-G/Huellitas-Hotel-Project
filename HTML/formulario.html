@@ -4,100 +4,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>formulario</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="../CSS/admin.css">
-    <link rel="stylesheet" href="../CSS/navbar.css" />
-    <link rel="stylesheet" href="../CSS/footer.css">
+    <title>Panel de Administrador</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/admin.css">
+    <link rel="icon" type="image/png" href="/IMG/icon/icon.png">
 </head>
 
 <body>
-     <div id="navbar-general"></div>
+    <div id="navbar-general"></div>
 
-    <div class="container my-4">
+    <div class="container-fluid my-4 px-4">
         <div class="row">
-            <div class="col-12 mb-4">
-                <h1 class="mb-3">Panel de Administrador</h1>
-                <h2>Registrar servicio</h2>
-            </div>
-        </div>
-
-        <div class="row g-4 align-items-center">
-            <div class="col-12 col-lg-7">
-                <form id="formularioAdmin">
-                    <div id="alertaContenedor"></div>
-                    
-                    <!-- SERVICIO -->
-                    <div class="mb-3">
-                        <label for="servicio" class="form-label"> Servicio: </label>
-                        <textarea class="form-control" id="servicio" name="servicio" required placeholder="El servicio es?..."></textarea>
-                    </div>
-
-                    <!-- DESCRIPCION -->
-                    <div class="mb-3">
-                        <label for="descripcion" class="form-label">Descripción del servicio:</label>
-                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Describe el servicio..." required></textarea>
-                    </div>
-
-                    
-                    <div class="row div-precio-disponibilidad justify-content-center text-center g-3">
-                        <div class="col-6 col-sm-6">
-                            <!-- PRECIO -->
-                            <div class="mb-3">
-                                <label for="precio" class="form-label">Precio:</label>
-                                <input type="number" class="form-control" id="precio" name="precio" placeholder="$000" min="0" required>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-sm-6">
-                            <!-- DISPONIBILIDAD -->
-                            <div class="mb-3">
-                                <label for="disponibilidad" class="form-label"> Disponibilidad:</label>
-                                <select class="form-select" id="disponibilidad" name="disponibilidad" required>
-                                    <option value="" disabled selected> ¿Estado? </option>
-                                    <option value="Disponible"> Disponible </option>
-                                    <option value="No disponible">No disponible </option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- BOTONES -->
-                    <div class="mt-4 div-btn">
-                        <button type="button" class="btn btn-admin" onclick="limpiarServicios()">
-                            Limpiar servicios
-                        </button>
-                        <button type="submit" class="btn btn-admin">
-                            Agregar servicio
-                        </button>
-                        <a href="contactanos.html" class="btn btn-admin">
-                            Salir
-                        </a>
-                    </div> 
-                </form>
+            <!-- MENÚ LATERAL (TABS) -->
+            <div class="col-12 col-md-3 col-lg-2 mb-4">
+                <h1 class="fs-4 text-center mb-4 text-marron">Administrador/a</h1>
+                <div class="nav flex-column nav-pills custom-tabs" id="v-pills-tab" role="tablist"
+                    aria-orientation="vertical">
+                    <button class="nav-link" id="v-pills-servicios-tab" data-bs-toggle="pill"
+                        data-bs-target="#v-pills-servicios" type="button" role="tab" aria-selected="false">
+                        🛠️ Servicios
+                    </button>
+                    <a href="contactanos.html"
+                        class="nav-link text-danger mt-4 text-center fw-bold border border-danger">
+                        Salir del panel
+                    </a>
+                </div>
             </div>
 
-            <div class="col-12 col-lg-5 text-center div-img">
-                <img src="../IMG/icon/icon.png" alt="Registro de servicio" class="img-formulario" id="img-1">
-                <img src="../IMG/icon/icon.png" alt="Registro de servicio" class="img-formulario" id="img-2">
-                <img src="../IMG/icon/icon.png" alt="Registro de servicio" class="img-formulario" id="img-3">
-                <img src="../IMG/icon/icon.png" alt="Registro de servicio" class="img-formulario" id="img-4">
-                <img src="../IMG/icon/icon.png" alt="Registro de servicio" class="img-formulario" id="img-5">
+            <!-- CONTENIDO DE LAS PESTAÑAS -->
+            <div class="col-12 col-md-9 col-lg-10">
+                <div class="tab-content bg-white p-4 rounded-4 shadow-sm" id="v-pills-tabContent"
+                    style="min-height: 80vh;">
+
+                    <!-- PESTAÑA: SERVICIOS (TU FORMULARIO) -->
+                    <div class="tab-pane fade" id="v-pills-servicios" role="tabpanel" tabindex="0">
+                        <h2 class="mb-4">Gestión de Servicios</h2>
+
+                        <div class="row align-items-start">
+                            <div class="col-12 col-lg-8">
+                                <form id="formularioAdmin" class="p-3">
+                                    <div id="alertaContenedor"></div>
+                                    <!-- CATEGORÍA DEL ANIMAL (NUEVO) -->
+                                    <div class="mb-3">
+                                        <label for="categoria" class="form-label fw-bold">Categoría (¿Para qué animal
+                                            es?):</label>
+                                        <select class="form-select" id="categoria" name="categoria" required>
+                                            <option value="" disabled selected>Selecciona el animal...</option>
+                                            <option value="perro">Perros</option>
+                                            <option value="gato">Gatos</option>
+                                            <option value="ave">Aves</option>
+                                            <option value="pequenos">Conejos</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- IMAGEN DEL SERVICIO (NUEVO) -->
+                                    <div class="mb-3">
+                                        <label for="imagen" class="form-label fw-bold">Imagen del Servicio:</label>
+                                        <input type="file" class="form-control" id="imagen" name="imagen"
+                                            accept="image/*" required>
+                                    </div>
+                                    <!-- SERVICIO -->
+                                    <div class="mb-3">
+                                        <label for="servicio" class="form-label fw-bold">Nombre del Servicio:</label>
+                                        <input type="text" class="form-control" id="servicio" name="servicio" required
+                                            placeholder="Ej: Mantenimiento Preventivo">
+                                    </div>
+
+                                    <!-- DESCRIPCION -->
+                                    <div class="mb-3">
+                                        <label for="descripcion" class="form-label fw-bold">Descripción del
+                                            servicio:</label>
+                                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3"
+                                            placeholder="Describe los detalles del servicio..." required></textarea>
+                                    </div>
+
+                                    <div class="row g-3">
+                                        <div class="col-12 col-sm-6">
+                                            <!-- PRECIO -->
+                                            <div class="mb-3">
+                                                <label for="precio" class="form-label fw-bold">Precio ($):</label>
+                                                <input type="number" class="form-control" id="precio" name="precio"
+                                                    placeholder="000" min="0" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-sm-6">
+                                            <!-- DISPONIBILIDAD -->
+                                            <div class="mb-3">
+                                                <label for="disponibilidad"
+                                                    class="form-label fw-bold">Disponibilidad:</label>
+                                                <select class="form-select" id="disponibilidad" name="disponibilidad"
+                                                    required>
+                                                    <option value="" disabled selected> Selecciona el estado...
+                                                    </option>
+                                                    <option value="Disponible"> Disponible </option>
+                                                    <option value="No disponible">No disponible </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- BOTONES -->
+                                    <div class="mt-4 d-flex gap-3 flex-wrap">
+                                        <button type="submit" class="btn btn-admin flex-grow-1">
+                                            ➕ Agregar servicio
+                                        </button>
+                                        <button type="button" class="btn btn-outline-danger"
+                                            onclick="limpiarServicios()">
+                                            🗑️ Limpiar servicios
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
 
-
     <div id="footer"></div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous">
-    </script>
-    <script src="../JS/navbar.js"></script>
-    <script src="../JS/contactanos.js"></script>
-    <script src="../JS/footer.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/JS/formulario.js"></script>
 </body>
 
 </html>
