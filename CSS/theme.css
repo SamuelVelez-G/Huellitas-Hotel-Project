@@ -1,0 +1,487 @@
+:root {
+  --hh-dark-bg: #111a14;
+  --hh-dark-surface: #1b2920;
+  --hh-dark-elevated: #25372b;
+  --hh-dark-soft: #304638;
+  --hh-dark-border: #46604d;
+  --hh-dark-text: #fff8ed;
+  --hh-dark-muted: #c7d2ca;
+  --hh-dark-green: #a7d2ad;
+  --hh-dark-yellow: #ffd36a;
+  --hh-dark-coral: #ffad8d;
+}
+
+html[data-bs-theme="dark"] {
+  background-color: var(--hh-dark-bg);
+  color-scheme: dark;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+html[data-bs-theme="dark"] body,
+html[data-bs-theme="dark"] main {
+  background-color: var(--hh-dark-bg) !important;
+  color: var(--hh-dark-text) !important;
+}
+
+html[data-bs-theme="dark"] body,
+html[data-bs-theme="dark"] section,
+html[data-bs-theme="dark"] .card,
+html[data-bs-theme="dark"] .form-control,
+html[data-bs-theme="dark"] .form-select,
+html[data-bs-theme="dark"] .navbar,
+html[data-bs-theme="dark"] .site-footer {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+html[data-bs-theme="dark"] h1,
+html[data-bs-theme="dark"] h2,
+html[data-bs-theme="dark"] h3,
+html[data-bs-theme="dark"] h4,
+html[data-bs-theme="dark"] h5,
+html[data-bs-theme="dark"] h6,
+html[data-bs-theme="dark"] label,
+html[data-bs-theme="dark"] legend,
+html[data-bs-theme="dark"] .text-dark,
+html[data-bs-theme="dark"] .text-body,
+html[data-bs-theme="dark"] .text-body-emphasis,
+html[data-bs-theme="dark"] .text-chocolate,
+html[data-bs-theme="dark"] .text-marron {
+  color: var(--hh-dark-text) !important;
+}
+
+html[data-bs-theme="dark"] p,
+html[data-bs-theme="dark"] li,
+html[data-bs-theme="dark"] small,
+html[data-bs-theme="dark"] .text-muted,
+html[data-bs-theme="dark"] .text-secondary,
+html[data-bs-theme="dark"] .form-text,
+html[data-bs-theme="dark"] .card-text,
+html[data-bs-theme="dark"] .card-body {
+  color: var(--hh-dark-muted) !important;
+}
+
+html[data-bs-theme="dark"] .text-sage-deep,
+html[data-bs-theme="dark"] .text-verde,
+html[data-bs-theme="dark"] .hab-sub,
+html[data-bs-theme="dark"] .code-acordion {
+  color: var(--hh-dark-green) !important;
+}
+
+html[data-bs-theme="dark"] .bg-white,
+html[data-bs-theme="dark"] .bg-light,
+html[data-bs-theme="dark"] .bg-body,
+html[data-bs-theme="dark"] .bg-body-tertiary,
+html[data-bs-theme="dark"] .bg-surface-bright,
+html[data-bs-theme="dark"] .bg-crema-claro,
+html[data-bs-theme="dark"] .section-introduccion,
+html[data-bs-theme="dark"] .section-opiniones,
+html[data-bs-theme="dark"] .section-instalaciones,
+html[data-bs-theme="dark"] .section-servicio-hab,
+html[data-bs-theme="dark"] .servicio-hab-texto,
+html[data-bs-theme="dark"] .servicio-hab-filtro,
+html[data-bs-theme="dark"] .contenedor-hab {
+  background-color: var(--hh-dark-bg) !important;
+  color: var(--hh-dark-text) !important;
+}
+
+html[data-bs-theme="dark"] .card,
+html[data-bs-theme="dark"] .indicator-card,
+html[data-bs-theme="dark"] .opiniones-card,
+html[data-bs-theme="dark"] .social-card,
+html[data-bs-theme="dark"] .description,
+html[data-bs-theme="dark"] .formulariocontact {
+  background: var(--hh-dark-surface) !important;
+  color: var(--hh-dark-text) !important;
+  border-color: var(--hh-dark-border) !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28) !important;
+}
+
+html[data-bs-theme="dark"] .border,
+html[data-bs-theme="dark"] .border-top,
+html[data-bs-theme="dark"] .border-bottom,
+html[data-bs-theme="dark"] .border-light {
+  border-color: var(--hh-dark-border) !important;
+}
+
+html[data-bs-theme="dark"] .form-control,
+html[data-bs-theme="dark"] .form-select,
+html[data-bs-theme="dark"] input,
+html[data-bs-theme="dark"] textarea {
+  background-color: #0d1610 !important;
+  color: var(--hh-dark-text) !important;
+  border-color: #62806a !important;
+}
+
+html[data-bs-theme="dark"] .form-control::placeholder,
+html[data-bs-theme="dark"] input::placeholder,
+html[data-bs-theme="dark"] textarea::placeholder {
+  color: #aebbb2 !important;
+  opacity: 1;
+}
+
+html[data-bs-theme="dark"] .form-control:focus,
+html[data-bs-theme="dark"] .form-select:focus,
+html[data-bs-theme="dark"] input:focus,
+html[data-bs-theme="dark"] textarea:focus {
+  background-color: #111d15 !important;
+  color: #ffffff !important;
+  border-color: var(--hh-dark-yellow) !important;
+  box-shadow: 0 0 0 0.22rem rgba(255, 211, 106, 0.2) !important;
+}
+
+html[data-bs-theme="dark"] option {
+  background-color: var(--hh-dark-surface);
+  color: var(--hh-dark-text);
+}
+
+html[data-bs-theme="dark"] .btn-light {
+  background-color: var(--hh-dark-soft) !important;
+  color: var(--hh-dark-text) !important;
+  border-color: var(--hh-dark-border) !important;
+}
+
+html[data-bs-theme="dark"] .btn-outline-secondary {
+  color: var(--hh-dark-text);
+  border-color: #76927d;
+}
+
+html[data-bs-theme="dark"] .btn-outline-secondary:hover {
+  background-color: var(--hh-dark-yellow);
+  color: #263328;
+  border-color: var(--hh-dark-yellow);
+}
+
+/* Navegación */
+html[data-bs-theme="dark"] .navbar,
+html[data-bs-theme="dark"] .navbar-collapse {
+  background-color: #17261c !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-bs-theme="dark"] .navbar .nav-link,
+html[data-bs-theme="dark"] .login-link,
+html[data-bs-theme="dark"] .userIcon {
+  color: var(--hh-dark-text) !important;
+}
+
+html[data-bs-theme="dark"] .navbar .nav-link:hover,
+html[data-bs-theme="dark"] .navbar .nav-link.active,
+html[data-bs-theme="dark"] .login-link:hover {
+  color: var(--hh-dark-yellow) !important;
+}
+
+html[data-bs-theme="dark"] .navbar-brand img {
+  filter: brightness(0) invert(1);
+}
+
+html[data-bs-theme="dark"] .navbar-toggler {
+  border-color: rgba(255, 248, 237, 0.5);
+}
+
+html[data-bs-theme="dark"] .theme-toggle {
+  background-color: var(--hh-dark-elevated);
+  color: var(--hh-dark-yellow);
+  border-color: var(--hh-dark-border);
+}
+
+/* Inicio */
+html[data-bs-theme="dark"] .container-hero {
+  background-color: rgba(14, 28, 18, 0.68) !important;
+  background-blend-mode: multiply;
+}
+
+html[data-bs-theme="dark"] .hero-badge {
+  background-color: rgba(255, 211, 106, 0.15);
+  color: var(--hh-dark-yellow);
+}
+
+html[data-bs-theme="dark"] #hero-titulo,
+html[data-bs-theme="dark"] .section-title,
+html[data-bs-theme="dark"] .servicio-texto-titulo,
+html[data-bs-theme="dark"] .opiniones-texto-titulo {
+  color: var(--hh-dark-yellow) !important;
+}
+
+html[data-bs-theme="dark"] .hero-span-green {
+  color: var(--hh-dark-green);
+}
+
+html[data-bs-theme="dark"] .indicator-card,
+html[data-bs-theme="dark"] .servicio-div-card {
+  background-color: var(--hh-dark-elevated) !important;
+}
+
+html[data-bs-theme="dark"] .section-instalaciones {
+  background-color: #18231c !important;
+}
+
+html[data-bs-theme="dark"] .opiniones-card-footer {
+  background-color: var(--hh-dark-elevated) !important;
+}
+
+/* Sobre nosotros */
+html[data-bs-theme="dark"] #myCarousel {
+  background-color: var(--hh-dark-bg);
+}
+
+html[data-bs-theme="dark"] #myCarousel .carousel-item > img {
+  filter: brightness(0.48) saturate(0.8);
+}
+
+html[data-bs-theme="dark"] #myCarousel .carousel-caption h1 {
+  color: var(--hh-dark-yellow) !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.75);
+}
+
+html[data-bs-theme="dark"] #myCarousel .carousel-caption p {
+  color: #ffffff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+html[data-bs-theme="dark"] #nosotros,
+html[data-bs-theme="dark"] #nosotros .accordion-item,
+html[data-bs-theme="dark"] #nosotros .accordion-collapse,
+html[data-bs-theme="dark"] #nosotros .accordion-button {
+  background-color: var(--hh-dark-bg) !important;
+  color: var(--hh-dark-text) !important;
+}
+
+html[data-bs-theme="dark"] #nosotros .accordion-button:not(.collapsed) {
+  background-color: var(--hh-dark-elevated) !important;
+  color: var(--hh-dark-yellow) !important;
+}
+
+html[data-bs-theme="dark"] #nosotros .acordeon-card {
+  background: var(--hh-dark-surface) !important;
+}
+
+html[data-bs-theme="dark"] .container__cards .card {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-bs-theme="dark"] .container__cards .description,
+html[data-bs-theme="dark"] .container__cards .description h5,
+html[data-bs-theme="dark"] .container__cards .description p {
+  color: var(--hh-dark-text) !important;
+}
+
+/* Contacto */
+html[data-bs-theme="dark"] body > .container-fluid.p-0.position-relative {
+  background-color: var(--hh-dark-bg);
+}
+
+html[data-bs-theme="dark"] body > .container-fluid.p-0.position-relative > img {
+  filter: brightness(0.55) saturate(0.82);
+}
+
+html[data-bs-theme="dark"] .title-color {
+  color: var(--hh-dark-yellow) !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+}
+
+html[data-bs-theme="dark"] .subtitle-color {
+  color: #ffffff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+html[data-bs-theme="dark"] .content-section {
+  background-color: var(--hh-dark-bg) !important;
+}
+
+html[data-bs-theme="dark"] .formulariocontact {
+  border-left-color: var(--hh-dark-green) !important;
+  border-image: none !important;
+}
+
+html[data-bs-theme="dark"] .h2Form,
+html[data-bs-theme="dark"] .content-title {
+  color: var(--hh-dark-yellow) !important;
+}
+
+html[data-bs-theme="dark"] iframe {
+  filter: grayscale(0.35) brightness(0.72) contrast(1.08);
+}
+
+/* Servicios */
+html[data-bs-theme="dark"] #cardReservaInicio {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-bs-theme="dark"] .servicios-hero {
+  background-color: rgba(12, 24, 15, 0.68) !important;
+  background-blend-mode: multiply;
+}
+
+html[data-bs-theme="dark"] .servicios-hero-title,
+html[data-bs-theme="dark"] .servicio-hab-title {
+  color: var(--hh-dark-yellow) !important;
+}
+
+html[data-bs-theme="dark"] .servicios-hero-parrafo,
+html[data-bs-theme="dark"] .section-servicio-hab > p,
+html[data-bs-theme="dark"] .servicio-hab-texto > p {
+  color: var(--hh-dark-text) !important;
+}
+
+html[data-bs-theme="dark"] .servicio-hab-collap-dog,
+html[data-bs-theme="dark"] .servicio-hab-collap-cat,
+html[data-bs-theme="dark"] .servicio-hab-collap-bird,
+html[data-bs-theme="dark"] .servicio-hab-collap-little,
+html[data-bs-theme="dark"] #contenedorServicios {
+  background: var(--hh-dark-bg) !important;
+}
+
+html[data-bs-theme="dark"] .card-delantera,
+html[data-bs-theme="dark"] .card-trasera,
+html[data-bs-theme="dark"] #card-div-texto {
+  background: var(--hh-dark-surface) !important;
+  color: var(--hh-dark-text) !important;
+}
+
+html[data-bs-theme="dark"] #card-room {
+  border-color: var(--hh-dark-border) !important;
+}
+
+html[data-bs-theme="dark"] .card-delantera .card-text,
+html[data-bs-theme="dark"] .card-trasera .card-title,
+html[data-bs-theme="dark"] .card-trasera .card-text,
+html[data-bs-theme="dark"] .precio-card {
+  color: var(--hh-dark-text) !important;
+}
+
+html[data-bs-theme="dark"] #cardReservaFin {
+  background-color: var(--hh-dark-elevated) !important;
+}
+
+/* Reservas */
+html[data-bs-theme="dark"] .sticky-summary,
+html[data-bs-theme="dark"] #pets-container > .card,
+html[data-bs-theme="dark"] #booking-form > .row > div > .card {
+  background-color: var(--hh-dark-surface) !important;
+}
+
+html[data-bs-theme="dark"] .card-header,
+html[data-bs-theme="dark"] #booking-form .p-3.bg-light {
+  background-color: var(--hh-dark-elevated) !important;
+}
+
+html[data-bs-theme="dark"] .border-dashed-custom {
+  color: var(--hh-dark-green);
+  border-color: var(--hh-dark-green);
+}
+
+html[data-bs-theme="dark"] #reservation-message {
+  color: var(--hh-dark-green) !important;
+}
+
+/* Administración */
+html[data-bs-theme="dark"] #formularioAdmin,
+html[data-bs-theme="dark"] .tab-content,
+html[data-bs-theme="dark"] .timeline-row,
+html[data-bs-theme="dark"] .reserva-block {
+  color: var(--hh-dark-text);
+  border-color: var(--hh-dark-border) !important;
+}
+
+html[data-bs-theme="dark"] .custom-tabs .nav-link {
+  color: var(--hh-dark-muted);
+}
+
+html[data-bs-theme="dark"] .custom-tabs .nav-link:hover,
+html[data-bs-theme="dark"] .custom-tabs .nav-link.active {
+  background-color: var(--hh-dark-elevated);
+  color: var(--hh-dark-yellow);
+}
+
+html[data-bs-theme="dark"] .reserva-block,
+html[data-bs-theme="dark"] .reserva-success,
+html[data-bs-theme="dark"] .reserva-warning,
+html[data-bs-theme="dark"] .reserva-danger {
+  background-color: var(--hh-dark-elevated);
+}
+
+/* Login y carrito */
+html[data-bs-theme="dark"] .auth-page {
+  background: radial-gradient(circle at top, #304638 0%, var(--hh-dark-bg) 65%);
+}
+
+html[data-bs-theme="dark"] .auth-panel {
+  background: rgba(27, 41, 32, 0.96);
+  color: var(--hh-dark-text);
+  border-color: var(--hh-dark-border);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.42);
+}
+
+html[data-bs-theme="dark"] .auth-panel h1,
+html[data-bs-theme="dark"] .auth-tab.active,
+html[data-bs-theme="dark"] .auth-panel label,
+html[data-bs-theme="dark"] .back-link {
+  color: var(--hh-dark-text);
+}
+
+html[data-bs-theme="dark"] .auth-tab {
+  color: var(--hh-dark-muted);
+  border-bottom-color: var(--hh-dark-border);
+}
+
+html[data-bs-theme="dark"] .auth-tab.active {
+  color: var(--hh-dark-yellow);
+  border-bottom-color: var(--hh-dark-yellow);
+}
+
+html[data-bs-theme="dark"] .dashboard-note {
+  color: var(--hh-dark-muted) !important;
+  opacity: 1;
+}
+
+html[data-bs-theme="dark"] .seccion-productos,
+html[data-bs-theme="dark"] .drawer-carrito {
+  background: var(--hh-dark-bg) !important;
+  color: var(--hh-dark-text);
+}
+
+html[data-bs-theme="dark"] .tarjeta-producto {
+  background: var(--hh-dark-surface);
+  color: var(--hh-dark-text);
+}
+
+html[data-bs-theme="dark"] .tarjeta-producto-desc,
+html[data-bs-theme="dark"] .carrito-vacio {
+  color: var(--hh-dark-muted);
+}
+
+/* Footer y avatar */
+html[data-bs-theme="dark"] .site-footer {
+  background-color: #0d150f;
+  border-top: 1px solid var(--hh-dark-border);
+}
+
+html[data-bs-theme="dark"] .burbuja-texto {
+  background-color: var(--hh-dark-elevated);
+  color: var(--hh-dark-text);
+  border-color: var(--hh-dark-yellow);
+}
+
+html[data-bs-theme="dark"] .burbuja-texto::after {
+  background-color: var(--hh-dark-elevated);
+  border-color: var(--hh-dark-yellow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-bs-theme="dark"] body,
+  html[data-bs-theme="dark"] section,
+  html[data-bs-theme="dark"] .card,
+  html[data-bs-theme="dark"] .form-control,
+  html[data-bs-theme="dark"] .form-select,
+  html[data-bs-theme="dark"] .navbar,
+  html[data-bs-theme="dark"] .site-footer {
+    transition: none;
+  }
+}

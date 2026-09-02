@@ -1,3 +1,10 @@
+const footerScriptActual = document.currentScript;
+const footerScriptUrl = footerScriptActual?.src
+  ?? document.querySelector('script[src*="footer.js"]')?.src
+  ?? window.location.href;
+const footerRaizProyecto = new URL('../', footerScriptUrl);
+const footerRuta = (archivo) => new URL(archivo, footerRaizProyecto).href;
+
 document.addEventListener('DOMContentLoaded', function () {
 
   var yearEl = document.getElementById('footer-year');
@@ -26,7 +33,7 @@ const footer = `<footer class="site-footer">
         <div class="footer-top">
 
             <div class="footer-brand">
-                <img src="../IMG/logo.png" alt="Logo Huellitas Hotel" class="footer-logo">
+                <img src="${footerRuta('IMG/logo.png')}" alt="Logo Huellitas Hotel" class="footer-logo">
                 <p class="footer-tagline">Cuidamos a tu mejor amigo como si fuera de la familia.</p>
                 <div class="footer-social">
                     <a href="#" class="social-icon" aria-label="Instagram de Huellitas Hotel" target="_blank"
@@ -56,10 +63,10 @@ const footer = `<footer class="site-footer">
             <nav class="footer-links" aria-label="Enlaces del sitio">
                 <h4>Navegación</h4>
                 <ul>
-                    <li><a href="/HTML/inicio.html">Inicio</a></li>
-                    <li><a href="/HTML/acercaNosotros.html">Sobre nosotros</a></li>
-                    <li><a href="/HTML/contactanos.html">Contáctanos</a></li>
-                    <li><a href="/HTML/reservas.html">Reservas</a></li>
+                    <li><a href="${footerRuta('HTML/inicio.html')}">Inicio</a></li>
+                    <li><a href="${footerRuta('HTML/acercaNosotros.html')}">Sobre nosotros</a></li>
+                    <li><a href="${footerRuta('HTML/contactanos.html')}">Contáctanos</a></li>
+                    <li><a href="${footerRuta('HTML/reservas.html')}">Reservas</a></li>
                 </ul>
             </nav>
 

@@ -335,3 +335,44 @@ body.dark-mode #servicios-card-icono-4 {
         display: none;
     }
 }
+
+/* Ajuste final del hero para evitar desbordamientos en pantallas pequeñas. */
+@media (max-width: 768px) {
+    .container-hero {
+        min-height: calc(100svh - 64px);
+        padding-top: 1.75rem;
+        align-items: flex-start !important;
+        background-image: url(../IMG/imagenes-inicio/img-hero-responsive.png);
+        background-position: 70% center;
+    }
+
+    .div-hero-texto {
+        width: 100%;
+        margin: 0 !important;
+        padding: 1.25rem 1rem !important;
+        text-align: center !important;
+    }
+
+    #hero-titulo {
+        max-width: 100%;
+        font-size: clamp(1.95rem, 9vw, 2.45rem) !important;
+        line-height: 1.08;
+        overflow-wrap: anywhere;
+    }
+
+    .hero-badge {
+        max-width: 100%;
+        white-space: normal;
+    }
+
+    .hero-btn-div {
+        align-items: center;
+        justify-content: center;
+        margin-top: 1.25rem !important;
+    }
+
+    .hero-btn,
+    .hero-btn2 {
+        width: min(100%, 250px);
+    }
+}
