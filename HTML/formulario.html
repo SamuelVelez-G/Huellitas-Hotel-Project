@@ -43,7 +43,8 @@
                         <h2 class="mb-4">Gestión de Servicios</h2>
 
                         <div class="row align-items-start">
-                            <div class="col-12 col-lg-8">
+                            <!-- FORMULARIO -->
+                            <div class="col-12 col-lg-7">
                                 <form id="formularioAdmin" class="p-3">
                                     <div id="alertaContenedor"></div>
                                     <!-- CATEGORÍA DEL ANIMAL (NUEVO) -->
@@ -118,6 +119,18 @@
                                     </div>
                                 </form>
                             </div>
+
+                            <!-- LISTA DE SERVICIOS CREADOS (NUEVO) -->
+                            <div class="col-12 col-lg-5">
+                                <div class="p-3 border rounded-4 bg-light" style="max-height: 75vh; overflow-y: auto;">
+                                    <h5 class="fw-bold mb-3">📋 Servicios creados</h5>
+                                    <div id="listaServicios">
+                                        <!-- Las tarjetas de servicio se insertan aquí con JS -->
+                                        <p id="sinServicios" class="text-muted small mb-0">Todavía no hay servicios
+                                            agregados.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -131,6 +144,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/JS/formulario.js"></script>
+
+   
 </body>
 
 </html>
