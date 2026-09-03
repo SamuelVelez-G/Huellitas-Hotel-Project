@@ -83,6 +83,11 @@ h1, h2, h3, h4, h5, h6,
   font-weight: 600;
 }
 
+.form-control:focus{
+  border-color: #fdca65;
+  box-shadow: 0 0 0 .25rem #fdca6577 ;
+}
+
 @media (max-width: 991px) {
   .sticky-summary {
     position: static;
