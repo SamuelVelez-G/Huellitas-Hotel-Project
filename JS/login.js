@@ -9,6 +9,8 @@ const nameLabel = document.getElementById('name-label');
 const phoneInput = document.getElementById('phone');
 const phoneLabel = document.getElementById('phone-label');
 
+const togglePasswordBtn = document.querySelectorAll('.toggle-password');
+const passworDivConfirm = document.getElementById('confirm-password-group')
 const confirmPasswordInput = document.getElementById('confirm-password');
 const confirmPasswordLabel = document.getElementById('confirm-password-label');
 
@@ -41,6 +43,7 @@ function cambiarModo(registro) {
     phoneLabel.classList.toggle('hidden', !registro);
     phoneInput.required = registro;
 
+    passworDivConfirm.classList.toggle('hidden', !registro);
     confirmPasswordInput.classList.toggle('hidden', !registro);
     confirmPasswordLabel.classList.toggle('hidden', !registro);
     confirmPasswordInput.required = registro;
@@ -48,6 +51,14 @@ function cambiarModo(registro) {
     submitButton.textContent = registro ? 'Crear cuenta' : 'Iniciar sesion';
     description.textContent = registro ? 'Crea tu cuenta para reservar con facilidad.' : 'Ingresa para continuar con tu reserva.';
     mostrarMensaje('', '');
+
+     togglePasswordBtn.forEach(btn => {
+        const input = btn.closest('.password-group').querySelector('input');
+        const icon = btn.querySelector('i');
+        input.type = 'password';
+        if (icon) icon.className = 'fas fa-eye';
+        btn.setAttribute('aria-label', 'Mostrar contraseña');
+    });
 }
 
 function destinoDespuesDeIniciar() {
@@ -109,4 +120,21 @@ authForm.addEventListener('submit', function (evento) {
     }
 
     window.location.href = destinoDespuesDeIniciar();
+});
+
+togglePasswordBtn.forEach(btn => {
+    btn.addEventListener('click', function () {
+        const passwordInput = this.closest('.password-group').querySelector('input');
+        const icon = this.querySelector('i');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.replace('fa-eye', 'fa-eye-slash');
+            this.setAttribute('aria-label', 'Ocultar contraseña');
+        } else {
+            passwordInput.type = 'password';
+            icon.classList.replace('fa-eye-slash', 'fa-eye');
+            this.setAttribute('aria-label', 'Mostrar contraseña');
+        }
+    });
 });
