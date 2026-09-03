@@ -36,7 +36,7 @@ const footer = `<footer class="site-footer">
                 <img src="${footerRuta('IMG/logo.png')}" alt="Logo Huellitas Hotel" class="footer-logo">
                 <p class="footer-tagline">Cuidamos a tu mejor amigo como si fuera de la familia.</p>
                 <div class="footer-social">
-                    <a href="https://instagram.com" class="social-icon" aria-label="Instagram de Huellitas Hotel" target="_blank"
+                    <a href="https://www.instagram.com/huellitas.hotel2026" class="social-icon" aria-label="Instagram de Huellitas Hotel" target="_blank"
                         rel="noopener">
                         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                             <path fill="currentColor"
@@ -50,7 +50,7 @@ const footer = `<footer class="site-footer">
                                 d="M13.5 21.9v-8.1h2.7l.4-3.2h-3.1V8.6c0-.9.3-1.6 1.6-1.6h1.7V4.1C16.5 4.1 15.6 4 14.6 4c-2.4 0-4 1.4-4 4v2.6H7.9v3.2h2.7v8.1h2.9z" />
                         </svg>
                     </a>
-                    <a href="https://wa.me" class="social-icon" aria-label="WhatsApp de Huellitas Hotel" target="_blank"
+                    <a href="https://wa.me/573001234567" class="social-icon" aria-label="WhatsApp de Huellitas Hotel" target="_blank"
                         rel="noopener">
                         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                             <path fill="currentColor"
@@ -75,7 +75,7 @@ const footer = `<footer class="site-footer">
                 <ul>
                     <li>Calle 92c #67-32, Medellín</li>
                     <li>+57 316 935 3629</li>
-                    <li>huellitashotel@gmail.com</li>
+                    <li><a href="mailto:huellitashotel@gmail.com">huellitashotel@gmail.com</a></li>
                     <li>Lun a Sáb, 8:00 a.m. – 6:00 p.m.</li>
                 </ul>
             </div>
