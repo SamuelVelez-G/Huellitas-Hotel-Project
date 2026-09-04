@@ -605,16 +605,34 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         localStorage.setItem(RESERVATIONS_KEY, JSON.stringify(reservations));
         clearLocalStorage();
-        const reservationMessage = document.getElementById('reservation-message');
-        reservationMessage.textContent = `Reserva confirmada para ${session.nombre || session.email}.`;
-        window.HuellitasPerrito?.celebrar();
-        form.reset();
-        form.classList.remove('was-validated');
-        petsData = defaultPetState.map((pet) => ({ ...pet, extraServices: {} }));
-        currentPetCount = 1;
-        renderForms();
-      }
 
+        window.HuellitasPerrito?.celebrar();
+
+        //const reservationMessage = document.getElementById('reservation-message');
+        //reservationMessage.textContent = `Reserva confirmada para ${session.nombre || session.email}.`;
+        
+        Swal.fire({
+          title: '¡Reserva Confirmada!',
+          text: `Tu reserva se ha procesado con éxito para ${session.nombre || session.email}.`,
+          icon: 'success',
+          confirmButtonText: 'Excelente',
+          confirmButtonColor: '#6DBD6B' 
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = '/HTML/inicio.html'; 
+            const reservationMessage = document.getElementById('reservation-message');
+            if (reservationMessage) {
+              reservationMessage.textContent = `Reserva confirmada para ${session.nombre || session.email}.`;
+            }
+            form.reset();
+            form.classList.remove('was-validated');
+            petsData = defaultPetState.map((pet) => ({ ...pet, extraServices: {} }));
+            currentPetCount = 1;
+            renderForms();
+          }
+        });
+        return;
+      }
       form.classList.add("was-validated");
     });
   }
