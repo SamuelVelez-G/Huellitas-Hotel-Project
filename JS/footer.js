@@ -4,15 +4,15 @@ const footerScriptUrl = footerScriptActual?.src
   ?? window.location.href;
 const footerRaizProyecto = new URL('../', footerScriptUrl);
 const footerRuta = (archivo) => new URL(archivo, footerRaizProyecto).href;
-
+ 
 document.addEventListener('DOMContentLoaded', function () {
-
+ 
   var yearEl = document.getElementById('footer-year');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
-
-
+ 
+ 
   var backToTopBtn = document.getElementById('back-to-top');
   if (backToTopBtn) {
     window.addEventListener('scroll', function () {
@@ -22,16 +22,16 @@ document.addEventListener('DOMContentLoaded', function () {
         backToTopBtn.classList.remove('visible');
       }
     });
-
+ 
     backToTopBtn.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 });
-
+ 
 const footer = `<footer class="site-footer">
         <div class="footer-top">
-
+ 
             <div class="footer-brand">
                 <img src="${footerRuta('IMG/logo.png')}" alt="Logo Huellitas Hotel" class="footer-logo">
                 <p class="footer-tagline">Cuidamos a tu mejor amigo como si fuera de la familia.</p>
@@ -59,7 +59,7 @@ const footer = `<footer class="site-footer">
                     </a>
                 </div>
             </div>
-
+ 
             <nav class="footer-links" aria-label="Enlaces del sitio">
                 <h4>Navegación</h4>
                 <ul>
@@ -69,7 +69,7 @@ const footer = `<footer class="site-footer">
                     <li><a href="${footerRuta('HTML/reservas.html')}">Reservas</a></li>
                 </ul>
             </nav>
-
+ 
             <div class="footer-contact">
                 <h4>Contacto</h4>
                 <ul>
@@ -79,16 +79,16 @@ const footer = `<footer class="site-footer">
                     <li>Lun a Sáb, 8:00 a.m. – 6:00 p.m.</li>
                 </ul>
             </div>
-
+ 
         </div>
-
+ 
         <div class="footer-bottom">
             <p>&copy; <span id="footer-year"></span> Huellitas Hotel. Todos los derechos reservados.</p>
         </div>
-
+ 
         <button id="back-to-top" class="back-to-top" aria-label="Volver arriba" type="button">
             <span aria-hidden="true">🐾</span>
         </button>
     </footer>`;
-
+ 
     document.getElementById("footer").innerHTML = footer;
