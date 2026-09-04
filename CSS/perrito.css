@@ -139,7 +139,7 @@
     --centro-perrito: 80px;
     right: 10px;
     bottom: 10px;
-    width: 160px;
+    width: min(100%, 160px);
   }
 
   #perrito-img {
