@@ -76,7 +76,7 @@ function cambiarModo(registro) {
 
 function destinoDespuesDeIniciar() {
     const destino = new URLSearchParams(window.location.search).get('redirect');
-    return destino || './inicio.html';
+    return destino || './index.html';
 }
 
 loginTab.addEventListener('click', () => cambiarModo(false));
