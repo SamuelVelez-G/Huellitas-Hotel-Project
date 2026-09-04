@@ -13,7 +13,7 @@
     const ruta = (archivo) => new URL(archivo, raizProyecto).href;
 
     const enlaces = [
-        ["Inicio", "HTML/inicio.html"],
+        ["Inicio", "index.html"],
         ["Sobre nosotros", "HTML/acercaNosotros.html"],
         ["Contáctanos", "HTML/contactanos.html"],
         ["Servicios", "HTML/servicios.html"],
@@ -30,7 +30,7 @@
     navbarHost.innerHTML = `
         <nav class="navbar navbar-expand-lg fixed-top nav-fixed" aria-label="Navegación principal">
             <div class="container-fluid px-3 px-lg-5">
-                <a class="navbar-brand" href="${ruta("HTML/inicio.html")}" aria-label="Ir al inicio">
+                <a class="navbar-brand" href="${ruta("index.html")}" aria-label="Ir al inicio">
                     <img src="${ruta("IMG/pata.png")}" width="24" height="24" alt="Huellitas Hotel">
                 </a>
 
@@ -72,7 +72,7 @@
 
     const paginaActual = window.location.pathname.toLowerCase();
     const loginLink = navbarHost.querySelector('.login-link');
-    const paginaOrigen = window.location.pathname.split('/').pop() || 'inicio.html';
+    const paginaOrigen = window.location.pathname.split('/').pop() || 'index.html';
     if (!sesionActiva) {
         const loginUrl = new URL(loginLink.href);
         loginUrl.searchParams.set('redirect', paginaOrigen);
@@ -83,7 +83,7 @@
             localStorage.removeItem('huellitasSesion');
 
             const redirigirAlInicio = () => {
-                window.location.href = ruta('HTML/inicio.html');
+                window.location.href = ruta('index.html');
             };
 
             if (typeof Swal !== 'undefined') {
