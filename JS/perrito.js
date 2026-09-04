@@ -26,8 +26,7 @@
         ],
         tiempos: {
             mensaje: 3800,
-            saludo: 4200,
-            dormir: 15000,
+            duracionEstado: 5000,
             accionAutomatica: 30000
         },
         movimientoAutomatico: true
@@ -109,7 +108,7 @@
                 tabindex="0"
                 data-estado="saludando"
                 data-imagen-unica="${Boolean(configuracion.imagenUnica)}"
-                aria-label="Hablar con el perrito acompañante"
+                aria-label="Cambiar estado del perrito"
             >
         `;
         document.body.appendChild(contenedor);
@@ -120,11 +119,10 @@
 
         let estadoActual = "saludando";
         let mensajeAnterior = -1;
+        let estadosPendientes = [];
         let accionEnCurso = false;
         let tiempoAccion;
-        let tiempoDormir;
         let tiempoOcultarMensaje;
-        let turnoAutomatico = 0;
 
         function cambiarEstado(nuevoEstado) {
             const estadoVisual = nuevoEstado === "caminando" ? "normal" : nuevoEstado;
@@ -162,64 +160,66 @@
             return frases[indice];
         }
 
-        function programarSueno() {
-            clearTimeout(tiempoDormir);
-            tiempoDormir = setTimeout(() => {
-                if (!accionEnCurso) cambiarEstado("durmiendo");
-            }, configuracion.tiempos.dormir);
+        function siguienteEstado() {
+            if (!estadosPendientes.length) {
+                estadosPendientes = ["saludando", "caminando", "hablando", "comiendo", "celebrando", "durmiendo"]
+                    .sort(() => Math.random() - 0.5);
+            }
+
+            return estadosPendientes.pop();
         }
 
-        function finalizarAccion(demora = 3200) {
+        function celebrar() {
             clearTimeout(tiempoAccion);
+            accionEnCurso = true;
+            cambiarEstado("celebrando");
+            mostrarMensajeTemporal("¡Reserva confirmada! ¡Estamos celebrando!", configuracion.tiempos.duracionEstado);
             tiempoAccion = setTimeout(() => {
                 accionEnCurso = false;
-                cambiarEstado("normal");
-                programarSueno();
-            }, demora);
+                if (configuracion.movimientoAutomatico) {
+                    mostrarEstadoAleatorio();
+                } else {
+                    cambiarEstado("normal");
+                }
+            }, configuracion.tiempos.duracionEstado);
         }
 
-        function hablar() {
-            clearTimeout(tiempoAccion);
-            clearTimeout(tiempoDormir);
+        window.HuellitasPerrito = { celebrar };
+
+        function mostrarEstadoAleatorio() {
+            if (document.hidden) {
+                tiempoAccion = setTimeout(mostrarEstadoAleatorio, configuracion.tiempos.duracionEstado);
+                return;
+            }
+
             accionEnCurso = true;
-            cambiarEstado("hablando");
-            mostrarMensajeTemporal(fraseAleatoria());
-            finalizarAccion();
+            cambiarEstado(siguienteEstado());
+            mostrarMensajeTemporal(fraseAleatoria(), configuracion.tiempos.duracionEstado);
+            tiempoAccion = setTimeout(() => {
+                accionEnCurso = false;
+                mostrarEstadoAleatorio();
+            }, configuracion.tiempos.duracionEstado);
         }
 
-        function despertar() {
-            if (estadoActual !== "durmiendo") return;
-            cambiarEstado("normal");
-            programarSueno();
+        function activarEstadoPorInteraccion() {
+            clearTimeout(tiempoAccion);
+            accionEnCurso = false;
+            mostrarEstadoAleatorio();
         }
 
-        perritoImg.addEventListener("click", hablar);
-        perritoImg.addEventListener("mouseenter", despertar);
+        perritoImg.addEventListener("click", activarEstadoPorInteraccion);
         perritoImg.addEventListener("keydown", (evento) => {
             if (evento.key === "Enter" || evento.key === " ") {
                 evento.preventDefault();
-                hablar();
+                activarEstadoPorInteraccion();
             }
         });
 
         if (configuracion.movimientoAutomatico) {
-            window.setInterval(() => {
-                if (accionEnCurso || document.hidden) return;
-
-                clearTimeout(tiempoDormir);
-                accionEnCurso = true;
-                ocultarMensaje();
-
-                const acciones = ["caminando", "comiendo", "celebrando"];
-                const accion = acciones[turnoAutomatico % acciones.length];
-                turnoAutomatico += 1;
-                cambiarEstado(accion);
-                finalizarAccion(accion === "caminando" ? 6000 : 3500);
-            }, configuracion.tiempos.accionAutomatica);
+            mostrarEstadoAleatorio();
+        } else {
+            mostrarMensajeTemporal(fraseAleatoria(), configuracion.tiempos.duracionEstado);
         }
-
-        mostrarMensajeTemporal(frases[0], configuracion.tiempos.saludo);
-        finalizarAccion(configuracion.tiempos.saludo);
     }
 
     function prepararPerrito() {
