@@ -60,6 +60,12 @@
     `;
 
     const paginaActual = window.location.pathname.toLowerCase();
+    const loginLink = navbarHost.querySelector('.login-link');
+    const paginaOrigen = window.location.pathname.split('/').pop() || 'inicio.html';
+    const loginUrl = new URL(loginLink.href);
+    loginUrl.searchParams.set('redirect', paginaOrigen);
+    loginLink.href = loginUrl.href;
+
     navbarHost.querySelectorAll(".nav-link").forEach((enlace) => {
         const paginaEnlace = new URL(enlace.href).pathname.toLowerCase();
         const activo = paginaActual === paginaEnlace;

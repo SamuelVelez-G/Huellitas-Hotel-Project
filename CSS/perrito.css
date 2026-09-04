@@ -1,5 +1,5 @@
 #perrito-contenedor {
-  --centro-perrito: 66px;
+  --centro-perrito: 110px;
   position: fixed;
   right: 12px!important;
   bottom: 60px;
@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 132px;
+  width: 220px;
   user-select: none;
   pointer-events: none;
 }
@@ -17,7 +17,7 @@
   align-self: flex-end;
   width: max-content;
   max-width: min(220px, calc(100vw - 32px));
-  margin-bottom: 10px;
+  margin-bottom: -62px;
   padding: 10px 14px;
   border: 2px solid #8e52e0;
   border-radius: 16px;
@@ -56,40 +56,19 @@
 
 #perrito-img {
   display: block;
-  width: 112px;
-  height: 112px;
+  width: 200px;
+  height: 200px;
   flex: 0 0 auto;
   object-fit: contain;
   cursor: pointer;
   filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.25));
-  transition: transform 0.2s ease;
   pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
-}
-
-#perrito-img:hover {
-  transform: scale(1.08);
-}
-
-/* El GIF normal tiene un lienzo panorámico y necesita esta ampliación. */
-#perrito-img[data-estado="normal"],
-#perrito-img[data-estado="caminando"] {
-  transform: scale(1.7);
-}
-
-#perrito-img[data-estado="normal"]:hover,
-#perrito-img[data-estado="normal"]:focus-visible {
-  transform: scale(1.82);
 }
 
 /* Una imagen única se muestra sin ajustes propios de los GIF originales. */
 #perrito-img[data-imagen-unica="true"] {
   transform: none;
-}
-
-#perrito-img[data-imagen-unica="true"]:hover,
-#perrito-img[data-imagen-unica="true"]:focus-visible {
-  transform: scale(1.08);
 }
 
 #perrito-img:focus-visible {
@@ -100,10 +79,10 @@
 
 @keyframes perritoRespirando {
   0%, 100% {
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
   50% {
-    transform: translateY(3px) scale(0.985);
+    transform: translateY(3px);
   }
 }
 
@@ -113,19 +92,19 @@
 
 @keyframes caminataLateral {
   0% {
-    transform: translateX(0) scale(1.7) scaleX(1);
+    transform: translateX(0) scaleX(1);
   }
   45% {
-    transform: translateX(-120px) scale(1.7) scaleX(1);
+    transform: translateX(-120px) scaleX(1);
   }
   50% {
-    transform: translateX(-120px) scale(1.7) scaleX(-1);
+    transform: translateX(-120px) scaleX(-1);
   }
   95% {
-    transform: translateX(0) scale(1.7) scaleX(-1);
+    transform: translateX(0) scaleX(-1);
   }
   100% {
-    transform: translateX(0) scale(1.7) scaleX(1);
+    transform: translateX(0) scaleX(1);
   }
 }
 
@@ -157,15 +136,15 @@
 
 @media (max-width: 576px) {
   #perrito-contenedor {
-    --centro-perrito: 50px;
+    --centro-perrito: 80px;
     right: 10px;
     bottom: 10px;
-    width: 100px;
+    width: min(100%, 160px);
   }
 
   #perrito-img {
-    width: 88px;
-    height: 88px;
+    width: 150px;
+    height: 150px;
   }
 
   .burbuja-texto {

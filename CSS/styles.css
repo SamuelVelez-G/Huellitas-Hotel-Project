@@ -68,7 +68,7 @@ body {
     z-index: 2;
 
     filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, .4));
-    transition: all .4s ease;
+    transition: top .65s cubic-bezier(.22, 1, .36, 1), filter .65s ease;
 }
 
 .card:hover .cover img {
