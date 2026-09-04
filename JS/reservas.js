@@ -619,7 +619,7 @@ document.addEventListener("DOMContentLoaded", () => {
           confirmButtonColor: '#6DBD6B' 
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location.href = 'index.html'; 
+            window.location.href = '../index.html';
             const reservationMessage = document.getElementById('reservation-message');
             if (reservationMessage) {
               reservationMessage.textContent = `Reserva confirmada para ${session.nombre || session.email}.`;
