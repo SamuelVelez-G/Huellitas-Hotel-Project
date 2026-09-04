@@ -63,7 +63,7 @@ const footer = `<footer class="site-footer">
             <nav class="footer-links" aria-label="Enlaces del sitio">
                 <h4>Navegación</h4>
                 <ul>
-                    <li><a href="${footerRuta('HTML/inicio.html')}">Inicio</a></li>
+                    <li><a href="${footerRuta('index.html')}">Inicio</a></li>
                     <li><a href="${footerRuta('HTML/acercaNosotros.html')}">Sobre nosotros</a></li>
                     <li><a href="${footerRuta('HTML/contactanos.html')}">Contáctanos</a></li>
                     <li><a href="${footerRuta('HTML/reservas.html')}">Reservas</a></li>
