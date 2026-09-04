@@ -103,10 +103,16 @@ body.cargado {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: #173c2c;
   text-decoration: none;
   font-weight: 700;
+  font-family: inherit;
+  font-size: inherit;
   white-space: nowrap;
+  cursor: pointer;
   transition: color 0.2s ease;
 }
 
@@ -176,8 +182,9 @@ body.cargado {
 }
 
 @media (max-width: 480px) {
-  .login-link {
-    display: none;
+  .login-text {
+    display: inline;
+    font-size: 0.8rem;
   }
 }
 
