@@ -76,7 +76,7 @@ function cambiarModo(registro) {
 
 function destinoDespuesDeIniciar() {
     const destino = new URLSearchParams(window.location.search).get('redirect');
-    return destino || new URL('../index.html', window.location.href).href;
+    return destino ? new URL(destino, window.location.href).href : new URL('../index.html', window.location.href).href;
 }
 
 loginTab.addEventListener('click', () => cambiarModo(false));

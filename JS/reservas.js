@@ -588,7 +588,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const session = JSON.parse(localStorage.getItem(SESSION_KEY));
       if (!session) {
-        window.location.href = './login.html?redirect=reservas.html';
+        window.location.href = './login.html?redirect=../HTML/reservas.html';
         return;
       }
 
