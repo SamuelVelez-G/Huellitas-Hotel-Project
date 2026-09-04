@@ -4,15 +4,15 @@ const footerScriptUrl = footerScriptActual?.src
   ?? window.location.href;
 const footerRaizProyecto = new URL('../', footerScriptUrl);
 const footerRuta = (archivo) => new URL(archivo, footerRaizProyecto).href;
-
+ 
 document.addEventListener('DOMContentLoaded', function () {
-
+ 
   var yearEl = document.getElementById('footer-year');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
-
-
+ 
+ 
   var backToTopBtn = document.getElementById('back-to-top');
   if (backToTopBtn) {
     window.addEventListener('scroll', function () {
@@ -22,35 +22,35 @@ document.addEventListener('DOMContentLoaded', function () {
         backToTopBtn.classList.remove('visible');
       }
     });
-
+ 
     backToTopBtn.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 });
-
+ 
 const footer = `<footer class="site-footer">
         <div class="footer-top">
-
+ 
             <div class="footer-brand">
                 <img src="${footerRuta('IMG/logo.png')}" alt="Logo Huellitas Hotel" class="footer-logo">
                 <p class="footer-tagline">Cuidamos a tu mejor amigo como si fuera de la familia.</p>
                 <div class="footer-social">
-                    <a href="#" class="social-icon" aria-label="Instagram de Huellitas Hotel" target="_blank"
+                    <a href="https://www.instagram.com/huellitas.hotel2026" class="social-icon" aria-label="Instagram de Huellitas Hotel" target="_blank"
                         rel="noopener">
                         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                             <path fill="currentColor"
                                 d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.3.28 3 .55.8.32 1.4.7 2 1.3.6.6 1 1.2 1.3 2 .3.7.5 1.8.6 3 .1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2.3-.6 3-.3.8-.7 1.4-1.3 2-.6.6-1.2 1-2 1.3-.7.3-1.8.5-3 .6-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2.3-.3-3-.6-.8-.3-1.4-.7-2-1.3-.6-.6-1-1.2-1.3-2-.3-.7-.5-1.8-.6-3C2 15.6 2 15.2 2 12s0-3.6.1-4.9c.1-1.2.3-2.3.6-3 .3-.8.7-1.4 1.3-2 .6-.6 1.2-1 2-1.3.7-.3 1.8-.5 3-.6C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1 .05-1.6.2-2 .35-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.15.4-.3 1-.35 2C2.8 8.5 2.8 8.9 2.8 12s0 3.5.07 4.7c.05 1 .2 1.6.35 2 .2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.15 1 .3 2 .35 1.2.07 1.6.07 4.7.07s3.5 0 4.7-.07c1-.05 1.6-.2 2-.35.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.15-.4.3-1 .35-2 .07-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.05-1-.2-1.6-.35-2-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.15-1-.3-2-.35C15.5 4 15.1 4 12 4zm0 3.4a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2zm0 1.8a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zm5.85-2a1.08 1.08 0 1 1-2.16 0 1.08 1.08 0 0 1 2.16 0z" />
                         </svg>
                     </a>
-                    <a href="#" class="social-icon" aria-label="Facebook de Huellitas Hotel" target="_blank"
+                    <a href="https://facebook.com" class="social-icon" aria-label="Facebook de Huellitas Hotel" target="_blank"
                         rel="noopener">
                         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                             <path fill="currentColor"
                                 d="M13.5 21.9v-8.1h2.7l.4-3.2h-3.1V8.6c0-.9.3-1.6 1.6-1.6h1.7V4.1C16.5 4.1 15.6 4 14.6 4c-2.4 0-4 1.4-4 4v2.6H7.9v3.2h2.7v8.1h2.9z" />
                         </svg>
                     </a>
-                    <a href="#" class="social-icon" aria-label="WhatsApp de Huellitas Hotel" target="_blank"
+                    <a href="https://wa.me/573001234567" class="social-icon" aria-label="WhatsApp de Huellitas Hotel" target="_blank"
                         rel="noopener">
                         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                             <path fill="currentColor"
@@ -59,7 +59,7 @@ const footer = `<footer class="site-footer">
                     </a>
                 </div>
             </div>
-
+ 
             <nav class="footer-links" aria-label="Enlaces del sitio">
                 <h4>Navegación</h4>
                 <ul>
@@ -69,26 +69,26 @@ const footer = `<footer class="site-footer">
                     <li><a href="${footerRuta('HTML/reservas.html')}">Reservas</a></li>
                 </ul>
             </nav>
-
+ 
             <div class="footer-contact">
                 <h4>Contacto</h4>
                 <ul>
                     <li>Calle 92c #67-32, Medellín</li>
                     <li>+57 316 935 3629</li>
-                    <li>huellitashotel@gmail.com</li>
+                    <li><a href="mailto:huellitashotel@gmail.com">huellitashotel@gmail.com</a></li>
                     <li>Lun a Sáb, 8:00 a.m. – 6:00 p.m.</li>
                 </ul>
             </div>
-
+ 
         </div>
-
+ 
         <div class="footer-bottom">
             <p>&copy; <span id="footer-year"></span> Huellitas Hotel. Todos los derechos reservados.</p>
         </div>
-
+ 
         <button id="back-to-top" class="back-to-top" aria-label="Volver arriba" type="button">
             <span aria-hidden="true">🐾</span>
         </button>
     </footer>`;
-
+ 
     document.getElementById("footer").innerHTML = footer;
