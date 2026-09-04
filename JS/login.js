@@ -108,5 +108,14 @@ authForm.addEventListener('submit', function (evento) {
         }));
     }
 
-    window.location.href = destinoDespuesDeIniciar();
+    const mensajeExito = isRegistering
+        ? 'Registro exitoso. Tu cuenta ha sido creada.'
+        : 'Inicio de sesion exitoso.';
+    alert(mensajeExito);
+    mostrarMensaje(`${mensajeExito} Redirigiendo...`, 'success');
+    submitButton.disabled = true;
+
+    setTimeout(() => {
+        window.location.href = destinoDespuesDeIniciar();
+    }, 90);
 });

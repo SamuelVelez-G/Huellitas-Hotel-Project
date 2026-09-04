@@ -30,10 +30,16 @@ window.HUELLITAS_AVATAR_CONFIG = {
     ],
 
     tiempos: {
+<<<<<<< Updated upstream
         mensaje: 3800,
         saludo: 4200,
         dormir: 15000,
         accionAutomatica: 30000
+=======
+        mensaje: 5000,
+        duracionEstado: 5000,
+        accionAutomatica: 5000
+>>>>>>> Stashed changes
     },
 
     movimientoAutomatico: true

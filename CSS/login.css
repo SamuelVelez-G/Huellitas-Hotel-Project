@@ -59,6 +59,7 @@ input { width: 100%; padding: .85rem 1rem; border: 1px solid #bfd7c1; border-rad
 input:focus { outline: 2px solid var(--yellow); border-color: var(--deep-green); }
 .submit-button { width: 100%; margin-top: 1.5rem; padding: .9rem; border: 0; border-radius: 8px; background: var(--yellow); color: var(--deep-green); font-weight: 800; cursor: pointer; }
 .submit-button:hover { background: #e8ae35; }
+.submit-button:disabled { opacity: .7; cursor: wait; }
 .form-message { min-height: 1.4rem; margin: .9rem 0 0; text-align: center; font-weight: 700; }
 .form-message.error { color: #a23c35; }
 .form-message.success { color: #357347; }

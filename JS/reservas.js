@@ -607,6 +607,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clearLocalStorage();
         const reservationMessage = document.getElementById('reservation-message');
         reservationMessage.textContent = `Reserva confirmada para ${session.nombre || session.email}.`;
+        window.HuellitasPerrito?.celebrar();
         form.reset();
         form.classList.remove('was-validated');
         petsData = defaultPetState.map((pet) => ({ ...pet, extraServices: {} }));

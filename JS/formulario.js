@@ -5,6 +5,19 @@ const servicios = JSON.parse(localStorage.getItem("servicios")) || [];
 const formulario = document.getElementById("formularioAdmin");
 const alertaContenedor = document.getElementById("alertaContenedor");
 
+function mostrarAlerta(mensaje, tipo) {
+    alertaContenedor.innerHTML = `
+        <div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
+            ${mensaje}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+    `;
+
+    setTimeout(() => {
+        alertaContenedor.innerHTML = "";
+    }, 3000);
+}
+
 formulario.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -42,18 +55,9 @@ formulario.addEventListener("submit", function (event) {
         localStorage.setItem("servicios", JSON.stringify(servicios));
 
         console.log("Array actual guardado:", servicios);
-        alertaContenedor.innerHTML = `
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>¡Muy bien!</strong> El servicio se ha registrado correctamente.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        `;
+        mostrarAlerta("<strong>¡Muy bien!</strong> El servicio se ha registrado correctamente.", "success");
 
         formulario.reset();
-
-        setTimeout(() => {
-            alertaContenedor.innerHTML = "";
-        }, 3000);
     };
     
     if (archivoImagen) {
@@ -63,6 +67,9 @@ formulario.addEventListener("submit", function (event) {
 
 function limpiarServicios() {
     localStorage.removeItem("servicios");
-    alert("Servicios eliminados correctamente");
-    location.reload();
+    mostrarAlerta("<strong>Listo.</strong> Los servicios se eliminaron correctamente.", "success");
+
+    setTimeout(() => {
+        location.reload();
+    }, 900);
 }
