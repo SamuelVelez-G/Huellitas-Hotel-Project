@@ -28,6 +28,19 @@ function mostrarMensaje(texto, tipo) {
     message.className = `form-message ${tipo}`;
 }
 
+function mostrarAlerta(texto, tipo) {
+    if (typeof Swal !== 'undefined') {
+        return Swal.fire({
+            icon: tipo === 'error' ? 'error' : 'success',
+            text: texto,
+            confirmButtonColor: '#173C2C'
+        });
+    }
+
+    mostrarMensaje(texto, tipo);
+    return Promise.resolve();
+}
+
 function cambiarModo(registro) {
     isRegistering = registro;
     loginTab.classList.toggle('active', !registro);
@@ -73,7 +86,7 @@ authForm.addEventListener('submit', function (evento) {
     evento.preventDefault();
     if (!authForm.checkValidity()) {
         authForm.reportValidity();
-        mostrarMensaje('Completa los campos obligatorios.', 'error');
+        mostrarAlerta('Completa los campos obligatorios.', 'error');
         return;
     }
 
@@ -85,12 +98,12 @@ authForm.addEventListener('submit', function (evento) {
         // Validar que las contraseñas coincidan
         const confirmPassword = confirmPasswordInput.value;
         if (password !== confirmPassword) {
-            mostrarMensaje('Las contraseñas no coinciden.', 'error');
+            mostrarAlerta('Las contraseñas no coinciden.', 'error');
             return;
         }
 
         if (usuarios.some(usuario => usuario.email === email)) {
-            mostrarMensaje('Ese correo ya esta registrado.', 'error');
+            mostrarAlerta('Ese correo ya esta registrado.', 'error');
             return;
         }
         const usuario = {
@@ -109,7 +122,7 @@ authForm.addEventListener('submit', function (evento) {
     } else {
         const usuario = usuarios.find(item => item.email === email && item.password === password);
         if (!usuario) {
-            mostrarMensaje('Correo o contraseña incorrectos.', 'error');
+            mostrarAlerta('Correo o contraseña incorrectos.', 'error');
             return;
         }
         localStorage.setItem(SESSION_KEY, JSON.stringify({
@@ -119,7 +132,10 @@ authForm.addEventListener('submit', function (evento) {
         }));
     }
 
-    window.location.href = destinoDespuesDeIniciar();
+    mostrarAlerta(isRegistering ? 'Registro exitoso.' : 'Inicio de sesión exitoso.', 'success')
+        .then(() => {
+            window.location.href = destinoDespuesDeIniciar();
+        });
 });
 
 togglePasswordBtn.forEach(btn => {
