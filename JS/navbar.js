@@ -9,7 +9,8 @@
     const scriptUrl = scriptActual?.src
         ?? document.querySelector('script[src*="navbar.js"]')?.src
         ?? window.location.href;
-    const raizProyecto = new URL("../", scriptUrl);
+    const urlScript = new URL(scriptUrl, window.location.href);
+    const raizProyecto = new URL("../", urlScript);
     const ruta = (archivo) => new URL(archivo, raizProyecto).href;
 
     const enlaces = [
