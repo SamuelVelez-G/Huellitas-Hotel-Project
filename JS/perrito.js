@@ -108,13 +108,33 @@
                 tabindex="0"
                 data-estado="saludando"
                 data-imagen-unica="${Boolean(configuracion.imagenUnica)}"
-                aria-label="Cambiar estado del perrito"
+                aria-label="Abrir chat de contacto"
             >
+            <div id="perrito-chat" class="perrito-chat" role="dialog" aria-modal="true" aria-labelledby="perrito-chat-titulo" hidden>
+                <div class="perrito-chat-cabecera">
+                    <div>
+                        <span class="perrito-chat-etiqueta">Huellitas Hotel</span>
+                        <h2 id="perrito-chat-titulo">¿En qué podemos ayudarte?</h2>
+                    </div>
+                    <button type="button" class="perrito-chat-cerrar" aria-label="Cerrar chat">&times;</button>
+                </div>
+                <form class="perrito-chat-form" action="https://formspree.io/f/xlgqqqdj" method="POST">
+                    <label>Nombre<input name="Nombre" type="text" autocomplete="name" required></label>
+                    <label>Correo electrónico<input name="Correo" type="email" autocomplete="email" required></label>
+                    <label>Mensaje<textarea name="Mensaje" rows="3" required></textarea></label>
+                    <button type="submit" class="perrito-chat-enviar">Enviar mensaje</button>
+                    <p class="perrito-chat-estado" role="status" aria-live="polite"></p>
+                </form>
+            </div>
         `;
         document.body.appendChild(contenedor);
 
         const perritoImg = contenedor.querySelector("#perrito-img");
         const burbuja = contenedor.querySelector("#perrito-burbuja");
+        const chat = contenedor.querySelector("#perrito-chat");
+        const formularioChat = contenedor.querySelector(".perrito-chat-form");
+        const cerrarChat = contenedor.querySelector(".perrito-chat-cerrar");
+        const estadoChat = contenedor.querySelector(".perrito-chat-estado");
         const frases = configuracion.frases;
 
         let estadoActual = "saludando";
@@ -202,9 +222,26 @@
         }
 
         function activarEstadoPorInteraccion() {
+            if (!chat.hidden) {
+                cerrarVentanaChat();
+                return;
+            }
+
             clearTimeout(tiempoAccion);
             accionEnCurso = false;
-            mostrarEstadoAleatorio();
+            ocultarMensaje();
+            chat.hidden = false;
+            formularioChat.querySelector("input").focus();
+        }
+
+        function cerrarVentanaChat() {
+            chat.hidden = true;
+            estadoChat.textContent = "";
+            perritoImg.focus();
+            mostrarMensajeTemporal(fraseAleatoria(), configuracion.tiempos.duracionEstado);
+            if (configuracion.movimientoAutomatico) {
+                tiempoAccion = setTimeout(mostrarEstadoAleatorio, configuracion.tiempos.duracionEstado);
+            }
         }
 
         perritoImg.addEventListener("click", activarEstadoPorInteraccion);
@@ -212,6 +249,29 @@
             if (evento.key === "Enter" || evento.key === " ") {
                 evento.preventDefault();
                 activarEstadoPorInteraccion();
+            }
+        });
+        cerrarChat.addEventListener("click", cerrarVentanaChat);
+        formularioChat.addEventListener("submit", async (evento) => {
+            evento.preventDefault();
+            const boton = formularioChat.querySelector("button[type='submit']");
+            boton.disabled = true;
+            estadoChat.textContent = "Enviando mensaje...";
+
+            try {
+                const respuesta = await fetch(formularioChat.action, {
+                    method: "POST",
+                    body: new FormData(formularioChat),
+                    headers: { Accept: "application/json" }
+                });
+
+                if (!respuesta.ok) throw new Error("No se pudo enviar");
+                formularioChat.reset();
+                estadoChat.textContent = "Mensaje enviado. Te contactaremos pronto.";
+            } catch {
+                estadoChat.textContent = "No se pudo enviar. Inténtalo de nuevo.";
+            } finally {
+                boton.disabled = false;
             }
         });
 
