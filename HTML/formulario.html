@@ -40,92 +40,189 @@
 
                     <!-- PESTAÑA: SERVICIOS (TU FORMULARIO) -->
                     <div class="tab-pane fade show active" id="v-pills-servicios" role="tabpanel" tabindex="0">
-                        <h2 class="mb-4">Gestión de Servicios</h2>
 
-                        <div class="row align-items-start">
+                        <!-- ENCABEZADO -->
+                        <div class="d-flex flex-wrap justify-content-between align-items-start mb-4 gap-2">
+                            <div>
+                                <h2 class="mb-1">Gestión de Servicios</h2>
+                                <p class="text-muted small mb-0" style="max-width: 520px;">
+                                    Crea, tarifica y cataloga los servicios disponibles. Los cambios se
+                                    reflejarán en el catálogo público en cuanto los guardes.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-start g-4">
                             <!-- FORMULARIO -->
                             <div class="col-12 col-lg-7">
-                                <form id="formularioAdmin" class="p-3">
-                                    <div id="alertaContenedor"></div>
-                                    <!-- CATEGORÍA DEL ANIMAL (NUEVO) -->
-                                    <div class="mb-3">
-                                        <label for="categoria" class="form-label fw-bold">CATEGORÍA</label>
-                                        <select class="form-select" id="categoria" name="categoria" required>
-                                            <option value="" disabled selected>Selecciona el animal...</option>
-                                            <option value="perro">Perros</option>
-                                            <option value="gato">Gatos</option>
-                                            <option value="ave">Aves</option>
-                                            <option value="pequenos">Conejos</option>
-                                        </select>
+                                <div class="panel-formulario">
+                                    <div class="d-flex justify-content-between align-items-center pb-3 mb-4 border-bottom">
+                                        <div>
+                                            <h5 class="fw-bold mb-1">Nuevo servicio</h5>
+                                            <p class="text-muted small mb-0">Completa la información para
+                                                registrarlo en el catálogo</p>
+                                        </div>
+                                        <span class="badge-paso">Paso 1 de 1</span>
                                     </div>
 
-                                    <!-- IMAGEN DEL SERVICIO (NUEVO) -->
-                                    <div class="mb-3">
-                                        <label for="imagen" class="form-label fw-bold">IMÁGEN DEL SERVICIO</label>
-                                        <input type="file" class="form-control" id="imagen" name="imagen"
-                                            accept="image/*" required>
-                                    </div>
-                                    <!-- SERVICIO -->
-                                    <div class="mb-3">
-                                        <label for="servicio" class="form-label fw-bold">NOMBRE DEL SERVICIO</label>
-                                        <input type="text" class="form-control" id="servicio" name="servicio" required
-                                            placeholder="Ej: Mantenimiento Preventivo">
-                                    </div>
+                                    <form id="formularioAdmin">
+                                        <div id="alertaContenedor"></div>
 
-                                    <!-- DESCRIPCION -->
-                                    <div class="mb-3">
-                                        <label for="descripcion" class="form-label fw-bold">DESCRIPCIÓN DETALLADA</label>
-                                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3"
-                                            placeholder="Describe los detalles del servicio..." required></textarea>
-                                    </div>
+                                        <!-- CATEGORÍA DEL ANIMAL -->
+                                        <div class="mb-4">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <label for="categoria" class="form-label fw-bold campo-label mb-0">
+                                                    CATEGORÍA <span class="fw-normal text-muted text-lowercase">(¿para qué animal es?)</span>
+                                                </label>
+                                                <span class="text-requerido">Requerido</span>
+                                            </div>
 
-                                    <div class="row g-3">
-                                        <div class="col-12 col-sm-6">
-                                            <!-- PRECIO -->
-                                            <div class="mb-3">
-                                                <label for="precio" class="form-label fw-bold">PRECIO AL PÚBLICO</label>
-                                                <input type="number" class="form-control" id="precio" name="precio"
-                                                    placeholder="000" min="0" required>
+                                            <!-- Selector rápido tipo "pill" (solo visual, refleja el select real) -->
+                                            <div class="row row-cols-2 row-cols-sm-4 g-2 mb-2" id="categoriaPills">
+                                                <div class="col">
+                                                    <button type="button" class="pill-categoria w-100" data-valor="perro" onclick="seleccionarCategoriaPill(this)">
+                                                        <span class="pill-emoji">🐶</span> Perros
+                                                    </button>
+                                                </div>
+                                                <div class="col">
+                                                    <button type="button" class="pill-categoria w-100" data-valor="gato" onclick="seleccionarCategoriaPill(this)">
+                                                        <span class="pill-emoji">🐱</span> Gatos
+                                                    </button>
+                                                </div>
+                                                <div class="col">
+                                                    <button type="button" class="pill-categoria w-100" data-valor="ave" onclick="seleccionarCategoriaPill(this)">
+                                                        <span class="pill-emoji">🦜</span> Aves
+                                                    </button>
+                                                </div>
+                                                <div class="col">
+                                                    <button type="button" class="pill-categoria w-100" data-valor="pequenos" onclick="seleccionarCategoriaPill(this)">
+                                                        <span class="pill-emoji">🐰</span> Conejos
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <select class="form-select campo-input" id="categoria" name="categoria" required
+                                                onchange="sincronizarPillDesdeSelect(this)">
+                                                <option value="" disabled selected>Selecciona el animal...</option>
+                                                <option value="perro">Perros</option>
+                                                <option value="gato">Gatos</option>
+                                                <option value="ave">Aves</option>
+                                                <option value="pequenos">Conejos</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- IMAGEN DEL SERVICIO -->
+                                        <div class="mb-4">
+                                            <label for="imagen" class="form-label fw-bold campo-label">IMÁGEN DEL SERVICIO</label>
+                                            <label for="imagen" class="zona-imagen d-flex flex-column align-items-center justify-content-center text-center w-100">
+                                                <input type="file" class="d-none" id="imagen" name="imagen"
+                                                    accept="image/*" required onchange="previsualizarImagen(this)">
+                                                <div class="zona-imagen-icono mb-2">📷</div>
+                                                <div class="zona-imagen-texto">
+                                                    Arrastra una foto o haz clic para <span class="text-underline-brand">examinar</span>
+                                                </div>
+                                                <span class="text-muted" style="font-size: .75rem;">PNG, JPG o WebP (máx. 5MB)</span>
+                                                <span class="archivo-badge d-none mt-2" id="archivoBadge">
+                                                    ✅ <span id="archivoNombre">archivo.png</span>
+                                                    <button type="button" class="archivo-quitar" onclick="event.preventDefault(); quitarImagen();">✕</button>
+                                                </span>
+                                            </label>
+                                        </div>
+
+                                        <!-- SERVICIO -->
+                                        <div class="mb-4">
+                                            <label for="servicio" class="form-label fw-bold campo-label">NOMBRE DEL SERVICIO</label>
+                                            <input type="text" class="form-control campo-input" id="servicio" name="servicio" required
+                                                placeholder="Ej: Mantenimiento Preventivo">
+                                        </div>
+
+                                        <!-- DESCRIPCION -->
+                                        <div class="mb-4">
+                                            <label for="descripcion" class="form-label fw-bold campo-label">DESCRIPCIÓN DETALLADA</label>
+                                            <textarea class="form-control campo-input" id="descripcion" name="descripcion" rows="3"
+                                                placeholder="Describe los detalles del servicio..." required></textarea>
+                                        </div>
+
+                                        <div class="row g-3">
+                                            <div class="col-12 col-sm-6">
+                                                <!-- PRECIO -->
+                                                <div class="mb-3">
+                                                    <label for="precio" class="form-label fw-bold campo-label">PRECIO AL PÚBLICO</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text campo-prefijo">$</span>
+                                                        <input type="number" class="form-control campo-input" id="precio" name="precio"
+                                                            placeholder="0" min="0" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-sm-6">
+                                                <!-- DISPONIBILIDAD -->
+                                                <div class="mb-3">
+                                                    <label for="disponibilidad" class="form-label fw-bold campo-label">DISPONIBILIDAD</label>
+                                                    <select class="form-select campo-input" id="disponibilidad" name="disponibilidad" required>
+                                                        <option value="" disabled selected>Selecciona el estado...</option>
+                                                        <option value="Disponible">🟢 Disponible</option>
+                                                        <option value="No disponible">🔴 No disponible</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-12 col-sm-6">
-                                            <!-- DISPONIBILIDAD -->
-                                            <div class="mb-3">
-                                                <label for="disponibilidad"
-                                                    class="form-label fw-bold">DISPONIBILIDAD</label>
-                                                <select class="form-select" id="disponibilidad" name="disponibilidad"
-                                                    required>
-                                                    <option value="" disabled selected> Selecciona el estado...
-                                                    </option>
-                                                    <option value="Disponible"> Disponible </option>
-                                                    <option value="No disponible">No disponible </option>
-                                                </select>
-                                            </div>
+                                        <!-- BOTONES -->
+                                        <div class="mt-4 d-flex gap-3 flex-wrap">
+                                            <button type="submit" class="btn btn-admin flex-grow-1">
+                                                ➕ Agregar servicio
+                                            </button>
+                                            <button type="button" class="btn btn-limpiar-servicio"
+                                                onclick="limpiarServicios()">
+                                                🗑️ Limpiar servicios
+                                            </button>
                                         </div>
-                                    </div>
-
-                                    <!-- BOTONES -->
-                                    <div class="mt-4 d-flex gap-3 flex-wrap">
-                                        <button type="submit" class="btn btn-admin flex-grow-1">
-                                            ➕ Agregar servicio
-                                        </button>
-                                        <button type="button" class="btn btn-outline-danger"
-                                            onclick="limpiarServicios()">
-                                            🗑️ Limpiar servicios
-                                        </button>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
 
-                            <!-- LISTA DE SERVICIOS CREADOS (NUEVO) -->
+                            <!-- LISTA DE SERVICIOS CREADOS -->
                             <div class="col-12 col-lg-5">
-                                <div class="p-3 border rounded-4 bg-light" style="max-height: 75vh; overflow-y: auto;">
-                                    <h5 class="fw-bold mb-3">📋 Servicios creados</h5>
-                                    <div id="listaServicios">
+                                <div class="panel-lista mb-3">
+                                    <div class="d-flex justify-content-between align-items-center pb-3 mb-3 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="icono-lista">📋</div>
+                                            <div>
+                                                <h6 class="fw-bold mb-0">Servicios creados</h6>
+                                                <p class="text-muted mb-0" style="font-size: .72rem;">Catálogo actual</p>
+                                            </div>
+                                        </div>
+                                        <span class="badge-contador" id="contadorServicios">0 servicios</span>
+                                    </div>
+
+                                    <!-- Buscador rápido (solo filtra lo ya renderizado, no toca los datos guardados) -->
+                                    <input type="text" class="form-control buscador-mini mb-3" id="filtroServicios"
+                                        placeholder="🔍 Filtrar por nombre o categoría..."
+                                        oninput="filtrarServicios(this.value)">
+
+                                    <div id="listaServicios" style="max-height: 60vh; overflow-y: auto;">
                                         <!-- Las tarjetas de servicio se insertan aquí con JS -->
-                                        <p id="sinServicios" class="text-muted small mb-0">Todavía no hay servicios
-                                            agregados.</p>
+                                        <div class="estado-vacio" id="sinServicios">
+                                            <div class="estado-vacio-icono">📦</div>
+                                            <p class="fw-bold mb-1" style="font-size: .9rem;">Todavía no hay servicios</p>
+                                            <p class="text-muted small mb-0">Completa el formulario para añadir el primero.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tarjeta de tips -->
+                                <div class="panel-tip">
+                                    <div class="d-flex gap-2">
+                                        <div class="panel-tip-icono">💡</div>
+                                        <div>
+                                            <h6 class="panel-tip-titulo mb-1">Recomendación</h6>
+                                            <p class="text-muted small mb-0">
+                                                Sé claro con la descripción y el precio: esta información se
+                                                muestra tal cual en el catálogo que ven tus clientes.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -143,7 +240,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/JS/formulario.js"></script>
 
-   
 </body>
 
 </html>
