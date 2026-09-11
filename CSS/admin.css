@@ -181,3 +181,8 @@ h2,
     background-color: #FFEBEE;
     border-color: #FFCDD2;
 }
+
+#logoLateral {
+    width: 60px;
+    height: 60px;
+}
