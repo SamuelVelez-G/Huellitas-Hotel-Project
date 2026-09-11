@@ -9,7 +9,8 @@
     const scriptUrl = scriptActual?.src
         ?? document.querySelector('script[src*="navbar.js"]')?.src
         ?? window.location.href;
-    const raizProyecto = new URL("../", scriptUrl);
+    const urlScript = new URL(scriptUrl, window.location.href);
+    const raizProyecto = new URL("../", urlScript);
     const ruta = (archivo) => new URL(archivo, raizProyecto).href;
 
     const enlaces = [
@@ -72,10 +73,9 @@
 
     const paginaActual = window.location.pathname.toLowerCase();
     const loginLink = navbarHost.querySelector('.login-link');
-    const paginaOrigen = window.location.pathname.split('/').pop() || 'index.html';
     if (!sesionActiva) {
         const loginUrl = new URL(loginLink.href);
-        loginUrl.searchParams.set('redirect', paginaOrigen);
+        loginUrl.searchParams.set('redirect', window.location.href);
         loginLink.href = loginUrl.href;
     } else {
         loginLink.addEventListener('click', (evento) => {

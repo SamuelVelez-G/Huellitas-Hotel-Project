@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');    
+
 #perrito-contenedor {
   --centro-perrito: 110px;
   position: fixed;
@@ -24,7 +27,7 @@
   background-color: #ffffff;
   color: #4a2e80;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 13px;
   font-weight: 600;
   line-height: 1.35;
@@ -75,6 +78,152 @@
   outline: 3px solid rgba(142, 82, 224, 0.65);
   outline-offset: 3px;
   border-radius: 12px;
+}
+
+.perrito-chat {
+  position: fixed;
+  right: 24px;
+  bottom: 250px;
+  z-index: 10000;
+  width: min(350px, calc(100vw - 32px));
+  padding: 20px;
+  border: 1px solid rgba(74, 46, 128, 0.2);
+  border-radius: 18px;
+  background: #ffffff;
+  color: #302344;
+  box-shadow: 0 14px 36px rgba(45, 31, 67, 0.28);
+  pointer-events: auto;
+}
+
+.perrito-chat[hidden] {
+  display: none;
+}
+
+.perrito-chat-cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.perrito-chat-etiqueta {
+  color: #8e52e0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.perrito-chat h2 {
+  margin: 4px 0 0;
+  font-size: 20px;
+}
+
+.perrito-chat-cerrar {
+  border: 0;
+  background: transparent;
+  color: #5d4a72;
+  cursor: pointer;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.perrito-chat-form {
+  display: grid;
+  gap: 12px;
+}
+
+.perrito-chat-form label {
+  display: grid;
+  gap: 5px;
+  color: #5d4a72;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.perrito-chat-form input,
+.perrito-chat-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #d7cce3;
+  border-radius: 8px;
+  padding: 9px 10px;
+  color: #302344;
+  font: inherit;
+  resize: vertical;
+}
+
+.perrito-chat-form input:focus,
+.perrito-chat-form textarea:focus {
+  border-color: #8e52e0;
+  outline: 2px solid rgba(142, 82, 224, 0.2);
+}
+
+.perrito-chat-enviar {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: #8e52e0;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.perrito-chat-enviar:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.perrito-chat-estado {
+  min-height: 18px;
+  margin: 0;
+  color: #5d4a72;
+  font-size: 12px;
+}
+
+html[data-bs-theme="dark"] .perrito-chat {
+  border-color: rgba(214, 190, 244, 0.35);
+  background: #292238;
+  color: #f5efff;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.48);
+}
+
+html[data-bs-theme="dark"] .perrito-chat-cerrar {
+  color: #d8c9ec;
+}
+
+html[data-bs-theme="dark"] .perrito-chat-form label {
+  color: #d8c9ec;
+}
+
+html[data-bs-theme="dark"] .perrito-chat-form input,
+html[data-bs-theme="dark"] .perrito-chat-form textarea {
+  border-color: #65577b;
+  background: #1e192b;
+  color: #f5efff;
+}
+
+html[data-bs-theme="dark"] .perrito-chat-form input::placeholder,
+html[data-bs-theme="dark"] .perrito-chat-form textarea::placeholder {
+  color: #b8a9c8;
+}
+
+html[data-bs-theme="dark"] .perrito-chat-estado {
+  color: #d8c9ec;
+}
+
+html[data-bs-theme="dark"] .burbuja-texto {
+  border-color: #b887ee;
+  background-color: #292238;
+  color: #f5efff;
+}
+
+html[data-bs-theme="dark"] .burbuja-texto::after {
+  border-color: #b887ee;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  background: #292238;
 }
 
 @keyframes perritoRespirando {
@@ -151,6 +300,11 @@
     width: min(180px, calc(100vw - 24px));
     max-width: min(190px, calc(100vw - 24px));
     font-size: 12px;
+  }
+
+  .perrito-chat {
+    right: 16px;
+    bottom: 170px;
   }
 }
 

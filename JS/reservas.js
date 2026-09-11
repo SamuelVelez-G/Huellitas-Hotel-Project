@@ -588,7 +588,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const session = JSON.parse(localStorage.getItem(SESSION_KEY));
       if (!session) {
-        window.location.href = './login.html?redirect=reservas.html';
+        window.location.href = './login.html?redirect=../HTML/reservas.html';
         return;
       }
 
@@ -619,7 +619,7 @@ document.addEventListener("DOMContentLoaded", () => {
           confirmButtonColor: '#6DBD6B' 
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location.href = 'index.html'; 
+            window.location.href = '../index.html';
             const reservationMessage = document.getElementById('reservation-message');
             if (reservationMessage) {
               reservationMessage.textContent = `Reserva confirmada para ${session.nombre || session.email}.`;
