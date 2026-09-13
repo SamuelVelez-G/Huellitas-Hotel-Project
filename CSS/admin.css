@@ -1,12 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;@600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');    
-    
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 :root {
     --color-verde: #6DBD6B;
     --color-amarillo: #F4C95D;
     --color-coral: #FF9E7A;
     --color-marron: #754C2E;
     --color-crema: #FFF7ED;
+
+    /* Nuevos: paleta neutra cálida, para el rediseño de Gestión de Servicios */
+    --gris-calido-50: #FAF8F5;
+    --gris-calido-100: #F4F0EA;
+    --gris-calido-200: #E8E2D8;
+    --marron-claro-50: #FBF7F4;
+    --marron-claro-100: #F5EDE8;
+    --marron-claro-200: #EBD9D0;
 }
 
 body {
@@ -68,17 +76,30 @@ h2,
     justify-content: center;
     width: 48px;
     height: 48px;
-    border-radius: 12px; /* Cuadro con bordes redondeados */
+    border-radius: 12px;
+    /* Cuadro con bordes redondeados */
     margin-right: 12px;
     flex-shrink: 0;
     position: relative;
-    z-index: 1; /* Para que quede por encima de la marca de agua */
+    z-index: 1;
+    /* Para que quede por encima de la marca de agua */
 }
 
 /* Clases de colores para los fondos de los iconos (versiones suaves de tus colores) */
-.bg-verde-claro { background-color: #e5f5e5; color: var(--color-marron); }
-.bg-coral-claro { background-color: #ffebe3; color: var(--color-marron); }
-.bg-amarillo-claro { background-color: #fdf5df; color: var(--color-marron); }
+.bg-verde-claro {
+    background-color: #e5f5e5;
+    color: var(--color-marron);
+}
+
+.bg-coral-claro {
+    background-color: #ffebe3;
+    color: var(--color-marron);
+}
+
+.bg-amarillo-claro {
+    background-color: #fdf5df;
+    color: var(--color-marron);
+}
 
 /* Estilo para el icono gigante de fondo (Marca de agua) */
 .watermark-icon {
@@ -87,10 +108,12 @@ h2,
     right: -10%;
     width: 140px;
     height: 140px;
-    opacity: 0.05; /* Muy transparente */
+    opacity: 0.05;
+    /* Muy transparente */
     color: var(--color-marron);
     z-index: 0;
-    pointer-events: none; /* Evita que interfiera con clics */
+    pointer-events: none;
+    /* Evita que interfiera con clics */
 }
 
 /* Ajuste de diseño de la tarjeta para alinear el icono y el texto como en la imagen */
@@ -112,7 +135,8 @@ h2,
 .calendario-timeline {
     display: flex;
     flex-direction: column;
-    min-width: 800px; /* Para que sea scrolleable en móviles */
+    min-width: 800px;
+    /* Para que sea scrolleable en móviles */
 }
 
 /* 7 columnas: 1 para habitaciones (más ancha) y 6 para los días */
@@ -136,14 +160,16 @@ h2,
 .timeline-bg {
     position: absolute;
     top: 0;
-    left: 220px; /* Después de la columna de habitaciones */
+    left: 220px;
+    /* Después de la columna de habitaciones */
     right: 0;
     bottom: 0;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     z-index: 0;
 }
-.timeline-bg > div {
+
+.timeline-bg>div {
     border-right: 1px dashed #f0f0f0;
 }
 
@@ -173,10 +199,12 @@ h2,
     background-color: #E8F5E9;
     border-color: #C8E6C9;
 }
+
 .reserva-warning {
     background-color: #FFF8E1;
     border-color: #FFECB3;
 }
+
 .reserva-danger {
     background-color: #FFEBEE;
     border-color: #FFCDD2;
@@ -185,4 +213,327 @@ h2,
 #logoLateral {
     width: 60px;
     height: 60px;
+}
+
+/* =========================================================
+   NUEVO: estilos para el rediseño visual de "Gestión de Servicios"
+   (solo apariencia, no afectan la lógica de formulario.js)
+   ========================================================= */
+
+.eyebrow-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    background-color: var(--color-marron);
+    color: var(--color-crema);
+    font-size: .7rem;
+}
+
+.eyebrow-text {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--color-marron);
+}
+
+.panel-formulario,
+.panel-lista {
+    background-color: #fff;
+    border: 1px solid var(--gris-calido-200);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 8px 30px -8px rgba(117, 76, 46, 0.08);
+}
+
+.badge-paso {
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--color-marron);
+    background-color: var(--marron-claro-100);
+    border: 1px solid var(--marron-claro-200);
+    padding: .3rem .6rem;
+    border-radius: .6rem;
+    white-space: nowrap;
+}
+
+.campo-label {
+    font-size: .72rem;
+    letter-spacing: .03em;
+    color: var(--color-marron);
+}
+
+.text-requerido {
+    font-size: .68rem;
+    font-weight: 600;
+    color: var(--color-marron);
+}
+
+.campo-input {
+    background-color: var(--gris-calido-50);
+    border: 1px solid var(--gris-calido-200);
+    border-radius: .8rem;
+    padding: .65rem .9rem;
+}
+
+.campo-prefijo {
+    background-color: var(--gris-calido-50);
+    border: 1px solid var(--gris-calido-200);
+    border-right: none;
+    border-radius: .8rem 0 0 .8rem !important;
+    color: var(--color-marron);
+    font-weight: 700;
+}
+
+.input-group .campo-input {
+    border-radius: 0 .8rem .8rem 0;
+}
+
+/* Selector rápido de categoría (pills) */
+.pill-categoria {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    padding: .55rem .5rem;
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--color-marron);
+    background-color: var(--gris-calido-50);
+    border: 1px solid var(--gris-calido-200);
+    border-radius: .8rem;
+    transition: all .2s ease;
+}
+
+.pill-categoria:hover {
+    background-color: var(--marron-claro-100);
+}
+
+.pill-categoria.activa {
+    background-color: var(--color-marron);
+    border-color: var(--color-marron);
+    color: var(--color-crema);
+}
+
+.pill-emoji {
+    font-size: 1rem;
+}
+
+/* Zona de imagen tipo dropzone */
+.zona-imagen {
+    cursor: pointer;
+    border: 2px dashed var(--gris-calido-200);
+    border-radius: 1rem;
+    background-color: var(--gris-calido-50);
+    padding: 1.5rem 1rem;
+    transition: all .2s ease;
+}
+
+.zona-imagen:hover {
+    border-color: var(--color-marron);
+    background-color: var(--marron-claro-50);
+}
+
+.zona-imagen-icono {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    background-color: var(--marron-claro-100);
+    border-radius: 1rem;
+}
+
+.zona-imagen-texto {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--color-marron);
+}
+
+.text-underline-brand {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.archivo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: .78rem;
+    color: var(--color-marron);
+    background-color: var(--marron-claro-100);
+    padding: .3rem .7rem;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.archivo-quitar {
+    background: none;
+    border: none;
+    color: var(--color-marron);
+    font-weight: 700;
+    line-height: 1;
+    padding: 0 0 0 .2rem;
+}
+
+.btn-limpiar-servicio {
+    background-color: var(--gris-calido-50);
+    border: 1px solid var(--gris-calido-200);
+    color: #6b6258;
+    font-weight: 600;
+    border-radius: .8rem;
+    padding: .5rem 1.1rem;
+    transition: all .2s ease;
+}
+
+.btn-limpiar-servicio:hover {
+    background-color: #FFF1F0;
+    border-color: #F5C2C0;
+    color: #c0392b;
+}
+
+.btn-admin {
+    border-radius: .8rem;
+    padding: .65rem 1.2rem;
+}
+
+/* Panel lateral: lista de servicios creados */
+.icono-lista {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--marron-claro-100);
+    border-radius: .7rem;
+    font-size: .9rem;
+}
+
+.badge-contador {
+    font-size: .72rem;
+    font-weight: 700;
+    color: var(--color-marron);
+    background-color: var(--gris-calido-100);
+    border: 1px solid var(--gris-calido-200);
+    padding: .3rem .7rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.buscador-mini {
+    background-color: var(--gris-calido-50);
+    border: 1px solid var(--gris-calido-200);
+    border-radius: .8rem;
+    font-size: .82rem;
+    padding: .5rem .8rem;
+}
+
+.estado-vacio {
+    text-align: center;
+    padding: 2.5rem 1rem;
+}
+
+.estado-vacio-icono {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto .7rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gris-calido-100);
+    border-radius: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Tarjetas individuales de servicio dentro de la lista */
+.tarjeta-servicio {
+    background-color: var(--gris-calido-50);
+    border: 1px solid var(--gris-calido-200);
+    border-radius: 1rem;
+    padding: .85rem;
+    margin-bottom: .75rem;
+    transition: background-color .2s ease;
+}
+
+.tarjeta-servicio:hover {
+    background-color: #fff;
+}
+
+.tarjeta-servicio img {
+    width: 100%;
+    max-height: 110px;
+    object-fit: cover;
+    border-radius: .7rem;
+    margin-bottom: .6rem;
+}
+
+.badge-categoria-servicio {
+    font-size: .65rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    background-color: var(--gris-calido-200);
+    color: var(--color-marron);
+    padding: .2rem .5rem;
+    border-radius: .4rem;
+}
+
+.badge-disponible {
+    font-size: .65rem;
+    font-weight: 700;
+    color: #1e7e34;
+    background-color: #e6f6ea;
+    border: 1px solid #c3e9cd;
+    padding: .2rem .5rem;
+    border-radius: .4rem;
+}
+
+.badge-no-disponible {
+    font-size: .65rem;
+    font-weight: 700;
+    color: #a02622;
+    background-color: #fdecea;
+    border: 1px solid #f6c8c5;
+    padding: .2rem .5rem;
+    border-radius: .4rem;
+}
+
+.precio-servicio {
+    font-weight: 800;
+    color: var(--color-marron);
+    font-size: .95rem;
+}
+
+/* Tarjeta de recomendación / tip */
+.panel-tip {
+    background: linear-gradient(135deg, var(--marron-claro-50), #fff);
+    border: 1px solid var(--marron-claro-200);
+    border-radius: 1.25rem;
+    padding: 1.1rem;
+}
+
+.panel-tip-icono {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-marron);
+    color: #fff;
+    border-radius: .7rem;
+    font-size: .85rem;
+}
+
+.panel-tip-titulo {
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: var(--color-marron);
 }

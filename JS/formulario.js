@@ -56,6 +56,8 @@ formulario.addEventListener("submit", function (event) {
         mostrarAlerta("<strong>¡Muy bien!</strong> El servicio se ha registrado correctamente.", "success");
 
         formulario.reset();
+        quitarImagen();
+        limpiarSeleccionPills();
 
         // Refresca la lista de servicios mostrada en el panel, sin recargar la página
         if (typeof renderizarServicios === "function") {
@@ -109,37 +111,118 @@ function eliminarServicio(id) {
     });
 }
 
-function renderizarServicios() {
+// ============================================================
+// RENDER VISUAL de la lista (misma fuente de datos: localStorage,
+// solo cambia el HTML/estilo de las tarjetas)
+// ============================================================
+function renderizarServicios(listaAMostrar) {
     const contenedor = document.getElementById("listaServicios");
-    const servicios = JSON.parse(localStorage.getItem("servicios")) || [];
+    const todos = JSON.parse(localStorage.getItem("servicios")) || [];
+    const items = listaAMostrar !== undefined ? listaAMostrar : todos;
 
-    if (servicios.length === 0) {
-        contenedor.innerHTML = '<p id="sinServicios" class="text-muted small mb-0">Todavía no hay servicios agregados.</p>';
+    const contador = document.getElementById("contadorServicios");
+    if (contador) {
+        contador.textContent = `${todos.length} ${todos.length === 1 ? "servicio" : "servicios"}`;
+    }
+
+    if (todos.length === 0) {
+        contenedor.innerHTML = `
+            <div class="estado-vacio" id="sinServicios">
+                <div class="estado-vacio-icono">📦</div>
+                <p class="fw-bold mb-1" style="font-size:.9rem;">Todavía no hay servicios</p>
+                <p class="text-muted small mb-0">Completa el formulario para añadir el primero.</p>
+            </div>
+        `;
         return;
     }
 
-    contenedor.innerHTML = servicios.map((s) => `
-        <div class="card mb-3 shadow-sm">
-            ${s.imagen ? `<img src="${s.imagen}" class="card-img-top" alt="${s.servicio || 'Servicio'}" style="max-height:120px; object-fit:cover;">` : ""}
-            <div class="card-body py-2 px-3">
-                <h6 class="card-title fw-bold mb-1">${s.servicio || "(Sin nombre)"}</h6>
-                <p class="card-text small mb-1">${s.descripcion || ""}</p>
-                <div class="d-flex justify-content-between align-items-center small text-muted mb-2">
-                    <span>${s.categoria || ""}</span>
-                    <span>$${s.precio ?? ""}</span>
-                </div>
-                <span class="badge ${s.disponibilidad === "Disponible" ? "bg-success" : "bg-secondary"} mb-2">
+    if (items.length === 0) {
+        contenedor.innerHTML = `<p class="text-muted small text-center mt-3">No se encontraron servicios coincidentes.</p>`;
+        return;
+    }
+
+    contenedor.innerHTML = items.map((s) => `
+        <div class="tarjeta-servicio">
+            ${s.imagen ? `<img src="${s.imagen}" alt="${s.servicio || 'Servicio'}">` : ""}
+            <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
+                <span class="badge-categoria-servicio">${s.categoria || ""}</span>
+                <span class="${s.disponibilidad === "Disponible" ? "badge-disponible" : "badge-no-disponible"}">
                     ${s.disponibilidad || ""}
                 </span>
-                <div>
-                    <button type="button" class="btn btn-sm btn-outline-danger w-100" onclick="eliminarServicio(${s.id})">
-                        🗑️ Eliminar
-                    </button>
-                </div>
+            </div>
+            <h6 class="fw-bold mb-1" style="font-size:.9rem;">${s.servicio || "(Sin nombre)"}</h6>
+            <p class="text-muted small mb-2">${s.descripcion || ""}</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <span class="precio-servicio">$${s.precio ?? ""}</span>
+                <button type="button" class="btn btn-sm btn-outline-danger" onclick="eliminarServicio(${s.id})">
+                    🗑️ Eliminar
+                </button>
             </div>
         </div>
     `).join("");
 }
 
+// ============================================================
+// Helpers solo visuales (no tocan localStorage ni el envío del form)
+// ============================================================
+
+// Buscador rápido de la lista ya renderizada
+function filtrarServicios(texto) {
+    const termino = texto.toLowerCase().trim();
+    const todos = JSON.parse(localStorage.getItem("servicios")) || [];
+
+    if (!termino) {
+        renderizarServicios(todos);
+        return;
+    }
+
+    const filtrados = todos.filter(s =>
+        (s.servicio || "").toLowerCase().includes(termino) ||
+        (s.categoria || "").toLowerCase().includes(termino)
+    );
+    renderizarServicios(filtrados);
+}
+
+// Vista previa del nombre del archivo elegido en el input de imagen
+function previsualizarImagen(input) {
+    const badge = document.getElementById("archivoBadge");
+    const nombre = document.getElementById("archivoNombre");
+    if (input.files && input.files[0]) {
+        nombre.textContent = input.files[0].name;
+        badge.classList.remove("d-none");
+    } else {
+        badge.classList.add("d-none");
+    }
+}
+
+function quitarImagen() {
+    const input = document.getElementById("imagen");
+    if (input) input.value = "";
+    const badge = document.getElementById("archivoBadge");
+    if (badge) badge.classList.add("d-none");
+}
+
+// Sincroniza los botones "pill" de categoría con el <select> real
+function seleccionarCategoriaPill(boton) {
+    const valor = boton.getAttribute("data-valor");
+    const select = document.getElementById("categoria");
+    select.value = valor;
+
+    document.querySelectorAll(".pill-categoria").forEach(p => p.classList.remove("activa"));
+    boton.classList.add("activa");
+}
+
+function sincronizarPillDesdeSelect(select) {
+    document.querySelectorAll(".pill-categoria").forEach(p => {
+        p.classList.toggle("activa", p.getAttribute("data-valor") === select.value);
+    });
+}
+
+function limpiarSeleccionPills() {
+    document.querySelectorAll(".pill-categoria").forEach(p => p.classList.remove("activa"));
+    const filtro = document.getElementById("filtroServicios");
+    if (filtro) filtro.value = "";
+}
+
 // Pinta la lista al cargar la página (incluye después de eliminar/limpiar, que recargan la página)
-document.addEventListener("DOMContentLoaded", renderizarServicios);
+document.addEventListener("DOMContentLoaded", () => renderizarServicios());
