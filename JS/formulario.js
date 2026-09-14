@@ -1,129 +1,195 @@
+// ============================================================
+// 1. GESTIÓN DE SERVICIOS (CRUD + EDICIÓN CORREGIDA)
+// ============================================================
 const servicios = JSON.parse(localStorage.getItem("servicios")) || [];
-
 const formulario = document.getElementById("formularioAdmin");
 const alertaContenedor = document.getElementById("alertaContenedor");
 
+let editandoServicioId = null;
+
 function mostrarAlerta(mensaje, tipo) {
+    if (!alertaContenedor) return;
     alertaContenedor.innerHTML = `
         <div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
             ${mensaje}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
         </div>
     `;
-
     setTimeout(() => {
         alertaContenedor.innerHTML = "";
     }, 3000);
 }
 
-formulario.addEventListener("submit", function (event) {
-    event.preventDefault();
+if (formulario) {
+    formulario.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    if (!formulario.checkValidity()) {
-        alertaContenedor.innerHTML = `
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>¡Campos incompletos!</strong>
-                Por favor, complete todos los campos obligatorios.
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-        `;
-        formulario.reportValidity();
-        return;
-    }
-
-    const datosFormulario = new FormData(formulario);
-    const archivoImagen = document.getElementById("imagen").files[0];
-
-    // Usamos FileReader para convertir la imagen a texto (Base64) y poder guardarla en localStorage
-    const reader = new FileReader();
-
-    reader.onload = function (e) {
-        const imagenBase64 = e.target.result;
-
-        const nuevoServicio = {
-            id: Date.now(),
-            servicio: datosFormulario.get("servicio"),
-            descripcion: datosFormulario.get("descripcion"),
-            precio: Number(datosFormulario.get("precio")),
-            disponibilidad: datosFormulario.get("disponibilidad"),
-            categoria: datosFormulario.get("categoria"),
-            imagen: imagenBase64
-        };
-        servicios.push(nuevoServicio);
-        localStorage.setItem("servicios", JSON.stringify(servicios));
-
-        console.log("Array actual guardado:", servicios);
-        mostrarAlerta("<strong>¡Muy bien!</strong> El servicio se ha registrado correctamente.", "success");
-
-        formulario.reset();
-        quitarImagen();
-        limpiarSeleccionPills();
-
-        // Refresca la lista de servicios mostrada en el panel, sin recargar la página
-        if (typeof renderizarServicios === "function") {
-            renderizarServicios();
+        if (!formulario.checkValidity()) {
+            mostrarAlerta("<strong>¡Campos incompletos!</strong> Por favor, complete todos los campos obligatorios.", "danger");
+            formulario.reportValidity();
+            return;
         }
 
-        setTimeout(() => {
-            alertaContenedor.innerHTML = "";
-        }, 3000);
-    };
+        const datosFormulario = new FormData(formulario);
+        const archivoImagen = document.getElementById("imagen").files[0];
+        let serviciosActualizados = JSON.parse(localStorage.getItem("servicios")) || [];
 
-    if (archivoImagen) {
-        reader.readAsDataURL(archivoImagen);
-    }
-});
+        function guardarYFinalizar(imagenFinal) {
+            if (editandoServicioId !== null) {
+                let index = serviciosActualizados.findIndex(s => s.id === editandoServicioId);
+                if (index !== -1) {
+                    serviciosActualizados[index] = {
+                        id: editandoServicioId,
+                        servicio: datosFormulario.get("servicio"),
+                        descripcion: datosFormulario.get("descripcion"),
+                        precio: Number(datosFormulario.get("precio")),
+                        disponibilidad: datosFormulario.get("disponibilidad"),
+                        categoria: datosFormulario.get("categoria"),
+                        imagen: imagenFinal
+                    };
+                }
+                editandoServicioId = null;
+                const btnSubmit = document.querySelector("#formularioAdmin button[type='submit']");
+                if (btnSubmit) {
+                    btnSubmit.textContent = "Agregar servicio";
+                    btnSubmit.classList.remove("btn-warning");
+                }
+                mostrarAlerta("<strong>¡Actualizado!</strong> El servicio se ha modificado correctamente.", "success");
+            } else {
+                const nuevoServicio = {
+                    id: Date.now(),
+                    servicio: datosFormulario.get("servicio"),
+                    descripcion: datosFormulario.get("descripcion"),
+                    precio: Number(datosFormulario.get("precio")),
+                    disponibilidad: datosFormulario.get("disponibilidad"),
+                    categoria: datosFormulario.get("categoria"),
+                    imagen: imagenFinal
+                };
+                serviciosActualizados.push(nuevoServicio);
+                mostrarAlerta("<strong>¡Muy bien!</strong> El servicio se ha registrado correctamente.", "success");
+            }
 
-function limpiarServicios() {
-    localStorage.removeItem("servicios");
-    alert("Servicios eliminados correctamente");
-    location.reload();
-}
+            localStorage.setItem("servicios", JSON.stringify(serviciosActualizados));
 
-function eliminarServicio(id) {
+            // La imagen vuelve a ser obligatoria para el próximo servicio "nuevo"
+            const inputImagen = document.getElementById("imagen");
+            if (inputImagen) inputImagen.required = true;
 
-    Swal.fire({
-        title: "¿Eliminar servicio?",
-        text: "No podrás recuperarlo después.",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Sí, eliminar",
-        cancelButtonText: "Cancelar",
-        confirmButtonColor: "#dc3545"
-    }).then((result) => {
+            formulario.reset();
+            quitarImagen();
+            limpiarSeleccionPills();
+            renderizarServicios();
+            cargarDatosReales();
+        }
 
-        if (result.isConfirmed) {
-
-            let servicios =
-                JSON.parse(localStorage.getItem("servicios")) || [];
-
-            servicios = servicios.filter(
-                servicio => servicio.id !== id
-            );
-
-            localStorage.setItem(
-                "servicios",
-                JSON.stringify(servicios)
-            );
-
-            location.reload();
+        if (archivoImagen) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                guardarYFinalizar(e.target.result);
+            };
+            reader.readAsDataURL(archivoImagen);
+        } else if (editandoServicioId !== null) {
+            let servicioExistente = serviciosActualizados.find(s => s.id === editandoServicioId);
+            let imagenAnterior = servicioExistente ? servicioExistente.imagen : "";
+            guardarYFinalizar(imagenAnterior);
+        } else {
+            mostrarAlerta("Por favor, selecciona una imagen para el servicio.", "danger");
         }
     });
 }
 
-// ============================================================
-// RENDER VISUAL de la lista (misma fuente de datos: localStorage,
-// solo cambia el HTML/estilo de las tarjetas)
-// ============================================================
+function cargarServicioParaEditar(id) {
+    const servicios = JSON.parse(localStorage.getItem("servicios")) || [];
+    const servicioAEditar = servicios.find(s => s.id === id);
+
+    if (!servicioAEditar) return;
+
+    document.getElementById("servicio").value = servicioAEditar.servicio || "";
+    document.getElementById("descripcion").value = servicioAEditar.descripcion || "";
+    document.getElementById("precio").value = servicioAEditar.precio || "";
+    document.getElementById("disponibilidad").value = servicioAEditar.disponibilidad || "";
+
+    // La imagen deja de ser obligatoria mientras editas: un <input type="file">
+    // nunca puede rellenarse por código, así que si no la quitamos, el navegador
+    // bloquea el envío del formulario por "campo requerido vacío".
+    const inputImagen = document.getElementById("imagen");
+    if (inputImagen) inputImagen.required = false;
+
+    const inputCategoria = document.getElementById("categoria");
+    if (inputCategoria) inputCategoria.value = servicioAEditar.categoria || "";
+
+    document.querySelectorAll(".pill-categoria").forEach(p => {
+        p.classList.toggle("activa", p.getAttribute("data-valor") === servicioAEditar.categoria);
+    });
+
+    if (servicioAEditar.imagen) {
+        const badge = document.getElementById("archivoBadge");
+        const nombre = document.getElementById("archivoNombre");
+        if (badge && nombre) {
+            nombre.textContent = "Imagen actual guardada";
+            badge.classList.remove("d-none");
+        }
+    }
+
+    editandoServicioId = id;
+
+    const btnSubmit = document.querySelector("#formularioAdmin button[type='submit']");
+    if (btnSubmit) {
+        btnSubmit.textContent = "Actualizar servicio";
+        btnSubmit.classList.add("btn-warning");
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function limpiarServicios() {
+    localStorage.removeItem("servicios");
+    if (typeof Swal !== 'undefined') {
+        Swal.fire({ icon: "success", title: "Servicios eliminados", timer: 1500, showConfirmButton: false });
+    } else {
+        alert("Servicios eliminados correctamente");
+    }
+    renderizarServicios();
+    cargarDatosReales();
+}
+
+function eliminarServicio(id) {
+    if (typeof Swal !== 'undefined') {
+        Swal.fire({
+            title: "¿Eliminar servicio?",
+            text: "No podrás recuperarlo después.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar",
+            confirmButtonColor: "#dc3545"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                ejecutarEliminacion(id);
+            }
+        });
+    } else {
+        if (confirm("¿Seguro que deseas eliminar este servicio?")) ejecutarEliminacion(id);
+    }
+}
+
+function ejecutarEliminacion(id) {
+    let serviciosActuales = JSON.parse(localStorage.getItem("servicios")) || [];
+    serviciosActuales = serviciosActuales.filter(servicio => servicio.id !== id);
+    localStorage.setItem("servicios", JSON.stringify(serviciosActuales));
+    renderizarServicios();
+    cargarDatosReales();
+}
+
 function renderizarServicios(listaAMostrar) {
     const contenedor = document.getElementById("listaServicios");
+    if (!contenedor) return;
+
     const todos = JSON.parse(localStorage.getItem("servicios")) || [];
     const items = listaAMostrar !== undefined ? listaAMostrar : todos;
-
     const contador = document.getElementById("contadorServicios");
-    if (contador) {
-        contador.textContent = `${todos.length} ${todos.length === 1 ? "servicio" : "servicios"}`;
-    }
+
+    if (contador) contador.textContent = `${todos.length} ${todos.length === 1 ? "servicio" : "servicios"}`;
 
     if (todos.length === 0) {
         contenedor.innerHTML = `
@@ -142,40 +208,38 @@ function renderizarServicios(listaAMostrar) {
     }
 
     contenedor.innerHTML = items.map((s) => `
-        <div class="tarjeta-servicio">
-            ${s.imagen ? `<img src="${s.imagen}" alt="${s.servicio || 'Servicio'}">` : ""}
+        <div class="tarjeta-servicio mb-3 p-3 border rounded bg-white shadow-sm">
+            ${s.imagen ? `<img src="${s.imagen}" alt="${s.servicio || 'Servicio'}" class="img-fluid rounded mb-2" style="max-height: 120px; object-fit: cover; width: 100%;">` : ""}
             <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
-                <span class="badge-categoria-servicio">${s.categoria || ""}</span>
-                <span class="${s.disponibilidad === "Disponible" ? "badge-disponible" : "badge-no-disponible"}">
+                <span class="badge bg-secondary">${s.categoria || ""}</span>
+                <span class="badge ${s.disponibilidad === "Disponible" ? "bg-success" : "bg-danger"}">
                     ${s.disponibilidad || ""}
                 </span>
             </div>
             <h6 class="fw-bold mb-1" style="font-size:.9rem;">${s.servicio || "(Sin nombre)"}</h6>
             <p class="text-muted small mb-2">${s.descripcion || ""}</p>
             <div class="d-flex justify-content-between align-items-center">
-                <span class="precio-servicio">$${s.precio ?? ""}</span>
-                <button type="button" class="btn btn-sm btn-outline-danger" onclick="eliminarServicio(${s.id})">
-                    🗑️ Eliminar
-                </button>
+                <span class="fw-bold text-success">$${s.precio ?? ""}</span>
+                <div class="d-flex gap-1">
+                    <button type="button" class="btn btn-sm btn-outline-primary" onclick="cargarServicioParaEditar(${s.id})">
+                        ✏️ Editar
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="eliminarServicio(${s.id})">
+                        🗑️ Eliminar
+                    </button>
+                </div>
             </div>
         </div>
     `).join("");
 }
 
-// ============================================================
-// Helpers solo visuales (no tocan localStorage ni el envío del form)
-// ============================================================
-
-// Buscador rápido de la lista ya renderizada
 function filtrarServicios(texto) {
     const termino = texto.toLowerCase().trim();
     const todos = JSON.parse(localStorage.getItem("servicios")) || [];
-
     if (!termino) {
         renderizarServicios(todos);
         return;
     }
-
     const filtrados = todos.filter(s =>
         (s.servicio || "").toLowerCase().includes(termino) ||
         (s.categoria || "").toLowerCase().includes(termino)
@@ -183,7 +247,6 @@ function filtrarServicios(texto) {
     renderizarServicios(filtrados);
 }
 
-// Vista previa del nombre del archivo elegido en el input de imagen
 function previsualizarImagen(input) {
     const badge = document.getElementById("archivoBadge");
     const nombre = document.getElementById("archivoNombre");
@@ -202,20 +265,12 @@ function quitarImagen() {
     if (badge) badge.classList.add("d-none");
 }
 
-// Sincroniza los botones "pill" de categoría con el <select> real
 function seleccionarCategoriaPill(boton) {
     const valor = boton.getAttribute("data-valor");
     const select = document.getElementById("categoria");
-    select.value = valor;
-
+    if (select) select.value = valor;
     document.querySelectorAll(".pill-categoria").forEach(p => p.classList.remove("activa"));
     boton.classList.add("activa");
-}
-
-function sincronizarPillDesdeSelect(select) {
-    document.querySelectorAll(".pill-categoria").forEach(p => {
-        p.classList.toggle("activa", p.getAttribute("data-valor") === select.value);
-    });
 }
 
 function limpiarSeleccionPills() {
@@ -224,5 +279,371 @@ function limpiarSeleccionPills() {
     if (filtro) filtro.value = "";
 }
 
-// Pinta la lista al cargar la página (incluye después de eliminar/limpiar, que recargan la página)
-document.addEventListener("DOMContentLoaded", () => renderizarServicios());
+
+// ============================================================
+// 2. DASHBOARD Y CARGA DE DATOS REALES (KPIs, Usuarios)
+// ============================================================
+function cargarDatosReales() {
+    const usuarios = JSON.parse(localStorage.getItem('huellitasUsuarios')) || [];
+    const reservas = JSON.parse(localStorage.getItem('huellitasReservas')) || [];
+    const serviciosGuardados = JSON.parse(localStorage.getItem("servicios")) || [];
+
+    const kpiClientes = document.getElementById('kpiClientes');
+    const kpiReservas = document.getElementById('kpiReservas');
+    const kpiServicios = document.getElementById('kpiServicios');
+
+    if (kpiClientes) kpiClientes.textContent = usuarios.length;
+    if (kpiReservas) kpiReservas.textContent = reservas.length;
+    if (kpiServicios) kpiServicios.textContent = serviciosGuardados.length;
+
+    let totalPerros = 0, totalGatos = 0, totalAves = 0, totalPequenos = 0;
+    let totalMascotasAlojadas = 0;
+
+    reservas.forEach(r => {
+        if (r.mascotas && Array.isArray(r.mascotas)) {
+            r.mascotas.forEach(m => {
+                totalMascotasAlojadas++;
+                if (m.animalType === 'perro') totalPerros++;
+                else if (m.animalType === 'gato') totalGatos++;
+                else if (m.animalType === 'aves') totalAves++;
+                else if (m.animalType === 'pequenos') totalPequenos++;
+            });
+        }
+    });
+
+    const kpiOcupacion = document.getElementById('kpiOcupacion');
+    const kpiEspacios = document.getElementById('kpiEspacios');
+    const espaciosMaximos = 50;
+
+    if (kpiOcupacion && kpiEspacios) {
+        let porcentajeOcup = totalMascotasAlojadas > 0 ? Math.round((totalMascotasAlojadas / espaciosMaximos) * 100) : 0;
+        kpiOcupacion.textContent = porcentajeOcup + '%';
+        let libres = espaciosMaximos - totalMascotasAlojadas;
+        kpiEspacios.textContent = `${libres} libres`;
+    }
+
+    const pPerros = totalMascotasAlojadas > 0 ? Math.round((totalPerros / totalMascotasAlojadas) * 100) : 0;
+    const pGatos = totalMascotasAlojadas > 0 ? Math.round((totalGatos / totalMascotasAlojadas) * 100) : 0;
+    const pAves = totalMascotasAlojadas > 0 ? Math.round((totalAves / totalMascotasAlojadas) * 100) : 0;
+    const pPequenos = totalMascotasAlojadas > 0 ? Math.round((totalPequenos / totalMascotasAlojadas) * 100) : 0;
+
+    const leyendaAnimales = document.getElementById('leyendaAnimales');
+    if (leyendaAnimales) {
+        if (totalMascotasAlojadas === 0) {
+            leyendaAnimales.innerHTML = `<span class="text-muted small">No hay mascotas reservadas aún.</span>`;
+        } else {
+            leyendaAnimales.innerHTML = `
+                <span class="d-flex align-items-center gap-1 text-muted small"><span class="punto-leyenda" style="background-color: var(--color-verde, #173C2C);"></span>Perros (${pPerros}%)</span>
+                <span class="d-flex align-items-center gap-1 text-muted small"><span class="punto-leyenda" style="background-color: var(--color-coral, #E68A5C);"></span>Gatos (${pGatos}%)</span>
+                <span class="d-flex align-items-center gap-1 text-muted small"><span class="punto-leyenda" style="background-color: #3b82f6;"></span>Aves (${pAves}%)</span>
+                <span class="d-flex align-items-center gap-1 text-muted small"><span class="punto-leyenda" style="background-color: #eab308;"></span>Pequeños (${pPequenos}%)</span>
+            `;
+        }
+    }
+
+    let pctWeb = reservas.length > 0 ? 100 : 0;
+    const cWeb = document.getElementById('canalWeb');
+    if (cWeb) {
+        cWeb.textContent = `${pctWeb}%`;
+        document.getElementById('deltaWeb').textContent = reservas.length > 0 ? 'online' : '0%';
+        document.getElementById('canalWhatsapp').textContent = '0%';
+        document.getElementById('deltaWhatsapp').textContent = '0%';
+        document.getElementById('canalRecepcion').textContent = '0%';
+        document.getElementById('deltaRecepcion').textContent = '0%';
+        document.getElementById('canalTelefono').textContent = '0%';
+        document.getElementById('deltaTelefono').textContent = '0%';
+    }
+
+    const tablaBody = document.getElementById('tablaUsuariosBody');
+    if (tablaBody) {
+        if (usuarios.length === 0) {
+            tablaBody.innerHTML = `<tr><td colspan="4" class="text-center text-muted py-4">No hay usuarios registrados aún.</td></tr>`;
+        } else {
+            let filasHTML = "";
+            usuarios.forEach(user => {
+                const reservasDelUsuario = reservas.filter(r => r.usuario === user.email);
+                let totalMascotas = 0;
+                reservasDelUsuario.forEach(res => {
+                    if (res.mascotas && Array.isArray(res.mascotas)) totalMascotas += res.mascotas.length;
+                });
+                filasHTML += `
+                <tr>
+                    <td class="fw-semibold">${user.nombre || 'Sin nombre'}</td>
+                    <td>${user.email}</td>
+                    <td>${user.telefono || 'No registrado'}</td>
+                    <td>
+                        <span class="badge rounded-pill" style="background-color: var(--color-verde, #173C2C);">
+                            ${totalMascotas}
+                        </span>
+                    </td>
+                </tr>`;
+            });
+            tablaBody.innerHTML = filasHTML;
+        }
+    }
+
+    renderizarEquipo();
+}
+
+
+// ============================================================
+// 3. GRÁFICO DE BARRAS POR SEMANA
+// ============================================================
+const selectorSemana = document.getElementById('selectorSemana');
+
+function obtenerSemanaActualInput() {
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    d.setDate(d.getDate() + 3 - (d.getDay() + 6) % 7);
+    const week1 = new Date(d.getFullYear(), 0, 4);
+    const weekNum = 1 + Math.round(((d.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
+    return `${d.getFullYear()}-W${weekNum.toString().padStart(2, '0')}`;
+}
+
+function obtenerLunesDeSemana(weekString) {
+    const [year, week] = weekString.split('-W');
+    const simple = new Date(year, 0, 1 + (week - 1) * 7);
+    const dow = simple.getDay();
+    const ISOweekStart = simple;
+    if (dow <= 4) ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+    else ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+    return ISOweekStart;
+}
+
+function actualizarGraficoSemanal() {
+    const grafContenedor = document.getElementById('contenedorGraficoBarras');
+    const grafDias = document.getElementById('etiquetasDiasGrafico');
+    if (!grafContenedor || !selectorSemana) return;
+
+    const reservas = JSON.parse(localStorage.getItem('huellitasReservas')) || [];
+    const fechaLunes = obtenerLunesDeSemana(selectorSemana.value);
+
+    let datosSemana = [];
+    const nombresDias = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+
+    for (let i = 0; i < 7; i++) {
+        let dia = new Date(fechaLunes);
+        dia.setDate(fechaLunes.getDate() + i);
+        datosSemana.push({
+            fechaRaw: dia.toISOString().split('T')[0],
+            etiqueta: `${nombresDias[i]} ${dia.getDate()}`,
+            cantidad: 0
+        });
+    }
+
+    reservas.forEach(r => {
+        if (r.fechaCreacion) {
+            let fechaReserva = r.fechaCreacion.split('T')[0];
+            let diaMatch = datosSemana.find(d => d.fechaRaw === fechaReserva);
+            if (diaMatch) diaMatch.cantidad += 1;
+        }
+    });
+
+    const maxReservas = Math.max(...datosSemana.map(d => d.cantidad));
+
+    grafContenedor.innerHTML = datosSemana.map(dia => `
+        <div class="d-flex flex-column align-items-center flex-grow-1" style="width: 14%;">
+            <div class="fw-bold small mb-1" style="color: #754C2E; font-size: 0.8rem; opacity: ${dia.cantidad > 0 ? '1' : '0'};">${dia.cantidad}</div>
+            <div style="height: 100%; width: 100%; display: flex; align-items: flex-end; justify-content: center;">
+                <div style="width: 50%; max-width: 30px; background-color: #754C2E; border-radius: 6px 6px 0 0; height: ${maxReservas > 0 ? (dia.cantidad / maxReservas) * 100 : 0}%; transition: 0.4s;"></div>
+            </div>
+        </div>
+    `).join('');
+
+    const hoyTxt = new Date().toISOString().split('T')[0];
+    grafDias.innerHTML = datosSemana.map(dia => `
+        <span class="text-center ${dia.fechaRaw === hoyTxt ? 'fw-bold' : ''}" style="width: 14%; color: ${dia.fechaRaw === hoyTxt ? '#754C2E' : '#6c757d'};">${dia.etiqueta}</span>
+    `).join('');
+}
+
+if (selectorSemana) {
+    selectorSemana.addEventListener('change', actualizarGraficoSemanal);
+}
+
+
+// ============================================================
+// 4. CALENDARIO DE RESERVAS (CHECK-IN)
+// ============================================================
+let fechaCalendarioActual = new Date();
+
+function renderizarCalendario() {
+    const contenedorDias = document.getElementById('diasDelCalendario');
+    const textoMes = document.getElementById('textoMesCalendario');
+    if (!contenedorDias) return;
+
+    const año = fechaCalendarioActual.getFullYear();
+    const mes = fechaCalendarioActual.getMonth();
+
+    if (textoMes) {
+        textoMes.textContent = fechaCalendarioActual.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' });
+    }
+
+    const primerDiaMes = new Date(año, mes, 1).getDay();
+    const diasEnMes = new Date(año, mes + 1, 0).getDate();
+    const reservas = JSON.parse(localStorage.getItem('huellitasReservas')) || [];
+
+    let htmlDias = '';
+    for (let i = 0; i < primerDiaMes; i++) {
+        htmlDias += `<div class="cal-dia inactivo"></div>`;
+    }
+
+    for (let dia = 1; dia <= diasEnMes; dia++) {
+        const fechaCadena = `${año}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
+
+        let mascotasHoyHTML = '';
+        reservas.forEach(reserva => {
+            if (reserva.mascotas) {
+                reserva.mascotas.forEach(mascota => {
+                    if (mascota.checkIn === fechaCadena) {
+                        let claseBadge = 'bg-secondary text-white';
+                        let icono = '🐾';
+                        if (mascota.animalType === 'perro') { claseBadge = 'badge-perro'; icono = '🐶'; }
+                        if (mascota.animalType === 'gato') { claseBadge = 'badge-gato'; icono = '🐱'; }
+                        if (mascota.animalType === 'aves') { claseBadge = 'badge-ave'; icono = '🦜'; }
+                        if (mascota.animalType === 'pequenos') { claseBadge = 'badge-pequeno'; icono = '🐰'; }
+
+                        mascotasHoyHTML += `<div class="cal-reserva ${claseBadge}" title="${mascota.name} - ${reserva.usuario}">
+                            ${icono} ${mascota.name || 'Sin nombre'}
+                        </div>`;
+                    }
+                });
+            }
+        });
+
+        const esHoy = fechaCadena === new Date().toISOString().split('T')[0];
+        const estiloHoy = esHoy ? 'background: #fdf5f0; border-color: #754C2E;' : '';
+
+        htmlDias += `
+            <div class="cal-dia" style="${estiloHoy}">
+                <div class="cal-num" style="${esHoy ? 'color: #754C2E;' : ''}">${dia}</div>
+                <div style="flex-grow: 1; overflow-y: auto;">${mascotasHoyHTML}</div>
+            </div>
+        `;
+    }
+    contenedorDias.innerHTML = htmlDias;
+}
+
+function cambiarMesCalendario(direccion) {
+    fechaCalendarioActual.setMonth(fechaCalendarioActual.getMonth() + direccion);
+    renderizarCalendario();
+}
+
+
+// ============================================================
+// 5. EQUIPO Y PERSONAL
+// ============================================================
+const formEquipo = document.getElementById('formEquipo');
+if (formEquipo) {
+    formEquipo.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const empleados = JSON.parse(localStorage.getItem('huellitasEquipo')) || [];
+
+        const nuevoEmpleado = {
+            id: Date.now(),
+            nombre: document.getElementById('empNombre').value,
+            rol: document.getElementById('empRol').value,
+            estado: document.getElementById('empEstado').value
+        };
+
+        empleados.push(nuevoEmpleado);
+        localStorage.setItem('huellitasEquipo', JSON.stringify(empleados));
+
+        formEquipo.reset();
+        renderizarEquipo();
+
+        if (typeof Swal !== 'undefined') {
+            Swal.fire({ icon: 'success', title: 'Empleado guardado', timer: 1500, showConfirmButton: false });
+        }
+    });
+}
+
+function cambiarEstadoEmpleado(id) {
+    let empleados = JSON.parse(localStorage.getItem('huellitasEquipo')) || [];
+    let emp = empleados.find(e => e.id === id);
+    if (emp) {
+        emp.estado = emp.estado === 'Activo' ? 'Inactivo' : 'Activo';
+        localStorage.setItem('huellitasEquipo', JSON.stringify(empleados));
+        renderizarEquipo();
+    }
+}
+
+function eliminarEmpleado(id) {
+    let empleados = JSON.parse(localStorage.getItem('huellitasEquipo')) || [];
+    empleados = empleados.filter(e => e.id !== id);
+    localStorage.setItem('huellitasEquipo', JSON.stringify(empleados));
+    renderizarEquipo();
+}
+
+function renderizarEquipo() {
+    const empleados = JSON.parse(localStorage.getItem('huellitasEquipo')) || [];
+
+    const tablaBody = document.getElementById('tablaEquipoBody');
+    if (tablaBody) {
+        tablaBody.innerHTML = empleados.length === 0
+            ? `<tr><td colspan="4" class="text-center text-muted">No hay empleados registrados</td></tr>`
+            : empleados.map(e => `
+                <tr>
+                    <td class="fw-bold">${e.nombre}</td>
+                    <td>${e.rol}</td>
+                    <td>
+                        <span class="badge ${e.estado === 'Activo' ? 'bg-success' : 'bg-danger'}" 
+                              style="cursor:pointer;" onclick="cambiarEstadoEmpleado(${e.id})">
+                            ${e.estado}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-danger" onclick="eliminarEmpleado(${e.id})">🗑️</button>
+                    </td>
+                </tr>
+            `).join('');
+    }
+
+    const empleadosActivos = empleados.filter(e => e.estado === 'Activo');
+    const contenedorDashboard = document.getElementById('listaEquipoDashboard');
+    const conteoActivos = document.getElementById('conteoEquipoActivo');
+
+    if (conteoActivos) conteoActivos.textContent = `${empleadosActivos.length} Activos`;
+
+    if (contenedorDashboard) {
+        contenedorDashboard.innerHTML = empleadosActivos.length === 0
+            ? `<p class="text-muted small">Nadie en turno.</p>`
+            : empleadosActivos.map(e => {
+                let iniciales = e.nombre.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+                return `
+                <div class="equipo-item d-flex justify-content-between align-items-center mb-2 p-2 border rounded">
+                    <div class="d-flex align-items-center gap-2 min-w-0">
+                        <div class="avatar-iniciales rounded-circle bg-light d-flex align-items-center justify-content-center text-secondary fw-bold" style="width:35px; height:35px; font-size:14px; border: 1px solid #ddd;">${iniciales}</div>
+                        <div class="min-w-0">
+                            <h6 class="mb-0 text-truncate" style="font-size:.85rem;">${e.nombre}</h6>
+                            <p class="text-muted small mb-0 text-truncate">${e.rol}</p>
+                        </div>
+                    </div>
+                    <span class="fw-bold small text-success">🟢 En turno</span>
+                </div>
+                `;
+            }).join('');
+    }
+}
+
+
+// ============================================================
+// 6. INICIALIZACIÓN GLOBAL AL CARGAR LA PÁGINA
+// ============================================================
+document.addEventListener("DOMContentLoaded", () => {
+    const fechaSpan = document.getElementById("fechaHoyPanel");
+    if (fechaSpan) {
+        fechaSpan.textContent = new Date().toLocaleDateString("es-ES", {
+            day: "numeric", month: "long", year: "numeric"
+        });
+    }
+
+    renderizarServicios();
+    cargarDatosReales();
+
+    if (selectorSemana) {
+        selectorSemana.value = obtenerSemanaActualInput();
+        actualizarGraficoSemanal();
+    }
+
+    renderizarCalendario();
+});
