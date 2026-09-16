@@ -1,178 +1,161 @@
-# Hotel Huellitas
+# Huellitas Hotel - Frontend
 
-Este repositorio contiene la parte de backend del proyecto Hotel Huellitas, desarrollada con Java y Spring Boot. También existe una interfaz web para el sitio web del hotel.
+Este repositorio contiene la interfaz web del proyecto Huellitas Hotel, diseñada para mostrar y promocionar los servicios del hotel para mascotas, facilitar las reservas y ofrecer una experiencia moderna y responsiva para usuarios y administradores.
+
 ## Descripción del proyecto
 
-Hotel Huellitas es una aplicación orientada a la administración de un servicio de hotelería para mascotas. El backend incluye:
+Huellitas Hotel es una plataforma web enfocada en la atención de mascotas, con una experiencia de usuario amigable y visualmente atractiva. La interfaz permite:
 
-- Registro y autenticación de usuarios
-- Roles de acceso (usuario y administrador)
-- Gestión de mascotas asociadas a cada usuario
-- Administración de especies y servicios disponibles
-- Creación y consulta de reservas
-- Manejo de detalles de reserva
-- Seguridad con Spring Security y JWT
+- Explorar la página de inicio con contenido promocional del hotel
+- Ver los servicios ofrecidos (hospedaje, recreación, socialización, peluquería, entre otros)
+- Consultar información del hotel y su propuesta de valor
+- Realizar reservas desde la interfaz web
+- Acceder a formularios de contacto y registro
+- Navegar una experiencia responsiva en dispositivos móviles y escritorio
+- Visualizar una sección administrativa con gestión de contenido
 
 ## Tecnologías utilizadas
 
-- Java 
-- Spring Boot 3.3.3
-- Spring Web
-- Spring Data JPA
-- Spring Security
-- JWT (JJWT)
-- PostgreSQL
-- Maven
-- Lombok
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap 5
+- Font Awesome
+- Ionicons
+- GitHub Pages para despliegue
 
 ## Requisitos previos
 
-Antes de ejecutar el proyecto asegúrate de tener instalado:
+Para ejecutar este proyecto solo necesitas:
 
-- JDK 17 o superior
-- Maven 3.9+
-- PostgreSQL
-- Un IDE como IntelliJ IDEA o Visual Studio Code
+- Un navegador moderno (Chrome, Edge, Firefox)
+- Un editor de código como VS Code (opcional)
+- Python 3 o un servidor local simple (opcional)
 
-## Configuración
+## Instalación y ejecución
+
+### Opción 1: abrir directamente
 
 1. Clona el repositorio:
 
 ```bash
-git clone https://github.com/SamuelVelez-G/HUELLITAS_HOTEL_BACKEND.git
-cd HUELLITAS_HOTEL_BACKEND/Hotel
+git clone https://github.com/SamuelVelez-G/Huellitas-Hotel-Project.git
+cd Huellitas-Hotel-Project
 ```
 
-2. Configura la base de datos en `Hotel/src/main/resources/application.properties`.
+2. Abre el archivo `index.html` en tu navegador.
 
-Ejemplo:
+### Opción 2: ejecutar con un servidor local
 
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/hotel_huellitas
-spring.datasource.username=postgres
-spring.datasource.password=tu_password
-spring.datasource.driver-class-name=org.postgresql.Driver
-
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.format_sql=true
-
-jwt.secret=TU_CLAVE_SECRETA
-jwt.expiration=86400000
-```
-
-> Si usas una base externa como Supabase, reemplaza la URL, usuario y contraseña por los valores que te proporcione tu proveedor.
-
-## Ejecución
-
-En Windows:
+Desde la raíz del proyecto, ejecuta:
 
 ```bash
-mvnw.cmd spring-boot:run
+python -m http.server 8000
 ```
 
-En Linux/macOS:
-
-```bash
-./mvnw spring-boot:run
-```
-
-La aplicación quedará disponible en:
+Luego abre en el navegador:
 
 ```text
-http://localhost:8080
+http://localhost:8000
 ```
-
-## Endpoints principales
-
-### Autenticación
-
-- `POST /api/auth/login` — inicio de sesión con email y contraseña
-
-### Usuarios
-
-- `POST /api/usuarios` — registro de usuario
-- `GET /api/usuarios` — consultar usuarios (solo administrador)
-- `GET /api/usuarios/{id}` — buscar usuario por ID
-- `PUT /api/usuarios/{id}` — actualizar usuario
-- `DELETE /api/usuarios/{id}` — eliminar usuario
-
-### Mascotas
-
-- `GET /api/mascotas` — listar mascotas
-- `GET /api/mascotas/{id}` — consultar mascota por ID
-- `POST /api/mascotas` — crear mascota
-- `PUT /api/mascotas/{id}` — actualizar mascota
-- `DELETE /api/mascotas/{id}` — eliminar mascota
-
-### Servicios y especies
-
-- `GET /api/servicios` — listar servicios
-- `GET /api/servicios/{id}` — buscar servicio por ID
-- `GET /api/servicios/disponibles` — servicios disponibles
-- `GET /api/especies` — listar especies
-- `POST /api/servicios` — crear servicio (solo administrador)
-- `POST /api/especies` — crear especie (solo administrador)
-
-### Reservas
-
-- `POST /api/reservas` — crear reserva
-- `GET /api/reservas` — listar reservas
-- `GET /api/reservas/{id}` — consultar reserva por ID
 
 ## Estructura del proyecto
 
 ```text
-Hotel/
-├── src/
-│   ├── main/
-│   │   ├── java/com/Huellitas/Hotel/
-│   │   │   ├── config/
-│   │   │   ├── controller/
-│   │   │   ├── dto/
-│   │   │   ├── exception/
-│   │   │   ├── model/
-│   │   │   ├── repository/
-│   │   │   ├── security/
-│   │   │   ├── service/
-│   │   │   └── HotelApplication.java
-│   │   └── resources/
-│   │       └── application.properties
-│   └── test/
-├── pom.xml
-├── mvnw
-├── mvnw.cmd
-├── Dockerfile
-├── .gitignore
-└── README.md
+Huellitas-Hotel-Project/
+├── CSS/
+│   ├── accordion.css
+│   ├── admin.css
+│   ├── carrito.css
+│   ├── contactanos.css
+│   ├── footer.css
+│   ├── inicio.css
+│   ├── login.css
+│   ├── navbar.css
+│   ├── perrito.css
+│   ├── reservas.css
+│   ├── servicios.css
+│   ├── styles.css
+│   └── theme.css
+├── HTML/
+│   ├── acercaNosotros.html
+│   ├── accordion.html
+│   ├── carrito.html
+│   ├── contactanos.html
+│   ├── footer.html
+│   ├── formulario.html
+│   ├── login.html
+│   ├── navbar.html
+│   ├── reservas.html
+│   └── servicios.html
+├── IMG/
+│   ├── icon/
+│   ├── imagenes-home/
+│   ├── imagenes-inicio/
+│   ├── imagenes-servicios/
+│   ├── imagennes-administrador/
+│   ├── perrito videos/
+│   ├── perrito-originales/
+│   └── quienesSomos/
+├── JS/
+│   ├── admin.js
+│   ├── carrito.js
+│   ├── contactanos.js
+│   ├── footer.js
+│   ├── formulario.js
+│   ├── login.js
+│   ├── navbar.js
+│   ├── perrito.config.js
+│   ├── perrito.js
+│   ├── reservas.js
+│   ├── script.js
+│   ├── servicios.js
+│   ├── tarjetasEquipo.js
+│   └── theme.js
+├── data_base/
+│   └── README.md
+├── BACK-EDN/
+│   └── huellitas-hotel/
+├── index.html
+├── README.md
+└── .gitignore
 ```
 
-## Seguridad
+## Páginas principales
 
-La API protege los endpoints con Spring Security y JWT. Algunos recursos son públicos, como:
+- Inicio
+- Servicios
+- Reservas
+- Contacto
+- Acerca de nosotros
+- Login
+- Administración
 
-- `POST /api/auth/login`
-- `POST /api/usuarios`
-- `GET /api/especies`
-- `GET /api/servicios`
+## Funcionalidades principales
 
-Los endpoints administrativos y los recursos de usuarios, mascotas y reservas requieren autenticación y/o permisos específicos.
-
-## Integrantes del equipo
-
-| Nombre | Rol |
-|--------|-----|
-| Samuel Velez | Desarrollador Full Stack |
-| Juan Cardona | Desarrollador Full Stack |
-| Mónica Díaz | Desarrolladora Full Stack |
-| Nataly Barahona Muñoz | Desarrolladora Full Stack |
-| Dayan Bohorquez | Desarrolladora Full Stack |
+- Diseño responsive y moderno
+- Navegación con navbar reutilizable
+- Secciones destacadas para servicios e instalaciones
+- Formularios interactivos de contacto y reservas
+- Integración visual de contenido multimedia e imágenes
+- Modos de tema y estilos personalizados
+- Estructura modular con archivos HTML, CSS y JS separados
 
 ## Links de despliegue
 
 - [Frontend](https://samuelvelez-g.github.io/Huellitas-Hotel-Project/)
 - [Backend](https://huellitas-hotel-backend.onrender.com)
-- [Entrega vista administrador](https://samuelvelez-g.github.io/Huellitas-Hotel-Project/)
+
+
+## Equipo
+
+| Nombre | Rol |
+|--------|-----|
+| Samuel Velez | Frontend Developer |
+| Juan Cardona | Frontend Developer |
+| Mónica Díaz | Frontend Developer |
+| Nataly Barahona Muñoz | Frontend Developer |
+| Dayan Bohorquez | Frontend Developer |
 
 ## Contacto
 
