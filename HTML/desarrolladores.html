@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FullTeam Portfolio</title>
+    <link rel="stylesheet" href="/CSS/desarrolladores.css">
+    <!-- FontAwesome para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">Full<span>Team</span></div>
+        <nav>
+            <ul>
+                <li><a href="#proyectos">01 Proyectos</a></li>
+                <li><a href="#nosotros" class="active">02 Nosotros</a></li>
+                <li><a href="#contacto">03 Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SECCIÓN 01 PROYECTOS -->
+        <section id="proyectos" class="section">
+            <div class="container">
+                <h2 class="section-title">01 Proyectos</h2>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/IMG/imagenes-home/kiraDalmata.png" alt="Huellitas Hotel">
+                    </div>
+                    <div class="project-info">
+                        <h3>Huellitas Hotel</h3>
+                        <p>
+                            Aplicación web para la gestión de un hotel para mascotas, desarrollada en equipo con <strong>Java y Spring Boot</strong>. El proyecto cuenta con funcionalidades de autenticación y roles, gestión de usuarios y mascotas, administración de servicios y especies, y creación y seguimiento de reservas. El backend utiliza <strong>Spring Security, JWT y PostgreSQL</strong> para garantizar una gestión segura de la información.
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://github.com/SamuelVelez-G/Huellitas-Hotel-Project" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://samuelvelez-g.github.io/Huellitas-Hotel-Project/index.html" class="btn btn-outline"><i class="fas fa-globe"></i> Deploy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 02 NOSOTROS -->
+        <section id="nosotros" class="section">
+            <div class="container">
+                <h2 class="section-title">02 Nosotros</h2>
+                
+                <div class="team-grid">
+                    <!-- Monica Diaz -->
+                    <div class="team-member" onclick="openModal(this)" 
+                         data-name="Monica Diaz" 
+                         data-role="Desarrolladora Full Stack" 
+                         data-desc="Desarrolladora Junior Full-Stack, con título en Ingeniería Industrial y experiencia en proyectos de investigación e innovación." 
+                         data-img="/IMG/Moni.png">
+                        <div class="member-img-wrapper border-purple">
+                            <img src="/IMG/Moni.png" alt="Monica Diaz">
+                        </div>
+                        <p class="member-name">Monica Diaz</p>
+                    </div>
+                    
+                    <!-- Sebastian Cardona -->
+                    <div class="team-member" onclick="openModal(this)" 
+                         data-name="Sebastian Cardona" 
+                         data-role="Desarrollador Full Stack" 
+                         data-desc="Desarrollador de software Full Stack apasionado por crear soluciones con tecnología y aprender constantemente." 
+                         data-img="/IMG/Juan.png">
+                        <div class="member-img-wrapper border-blue">
+                            <img src="/IMG/Juan.png" alt="Sebastian Cardona">
+                        </div>
+                        <p class="member-name">Sebastian Cardenas</p>
+                    </div>
+                    
+                    <!-- Mishelle Bohorquez -->
+                    <div class="team-member" onclick="openModal(this)" 
+                         data-name="Mishelle Bohorquez" 
+                         data-role="Ingeniera de Sistemas y Computación" 
+                         data-desc="Desarrolladora Full Stack apasionada por la tecnología, la innovación y la creación de soluciones digitales que generan impacto." 
+                         data-img="/IMG/mishell.png">
+                        <div class="member-img-wrapper border-purple-light">
+                            <img src="/IMG/mishell.png" alt="Mishelle Bohorquez">
+                        </div>
+                        <p class="member-name">Mishelle Bohorquez</p>
+                    </div>
+                    
+                    <!-- Nataly Diaz -->
+                    <div class="team-member" onclick="openModal(this)" 
+                         data-name="Nataly Diaz" 
+                         data-role="Desarrolladora Full Stack" 
+                         data-desc="Desarrolladora Full Stack con pasión por la tecnología y la innovación. Me encanta aprender, crear y mejorar en cada proyecto." 
+                         data-img="/IMG/Nata.png">
+                        <div class="member-img-wrapper border-teal">
+                            <img src="/IMG/Nata.png" alt="Nataly Diaz">
+                        </div>
+                        <p class="member-name">Nataly Barahona</p>
+                    </div>
+                    
+                    <!-- Samuel Velez -->
+                    <div class="team-member" onclick="openModal(this)" 
+                         data-name="Samuel Velez" 
+                         data-role="Desarrollador Full Stack" 
+                         data-desc="Desarrollador Full Stack Me apasiona transformar ideas en soluciones digitales y construir aplicaciones funcionales y fáciles de usar." 
+                         data-img="/IMG/samu.jpg">
+                        <div class="member-img-wrapper border-green">
+                            <img src="/IMG/samu.jpg" alt="Samuel Velez">
+                        </div>
+                        <p class="member-name">Samuel Velez</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 03 CONTACTO -->
+        <section id="contacto" class="section">
+            <div class="container">
+                <h2 class="section-title">03 Contacto</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <p>Contactate con nosotros, desarrollemos tus ideas!</p>
+                        <div class="email-box">
+                            <div class="email-icon">
+                                <i class="far fa-envelope"></i>
+                            </div>
+                            <span>FullTeam@gmail.com</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <form class="contact-form">
+                            <h3>Formulario</h3>
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" id="nombre" name="nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="mensaje">Mensaje</label>
+                                <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ESTRUCTURA DEL MODAL -->
+    <div id="teamModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">X</span>
+            
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImg" src="" alt="Team Member">
+                </div>
+                
+                <div class="modal-info">
+                    <h3 id="modalName">Nombre</h3>
+                    <h4 id="modalRole">Rol</h4>
+                    <p id="modalDesc">Descripción...</p>
+                    
+                    <div class="project-buttons modal-buttons">
+                        <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="#" class="btn btn-outline"><i class="fas fa-globe"></i> Portafolio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/JS/desarrolladores.js"></script>
+</body>
+</html>
