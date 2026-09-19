@@ -1,11 +1,56 @@
 // ============================================================
-// 1. GESTIÓN DE SERVICIOS (CRUD + EDICIÓN CORREGIDA)
+// 0. CONFIGURACIÓN DE CONEXIÓN CON LA API
 // ============================================================
-const servicios = JSON.parse(localStorage.getItem("servicios")) || [];
+const API_BASE = "https://huellitas-hotel-backend.onrender.com/api";
+const TOKEN_KEY = "authToken"; // ⚠️ ajusta esto si guardas el token con otro nombre
+
+// Mapa temporal categoría → ID de especie real en tu base de datos.
+// Ajusta estos números según los IDs que te devolvió Postman al crear cada especie.
+const MAPA_ESPECIE_ID = {
+    perro: 1,
+    gato: 2,
+    ave: 3,
+    pequenos: 4
+};
+
+function obtenerToken() {
+    return localStorage.getItem(TOKEN_KEY);
+}
+
+function headersConAuth(extra = {}) {
+    const token = obtenerToken();
+    return {
+        "Content-Type": "application/json",
+        ...(token ? { "Authorization": `Bearer ${token}` } : {}),
+        ...extra
+    };
+}
+
+async function manejarRespuesta(res) {
+    if (res.status === 401 || res.status === 403) {
+        mostrarAlerta("<strong>Sesión no válida.</strong> Debes iniciar sesión como administrador para hacer esto.", "danger");
+        throw new Error("No autorizado");
+    }
+    if (!res.ok) {
+        let mensaje = "Ocurrió un error al comunicarse con el servidor.";
+        try {
+            const cuerpo = await res.json();
+            if (cuerpo.message) mensaje = cuerpo.message;
+        } catch (_) { /* el body no era JSON, seguimos con el mensaje genérico */ }
+        throw new Error(mensaje);
+    }
+    if (res.status === 204) return null; // sin contenido (típico de DELETE)
+    return res.json();
+}
+
+// ============================================================
+// 1. GESTIÓN DE SERVICIOS (CRUD CONECTADO A LA API)
+// ============================================================
 const formulario = document.getElementById("formularioAdmin");
 const alertaContenedor = document.getElementById("alertaContenedor");
 
 let editandoServicioId = null;
+let serviciosCache = []; // copia local para filtrar/renderizar sin volver a pedir a la API
 
 function mostrarAlerta(mensaje, tipo) {
     if (!alertaContenedor) return;
@@ -20,8 +65,39 @@ function mostrarAlerta(mensaje, tipo) {
     }, 3000);
 }
 
+async function obtenerServiciosAPI() {
+    const res = await fetch(`${API_BASE}/servicios`, { headers: headersConAuth() });
+    return manejarRespuesta(res);
+}
+
+async function crearServicioAPI(payload) {
+    const res = await fetch(`${API_BASE}/servicios`, {
+        method: "POST",
+        headers: headersConAuth(),
+        body: JSON.stringify(payload)
+    });
+    return manejarRespuesta(res);
+}
+
+async function actualizarServicioAPI(id, payload) {
+    const res = await fetch(`${API_BASE}/servicios/${id}`, {
+        method: "PUT",
+        headers: headersConAuth(),
+        body: JSON.stringify(payload)
+    });
+    return manejarRespuesta(res);
+}
+
+async function eliminarServicioAPI(id) {
+    const res = await fetch(`${API_BASE}/servicios/${id}`, {
+        method: "DELETE",
+        headers: headersConAuth()
+    });
+    return manejarRespuesta(res);
+}
+
 if (formulario) {
-    formulario.addEventListener("submit", function (event) {
+    formulario.addEventListener("submit", async function (event) {
         event.preventDefault();
 
         if (!formulario.checkValidity()) {
@@ -32,54 +108,49 @@ if (formulario) {
 
         const datosFormulario = new FormData(formulario);
         const archivoImagen = document.getElementById("imagen").files[0];
-        let serviciosActualizados = JSON.parse(localStorage.getItem("servicios")) || [];
+        const categoria = datosFormulario.get("categoria");
 
-        function guardarYFinalizar(imagenFinal) {
-            if (editandoServicioId !== null) {
-                let index = serviciosActualizados.findIndex(s => s.id === editandoServicioId);
-                if (index !== -1) {
-                    serviciosActualizados[index] = {
-                        id: editandoServicioId,
-                        servicio: datosFormulario.get("servicio"),
-                        descripcion: datosFormulario.get("descripcion"),
-                        precio: Number(datosFormulario.get("precio")),
-                        disponibilidad: datosFormulario.get("disponibilidad"),
-                        categoria: datosFormulario.get("categoria"),
-                        imagen: imagenFinal
-                    };
+        async function guardarYFinalizar(imagenFinal) {
+            const payload = {
+                nombre: datosFormulario.get("servicio"),
+                descripcion: datosFormulario.get("descripcion"),
+                precio: Number(datosFormulario.get("precio")),
+                disponible: datosFormulario.get("disponibilidad") === "Disponible",
+                imagen: imagenFinal,
+                fechaCreacion: editandoServicioId !== null
+                    ? serviciosCache.find(s => s.id === editandoServicioId)?.fechaCreacion
+                    : new Date().toISOString(),
+                especie: { id: MAPA_ESPECIE_ID[categoria] ?? null }
+            };
+
+            try {
+                if (editandoServicioId !== null) {
+                    await actualizarServicioAPI(editandoServicioId, payload);
+                    mostrarAlerta("<strong>¡Actualizado!</strong> El servicio se ha modificado correctamente.", "success");
+                    editandoServicioId = null;
+                    const btnSubmit = document.querySelector("#formularioAdmin button[type='submit']");
+                    if (btnSubmit) {
+                        btnSubmit.textContent = "Agregar servicio";
+                        btnSubmit.classList.remove("btn-warning");
+                    }
+                } else {
+                    await crearServicioAPI(payload);
+                    mostrarAlerta("<strong>¡Muy bien!</strong> El servicio se ha registrado correctamente.", "success");
                 }
-                editandoServicioId = null;
-                const btnSubmit = document.querySelector("#formularioAdmin button[type='submit']");
-                if (btnSubmit) {
-                    btnSubmit.textContent = "Agregar servicio";
-                    btnSubmit.classList.remove("btn-warning");
+
+                const inputImagen = document.getElementById("imagen");
+                if (inputImagen) inputImagen.required = true;
+
+                formulario.reset();
+                quitarImagen();
+                limpiarSeleccionPills();
+                await renderizarServicios();
+                await cargarDatosReales();
+            } catch (err) {
+                if (err.message !== "No autorizado") {
+                    mostrarAlerta(`<strong>Error:</strong> ${err.message}`, "danger");
                 }
-                mostrarAlerta("<strong>¡Actualizado!</strong> El servicio se ha modificado correctamente.", "success");
-            } else {
-                const nuevoServicio = {
-                    id: Date.now(),
-                    servicio: datosFormulario.get("servicio"),
-                    descripcion: datosFormulario.get("descripcion"),
-                    precio: Number(datosFormulario.get("precio")),
-                    disponibilidad: datosFormulario.get("disponibilidad"),
-                    categoria: datosFormulario.get("categoria"),
-                    imagen: imagenFinal
-                };
-                serviciosActualizados.push(nuevoServicio);
-                mostrarAlerta("<strong>¡Muy bien!</strong> El servicio se ha registrado correctamente.", "success");
             }
-
-            localStorage.setItem("servicios", JSON.stringify(serviciosActualizados));
-
-            // La imagen vuelve a ser obligatoria para el próximo servicio "nuevo"
-            const inputImagen = document.getElementById("imagen");
-            if (inputImagen) inputImagen.required = true;
-
-            formulario.reset();
-            quitarImagen();
-            limpiarSeleccionPills();
-            renderizarServicios();
-            cargarDatosReales();
         }
 
         if (archivoImagen) {
@@ -89,8 +160,8 @@ if (formulario) {
             };
             reader.readAsDataURL(archivoImagen);
         } else if (editandoServicioId !== null) {
-            let servicioExistente = serviciosActualizados.find(s => s.id === editandoServicioId);
-            let imagenAnterior = servicioExistente ? servicioExistente.imagen : "";
+            const servicioExistente = serviciosCache.find(s => s.id === editandoServicioId);
+            const imagenAnterior = servicioExistente ? servicioExistente.imagen : "";
             guardarYFinalizar(imagenAnterior);
         } else {
             mostrarAlerta("Por favor, selecciona una imagen para el servicio.", "danger");
@@ -99,15 +170,13 @@ if (formulario) {
 }
 
 function cargarServicioParaEditar(id) {
-    const servicios = JSON.parse(localStorage.getItem("servicios")) || [];
-    const servicioAEditar = servicios.find(s => s.id === id);
-
+    const servicioAEditar = serviciosCache.find(s => s.id === id);
     if (!servicioAEditar) return;
 
-    document.getElementById("servicio").value = servicioAEditar.servicio || "";
+    document.getElementById("servicio").value = servicioAEditar.nombre || "";
     document.getElementById("descripcion").value = servicioAEditar.descripcion || "";
     document.getElementById("precio").value = servicioAEditar.precio || "";
-    document.getElementById("disponibilidad").value = servicioAEditar.disponibilidad || "";
+    document.getElementById("disponibilidad").value = servicioAEditar.disponible ? "Disponible" : "No disponible";
 
     // La imagen deja de ser obligatoria mientras editas: un <input type="file">
     // nunca puede rellenarse por código, así que si no la quitamos, el navegador
@@ -115,11 +184,14 @@ function cargarServicioParaEditar(id) {
     const inputImagen = document.getElementById("imagen");
     if (inputImagen) inputImagen.required = false;
 
+    const categoriaActual = Object.keys(MAPA_ESPECIE_ID)
+        .find(key => MAPA_ESPECIE_ID[key] === servicioAEditar.especie?.id) || "";
+
     const inputCategoria = document.getElementById("categoria");
-    if (inputCategoria) inputCategoria.value = servicioAEditar.categoria || "";
+    if (inputCategoria) inputCategoria.value = categoriaActual;
 
     document.querySelectorAll(".pill-categoria").forEach(p => {
-        p.classList.toggle("activa", p.getAttribute("data-valor") === servicioAEditar.categoria);
+        p.classList.toggle("activa", p.getAttribute("data-valor") === categoriaActual);
     });
 
     if (servicioAEditar.imagen) {
@@ -142,15 +214,33 @@ function cargarServicioParaEditar(id) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function limpiarServicios() {
-    localStorage.removeItem("servicios");
-    if (typeof Swal !== 'undefined') {
-        Swal.fire({ icon: "success", title: "Servicios eliminados", timer: 1500, showConfirmButton: false });
-    } else {
-        alert("Servicios eliminados correctamente");
+async function limpiarServicios() {
+    if (serviciosCache.length === 0) return;
+
+    const confirmar = typeof Swal !== 'undefined'
+        ? (await Swal.fire({
+            title: "¿Eliminar todos los servicios?",
+            text: "Esta acción no se puede deshacer.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Sí, eliminar todos",
+            cancelButtonText: "Cancelar",
+            confirmButtonColor: "#dc3545"
+        })).isConfirmed
+        : confirm("¿Seguro que deseas eliminar TODOS los servicios?");
+
+    if (!confirmar) return;
+
+    try {
+        await Promise.all(serviciosCache.map(s => eliminarServicioAPI(s.id)));
+        if (typeof Swal !== 'undefined') {
+            Swal.fire({ icon: "success", title: "Servicios eliminados", timer: 1500, showConfirmButton: false });
+        }
+        await renderizarServicios();
+        await cargarDatosReales();
+    } catch (err) {
+        mostrarAlerta(`<strong>Error al eliminar:</strong> ${err.message}`, "danger");
     }
-    renderizarServicios();
-    cargarDatosReales();
 }
 
 function eliminarServicio(id) {
@@ -164,34 +254,44 @@ function eliminarServicio(id) {
             cancelButtonText: "Cancelar",
             confirmButtonColor: "#dc3545"
         }).then((result) => {
-            if (result.isConfirmed) {
-                ejecutarEliminacion(id);
-            }
+            if (result.isConfirmed) ejecutarEliminacion(id);
         });
     } else {
         if (confirm("¿Seguro que deseas eliminar este servicio?")) ejecutarEliminacion(id);
     }
 }
 
-function ejecutarEliminacion(id) {
-    let serviciosActuales = JSON.parse(localStorage.getItem("servicios")) || [];
-    serviciosActuales = serviciosActuales.filter(servicio => servicio.id !== id);
-    localStorage.setItem("servicios", JSON.stringify(serviciosActuales));
-    renderizarServicios();
-    cargarDatosReales();
+async function ejecutarEliminacion(id) {
+    try {
+        await eliminarServicioAPI(id);
+        await renderizarServicios();
+        await cargarDatosReales();
+    } catch (err) {
+        if (err.message !== "No autorizado") {
+            mostrarAlerta(`<strong>Error al eliminar:</strong> ${err.message}`, "danger");
+        }
+    }
 }
 
-function renderizarServicios(listaAMostrar) {
+async function renderizarServicios(listaAMostrar) {
     const contenedor = document.getElementById("listaServicios");
     if (!contenedor) return;
 
-    const todos = JSON.parse(localStorage.getItem("servicios")) || [];
-    const items = listaAMostrar !== undefined ? listaAMostrar : todos;
+    if (listaAMostrar === undefined) {
+        try {
+            serviciosCache = await obtenerServiciosAPI();
+        } catch (err) {
+            contenedor.innerHTML = `<p class="text-muted small text-center mt-3">No se pudieron cargar los servicios: ${err.message}</p>`;
+            return;
+        }
+    }
+
+    const items = listaAMostrar !== undefined ? listaAMostrar : serviciosCache;
     const contador = document.getElementById("contadorServicios");
 
-    if (contador) contador.textContent = `${todos.length} ${todos.length === 1 ? "servicio" : "servicios"}`;
+    if (contador) contador.textContent = `${serviciosCache.length} ${serviciosCache.length === 1 ? "servicio" : "servicios"}`;
 
-    if (todos.length === 0) {
+    if (serviciosCache.length === 0) {
         contenedor.innerHTML = `
             <div class="estado-vacio" id="sinServicios">
                 <div class="estado-vacio-icono">📦</div>
@@ -209,14 +309,14 @@ function renderizarServicios(listaAMostrar) {
 
     contenedor.innerHTML = items.map((s) => `
         <div class="tarjeta-servicio mb-3 p-3 border rounded bg-white shadow-sm">
-            ${s.imagen ? `<img src="${s.imagen}" alt="${s.servicio || 'Servicio'}" class="img-fluid rounded mb-2" style="max-height: 120px; object-fit: cover; width: 100%;">` : ""}
+            ${s.imagen ? `<img src="${s.imagen}" alt="${s.nombre || 'Servicio'}" class="img-fluid rounded mb-2" style="max-height: 120px; object-fit: cover; width: 100%;">` : ""}
             <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
-                <span class="badge bg-secondary">${s.categoria || ""}</span>
-                <span class="badge ${s.disponibilidad === "Disponible" ? "bg-success" : "bg-danger"}">
-                    ${s.disponibilidad || ""}
+                <span class="badge bg-secondary">${s.especie?.nombre || ""}</span>
+                <span class="badge ${s.disponible ? "bg-success" : "bg-danger"}">
+                    ${s.disponible ? "Disponible" : "No disponible"}
                 </span>
             </div>
-            <h6 class="fw-bold mb-1" style="font-size:.9rem;">${s.servicio || "(Sin nombre)"}</h6>
+            <h6 class="fw-bold mb-1" style="font-size:.9rem;">${s.nombre || "(Sin nombre)"}</h6>
             <p class="text-muted small mb-2">${s.descripcion || ""}</p>
             <div class="d-flex justify-content-between align-items-center">
                 <span class="fw-bold text-success">$${s.precio ?? ""}</span>
@@ -235,14 +335,13 @@ function renderizarServicios(listaAMostrar) {
 
 function filtrarServicios(texto) {
     const termino = texto.toLowerCase().trim();
-    const todos = JSON.parse(localStorage.getItem("servicios")) || [];
     if (!termino) {
-        renderizarServicios(todos);
+        renderizarServicios(serviciosCache);
         return;
     }
-    const filtrados = todos.filter(s =>
-        (s.servicio || "").toLowerCase().includes(termino) ||
-        (s.categoria || "").toLowerCase().includes(termino)
+    const filtrados = serviciosCache.filter(s =>
+        (s.nombre || "").toLowerCase().includes(termino) ||
+        (s.especie?.nombre || "").toLowerCase().includes(termino)
     );
     renderizarServicios(filtrados);
 }
@@ -281,12 +380,22 @@ function limpiarSeleccionPills() {
 
 
 // ============================================================
-// 2. DASHBOARD Y CARGA DE DATOS REALES (KPIs, Usuarios)
+// 2. DASHBOARD Y CARGA DE DATOS (Servicios y Usuarios ← API; Reservas ← localStorage)
 // ============================================================
-function cargarDatosReales() {
-    const usuarios = JSON.parse(localStorage.getItem('huellitasUsuarios')) || [];
+async function obtenerUsuariosAPI() {
+    const res = await fetch(`${API_BASE}/usuarios`, { headers: headersConAuth() });
+    return manejarRespuesta(res);
+}
+
+async function cargarDatosReales() {
+    let usuarios = [];
+    try {
+        usuarios = await obtenerUsuariosAPI();
+    } catch (err) {
+        console.error("No se pudieron cargar los usuarios:", err.message);
+    }
+
     const reservas = JSON.parse(localStorage.getItem('huellitasReservas')) || [];
-    const serviciosGuardados = JSON.parse(localStorage.getItem("servicios")) || [];
 
     const kpiClientes = document.getElementById('kpiClientes');
     const kpiReservas = document.getElementById('kpiReservas');
@@ -294,7 +403,7 @@ function cargarDatosReales() {
 
     if (kpiClientes) kpiClientes.textContent = usuarios.length;
     if (kpiReservas) kpiReservas.textContent = reservas.length;
-    if (kpiServicios) kpiServicios.textContent = serviciosGuardados.length;
+    if (kpiServicios) kpiServicios.textContent = serviciosCache.length;
 
     let totalPerros = 0, totalGatos = 0, totalAves = 0, totalPequenos = 0;
     let totalMascotasAlojadas = 0;
@@ -361,11 +470,7 @@ function cargarDatosReales() {
         } else {
             let filasHTML = "";
             usuarios.forEach(user => {
-                const reservasDelUsuario = reservas.filter(r => r.usuario === user.email);
-                let totalMascotas = 0;
-                reservasDelUsuario.forEach(res => {
-                    if (res.mascotas && Array.isArray(res.mascotas)) totalMascotas += res.mascotas.length;
-                });
+                const totalMascotas = user.mascotas ? user.mascotas.length : 0;
                 filasHTML += `
                 <tr>
                     <td class="fw-semibold">${user.nombre || 'Sin nombre'}</td>
@@ -385,9 +490,8 @@ function cargarDatosReales() {
     renderizarEquipo();
 }
 
-
 // ============================================================
-// 3. GRÁFICO DE BARRAS POR SEMANA
+// 3. GRÁFICO DE BARRAS POR SEMANA (sin cambios, sigue en localStorage)
 // ============================================================
 const selectorSemana = document.getElementById('selectorSemana');
 
@@ -462,7 +566,7 @@ if (selectorSemana) {
 
 
 // ============================================================
-// 4. CALENDARIO DE RESERVAS (CHECK-IN)
+// 4. CALENDARIO DE RESERVAS (sin cambios, sigue en localStorage)
 // ============================================================
 let fechaCalendarioActual = new Date();
 
@@ -530,7 +634,7 @@ function cambiarMesCalendario(direccion) {
 
 
 // ============================================================
-// 5. EQUIPO Y PERSONAL
+// 5. EQUIPO Y PERSONAL (sin cambios, sigue en localStorage)
 // ============================================================
 const formEquipo = document.getElementById('formEquipo');
 if (formEquipo) {
@@ -629,7 +733,7 @@ function renderizarEquipo() {
 // ============================================================
 // 6. INICIALIZACIÓN GLOBAL AL CARGAR LA PÁGINA
 // ============================================================
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const fechaSpan = document.getElementById("fechaHoyPanel");
     if (fechaSpan) {
         fechaSpan.textContent = new Date().toLocaleDateString("es-ES", {
@@ -637,8 +741,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    renderizarServicios();
-    cargarDatosReales();
+    await renderizarServicios();
+    await cargarDatosReales();
 
     if (selectorSemana) {
         selectorSemana.value = obtenerSemanaActualInput();

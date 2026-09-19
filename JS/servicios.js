@@ -54,18 +54,16 @@ async function mostrarServicios() {
 
         card.innerHTML = `
             <div class="card-delantera" id="card-room">
-                <img src="${imagenSrc}" class="card-room-img" id="card-room-img" alt="...">
+                <img src="${imagenSrc}" class="card-room-img" id="card-room-img" alt="${servicio.nombre || ''}">
                 <div class="card-body-texto" id="card-div-texto">
                     <p class="card-text card-room-title" id="card-room-parrafo">
-                        ${servicio.servicio}
+                        ${servicio.nombre}
                     </p>
                 </div>
             </div>
             <div class="card-trasera" id="card-room">
                 <div class="card-body-trasero">
-                    <h5 class="card-title">
-                        ${servicio.servicio}
-                    </h5>
+                    <h5 class="card-title">${servicio.nombre}</h5>
                     <p class="card-text">${servicio.descripcion || ''}</p>
                     <div class="card-footer-info">
                         <a class="precio-card">${servicio.precio ? '$' + servicio.precio.toLocaleString("es-CO") + ' / noche' : 'valor del servicio'}</a>
@@ -76,8 +74,8 @@ async function mostrarServicios() {
         `;
 
         // 🚀 LÓGICA DE CATEGORÍAS 🚀
-        // Sacamos el nombre de la especie, venga como venga estructurado en el JSON
-        const nombreEspecie = (servicio.categoria ?? servicio.especie?.nombre ?? "").toLowerCase();
+        // La especie viene como objeto anidado desde el backend: servicio.especie.nombre
+        const nombreEspecie = (servicio.especie?.nombre || "").toLowerCase();
 
         let selectorContenedor = "";
         switch (nombreEspecie) {
