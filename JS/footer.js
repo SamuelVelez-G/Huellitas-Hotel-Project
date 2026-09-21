@@ -1,34 +1,34 @@
 const footerScriptActual = document.currentScript;
 const footerScriptUrl = footerScriptActual?.src
-  ?? document.querySelector('script[src*="footer.js"]')?.src
-  ?? window.location.href;
+    ?? document.querySelector('script[src*="footer.js"]')?.src
+    ?? window.location.href;
 const footerRaizProyecto = new URL('../', footerScriptUrl);
 const footerRuta = (archivo) => new URL(archivo, footerRaizProyecto).href;
- 
+
 document.addEventListener('DOMContentLoaded', function () {
- 
-  var yearEl = document.getElementById('footer-year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
- 
- 
-  var backToTopBtn = document.getElementById('back-to-top');
-  if (backToTopBtn) {
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 400) {
-        backToTopBtn.classList.add('visible');
-      } else {
-        backToTopBtn.classList.remove('visible');
-      }
-    });
- 
-    backToTopBtn.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
+
+    var yearEl = document.getElementById('footer-year');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
+
+
+    var backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 });
- 
+
 const footer = `<footer class="site-footer">
         <div class="footer-top">
  
@@ -83,12 +83,12 @@ const footer = `<footer class="site-footer">
         </div>
  
         <div class="footer-bottom">
-            <p>&copy; <span id="footer-year"></span> Huellitas Hotel. Propiedad <a href="./HTML/desarrolladores.html">FullTeam</a> </p>
+            <p>&copy; <span id="footer-year"></span> Huellitas Hotel. Propiedad <a href="/HTML/desarrolladores.html" target="_blank" rel="noopener noreferrer">FullTeam</a> </p>
         </div>
- 
+        
         <button id="back-to-top" class="back-to-top" aria-label="Volver arriba" type="button">
             <span aria-hidden="true">🐾</span>
         </button>
     </footer>`;
- 
-    document.getElementById("footer").innerHTML = footer;
+
+document.getElementById("footer").innerHTML = footer;
