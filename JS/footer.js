@@ -83,7 +83,7 @@ const footer = `<footer class="site-footer">
         </div>
  
         <div class="footer-bottom">
-            <p>&copy; <span id="footer-year"></span> Huellitas Hotel. Todos los derechos reservados.</p>
+            <p>&copy; <span id="footer-year"></span> Huellitas Hotel. Propiedad <a href="desarrolladores.html">FullTeam</a> </p>
         </div>
  
         <button id="back-to-top" class="back-to-top" aria-label="Volver arriba" type="button">
